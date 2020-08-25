@@ -2,6 +2,7 @@ const db = require("../models");
 const passport = require("../config/passport");
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 const router = require("express").Router();
+const path = require("path");
 
 
 // User Routes ----------------------------------------------- ||
@@ -24,3 +25,10 @@ router.post("/api/signup", (req, res) => {
         res.status(401).json(err);
     });
 });
+
+// If no API routes are hit, send the React app
+router.use(function(req, res) {
+    res.sendFile(path.join(__dirname, "../client/build/index.html"));
+  });
+
+module.exports = router;

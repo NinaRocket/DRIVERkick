@@ -25,6 +25,7 @@ function App() {
       <Route exact path="/vehiclepage" component={VehiclePage} />
       </Wrapper>
       <div className="push"></div>
+      
     </Container>
     <Footer />
   </div>
