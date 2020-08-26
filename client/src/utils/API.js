@@ -39,6 +39,12 @@ export default {
             email,
             password
         })
+    },
+    getTest: () => {
+        return axios
+        .post("/api/signup",{
+            
+        })
     }
 };
 
