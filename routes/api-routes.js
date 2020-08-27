@@ -24,3 +24,7 @@ router.post("/api/signup", (req, res) => {
         res.status(401).json(err);
     });
 });
+
+router.use(function(req, res) {
+    res.sendFile(path.join(__dirname, "../client/build/index.html"));
+  });
