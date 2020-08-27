@@ -26,17 +26,12 @@ router.post("/api/signup", (req, res) => {
     });
 });
 
-<<<<<<< HEAD:routes/api-routes.js
+routes/api-routes.js
 router.use(function(req, res) {
     res.sendFile(path.join(__dirname, "../client/build/index.html"));
   });
-=======
-router.get("/api/signup", (req, res) => {
-    res.send(
-        "test" 
-    );
-}); 
+
+
 
 
 module.exports = router;
->>>>>>> 37a9888437c8be69014421e1489ea48a4341d28b:routes/api/api-routes.js
