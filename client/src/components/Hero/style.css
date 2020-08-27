@@ -5,7 +5,7 @@
   position: relative;
 }
 
-/* .hero::after {
+.hero::after {
   content: "";
   display: block;
   opacity: .4;
@@ -22,7 +22,7 @@
   z-index: 2;
 }
 
-.hero h1, .hero h2 {
+/* .hero h1, .hero h2 {
   color: white;
 }
 
@@ -34,7 +34,7 @@
 
 .sort {
   color: white;
-} */ 
+} */  
 
 .rectangle{
 position: absolute;

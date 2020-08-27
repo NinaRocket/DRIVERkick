@@ -42,7 +42,7 @@ export default {
     },
     getTest: () => {
         return axios
-        .post("/api/signup",{
+        .get("/api/signup",{
             
         })
     }

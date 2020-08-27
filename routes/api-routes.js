@@ -22,13 +22,15 @@ router.post("/api/signup", (req, res) => {
         res.redirect(307, "api/login");
     })
     .catch(err => {
-        res.status(401).json(err);
+        res.status(400).json(err);
     });
 });
 
-// If no API routes are hit, send the React app
-router.use(function(req, res) {
-    res.sendFile(path.join(__dirname, "../client/build/index.html"));
-  });
+router.get("/api/signup", (req, res) => {
+    res.send(
+        "test" 
+    );
+}); 
+
 
 module.exports = router;

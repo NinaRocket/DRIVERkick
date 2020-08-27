@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, useEffect} from "react-router-dom";
+import React, {useEffect} from 'react';
+import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Login from "./components/LoginForm";
 import Signup from "./components/SignupForm"; 
 import UserPage from "./pages/userpage";
@@ -11,19 +11,18 @@ import Container from 'react-bootstrap/Container';
 //import Navbar from "./components/Navbar";
 import Hero from "./components/Hero"; 
 import './App.css';
-//import Rectangle from "./images/Rectangle-19.jpg"; 
-//import API from "../src/utils/API";
+import API from "../src/utils/API";
 
 function App() {
   
 
-  // useEffect(() => {
+  useEffect(() => {
     
-  //   API.getTest.then((res) => {
-  //     console.log(res); 
+    API.getTest().then((res) => {
+      console.log(res); 
       
-  //   });
-  // }, []);
+    });
+  }, []);
   
   return (
     <Router>
@@ -32,11 +31,13 @@ function App() {
     ></Hero>
     <Container>
       <Wrapper>
+       <Switch>
       <Route exact path="/" component={Home} />
       <Route exact path="/signup" component={Signup} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/userpage" component={UserPage} /> 
       <Route exact path="/vehiclepage" component={VehiclePage} />
+      </Switch> 
       </Wrapper>
     </Container>
     
