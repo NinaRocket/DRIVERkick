@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import API from "../../utils/API";
 
 class Signup extends Component {
 	constructor() {
 		super()
 		this.state = {
-			username: '',
+			email: '',
 			password: '',
 			confirmPassword: '',
 
@@ -19,15 +20,12 @@ class Signup extends Component {
 		})
 	}
 	handleSubmit(event) {
-		console.log('sign-up handleSubmit, username: ')
-		console.log(this.state.username)
+		console.log('sign-up handleSubmit, email: ')
+		console.log(this.state.email)
 		event.preventDefault()
 
-		//request to server to add a new username/password
-		axios.post('/user/', {
-			username: this.state.username,
-			password: this.state.password
-		})
+		//request to server to add a new email/password
+		API.login(this.state.email,this.state.password)
 			.then(response => {
 				console.log(response)
 				if (!response.data.errmsg) {
@@ -36,7 +34,7 @@ class Signup extends Component {
 						redirectTo: '/login'
 					})
 				} else {
-					console.log('username already taken')
+					console.log('email already taken')
 				}
 			}).catch(error => {
 				console.log('signup error: ')
@@ -53,15 +51,15 @@ render() {
 			<form className="form-horizontal">
 				<div className="form-group">
 					<div className="col-1 col-ml-auto">
-						<label className="form-label" htmlFor="username">Username</label>
+						<label className="form-label" htmlFor="email">email</label>
 					</div>
 					<div className="col-3 col-mr-auto">
 						<input className="form-input"
 							type="text"
-							id="username"
-							name="username"
-							placeholder="Username"
-							value={this.state.username}
+							id="email"
+							name="email"
+							placeholder="email"
+							value={this.state.email}
 							onChange={this.handleChange}
 						/>
 					</div>
