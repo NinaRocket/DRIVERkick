@@ -1,32 +1,39 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom'
-import axios from 'axios'
+//import axios from 'axios'
 import API from '../../utils/API';
 
-class LoginForm extends Component {
-    constructor() {
-        super()
-        this.state = {
-            email: '',
-            password: '',
-            redirectTo: null
-        }
-        this.handleSubmit = this.handleSubmit.bind(this)
-        this.handleChange = this.handleChange.bind(this)
+//functional component using hooks
+
+function LoginForm() {
+    //email is variable that holds the state, setEmail is a method that sets the state, puts data into email
+    //useState holds the initial state
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [redirectTo, setRedirectTo] = useState(null);
+
+    // this.handleSubmit = this.handleSubmit.bind(this)
+    // this.handleChange = this.handleChange.bind(this)
+
+    
   
-    }
 
-    handleChange(event) {
-        this.setState({
-            [event.target.name]: event.target.value
-        })
-    }
+    const userEmailValue = (event) => {
+        setEmail(
+            event.target.value
+        )
+    };
 
-    handleSubmit(event) {
+    const userPasswordValue = (event) => {
+        setPassword(
+            event.target.value
+        )
+    }
+    const submitUserLogin = (event) => {
         event.preventDefault()
         console.log('handleSubmit')
 
-        API.login(this.state.email, this.state.password)
+        API.login(email, password)
             .then(response => {
                 console.log('login response: ')
                 console.log(response)
@@ -37,20 +44,18 @@ class LoginForm extends Component {
                         email: response.data.email
                     })
                     // update the state to redirect to home
-                    this.setState({
-                        redirectTo: '/'
-                    })
+                    setRedirectTo('/userpage')
                 }
             }).catch(error => {
                 console.log('login error: ')
                 console.log(error);
-                
-            })
-    }
 
-    render() {
-        if (this.state.redirectTo) {
-            return <Redirect to={{ pathname: this.state.redirectTo }} />
+            })
+    };
+
+   
+        if (redirectTo) {
+            return <Redirect to={{ pathname: redirectTo }} />
         } else {
             return (
                 <div>
@@ -66,8 +71,8 @@ class LoginForm extends Component {
                                     id="email"
                                     name="email"
                                     placeholder="email"
-                                    value={this.state.email}
-                                    onChange={this.handleChange}
+                                    value={email}
+                                    onChange={userEmailValue}
                                 />
                             </div>
                         </div>
@@ -80,8 +85,8 @@ class LoginForm extends Component {
                                     placeholder="password"
                                     type="password"
                                     name="password"
-                                    value={this.state.password}
-                                    onChange={this.handleChange}
+                                    value={password}
+                                    onChange={userPasswordValue}
                                 />
                             </div>
                         </div>
@@ -89,8 +94,8 @@ class LoginForm extends Component {
                             <div className="col-7"></div>
                             <button
                                 className="btn btn-primary col-1 col-mr-auto"
-                               
-                                onClick={this.handleSubmit}
+
+                                onClick={submitUserLogin}
                                 type="submit">Login</button>
                         </div>
                     </form>
@@ -98,5 +103,5 @@ class LoginForm extends Component {
             )
         }
     }
-}
+
 export default LoginForm; 
