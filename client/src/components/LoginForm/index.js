@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
-import API from '../../utils/API'
+import API from '../../utils/API';
 
 class LoginForm extends Component {
     constructor() {
         super()
         this.state = {
-            username: '',
+            email: '',
             password: '',
             redirectTo: null
         }
@@ -26,7 +26,7 @@ class LoginForm extends Component {
         event.preventDefault()
         console.log('handleSubmit')
 
-        API.login(this.state.username, this.state.password)
+        API.login(this.state.email, this.state.password)
             .then(response => {
                 console.log('login response: ')
                 console.log(response)
@@ -34,7 +34,7 @@ class LoginForm extends Component {
                     // update App.js state
                     this.props.updateUser({
                         loggedIn: true,
-                        username: response.data.username
+                        email: response.data.email
                     })
                     // update the state to redirect to home
                     this.setState({
@@ -58,15 +58,15 @@ class LoginForm extends Component {
                     <form className="form-horizontal">
                         <div className="form-group">
                             <div className="col-1 col-ml-auto">
-                                <label className="form-label" htmlFor="username">Username</label>
+                                <label className="form-label" htmlFor="email">email</label>
                             </div>
                             <div className="col-3 col-mr-auto">
                                 <input className="form-input"
                                     type="text"
-                                    id="username"
-                                    name="username"
-                                    placeholder="Username"
-                                    value={this.state.username}
+                                    id="email"
+                                    name="email"
+                                    placeholder="email"
+                                    value={this.state.email}
                                     onChange={this.handleChange}
                                 />
                             </div>

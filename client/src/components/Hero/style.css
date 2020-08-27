@@ -1,0 +1,209 @@
+.hero {
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.hero::after {
+  content: "";
+  display: block;
+  opacity: .4;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: black;
+}
+
+.hero * {
+  position: relative;
+  z-index: 2;
+}
+
+/* .hero h1, .hero h2 {
+  color: white;
+}
+
+.hero h1 {
+  font-size: 60px;
+  padding-top: 140px;
+  margin-top: 0;
+}
+
+.sort {
+  color: white;
+} */  
+
+.rectangle{
+position: absolute;
+width: 1440px;
+height: 1063px;
+left: 0px;
+top: 0px;
+
+/* background: url(car-hero-img-web.jpg); */
+border-radius: 0px;
+}
+
+.caughtoff{
+  position: absolute;
+width: 551px;
+height: 308px;
+left: 444px;
+top: 122px;
+
+font-family: Titillium Web;
+font-style: normal;
+font-weight: 900;
+font-size: 100px;
+line-height: 76.6%;
+/* or 77px */
+
+text-align: center;
+text-transform: uppercase;
+
+/* Deep Blue */
+
+color: #143642;
+}
+
+.logo{
+  position: absolute;
+  width: 188px;
+  height: 29px;
+  left: 130px;
+  top: 40px;
+
+}
+
+.btnGroup{
+  display: flex;
+  flex-direction: row;
+  padding: 0px;
+  
+  position: absolute;
+  width: 227px;
+  height: 34px;
+  left: 1083px;
+  top: 40px;
+  
+
+}
+
+.startedBtn{
+  /* Buttton */
+
+
+/* Auto Layout */
+
+display: flex;
+flex-direction: row;
+padding: 5px 25px;
+
+position: static;
+width: 129px;
+height: 34px;
+left: 0px;
+top: 0px;
+
+/* Fiery Orange */
+
+background: #FF4000;
+
+/* Inside Auto Layout */
+
+flex: none;
+order: 0;
+align-self: center;
+margin: 10px 0px;
+}
+
+.loginBtn{
+ 
+/* Buttton */
+
+
+/* Auto Layout */
+
+display: flex;
+flex-direction: row;
+padding: 5px 25px;
+
+position: static;
+width: 88px;
+height: 34px;
+left: 139px;
+top: 0px;
+
+/* Fiery Orange */
+
+border: 2px solid #FF4000;
+box-sizing: border-box;
+
+/* Inside Auto Layout */
+
+flex: none;
+order: 1;
+align-self: center;
+margin: 10px 0px;
+}
+
+.logtext{
+  /* Login */
+
+
+position: static;
+width: 38px;
+height: 24px;
+left: calc(50% - 38px/2);
+top: calc(50% - 24px/2);
+
+font-family: Titillium Web;
+font-style: normal;
+font-weight: bold;
+font-size: 16px;
+line-height: 24px;
+text-align: center;
+
+/* Fiery Orange */
+
+color: #FF4000;
+
+/* Inside Auto Layout */
+
+flex: none;
+order: 0;
+align-self: center;
+margin: 10px 0px;
+}
+
+.getStartedtext{
+  /* Get Started */
+
+
+position: static;
+width: 79px;
+height: 24px;
+left: calc(50% - 79px/2);
+top: calc(50% - 24px/2);
+
+font-family: Titillium Web;
+font-style: normal;
+font-weight: bold;
+font-size: 16px;
+line-height: 24px;
+text-align: center;
+
+/* Light Tan */
+
+color: #FEEFDD;
+
+/* Inside Auto Layout */
+
+flex: none;
+order: 0;
+align-self: center;
+margin: 10px 0px;
+}
