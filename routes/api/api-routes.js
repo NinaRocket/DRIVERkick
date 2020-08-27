@@ -27,11 +27,12 @@ router.post("/api/signup", (req, res) => {
     });
 });
 
-router.get("/api/signup", (req, res) => {
-    res.send(
-        "test" 
-    );
-}); 
+routes/api-routes.js
+router.use(function(req, res) {
+    res.sendFile(path.join(__dirname, "../client/build/index.html"));
+  });
+
+
 
 // Matches with "/api/vehicle"
 router.route("/vehicle")
