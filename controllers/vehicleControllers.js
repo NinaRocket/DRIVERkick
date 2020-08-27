@@ -1,6 +1,7 @@
 const { Vehicle } = require("../models");
 
 // Defining methods for the vehicleController
+// need a create, update, and find route
 module.exports = {
     findAll: function(req, res) {
       Vehicle
@@ -27,4 +28,3 @@ module.exports = {
         .catch(err => res.status(422).json(err));
     }
   };
-  
