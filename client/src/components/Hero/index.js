@@ -10,7 +10,6 @@ import Frame from "../../images/Frame-3.png";
 import { Link } from "react-router-dom";
 import LoginForm from "../LoginForm";
 import SignupForm from "../SignupForm";
-import SignupModal from "../SignupModal";
 
 function Hero() {
   const [showModalOne, setShowModalOne] = useState(false);

@@ -1,7 +1,7 @@
 {
   "name": "project-3",
   "version": "0.1.0",
-  "proxy": "http://localhost:3000",
+  "proxy": "http://localhost:3002",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -19,10 +19,7 @@
     "react-scripts": "3.4.3",
     "styled-components": "^5.1.1"
   },
-  "devDependencies": {
-    "concurrently": "^4.1.0",
-    "nodemon": "^1.18.7"
-  },
+  
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

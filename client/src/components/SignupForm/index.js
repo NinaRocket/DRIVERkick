@@ -8,9 +8,6 @@ function SignupForm() {
   const [lastName, setLastName] = useState([]);
   const [password, setPassword] = useState([]);
   const [confirmPassword, setConfirmPassword] = useState([]);
-  //const [redirectTo, setRedirectTo] = useState(null);
-  // this.handleSubmit = this.handleSubmit.bind(this)
-  // this.handleChange = this.handleChange.bind(this)
 
   const signupEmailValue = (event) => {
     setEmail(event.target.value);
@@ -35,9 +32,16 @@ function SignupForm() {
     console.log("sign-up handleSubmit, email: ");
     console.log(email);
     event.preventDefault();
+    console.log(email, firstName, lastName, password);
+    const userInfo = {
+      email: email,
+      firstName: firstName,
+      lastName: lastName,
+      password: password,
+    };
 
     //request to server to add a new email/password
-    API.signup(email, firstName, lastName, password)
+    API.signup(userInfo)
       .then((response) => {
         console.log(response);
         if (!response.data.errmsg) {

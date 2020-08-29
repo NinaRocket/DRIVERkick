@@ -31,20 +31,12 @@ export default {
     return recallInfo;
   },
   login: (email, password) => {
-    return axios.post("/api/login", {
+    return axios.post("/api/user/login", {
       email,
       password,
     });
   },
-  signup: (email, firstName, lastName, password) => {
-    return axios.post("/api/signup", {
-      email,
-      firstName,
-      lastName,
-      password,
-    });
-  },
-  getTest: () => {
-    return axios.get("/api/signup", {});
+  signup: (userInfo) => {
+    return axios.post("/api/user/signup", userInfo);
   },
 };
