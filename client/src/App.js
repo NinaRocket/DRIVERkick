@@ -25,7 +25,7 @@ function App() {
   return (
     <Router>
       <div>
-        <Hero></Hero>
+        {/* <Hero></Hero> */}
         <Container>
           <Wrapper>
             <Switch>
