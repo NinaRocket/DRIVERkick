@@ -33,7 +33,7 @@ export default {
                 password
             })
     },
-    signup: (email, password) => {
+    signup: (email, password, firstName, lastName) => {
         return axios
         .post('/api/user/signup', {
             email,
