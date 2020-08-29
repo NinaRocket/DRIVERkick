@@ -89,7 +89,7 @@ import Hero from "../components/Hero";
 function Home() {
   return (
     <Container>
-      <Hero></Hero>
+      <Hero/>
     </Container>
   );
 }

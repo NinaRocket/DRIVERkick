@@ -21,52 +21,53 @@ function Hero() {
   const handleShow2 = () => setShowModalTwo(true);
 
   return (
-    <div>
-      <Modal id="mdlSignup" show={showModalOne} onHide={handleCloseOne}>
-        <Modal.Header closeButton>
-          <Modal.Title>Sign Up</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <SignupForm />
-        </Modal.Body>
-      </Modal>
+      <div>
+        <Modal id="mdlSignup" show={showModalOne} onHide={handleCloseOne}>
+          <Modal.Header closeButton>
+            <Modal.Title>Sign Up</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <SignupForm />
+          </Modal.Body>
+        </Modal>
 
-      <Modal id="mdlLogin" show={showModalTwo} onHide={handleCloseTwo}>
-        <Modal.Header closeButton>
-          <Modal.Title>Login</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <LoginForm />
-        </Modal.Body>
-      </Modal>
+        <Modal id="mdlLogin" show={showModalTwo} onHide={handleCloseTwo}>
+          <Modal.Header closeButton>
+            <Modal.Title>Login</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <LoginForm />
+          </Modal.Body>
+        </Modal>
 
-      <img className="rectangle" src={Rectangle} alt="car"></img>
-      <Link className="home" to="/">
-        <img className="logo" src={Logo}></img>
-      </Link>
-      <div className="btnGroup" src={Frame} alt="actions">
-        {/* <Link className="signup-link" to="/signup"> */}
-        <button
-          id="signupBtn"
-          type="button"
-          className="btn startedBtn"
-          onClick={handleShow1}
-        >
-          <img className="getStartedtext" src={GetStarted} alt="signup"></img>{" "}
-        </button>
-        {/* </Link> */}
-        {/* <Link className="login-link" to="/login"> */}
-        <button type="button" className="btn loginBtn" onClick={handleShow2}>
-          <img className="logtext" src={LoginText} alt="login"></img>
-        </button>
-        {/* </Link> */}
+        <img className="rectangle" src={Rectangle} alt="car"></img>
+        <Link className="home" to="/">
+          <img className="logo" src={Logo}></img>
+        </Link>
+        <div className="btnGroup" src={Frame} alt="actions">
+          {/* <Link className="signup-link" to="/signup"> */}
+          <button
+            id="signupBtn"
+            type="button"
+            className="btn startedBtn"
+            onClick={handleShow1}
+          >
+            <img className="getStartedtext" src={GetStarted} alt="signup"></img>{" "}
+          </button>
+          {/* </Link> */}
+          {/* <Link className="login-link" to="/login"> */}
+          <button type="button" className="btn loginBtn" onClick={handleShow2}>
+            <img className="logtext" src={LoginText} alt="login"></img>
+          </button>
+          {/* </Link> */}
+        </div>
+        <img
+          className="caughtoff"
+          src={CaughtOff}
+          alt="dont get caught off guard"
+        ></img>
       </div>
-      <img
-        className="caughtoff"
-        src={CaughtOff}
-        alt="dont get caught off guard"
-      ></img>
-    </div>
+
   );
 }
 

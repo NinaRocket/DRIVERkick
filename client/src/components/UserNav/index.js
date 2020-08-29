@@ -8,7 +8,7 @@ import { FaPlus } from "react-icons/fa";
 
 
 
-function UserNav({ newVehicleModalClick, LogOutModalClick }) {
+function UserNav({ newVehicleModalClick, logOutModalClick }) {
     return (
         <Navbar className="container justify-content-between flex-column flex-sm-row">
 
@@ -22,7 +22,7 @@ function UserNav({ newVehicleModalClick, LogOutModalClick }) {
 
             <Nav>
                 <Button onClick={newVehicleModalClick}><FaPlus />Add New Vehicle</Button>
-                <Button onClick={LogOutModalClick}>Log Out</Button>
+                <Button onClick={logOutModalClick}>Log Out</Button>
             </Nav>
 
         </Navbar>
