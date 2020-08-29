@@ -18,6 +18,8 @@ router.post("/api/signup", (req, res) => {
     db.User.create({
         email: req.body.email,
         password: req.body.password
+        // does this need first name and last name? 
+        
     })
     .then(() => {
         res.redirect(307, "api/login");
@@ -31,8 +33,6 @@ routes/api-routes.js
 router.use(function(req, res) {
     res.sendFile(path.join(__dirname, "../client/build/index.html"));
   });
-
-
 
 // Matches with "/api/vehicle"
 router.route("/vehicle")

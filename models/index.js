@@ -1,5 +1,5 @@
 module.exports = {
     User: require("./user"),
     Vehicle: require("./vehicle"),
-    Notes: require("./notes")
+    Notes: require("./maintenance")
 };
