@@ -46,11 +46,11 @@ function SignupForm() {
         console.log(response);
         if (!response.data.errmsg) {
           console.log("successful signup");
-          this.state({
-            //redirect to login page
-            //home for now
-            redirectTo: "/home",
-          });
+          // this.state({
+          //   //redirect to login page
+          //   //home for now
+          //   redirectTo: "/home",
+          // });
         } else {
           console.log("email already taken");
         }

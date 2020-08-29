@@ -39,4 +39,7 @@ export default {
   signup: (userInfo) => {
     return axios.post("/api/user/signup", userInfo);
   },
+  addvehicle: (vehicleInfo) => {
+    return axios.post("/api/vehicle");
+  },
 };
