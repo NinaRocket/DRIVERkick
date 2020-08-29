@@ -28,16 +28,18 @@ export default {
     },
     login: (email, password) => {
         return axios
-            .post('/api/login', {
+            .post('/api/user/login', {
                 email,
                 password
             })
     },
-    signup: (email, password) => {
+    signup: (email, password, firstName, lastName) => {
         return axios
-        .post('/api/signup', {
+        .post('/api/user/signup', {
             email,
-            password
+            password,
+            firstName,
+            lastName
         })
     },
     getTest: () => {

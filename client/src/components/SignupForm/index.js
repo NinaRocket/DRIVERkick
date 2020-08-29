@@ -88,7 +88,6 @@ render() {
 				</div>
 			</form>
 		</div>
-
 	)
 }
 }
