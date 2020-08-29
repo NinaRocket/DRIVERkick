@@ -1,19 +1,17 @@
 const db = require("../../models");
 const passport = require("../../config/passport");
-const isAuthenticated = require("../../config/middleware/isAuthenticated");
 const router = require("express").Router();
-const path = require("path");
 
 
 // User Routes ----------------------------------------------- ||
-router.post("/api/login", passport.authenticate("local"), (req, res) => {
+router.post("/login", passport.authenticate("local"), (req, res) => {
     res.json({
         email: req.user.email,
         id: req.user.id
     });
 });
 
-router.post("/api/signup", (req, res) => {
+router.post("/signup", (req, res) => {
     db.User.create({
         email: req.body.email,
         password: req.body.password
@@ -25,11 +23,6 @@ router.post("/api/signup", (req, res) => {
         res.status(400).json(err);
     });
 });
-
-routes/api-routes.js
-router.use(function(req, res) {
-    res.sendFile(path.join(__dirname, "../client/build/index.html"));
-  });
 
 
 
