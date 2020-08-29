@@ -1,25 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import Container from "react-bootstrap/Container";
+import AddVehicleModalForm from "../components/AddVehicleModalForm";
 
-function userPage() {
- // Setting our component's initial state
- const [users, setUsers] = useState([])
- const [formObject, setFormObject] = useState({})
-
- useEffect(() => {
-    loadBooks()
-  }, [])
-
- function loadUsers() {
-    API.getBooks()
-      .then(res => 
-        setBooks(res.data)
-      )
-      .catch(err => console.log(err));
-  };
-
-
+function UserPage() {
   return (
-
+    <Container>
+      <AddVehicleModalForm></AddVehicleModalForm>
+    </Container>
   );
-
 }
+
+export default UserPage;
