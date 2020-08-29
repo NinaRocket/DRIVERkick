@@ -8,10 +8,11 @@ router.post("/login", passport.authenticate("local"), (req, res) => {
 });
 
 router.post("/signup", (req, res) => {
-  console.log(req.body);
   db.User.create({
     email: req.body.email,
     password: req.body.password,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
   })
     .then(() => {
       res.redirect(307, "api/login");
