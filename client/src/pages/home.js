@@ -7,7 +7,6 @@
 // import Navbar from '../components/Navbar';
 // import API from "../utils/API";
 
-
 // class Home extends Component {
 //   constructor() {
 //     super()
@@ -53,7 +52,7 @@
 //   render() {
 //     return (
 //       <div className="Login">
-   
+
 //         <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
 //         {/* greet user if logged in: */}
 //         {this.state.loggedIn &&
@@ -84,23 +83,15 @@
 // export default Home;
 
 import React from "react";
-import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
+import Container from "react-bootstrap/Container";
+import Hero from "../components/Hero";
 
-
-function Home(){
-
-  
-
-    return(
-
-        <Container>
-
-
-
-        </Container>
-    )
+function Home() {
+  return (
+    <Container>
+      <Hero></Hero>
+    </Container>
+  );
 }
 
-export default Home; 
+export default Home;
