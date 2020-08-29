@@ -13,9 +13,9 @@ router.post("/login", passport.authenticate("local"), (req, res) => {
 router.post("/signup", (req, res) => {
     db.User.create({
         email: req.body.email,
-        password: req.body.password
-        // does this need first name and last name? 
-        
+        password: req.body.password,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName
     })
     .then(() => {
         res.redirect(307, "api/login");
