@@ -41,5 +41,5 @@ export default {
   },
   addvehicle: (vehicleInfo) => {
     return axios.post("/api/vehicle");
-  },
+  }
 };
