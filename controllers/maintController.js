@@ -1,28 +1,28 @@
-const { Notes } = require("../models");
+const { Maintenance } = require("../models");
 
-// Defining methods for the notesController
+// Defining methods for the maintController
 // need a create, update, and find route
 module.exports = {
     findAll: function(req, res) {
-        Notes
+        Maintenance
           .find(req.query)
           .then(dbModel => res.json(dbModel))
           .catch(err => res.status(422).json(err));
       },
       findById: function(req, res) {
-        Notes
+        Maintenance
           .findById(req.params.id)
           .then(dbModel => res.json(dbModel))
           .catch(err => res.status(422).json(err));
       },
       create: function(req, res) {
-        Notes
+        Maintenance
           .create(req.body)
           .then(dbModel => res.json(dbModel))
           .catch(err => res.status(422).json(err));
       },
       update: function(req, res) {
-        Notes
+        Maintenance
           .findOneAndUpdate({ _id: req.params.id }, req.body)
           .then(dbModel => res.json(dbModel))
           .catch(err => res.status(422).json(err));
