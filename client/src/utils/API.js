@@ -39,13 +39,17 @@ export default {
   signup: (userInfo) => {
     return axios.post("/api/user/signup", userInfo);
   },
-  addvehicle: (vehicleInfo) => {
+
+  // VEHICLE ROUTES
+  // saves to MongoDB however no data is in api/vehicle
+  addvehicle: function (vehicleInfo) {
     return axios.post("/api/vehicle", vehicleInfo);
   },
-  updateMileage: (mileage) => {
-    return axios.put("/api/vehicle", mileage);
+
+  updateMileage: (currentMile) => {
+    return axios.put("/api/vehicle", currentMile);
   },
-  newWarranty: (warrantyInfo) => {
-    return axios.post("/api/vehicle", warrantyInfo);
+  newWarranty: (warranty) => {
+    return axios.post("/api/warranty", warranty);
   },
 };

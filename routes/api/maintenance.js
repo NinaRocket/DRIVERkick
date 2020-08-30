@@ -6,7 +6,7 @@ router.route("/")
     .post(maintController.create)
 
 router.route("/:id")
-    .get(maintController.findById)
+    .get(maintController.findAll)
     .put(maintController.update)
 
 module.exports = router;
