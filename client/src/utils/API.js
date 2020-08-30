@@ -39,7 +39,23 @@ export default {
   signup: (userInfo) => {
     return axios.post("/api/user/signup", userInfo);
   },
+  
+  // VEHICLE ROUTES
+  // get all vehicles by owner
+  getVehicle: (id) => {
+    return axios.get("/api/vehicle" + id);
+  },
+  // add a vehicle
   addvehicle: (vehicleInfo) => {
     return axios.post("/api/vehicle");
+  },
+  // update the vehicle with the given id
+  updateVehicle: (id) => {
+    return axios.put("/api/vehicle" + id);
+  },
+
+  // MAINTENANCE ROUTES:
+  getMaintenance: () => {
+    return axios.get("/api/")
   }
 };
