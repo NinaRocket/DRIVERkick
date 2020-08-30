@@ -1,3 +1,4 @@
+// not currently using this seed, only for testing
 const mongoose = require("mongoose");
 const db = require("../models");
 

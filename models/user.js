@@ -26,9 +26,9 @@ const UserSchema = new Schema({
     required: true,
   },
   // vehical reference
-  vehical: [{
+  vehicle: [{
     type: Schema.Types.ObjectId,
-    ref: "Vehical"
+    ref: "Vehicle"
   }],
 });
 

@@ -15,10 +15,11 @@ module.exports = {
         db.Vehicle.findOneAndUpdate({ _id: req.params.id }, req.body)
             .then(dbVehicle => res.json(dbVehicle))
             .catch(err => res.status(422).json(err));
-    },
-    remove: function(req, res) {
-        db.Vehicle.findOneAndDelete({ _id: req.params.id })
-            .then(dbVehicle => res.json(dbVehicle))
-            .catch(err => res.status(422).json(err));
     }
+    // do not need the remove function in MVP
+    // remove: function(req, res) {
+    //     db.Vehicle.findOneAndDelete({ _id: req.params.id })
+    //         .then(dbVehicle => res.json(dbVehicle))
+    //         .catch(err => res.status(422).json(err));
+    // }
 };
