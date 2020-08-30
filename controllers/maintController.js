@@ -1,7 +1,7 @@
 const { Maintenance } = require("../models");
 
 // Defining methods for the maintController
-// need a create, update, and find route
+// need a create, update, and find route, for warranty and recalls
 module.exports = {
     findAll: function(req, res) {
         Maintenance
@@ -27,4 +27,4 @@ module.exports = {
           .then(dbModel => res.json(dbModel))
           .catch(err => res.status(422).json(err));
       }
-}
+};

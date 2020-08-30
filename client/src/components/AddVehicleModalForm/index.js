@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import API from "../../utils/API";
 
 function VehicleForm() {
-  const [VIN, setVIN] = useState([]);
+  // const [VIN, setVIN] = useState([]);
   const [vehicleName, setVehicleName] = useState([]);
   const [ownerName, setOwnerName] = useState([]);
   const [currentMile, setCurrentMile] = useState([]);
@@ -11,9 +11,9 @@ function VehicleForm() {
   const [oilType, setOilType] = useState([]);
   const [oilInterval, setOilInterval] = useState([]);
 
-  const newVehicleVinVal = (event) => {
-    setVIN(event.target.value);
-  };
+  // const newVehicleVinVal = (event) => {
+  //   setVIN(event.target.value);
+  // };
 
   const newVehicleNameVal = (event) => {
     setVehicleName(event.target.value);
@@ -42,7 +42,7 @@ function VehicleForm() {
   const submitNewVehicle = (event) => {
     event.preventDefault();
     console.log(
-      VIN,
+      // VIN,
       vehicleName,
       ownerName,
       currentMile,
@@ -51,7 +51,7 @@ function VehicleForm() {
       oilInterval
     );
     const vehicleInfo = {
-      VIN: VIN,
+      // VIN: VIN,
       vehicleName: vehicleName,
       ownerName: ownerName,
       currentMile: currentMile,
@@ -62,7 +62,7 @@ function VehicleForm() {
     //request to server to add a new vehicle
     API.addvehicle(vehicleInfo)
       .then((response) => {
-        console.log(response);
+        console.log(response.data);
         if (!response.data.errmsg) {
           console.log("successfully added new vehicle");
           //   this.state({
@@ -83,7 +83,7 @@ function VehicleForm() {
   return (
     <div className="VehicleForm">
       <form className="form-horizontal">
-        <div className="form-group">
+        {/* <div className="form-group">
           <div className="col-1 col-ml-auto">
             <label className="form-label" htmlFor="VIN">
               VIN Number
@@ -100,7 +100,7 @@ function VehicleForm() {
               onChange={newVehicleVinVal}
             />
           </div>
-        </div>
+        </div> */}
         <div className="form-group">
           <div className="col-1 col-ml-auto">
             <label className="form-label" htmlFor="vehicleName">
