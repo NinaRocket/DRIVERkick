@@ -40,6 +40,9 @@ export default {
     return axios.post("/api/user/signup", userInfo);
   },
   addvehicle: (vehicleInfo) => {
-    return axios.post("/api/vehicle");
+    return axios.post("/api/vehicle", vehicleInfo);
+  },
+  updateMileage: (mileage) => {
+    return axios.put("/api/vehicle", mileage);
   },
 };
