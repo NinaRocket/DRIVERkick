@@ -4,7 +4,7 @@ import { Route, Link } from "react-router-dom";
 // components
 import Signup from "../components/SignupForm";
 import Login from "../components/LoginForm";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/HomeNavbar";
 import API from "../utils/API";
 
 //for user to login, gets user info to authenticate

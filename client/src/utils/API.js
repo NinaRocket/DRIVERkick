@@ -56,6 +56,12 @@ export default {
 
   // MAINTENANCE ROUTES:
   getMaintenance: () => {
-    return axios.get("/api/")
+    
+  },
+  updateMileage: (mileage) => {
+    return axios.put("/api/vehicle", mileage);
+  },
+  newWarranty: (warrantyInfo) => {
+    return axios.post("api/vehicle", warrantyInfo);
   }
 };
