@@ -30,9 +30,9 @@ const UserSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Vehicle"
   }],
-  maintenance: [{
+  warranty: [{
     type: Schema.Types.ObjectId,
-    ref: "Maintenance"
+    ref: "Warranty"
   }]
 });
 

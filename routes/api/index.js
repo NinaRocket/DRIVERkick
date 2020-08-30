@@ -10,6 +10,6 @@ router.use("/user", userRoutes);
 router.use("/vehicle", vehicleRoutes);
 
 // maintenance routes
-router.use("/maintenance", maintRoutes);
+router.use("/warranty", maintRoutes);
 
 module.exports = router;
