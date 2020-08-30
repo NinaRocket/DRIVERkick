@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
-//import axios from 'axios'
 import API from "../../utils/API";
 
 //functional component using hooks
@@ -51,12 +50,11 @@ function LoginForm() {
   } else {
     return (
       <div>
-        <h4>Login</h4>
         <form className="form-horizontal">
           <div className="form-group">
             <div className="col-1 col-ml-auto">
               <label className="form-label" htmlFor="email">
-                email
+                Email:
               </label>
             </div>
             <div className="col-3 col-mr-auto">
