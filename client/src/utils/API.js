@@ -49,7 +49,8 @@ export default {
   updateMileage: (currentMile) => {
     return axios.put("/api/vehicle", currentMile);
   },
-  newWarranty: (warrantyInfo) => {
-    return axios.post("api/vehicle", warrantyInfo);
+  newWarranty: (warranty) => {
+    return axios.post("/api/warranty", warranty);
   }
+
 };

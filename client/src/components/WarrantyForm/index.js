@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import API from "../../utils/API";
 
 function WarrantyForm() {
-  const [warrantyTitle, setWarrantyTitle] = useState([]);
-  const [warrantyProvider, setWarrantyProvider] = useState([]);
-  const [warrantyDetails, setWarrantyDetails] = useState([]);
+  const [title, setWarrantyTitle] = useState([]);
+  const [provider, setWarrantyProvider] = useState([]);
+  const [details, setWarrantyDetails] = useState([]);
 
   const addWarrantyTitle = (event) => {
     setWarrantyTitle(event.target.value);
@@ -22,9 +22,9 @@ function WarrantyForm() {
     event.preventDefault();
 
     const warrantyInfo = {
-      warrantyTitle: warrantyTitle,
-      warrantyProvider: warrantyProvider,
-      warrantyDetails: warrantyDetails,
+      title: title,
+      provider: provider,
+      details: details,
     };
 
     API.newWarranty(warrantyInfo)
@@ -65,7 +65,7 @@ function WarrantyForm() {
               id="warrantyTitle"
               name="warrantyTitle"
               placeholder="name of warranty"
-              value={warrantyTitle}
+              value={title}
               onChange={addWarrantyTitle}
             />
           </div>
@@ -84,7 +84,7 @@ function WarrantyForm() {
               id="warrantyProvider"
               name="wwarrantyProvider"
               placeholder="Store or company..."
-              value={warrantyProvider}
+              value={provider}
               onChange={addWarrantyProvider}
             />
           </div>
@@ -103,7 +103,7 @@ function WarrantyForm() {
               id="warrantyDetails"
               name="warrantyDetails"
               placeholder="Provide any relevant notes that will need to be referred to in the future"
-              value={warrantyDetails}
+              value={details}
               onChange={addWarrantyDetails}
             />
           </div>
