@@ -16,6 +16,7 @@ module.exports = {
             .then(dbVehicle => res.json(dbVehicle))
             .catch(err => res.status(422).json(err));
     }
+
     // do not need the remove function in MVP
     // remove: function(req, res) {
     //     db.Vehicle.findOneAndDelete({ _id: req.params.id })

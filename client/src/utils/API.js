@@ -33,7 +33,7 @@ export default {
   login: (email, password) => {
     return axios.post("/api/user/login", {
       email,
-      password,
+      password
     });
   },
   signup: (userInfo) => {
@@ -41,25 +41,13 @@ export default {
   },
   
   // VEHICLE ROUTES
-  // get all vehicles by owner
-  getVehicle: (id) => {
-    return axios.get("/api/vehicle" + id);
+  // saves to MongoDB however no data is in api/vehicle
+  addvehicle: function(vehicleInfo) {
+    return axios.post("/api/vehicle", vehicleInfo);
   },
-  // add a vehicle
-  addvehicle: (vehicleInfo) => {
-    return axios.post("/api/vehicle");
-  },
-  // update the vehicle with the given id
-  updateVehicle: (id) => {
-    return axios.put("/api/vehicle" + id);
-  },
-
-  // MAINTENANCE ROUTES:
-  getMaintenance: () => {
-    
-  },
-  updateMileage: (mileage) => {
-    return axios.put("/api/vehicle", mileage);
+ 
+  updateMileage: (currentMile) => {
+    return axios.put("/api/vehicle", currentMile);
   },
   newWarranty: (warrantyInfo) => {
     return axios.post("api/vehicle", warrantyInfo);
