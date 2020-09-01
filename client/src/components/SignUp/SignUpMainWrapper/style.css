@@ -1,0 +1,7 @@
+.sign-wrap__bg {
+    background: url('../../../images/signup-page/signup-page-bg.jpg') center / cover no-repeat;
+    color: #143642;
+    text-align: center;
+    height: 900px;
+    padding-top: 120px;
+}
