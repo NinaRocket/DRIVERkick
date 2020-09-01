@@ -1,8 +1,8 @@
 .home-hero__bg {
-    background: url('../../../images/home/home-hero-bg.jpg') bottom / cover no-repeat;
+    background: url('../../../images/home/home-hero-bg.jpg') center / cover no-repeat;
     color: #143642;
     text-align: center;
-    height: 1063px;
+    height: 900px;
     padding-top: 120px;
 }
 

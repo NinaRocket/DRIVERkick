@@ -12,7 +12,7 @@ function HomeHero() {
                 <br />
             Again
             </h1>
-            <a href="#featBlock">
+            <a href="#scrollFeatBlock">
             <img src={anchorCricleBtn} className="home-hero__anchor-btn " alt="Scroll down button" />
             </a>
             
