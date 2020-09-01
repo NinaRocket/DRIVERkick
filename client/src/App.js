@@ -10,6 +10,7 @@ import Wrapper from "./components/Wrapper";
 import Container from "react-bootstrap/Container";
 import "./App.css";
 import StageHome from "./components/Home/HomePage";
+import StageLogin from "./components/Login/LoginPage";
 
 // Need code to route non authenticated users to the the homepage and authenticated users to the User Dashboard
 
@@ -26,6 +27,7 @@ function App() {
         <Route exact path="/userpage" component={UserPage} />
         <Route exact path="/vehiclepage" component={VehiclePage} />
         <Route exact path="/stagehome" component={StageHome} />
+        <Route exact path="/stagelogin" component={StageLogin} />
       </Switch>
       {/* </Wrapper>
         </Container> */}
