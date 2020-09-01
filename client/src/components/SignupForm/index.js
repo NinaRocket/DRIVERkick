@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-//import { Redirect } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Redirect } from "react-router-dom";
 import API from "../../utils/API";
+import { FaBullseye } from "react-icons/fa";
 
 function SignupForm() {
   const [email, setEmail] = useState([]);
@@ -8,6 +9,11 @@ function SignupForm() {
   const [lastName, setLastName] = useState([]);
   const [password, setPassword] = useState([]);
   const [confirmPassword, setConfirmPassword] = useState([]);
+  const [redirect, setRedirect] = useState(false);
+
+  useEffect(() => {
+    setRedirect(true);
+  }, []);
 
   const signupEmailValue = (event) => {
     setEmail(event.target.value);
@@ -28,6 +34,7 @@ function SignupForm() {
   const signupConfirmPasswordValue = (event) => {
     setConfirmPassword(event.target.value);
   };
+
   const submitUserSignup = (event) => {
     console.log("sign-up handleSubmit, email: ");
     console.log(email);
@@ -46,11 +53,8 @@ function SignupForm() {
         console.log(response);
         if (!response.data.errmsg) {
           console.log("successful signup");
-          // this.state({
-          //   //redirect to login page
-          //   //home for now
-          //   redirectTo: "/home",
-          // });
+          //home for now
+          setRedirect("/userpage");
         } else {
           console.log("email already taken");
         }

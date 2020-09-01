@@ -30,12 +30,18 @@ export default {
     };
     return recallInfo;
   },
+
   login: (email, password) => {
     return axios.post("/api/user/login", {
       email,
       password,
     });
   },
+
+  getUser: function () {
+    return axios.get("/api/user/info");
+  },
+
   signup: (userInfo) => {
     return axios.post("/api/user/signup", userInfo);
   },

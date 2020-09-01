@@ -5,7 +5,16 @@ import UserNav from "../components/UserNav";
 import UserWrapper from "../components/UserMainContentWrapper";
 import UserVehicleCard from "../components/UserVehicleCard";
 
-function UserPage() {
+function UserPage(props) {
+  // const [user, setUser] = useState({});
+
+  // const { id } = useParams();
+  // useEffect(() => {
+  //   API.getUser(id)
+  //     .then((res) => setUser(res.data))
+  //     .catch((err) => console.log(err));
+  // }, []);
+
   return (
     <Container>
       <UserNav />
