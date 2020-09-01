@@ -6,8 +6,6 @@ import UserPage from "./pages/userpage";
 import VehiclePage from "./pages/vehiclepage";
 import Home from "./pages/home";
 //import Footer from "./components/Footer";
-import Wrapper from "./components/Wrapper";
-import Container from "react-bootstrap/Container";
 import "./App.css";
 import StageHome from "./components/Home/HomePage";
 import StageLogin from "./components/Login/LoginPage";
@@ -17,9 +15,6 @@ import StageLogin from "./components/Login/LoginPage";
 function App() {
   return (
     <Router>
-
-      {/* <Container>
-          <Wrapper> */}
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/signup" component={Signup} />
@@ -29,8 +24,6 @@ function App() {
         <Route exact path="/stagehome" component={StageHome} />
         <Route exact path="/stagelogin" component={StageLogin} />
       </Switch>
-      {/* </Wrapper>
-        </Container> */}
     </Router>
   );
 }

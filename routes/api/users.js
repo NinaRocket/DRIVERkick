@@ -31,8 +31,8 @@ router.get("/isAuthenticated", function (req, res) {
 });
 
 // Endpoint to get current user
-router.get("/user/info/:id", function (req, res) {
-  db.User.findById({ _id: req.user._id })
+router.get("/info", function (req, res) {
+  db.User.findById(req.user._id)
     .then((dbUser) => res.json(dbUser))
     .catch((err) => res.status(404).json(err));
 });
