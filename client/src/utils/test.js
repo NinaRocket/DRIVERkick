@@ -1,52 +1,5 @@
 import React, { useContext, useState } from 'react';
 
-const DriverKickContext = React.createContext();
-
-
-export function useDriverKickContext() {
-    return useContext(DriverKickContext);
-}
-
-export function DriverKickProvider({ children }) {
-    
-    const [authenticated, setAuthenticated] = useState(false);
-    
-    function login () {
-        setAuthenticated(true);
-    }
-    
-    function logout() {
-        setAuthenticated(false);
-        // post route to logout session on backend
-        // Route them back to the homepage 
-    }
-    
-    
-    const [userData, setUserData] = useState({
-        // Database info set to "" / null
-    });
-
-    
-    // const { setuserData } = useDriverKickContext();
-
-    //     setuserData(value)
-
-
-
-
-    return (
-        <DriverKickContext.Provider value={{}}>
-            {children}
-        </DriverKickContext.Provider>
-    )
-}
-
-
-
-//         User Data
-
-
-
 // Sets up Context Theme for styles use state
 const ThemeContext = React.createContext()
 
@@ -76,7 +29,7 @@ export function ThemeProvider({ children }) {
     return (
         // Wraps other components that need to use it's props logic
         <ThemeContext.Provider value={darkTheme}>
-            <ThemeUpdateContext.Provider value={{ toggleTheme, login, logout, user }}>
+            <ThemeUpdateContext.Provider value={{toggleTheme, login, logout, user}}>
                 {children}
             </ThemeUpdateContext.Provider>
         </ThemeContext.Provider>

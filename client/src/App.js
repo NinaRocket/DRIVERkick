@@ -13,6 +13,9 @@ import Hero from "./components/Hero";
 import "./App.css";
 import API from "../src/utils/API";
 
+
+// Need code to route non authenticated users to the the homepage and authenticated users to the User Dashboard
+
 function App() {
   // useEffect(() => {
 
