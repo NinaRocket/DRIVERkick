@@ -103,3 +103,23 @@ Colors
 .g__light-tan--txt {
   color: #FEEFDD;
 }
+
+
+
+/* —————————————————————————————————————
+Forms
+———————————————————————————————————————*/
+.g__form-container {
+  padding: 70px;
+  background-color: #FEEFDD;
+  -webkit-box-shadow: 0px 34px 74px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0px 34px 74px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 34px 74px rgba(0, 0, 0, 0.05);
+}
+
+.g__label-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}

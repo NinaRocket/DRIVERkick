@@ -7,8 +7,9 @@ function LoginPage() {
     return (
         <div>
             <LoginNavBar />
-            <LoginMainWrapper />
-            <LoginForm />
+            <LoginMainWrapper>
+                <LoginForm />
+            </LoginMainWrapper>
         </div>
     );
 }
