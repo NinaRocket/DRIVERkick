@@ -13,7 +13,9 @@ function UserMainContentWrapper({ children }) {
     API.getUser(id)
       .then((res) => setUser(res.data))
       .catch((err) => console.log(err));
+    console.log(user);
   }, []);
+  console.log(user);
   return (
     <section>
       <Row>
