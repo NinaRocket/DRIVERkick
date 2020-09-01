@@ -19,6 +19,6 @@ router.route("/oil/:id")
   // gets vehicle oil change mileage
   .get(vehicleController.getOilChangeMiles)
   //updates the vehicles oil change
-  .get(vehicleController.updateOil)
+  .get(vehicleController.updateOil);
 
 module.exports = router;
