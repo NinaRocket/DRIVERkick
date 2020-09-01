@@ -38,8 +38,8 @@ export default {
     });
   },
 
-  getUser: function (id) {
-    return axios.get("/api/user/info" + id);
+  getUser: function () {
+    return axios.get("/api/user/info");
   },
 
   signup: (userInfo) => {
