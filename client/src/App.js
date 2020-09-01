@@ -10,6 +10,9 @@ import Wrapper from "./components/Wrapper";
 import Container from "react-bootstrap/Container";
 import "./App.css";
 
+
+// Need code to route non authenticated users to the the homepage and authenticated users to the User Dashboard
+
 function App() {
   return (
     <Router>
