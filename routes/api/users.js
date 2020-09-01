@@ -32,7 +32,9 @@ router.get("/isAuthenticated", function(req, res) {
 
 // Endpoint to get current user
 router.get("/info", function (req, res) {
-  res.send(req.user);
+  db.User.findById({ _id: req.user._id })
+    .then(dbUser => res.json(dbUser))
+    .catch(err => res.status(404).json(err));
 });
 
 // Endpoint to logout
