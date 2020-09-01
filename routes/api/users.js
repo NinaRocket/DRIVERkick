@@ -22,6 +22,14 @@ router.post("/signup", (req, res) => {
     });
 });
 
+// checks and returns wether or not the ser is authenticated
+router.get("/isAuthenticated", function(req, res) {
+  const isAuthenticated = {
+    isAuthenticated: (req.user == true)
+  }
+  res.json(isAuthenticated)
+});
+
 // Endpoint to get current user
 router.get("/info", function (req, res) {
   res.send(req.user);
