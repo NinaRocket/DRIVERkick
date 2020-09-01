@@ -4,15 +4,13 @@ import API from "../../utils/API";
 
 //functional component using hooks
 
-function LoginForm() {
+function LoginForm(props) {
   //email is variable that holds the state, setEmail is a method that sets the state, puts data into email
   //useState holds the initial state
   const [email, setEmail] = useState([]);
   const [password, setPassword] = useState([]);
   const [redirectTo, setRedirectTo] = useState(null);
-
-  // this.handleSubmit = this.handleSubmit.bind(this)
-  // this.handleChange = this.handleChange.bind(this)
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const userEmailValue = (event) => {
     setEmail(event.target.value);
@@ -31,10 +29,8 @@ function LoginForm() {
         console.log(response);
         if (response.status === 200) {
           // update App.js state
-          this.props.updateUser({
-            loggedIn: true,
-            email: response.data.email,
-          });
+          setLoggedIn(true);
+          setEmail(response.data.email);
           // update the state to redirect to home
           setRedirectTo("/userpage");
         }

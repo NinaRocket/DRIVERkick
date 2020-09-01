@@ -8,26 +8,12 @@ import Home from "./pages/home";
 //import Footer from "./components/Footer";
 import Wrapper from "./components/Wrapper";
 import Container from "react-bootstrap/Container";
-import HomeNavbar from "./components/HomeNavbar";
-import Hero from "./components/Hero";
 import "./App.css";
-import API from "../src/utils/API";
 
 function App() {
-  // useEffect(() => {
-
-  //   API.getTest().then((res) => {
-  //     console.log(res);
-
-  //   });
-  // }, []);
-
   return (
     <Router>
       <div>
-        {/*         
-        <Hero></Hero> */}
-
         <Container>
           <Wrapper>
             <Switch>
