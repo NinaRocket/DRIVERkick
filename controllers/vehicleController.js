@@ -25,5 +25,22 @@ module.exports = {
         db.Vehicle.findOneAndDelete({ _id: req.params.id })
             .then(dbVehicle => res.json(dbVehicle))
             .catch(err => res.status(422).json(err));
+    },
+    getOilChangeMiles: function(req, res) {
+        db.Vehicle.findById(req.params.id)
+            .then(dbVehicle => {
+                const response = {
+                    currentMileage: dbVehicle.currentMile,
+                    milesToChange: parseInt(dbVehicle.currentMile) - parseInt(dbVehicleest.MileOil),
+                    oilInterval: dbVehicle.oilInterval
+                }
+                res.json(response);
+            })
+            .catch(err => res.status(422).json(err));
+    },
+    updateOil: function(req, res) {
+        db.Vehicle.findOneAndUpdate({ _id: req.params.id }, { estMileOil: req.body.nextChange }, { new: true })
+            .then(dbVehicle => res.json(dbVehicle))
+            .catch(err => res.status(422).json(err));
     }
 };

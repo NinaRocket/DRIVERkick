@@ -15,8 +15,10 @@ router.route("/:id")
   //delete vehicle
   .delete(vehicleController.remove);
 
-router.route("/:id")
+router.route("/oil/:id")
   // gets vehicle oil change mileage
-  .get()
+  .get(vehicleController.getOilChangeMiles)
+  //updates the vehicles oil change
+  .get(vehicleController.updateOil)
 
 module.exports = router;
