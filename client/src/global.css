@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Titillium+Web:wght@300;400;600;700;900&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Titillium Web', Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+/* —————————————————————————————————————
+Typography
+———————————————————————————————————————*/
+
+/* 
+font-family: 'Lato', "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+font-family: 'Titillium Web', "Helvetica Neue", Helvetica, Arial, sans-serif; 
+*/
+
+h1 {
+  font-weight: 900;
+  font-size: 50px;
+  line-height: 36px;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 41px;
+}
+
+h3 {
+  font-weight: normal;
+  font-size: 28px;
+  line-height: 32px;
+}
+
+h4 {
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 20px;
+  text-transform: uppercase;
+}
+
+h5 {
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 120%;
+}
+
+p {
+  font-family: 'Lato', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+
+
+/* —————————————————————————————————————
+Colors
+———————————————————————————————————————*/
+
+.g__deep-blue--bg {
+  background-color: #143642;
+}
+
+.g__deep-blue--txt {
+  color: #143642;
+}
+
+.g__light-deep-blue--bg {
+  background-color: #0F4457;
+}
+
+.g__light-deep-blue--txt {
+  color: #0F4457;
+}
+
+.g__sky-blue--bg {
+  background-color: #50B2C0;
+}
+
+.g__sky-blue--txt {
+  color: #50B2C0;
+}
+
+.g__fiery-orange--bg {
+  background-color: #FF4000;
+}
+
+.g__fiery-orange--txt {
+  color: #FF4000;
+}
+
+.g__light-tan--bg {
+  background-color: #FEEFDD;
+}
+
+.g__light-tan--txt {
+  color: #FEEFDD;
+}
