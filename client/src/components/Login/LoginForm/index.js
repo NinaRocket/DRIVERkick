@@ -46,7 +46,7 @@ function LoginForm() {
                 <form>
                     <div className="g__label-group">
                         <label className="form-label" htmlFor="email">
-                            Email:
+                            Email
                              </label>
 
                         <input
