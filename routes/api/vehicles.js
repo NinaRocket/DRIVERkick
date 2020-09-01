@@ -1,13 +1,24 @@
 const router = require("express").Router();
 const vehicleController = require("../../controllers/vehicleController");
 
-router.route("/").post(vehicleController.create);
+router.route("/")
+  // creates vehicle
+  .post(vehicleController.create)
+  // returns all vehicles of the logged in user
+  .get(vehicleController.findAllByOwner);
 
-router
-  .route("/:id")
-  // get vehicle by first finding owner
-  .get(vehicleController.findByOwner)
+router.route("/:id")
+  // gets single vehicle by id
+  .get(vehicleController.findById)
   // update vehicle
-  .put(vehicleController.update);
+  .put(vehicleController.update)
+  //delete vehicle
+  .delete(vehicleController.remove);
+
+router.route("/oil/:id")
+  // gets vehicle oil change mileage
+  .get(vehicleController.getOilChangeMiles)
+  //updates the vehicles oil change
+  .get(vehicleController.updateOil);
 
 module.exports = router;
