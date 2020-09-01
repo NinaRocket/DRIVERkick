@@ -1,32 +1,32 @@
 const db = require("../models");
 
 module.exports = {
-    findAllByOwner: function(req, res) {
+    findAllByOwner: function (req, res) {
         db.Vehicle.find({ owner: req.user.id })
             .then(dbVehicles => res.json(dbVehicles))
-            .catch(err=> res.status(422).json(err))
+            .catch(err => res.status(422).json(err))
     },
-    findById: function(req, res) {
+    findById: function (req, res) {
         db.Vehicle.find({ _id: req.params.id })
             .then(dbVehicle => res.json(dbVehicle))
             .catch(err => res.status(422).json(err));
     },
-    create: function(req, res) {
+    create: function (req, res) {
         db.Vehicle.create(req.body)
             .then(dbVehicle => res.json(dbVehicle))
             .catch(err => res.status(422).json(err))
     },
-    update: function(req, res) {
+    update: function (req, res) {
         db.Vehicle.findOneAndUpdate({ _id: req.params.id }, req.body)
             .then(dbVehicle => res.json(dbVehicle))
             .catch(err => res.status(422).json(err));
     },
-    remove: function(req, res) {
+    remove: function (req, res) {
         db.Vehicle.findOneAndDelete({ _id: req.params.id })
             .then(dbVehicle => res.json(dbVehicle))
             .catch(err => res.status(422).json(err));
     },
-    getOilChangeMiles: function(req, res) {
+    getOilChangeMiles: function (req, res) {
         db.Vehicle.findById(req.params.id)
             .then(dbVehicle => {
                 const response = {
@@ -38,7 +38,7 @@ module.exports = {
             })
             .catch(err => res.status(422).json(err));
     },
-    updateOil: function(req, res) {
+    updateOil: function (req, res) {
         db.Vehicle.findOneAndUpdate({ _id: req.params.id }, { estMileOil: req.body.nextChange }, { new: true })
             .then(dbVehicle => res.json(dbVehicle))
             .catch(err => res.status(422).json(err));
