@@ -1,10 +1,15 @@
 const db = require("../models");
 
 module.exports = {
-    findByOwner: function(req, res) {
+    findAllByOwner: function(req, res) {
         db.Vehicle.find({ owner: req.user.id })
             .then(dbVehicles => res.json(dbVehicles))
             .catch(err=> res.status(422).json(err))
+    },
+    findById: function(req, res) {
+        db.Vehicle.find({ _id: req.params.id })
+            .then(dbVehicle => res.json(dbVehicle))
+            .catch(err => res.status(422).json(err));
     },
     create: function(req, res) {
         db.Vehicle.create(req.body)
@@ -15,12 +20,10 @@ module.exports = {
         db.Vehicle.findOneAndUpdate({ _id: req.params.id }, req.body)
             .then(dbVehicle => res.json(dbVehicle))
             .catch(err => res.status(422).json(err));
+    },
+    remove: function(req, res) {
+        db.Vehicle.findOneAndDelete({ _id: req.params.id })
+            .then(dbVehicle => res.json(dbVehicle))
+            .catch(err => res.status(422).json(err));
     }
-
-    // do not need the remove function in MVP
-    // remove: function(req, res) {
-    //     db.Vehicle.findOneAndDelete({ _id: req.params.id })
-    //         .then(dbVehicle => res.json(dbVehicle))
-    //         .catch(err => res.status(422).json(err));
-    // }
 };
