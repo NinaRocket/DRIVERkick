@@ -7,8 +7,11 @@ import VehiclePage from "./pages/vehiclepage";
 import Home from "./pages/home";
 //import Footer from "./components/Footer";
 import "./App.css";
+
+// Staging comps from new folder structure -------|
 import StageHome from "./components/Home/HomePage";
 import StageLogin from "./components/Login/LoginPage";
+import StageSignUp from "./components/SignUp/SignUpPage";
 
 // Need code to route non authenticated users to the the homepage and authenticated users to the User Dashboard
 
@@ -23,6 +26,7 @@ function App() {
         <Route exact path="/vehiclepage" component={VehiclePage} />
         <Route exact path="/stagehome" component={StageHome} />
         <Route exact path="/stagelogin" component={StageLogin} />
+        <Route exact path="/stagesignup" component={StageSignUp} />
       </Switch>
     </Router>
   );
