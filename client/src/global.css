@@ -58,6 +58,15 @@ p {
   line-height: 150%;
 }
 
+.g__dash-h1 {
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 41px;
+  text-transform: capitalize;
+  color: #50B2C0;
+
+}
+
 
 
 /* —————————————————————————————————————
@@ -140,4 +149,14 @@ Forms
 
 .g__label-style {
 
+}
+
+
+/* —————————————————————————————————————
+Dashboards
+———————————————————————————————————————*/
+.g__dashboard-wrapper {
+  background-color: #143642;
+  color: #FEEFDD;
+  padding: 80px 0;
 }
