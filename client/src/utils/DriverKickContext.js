@@ -21,7 +21,7 @@ export function DriverKickProvider({ children }) {
         // post route to logout session on backend
 
         // Route them back to the homepage 
-        <Redirect to={{ pathname: "/" }} />
+        return <Redirect to={{ pathname: "/" }} />;
     }
 
 
@@ -52,6 +52,8 @@ export function DriverKickProvider({ children }) {
         warranty: []
     });
 
+    const [isVehicleFormNav, setIsVehicleFormNav] = useState(false);
+
     return (
         <DriverKickContext.Provider value={{
             login,
@@ -61,7 +63,9 @@ export function DriverKickProvider({ children }) {
             authenticated,
             setAuthenticated,
             vehicleData,
-            setVehicleData
+            setVehicleData,
+            isVehicleFormNav,
+            setIsVehicleFormNav
         }}>
             {children}
         </DriverKickContext.Provider>
