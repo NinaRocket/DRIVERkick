@@ -1,15 +1,40 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
 import Card from "react-bootstrap/Card";
 import WarrantyForm from "../WarrantyForm";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import API from "../../utils/API";
 
 function WarrantyCard() {
+  const [warranty, setWarranty] = useState({});
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  useEffect(() => {
+    loadWarranties()
+      // set initial state to an empty array
+  }, [])
+
+  function loadWarranties() {
+    API.getWarranty()
+    .then(res => setWarranty(res.data))
+    .catch(err => console.log(err));
+  }
+ 
+  function handleFormSubmit(event) {
+    event.preventDefault();
+      API.newWarranty({
+        title: title,
+        provider: provider,
+        details: details
+      })
+        .then(res => loadWarranties())
+        .catch(err => console.log(err));
+  };
+  
   return (
     <>
       <Modal show={show} onHide={handleClose}>
@@ -27,14 +52,13 @@ function WarrantyCard() {
       </Modal>
 
       <Card className="warrantyCard text-center">
-        <Card.Header>Warranty</Card.Header>
+        <Card.Header>{warranty.title}</Card.Header>
         <Card.Body>
           <Card.Title>
-            Store important third-party warranty details here and stay
-            protected.
+          {warranty.provider}
           </Card.Title>
-          <Card.Text>Need Accordian </Card.Text>
-          <Button className="warBtn" variant="primary" onClick={handleShow}>
+          <Card.Text>{warranty.details} </Card.Text>
+          <Button className="warBtn" variant="primary" onClick={handleFormSubmit}>
             Add Warranty
           </Button>
         </Card.Body>
