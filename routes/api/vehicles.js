@@ -21,4 +21,17 @@ router.route("/oil/:id")
   //updates the vehicles oil change
   .get(vehicleController.updateOil);
 
+router.get("/decode-vin/:vin", function (req, res) {
+  const queryVehicle = await axios.get(
+    `https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVinValues/${req.params.vin}?format=json`
+  );
+  const vehicle = {
+    year: queryVehicle.data.ModelYear,
+    make: queryVehicle.data.Make,
+    model: queryVehicle.data.Model,
+    vin: queryVIN,
+  };
+  res.json(vehicle);
+});
+
 module.exports = router;
