@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
 import API from "../../../utils/API";
+import InputGroup from 'react-bootstrap/InputGroup';
+import FormControl from 'react-bootstrap/FormControl';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 function UserNewVehicleForm() {
     const [vinNum, setVinNum] = useState("");
-    const [carNickname, setCarNickname] = useState("");
-    const [ownerName, setOwnerName] = useState("");
-    const [currentMileage, setCurrentMileage] = useState();
-    const [estOilMileage, setEstOilMileage] = useState();
-    const [oilType, setOilType] = useState("");
-    const [milesToOil, setMilesToOil] = useState({ value: "choose" });
     const [redirect, setRedirect] = useState(false);
 
     useEffect(() => {
@@ -20,40 +18,14 @@ function UserNewVehicleForm() {
         setVinNum(event.target.value);
     };
 
-    const carNicknameValue = (event) => {
-        setCarNickname(event.target.value);
-    };
-
-    const ownerNameValue = (event) => {
-        setOwnerName(event.target.value);
-    };
-
-    const currentMileageValue = (event) => {
-        setCurrentMileage(event.target.value);
-    };
-
-    const estOilMileageValue = (event) => {
-        setEstOilMileage(event.target.value);
-    };
-
-    const oilTypeValue = (event) => {
-        setOilType(event.target.value);
-    };
-
-    const milesToOilValue = (event) => {
-        setMilesToOil({ value: event.target.value });
+    const vinSearch = () => {
+        // Does some sort of search with the vin number which is stored in "vinNum" state.
     };
 
     const submitUserVehicle = (event) => {
         event.preventDefault();
         const userVehicleInfo = {
-            vinNum,
-            carNickname,
-            ownerName,
-            currentMileage,
-            estOilMileage,
-            oilType,
-            milesToOil
+            vinNum
         };
 
         //request to server to add a new email/password
@@ -80,94 +52,44 @@ function UserNewVehicleForm() {
         <div className="g__form-container">
             <form className="g__deep-blue--txt">
                 <div className="g__label-group">
-                    <label className="form-label" htmlFor="vinNumber">Vin Number</label>
-                    <input
-                        className="form-input"
-                        type="text"
-                        id="vinNumber"
-                        name="vinNumber"
-                        placeholder="17 digit code goes here…"
-                        value={vinNum}
-                        onChange={vinNumValue}
-                    />
-                </div>
-                <div className="g__label-group">
-                    <label className="form-label" htmlFor="carNick">Car Nickname</label>
-                    <input
-                        className="form-input"
-                        type="text"
-                        id="carNick"
-                        name="carNick"
-                        placeholder="i.e. Blue Lightning…"
-                        value={carNickname}
-                        onChange={carNicknameValue}
-                    />
-                </div>
-                <div className="g__label-group">
-                    <label className="form-label" htmlFor="carOwnerName">Owner Name</label>
-                    <input
-                        className="form-input"
-                        type="text"
-                        id="carOwnerName"
-                        name="carOwnerName"
-                        placeholder="First and/or last name…"
-                        value={ownerName}
-                        onChange={ownerNameValue}
-                    />
-                </div>
-                <div className="g__label-group">
-                    <label className="form-label" htmlFor="curMileage">
-                        Current Mileage
-                        </label>
-                    <input
-                        className="form-input"
-                        type="number"
-                        placeholder="0"
-                        name="curMileage"
-                        id="curMileage"
-                        value={currentMileage}
-                        onChange={currentMileageValue}
-                    />
-                </div>
-                <div className="g__label-group">
-                    <label className="form-label" htmlFor="estOilMileageChange">
-                        Estimated Milage at Last Oil Change
-                        </label>
-                    <input
-                        className="form-input"
-                        type="number"
-                        placeholder="0"
-                        name="estOilMileageChange"
-                        id="estOilMileageChange"
-                        value={estOilMileage}
-                        onChange={estOilMileageValue}
-                    />
-                </div>
-                <div className="g__label-group">
-                    <label className="form-label" htmlFor="carOilType">Type of Oil Used</label>
-                    <input
-                        className="form-input"
-                        type="text"
-                        id="carOilType"
-                        name="carOilType"
-                        placeholder="Full, Blend, Conventional, High Mileage…"
-                        value={oilType}
-                        onChange={oilTypeValue}
-                    />
-                </div>
-                <div className="g__label-group">
-                    <label className="form-label" htmlFor="milageToOilChange">Recommended Miles to Oil Change</label>
+                    <Form.Group>
+                        <Form.Label>Vin Number</Form.Label>
 
-                    <select id="milageToOilChange" name="milageToOilChange" onChange={milesToOilValue} defaultValue={milesToOil}>
-                        <option>Choose…</option>
-                        <option value={3000}>3,000</option>
-                        <option value={5000}>5,000</option>
-                        <option value={6000}>6,000</option>
+                        <InputGroup className="mb-3">
 
-                    </select>
+                            <FormControl
+                                placeholder="17 digit code goes here…"
+                                aria-label="Recipient's username"
+                                aria-describedby="basic-addon2"
+                                onChange={vinNumValue}
 
+                            />
+                            <InputGroup.Append>
+                                <Button onClick={vinSearch} variant="outline-secondary">Search</Button>
+                            </InputGroup.Append>
+                        </InputGroup>
+
+                    </Form.Group>
 
                 </div>
+                <hr />
+                <h3>Your Vehicle</h3>
+                <p>Result looks incorrect? Please double-check the VIN above.</p>
+                <div className="d-sm-flex justify-content-around">
+                    <div>
+                        <h4>Make</h4>
+                        <h3>Toyota</h3>
+                    </div>
+                    <div>
+                        <h4>Model</h4>
+                        <h3>Coup</h3>
+                    </div>
+                    <div>
+                        <h4>Year</h4>
+                        <h3>2001</h3>
+                    </div>
+                </div>
+
 
                 <button className="btn btn-primary" onClick={submitUserVehicle} type="submit"
                 >Add Vehicle</button>
