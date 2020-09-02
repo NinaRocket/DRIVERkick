@@ -8,6 +8,7 @@ import API from "../../../utils/API";
 function UserMainWrapper({ children }) {
     const [user, setUser] = useState({});
 
+
     const { id } = useParams();
     useEffect(() => {
         API.getUser(id)
@@ -17,6 +18,10 @@ function UserMainWrapper({ children }) {
     }, []);
     console.log(user);
 
+
+
+
+
     return (
         <section className="g__dashboard-wrapper">
             <div className="container">
@@ -25,12 +30,13 @@ function UserMainWrapper({ children }) {
                         <h1 className="g__dash-h1">Welcome {user.firstName}</h1>
                         <p>Here are the vehicles you are tracking maintenance for. Add new ones
                             at any time!</p>
+
                     </Col>
                     <Col lg={1}></Col>
                     <Col lg={8}>{children}</Col>
                 </Row>
             </div>
-        </section>
+        </section >
     );
 }
 
