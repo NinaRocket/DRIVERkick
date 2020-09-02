@@ -58,6 +58,14 @@ p {
   line-height: 150%;
 }
 
+.g__dash-h1 {
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 41px;
+  text-transform: capitalize;
+  color: #50B2C0;
+}
+
 
 
 /* —————————————————————————————————————
@@ -107,6 +115,20 @@ Colors
 
 
 /* —————————————————————————————————————
+Navs
+———————————————————————————————————————*/
+.g__nav-btn-group {
+  display: flex;
+}
+
+.g__nav-dashboards {
+  background-color: #143642;
+  border-bottom: 2px solid #0F4457;
+  padding: 30px 0;
+}
+
+
+/* —————————————————————————————————————
 Forms
 ———————————————————————————————————————*/
 .g__form-container {
@@ -125,5 +147,15 @@ Forms
 }
 
 .g__label-style {
-  
+
+}
+
+
+/* —————————————————————————————————————
+Dashboards
+———————————————————————————————————————*/
+.g__dashboard-wrapper {
+  background-color: #143642;
+  color: #FEEFDD;
+  padding: 80px 0;
 }
