@@ -1,10 +1,17 @@
 import React from 'react';
+import "./style.css";
+import UserMainWrapper from '../UserMainWrapper'
+import UserNavBar from '../UserNavBar'
+import UserVehicleCard from '../UserVehicleCard'
 
 function UserDashPage() {
     return (
-        <div>
-
-        </div>
+        <section>
+            <UserNavBar />
+            <UserMainWrapper>
+                <UserVehicleCard />
+            </UserMainWrapper>
+        </section>
     );
 }
 

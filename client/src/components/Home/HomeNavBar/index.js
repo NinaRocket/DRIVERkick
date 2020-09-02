@@ -22,7 +22,7 @@ function HomeNavBar() {
                 />
             </Navbar.Brand>
             <Nav>
-                <div className="home-nav__btn-group">
+                <div className="g__nav-btn-group">
                     <button
                         id="signupBtn"
                         type="button"
