@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { Redirect } from "react-router-dom";
 
 const DriverKickContext = React.createContext();
 
@@ -18,7 +19,9 @@ export function DriverKickProvider({ children }) {
     function logout() {
         setAuthenticated(false);
         // post route to logout session on backend
+
         // Route them back to the homepage 
+        <Redirect to={{ pathname: "/" }} />
     }
 
 
@@ -41,7 +44,10 @@ export function DriverKickProvider({ children }) {
         email: "",
         firstName: "",
         lastName: "",
-        password: "",
+        password: ""
+    });
+
+    const [vehicleData, setVehicleData] = useState({
         vehicle: [],
         warranty: []
     });
@@ -53,7 +59,9 @@ export function DriverKickProvider({ children }) {
             setUserData,
             userData,
             authenticated,
-            setAuthenticated
+            setAuthenticated,
+            vehicleData,
+            setVehicleData
         }}>
             {children}
         </DriverKickContext.Provider>
