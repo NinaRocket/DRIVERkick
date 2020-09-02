@@ -1,0 +1,12 @@
+.home-hero__bg {
+    background: url('../../../images/home/home-hero-bg.jpg') center / cover no-repeat;
+    color: #143642;
+    text-align: center;
+    height: 900px;
+    padding-top: 120px;
+}
+
+.home-hero__anchor-btn {
+    margin-top: 50px;
+}
+
