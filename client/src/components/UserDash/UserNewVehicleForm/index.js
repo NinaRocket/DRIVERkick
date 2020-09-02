@@ -64,7 +64,7 @@ function UserNewVehicleForm() {
                 if (!response.data.errmsg) {
                     console.log("successfully added new vehicle");
                     //home for now
-                    setRedirect("/userpage");
+                    setRedirect("/stage-user-dashboard");
                 } else {
                     console.log("Vehicle did not submit successfully");
                 }
