@@ -18,7 +18,7 @@ function MileageTrackerCard({ mileageTrackingModal }) {
                 <button className="g__vehicle-card__btn" onClick={mileageTrackingModal}>Update Current Milage</button>
             </div>
             <div className="mileage-card__history">
-                
+            <h4 className="mileage-card__subhead">History</h4>
             </div>
 
         </div>
