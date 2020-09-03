@@ -29,10 +29,10 @@ function App() {
           <Route exact path="/login" component={Login} />
           <Route exact path="/userpage" component={UserPage} />
           <Route exact path="/vehiclepage" component={VehiclePage} />
-          <Route exact path="/stage-home" component={HomePage} />
-          <Route exact path="/stage-login" component={LoginPage} />
-          <Route exact path="/stage-signup" component={SignUpPage} />
           <DriverKickProvider>
+            <Route exact path="/stage-home" component={HomePage} />
+            <Route exact path="/stage-login" component={LoginPage} />
+            <Route exact path="/stage-signup" component={SignUpPage} />
             <Route exact path="/stage-vehicle-form" component={VehicleFormPage} />
             <Route exact path="/stage-user-dashboard" component={UserDashPage} />
             <Route exact path="/stage-vehicle-dashboard" component={VehicleDashPage} />

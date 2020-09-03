@@ -6,17 +6,27 @@ import MileageTrackerCard from '../MileageTrackerCard';
 import VehicleOilChangeCard from '../VehicleOilChangeCard';
 import VehicleWarrantyCard from '../VehicleWarrantyCard';
 import VehicleRecallsCard from '../VehicleRecallsCard';
+import VehicleCurrentMileageForm from '../VehicleCurrentMileageForm';
+
+
+const mileageModal = () => {
+    console.log("Milage Modal To Open")
+}
+
+
 
 
 function VehicleDashPage() {
     return (
         <div>
+            {/* Add modal for mileage */}
+            <VehicleCurrentMileageForm />
             <VehicleNavBar />
             <VehicleMainWrapper>
-                <MileageTrackerCard />
-                <VehicleOilChangeCard />
+                <MileageTrackerCard mileageTrackingModal={mileageModal} />
+                {/* <VehicleOilChangeCard />
                 <VehicleWarrantyCard />
-                <VehicleRecallsCard />
+                <VehicleRecallsCard /> */}
             </VehicleMainWrapper>
         </div>
     );
