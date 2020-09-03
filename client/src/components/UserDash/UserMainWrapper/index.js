@@ -19,9 +19,6 @@ function UserMainWrapper({ children }) {
     console.log(user);
 
 
-
-
-
     return (
         <section className="g__dashboard-wrapper">
             <div className="container">

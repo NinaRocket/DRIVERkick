@@ -1,0 +1,57 @@
+.vehicle-card {
+    padding: 0 40px;
+    background: #0F4457;
+    background-image: url("../../../images/user-page/user-card-bg-1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 0px 20px;  
+    -webkit-box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.1);
+       -moz-box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.1);
+            box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.1);
+  }
+
+  .vehicle-card__img {
+      width: 170px;
+      height: 130px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      border-bottom: 6px solid #50B2C0;
+      background-image: url("../../../images/vehiclepage/car-placeholder.jpeg");
+      
+  }
+
+  .vehicle-card__content {
+      padding: 40px 0 0 40px ;
+      width: 100%;
+  }
+
+  .vehicle-card__header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 30px;
+    border-bottom: 6px solid #143642;
+  }
+
+  .vehicle-card__edit-btn {
+    background: none;
+  }
+
+  .vehicle-card__track-btn {
+    padding: 5px 10px;
+    margin-left: 10px;
+  }
+
+  .vehicle-card__car-info {
+    display: flex;
+    margin-top: 45px;
+  }
+
+  .vehicle-card__col {
+    width: 50%;
+  }
+
+  .vehicle-card__car-item {
+      margin-bottom: 40px;
+  }
