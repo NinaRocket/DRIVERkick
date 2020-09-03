@@ -113,6 +113,29 @@ Colors
 }
 
 
+/* —————————————————————————————————————
+Bootstrap Overides
+———————————————————————————————————————*/
+.table td, .table th {
+  border-top: none;
+  border-bottom: 3px solid #143642;
+  padding: .75rem 0;
+}
+
+button {
+  background: none;
+  border: none;
+  color: #FEEFDD;
+  background-color: #FF4000;
+  font-weight: 600;
+}
+
+button:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+
 
 /* —————————————————————————————————————
 Navs
@@ -146,10 +169,6 @@ Forms
   text-align: left;
 }
 
-.g__label-style {
-
-}
-
 
 /* —————————————————————————————————————
 Global Dashboards
@@ -159,6 +178,17 @@ Global Dashboards
   color: #FEEFDD;
   padding: 80px 0;
 }
+
+.g__card__subhead {
+  color: #50B2C0;
+}
+
+
+/* —————————————————————————————————————
+User Dashboard
+———————————————————————————————————————*/
+
+
 
 
 /* —————————————————————————————————————
@@ -192,7 +222,6 @@ Vehicle Dashboard
   margin-left: 20px;
 }
 
-
 .g__vehicle-card__body-container {
   padding: 40px 60px 0;
 }
@@ -210,9 +239,6 @@ Vehicle Dashboard
   border: none;
 }
 
-/* Bootstrap Override */
-.table td, .table th {
-  border-top: none;
-  border-bottom: 3px solid #143642;
-  padding: .75rem 0;
-}
+
+
+

@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./style.css";
 import mileageTrackerIcon from '../../../images/vehiclepage/vehicle-mileage-icon.svg';
 import MileageTrackerInitial from '../MileageTrackerInitial';
 import MileageTrackerPopulated from '../MileageTrackerPopulated';
 
 
+
+
 function MileageTrackerCard({ mileageTrackingModal }) {
+
+    // Determines if the initial content or populated content component show up.  
+    const [newUser, setNewUser] = useState(true);
+
     return (
         <div className="g__vehicle-card">
             {/* Header Col */}
@@ -16,8 +22,9 @@ function MileageTrackerCard({ mileageTrackingModal }) {
                 </div>
                 <p>Frequently updating your mileage generates the most accurate recommendations</p>
             </div>
-            {/* <MileageTrackerInitial mileageTrackingModal={mileageTrackingModal} /> */}
-            <MileageTrackerPopulated mileageTrackingModal={mileageTrackingModal} />
+            {newUser ? <MileageTrackerInitial mileageTrackingModal={mileageTrackingModal} /> : <MileageTrackerPopulated mileageTrackingModal={mileageTrackingModal} />
+
+            }
         </div>
     );
 }

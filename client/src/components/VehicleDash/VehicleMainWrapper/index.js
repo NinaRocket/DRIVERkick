@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import API from "../../../utils/API";
-import placeholder from "../../../images/vehiclepage/place-holder-for-profile-picture-4.png"
+import placeholder from "../../../images/vehiclepage/car-placeholder.jpeg"
 
 function VehicleMainWrapper({ children }) {
     const [user, setUser] = useState({});
