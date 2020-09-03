@@ -56,6 +56,10 @@ export default {
     return axios.get("/api/vehicle");
   },
 
+  getDecodeVIN: function () {
+    return axios.get("/api/vehicle/decode-vin/:vin");
+  },
+
   updateMileage: (currentMile) => {
     return axios.put("/api/vehicle", currentMile);
   },
