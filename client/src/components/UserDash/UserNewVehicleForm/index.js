@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Redirect, Route } from "react-router-dom";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import "./style.css";
 import API from "../../../utils/API";
 import InputGroup from "react-bootstrap/InputGroup";
@@ -10,40 +10,21 @@ import Form from "react-bootstrap/Form";
 function UserNewVehicleForm() {
   const [vinNum, setVinNum] = useState({});
   const [vinData, setVinData] = useState({});
-  const [vinModel, setVinModel] = useState("");
-  const [vinYear, setVinYear] = useState("");
-  //const [redirect, setRedirect] = useState("/stage-user-dashboard");
-
-  //const { VIN } = useParams();
-
-  // useEffect(() => {
-  //   setRedirect(true);
-  // }, []);
+  const redirect = useHistory()
 
   const vinNumValue = (event) => {
     setVinNum(event.target.value);
   };
   const VIN = vinNum;
-  // const vinSearch = () => {
-  //   // Does some sort of search with the vin number which is stored in "vinNum" state.
-  // };
 
   const searchUserVehicle = (event) => {
     event.preventDefault();
-    // const userVehicleInfo = {
-    //   vinNum,
-    // };
 
-    //request to server to add a new email/password
-    // Need to add a way to not submit if the person selects "choose" as the <select> value
     API.getDecodeVIN(VIN)
       .then((response) => {
-        console.log(response);
         setVinData(response.data);
         if (!response.data.errmsg) {
           console.log("successfully added new vehicle");
-          //home for now
-          //setRedirect("/stage-user-dashboard");
         } else {
           console.log("Vehicle did not submit successfully");
         }
@@ -56,13 +37,7 @@ function UserNewVehicleForm() {
 
   const submitUserVehicle = (event) => {
     event.preventDefault();
-    console.log("this ran");
-    // return <Redirect to="/stage-user-dashboard" />;
-    return (
-      <Route exact path="/stage-vehicle-form">
-        <Redirect to="/stage-user-dashboard" />
-      </Route>
-    );
+    redirect.push("/stage-user-dashboard")
   };
 
   return (
