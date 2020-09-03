@@ -10,11 +10,12 @@ import "./App.css";
 import { DriverKickProvider } from './utils/DriverKickContext';
 
 // Staging comps from new folder structure -------|
-import StageHome from "./components/Home/HomePage";
-import StageLogin from "./components/Login/LoginPage";
-import StageSignUp from "./components/SignUp/SignUpPage";
+import HomePage from "./components/Home/HomePage";
+import LoginPage from "./components/Login/LoginPage";
+import SignUpPage from "./components/SignUp/SignUpPage";
 import VehicleFormPage from "./components/UserDash/VehicleFormPage";
-import StageUserDash from "./components/UserDash/UserDashPage";
+import UserDashPage from "./components/UserDash/UserDashPage";
+import VehicleDashPage from "./components/VehicleDash/VehicleDashPage";
 
 // Need code to route non authenticated users to the the homepage and authenticated users to the User Dashboard
 
@@ -28,12 +29,13 @@ function App() {
           <Route exact path="/login" component={Login} />
           <Route exact path="/userpage" component={UserPage} />
           <Route exact path="/vehiclepage" component={VehiclePage} />
-          <Route exact path="/stage-home" component={StageHome} />
-          <Route exact path="/stage-login" component={StageLogin} />
-          <Route exact path="/stage-signup" component={StageSignUp} />
+          <Route exact path="/stage-home" component={HomePage} />
+          <Route exact path="/stage-login" component={LoginPage} />
+          <Route exact path="/stage-signup" component={SignUpPage} />
           <DriverKickProvider>
             <Route exact path="/stage-vehicle-form" component={VehicleFormPage} />
-            <Route exact path="/stage-user-dashboard" component={StageUserDash} />
+            <Route exact path="/stage-user-dashboard" component={UserDashPage} />
+            <Route exact path="/stage-vehicle-dashboard" component={VehicleDashPage} />
           </DriverKickProvider>
         </Switch>
       </Router>
