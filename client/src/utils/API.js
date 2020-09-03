@@ -47,19 +47,34 @@ export default {
   },
 
   // VEHICLE ROUTES
-  // saves to MongoDB however no data is in api/vehicle
-  addvehicle: function (vehicleInfo) {
-    return axios.post("/api/vehicle", vehicleInfo);
+  //post VIN
+  addvehicle: function (userVehicleInfo) {
+    return axios.post("/api/vehicle/decode--vin/vin", userVehicleInfo);
+  },
+
+  getVehicle: function () {
+    return axios.get("/api/vehicle");
+  },
+
+  getDecodeVIN: function (VIN) {
+    return axios.get(`/api/vehicle/decode-vin/${VIN}`);
   },
 
   updateMileage: (currentMile) => {
     return axios.put("/api/vehicle", currentMile);
   },
-  getWarrantyById: (id) => {
-    return axios.get("/api/warranty/", id)
+  getWarranty: () => {
+    return axios.get("/api/warranty");
   },
   newWarranty: (warranty) => {
     return axios.post("/api/warranty", warranty);
-  }
-
+  },
 };
+// getWarrantyById: (id) => {
+//   return axios.get("/api/warranty/", id)
+// },
+// newWarranty: (warranty) => {
+//   return axios.post("/api/warranty", warranty);
+// }
+
+// };
