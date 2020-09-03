@@ -7,7 +7,7 @@ import { useDriverKickContext } from '../../../utils/DriverKickContext';
 
 
 
-function VehicleNavBar({ trackMaintenanceBtn }) {
+function MileageTrackerCard({ trackMaintenanceBtn }) {
     const [editing, setEditing] = useState(false);
     const [userText, setUserText] = useState("Update Name");
     const { userData } = useDriverKickContext();
@@ -19,8 +19,6 @@ function VehicleNavBar({ trackMaintenanceBtn }) {
     }
 
     const text = useRef(userText);
-
-
 
     const handleChange = evt => {
         text.current = evt.target.value;
@@ -89,4 +87,4 @@ function VehicleNavBar({ trackMaintenanceBtn }) {
     );
 }
 
-export default VehicleNavBar;
+export default MileageTrackerCard;
