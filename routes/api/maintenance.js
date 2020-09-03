@@ -5,4 +5,7 @@ router.route("/")
     .get(maintController.findAll)
     .post(maintController.create)
 
+router.route("/:id")
+    .get(maintController.findById);
+
 module.exports = router;

@@ -66,3 +66,11 @@ export default {
     return axios.post("/api/warranty", warranty);
   },
 };
+// getWarrantyById: (id) => {
+//   return axios.get("/api/warranty/", id)
+// },
+// newWarranty: (warranty) => {
+//   return axios.post("/api/warranty", warranty);
+// }
+
+// };

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import "./style.css";
 import Card from "react-bootstrap/Card";
 import WarrantyForm from "../WarrantyForm";
@@ -13,6 +14,7 @@ function WarrantyCard({ children }) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const { id } = useParams();
   useEffect(() => {
     API.getWarranty(warranty)
       .then((res) => setWarranty(res.data))
@@ -38,6 +40,36 @@ function WarrantyCard({ children }) {
   //     .catch((err) => console.log(err));
   // }
 
+  //     API.getWarrantyById(id)
+  //         .then((res) => setWarranty(res.data))
+  //         .catch((err) => console.log(err));
+  //     console.log(warranty);
+  // }, []);
+  // console.log(warranty);
+
+  // useEffect(() => {
+  //   loadWarranties()
+  //     // set initial state to an empty array
+  // }, [])
+
+  // function loadWarranties() {
+  //   API.getWarranty()
+  //   .then(res => setWarranty(res.data))
+  //   .catch(err => console.log(err));
+  // }
+
+  // function handleFormSubmit(event) {
+  //   event.preventDefault();
+  //     API.newWarranty({
+  //       title: title,
+  //       provider: provider,
+  //       details: details
+  //     })
+  //       .then(res => loadWarranties())
+  //       .catch(err => console.log(err));
+  // };
+
+  // need to dispay EVERY warranty card
   return (
     <>
       <Modal show={show} onHide={handleClose}>
