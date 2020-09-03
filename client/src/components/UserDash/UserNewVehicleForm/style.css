@@ -1,0 +1,26 @@
+.vehicle-form__search-btn {
+    color: #feefdd;
+    background-color: #FF4000;
+    border: none;
+}
+
+.vehicle-form__vin-result{
+    text-align: center;
+    color: #143642;
+    background-color: #f1e5d6;
+    padding: 40px 40px 0;
+    margin-bottom: 1.5rem;
+}
+
+.vehicle-form__vin-item {
+    margin-bottom: 40px;
+}
+
+.vehicle-form__submit-btn {
+    padding: 10px;
+    width: 100%;
+    color: #FEEFDD;
+    background-color: #FF4000;
+    font-weight: bold;
+    border: none;
+  }

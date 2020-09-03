@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import "./style.css";
 import UserMainWrapper from '../UserMainWrapper'
 import UserNavBar from '../UserNavBar'
@@ -7,17 +7,20 @@ import { useDriverKickContext } from '../../../utils/DriverKickContext';
 
 function VehicleFormPage() {
     const { setIsVehicleFormNav } = useDriverKickContext();
-    setIsVehicleFormNav(true);
-
+    
+    useEffect(() => {
+        return setIsVehicleFormNav(true);
+    }, [])
+    
     return (
-       
-            <section>
-                <UserNavBar />
-                <UserMainWrapper>
-                    <UserNewVehicleForm />
-                </UserMainWrapper>
-            </section>
-        
+
+        <section>
+            <UserNavBar />
+            <UserMainWrapper>
+                <UserNewVehicleForm />
+            </UserMainWrapper>
+        </section>
+
     );
 }
 
