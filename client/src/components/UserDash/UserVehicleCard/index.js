@@ -8,26 +8,36 @@ import { useDriverKickContext } from '../../../utils/DriverKickContext';
 
 
 function MileageTrackerCard({ trackMaintenanceBtn }) {
+
+
+
     const [editing, setEditing] = useState(false);
-    const [userText, setUserText] = useState("Update Name");
+    const [carNickname, setCarNickname] = useState("Update");
+    const [ownerName, setOwnerName] = useState("Update");
     const { userData } = useDriverKickContext();
+
+
+    const inputedCarNickname = useRef(carNickname);
+    const inputedOwnerName = useRef(ownerName);
+    
+
+    const handleNicknameChange = evt => {
+        inputedCarNickname.current = evt.target.value;
+
+    };
+
+    const handleOwnerChange = evt => {
+        inputedOwnerName.current = evt.target.value;
+    };
 
 
     const editFields = () => {
         console.log("edit button")
         editing ? setEditing(false) : setEditing(true);
+        setCarNickname(inputedCarNickname);
+        setOwnerName(inputedOwnerName);
+
     }
-
-    const text = useRef(userText);
-
-    const handleChange = evt => {
-        text.current = evt.target.value;
-    };
-
-    const handleBlur = () => {
-        console.log(text.current);
-    };
-
     return (
         <div className="vehicle-card">
             {/* Row */}
@@ -42,16 +52,18 @@ function MileageTrackerCard({ trackMaintenanceBtn }) {
                         <div>
                             <h4 className="g__card__subhead">Car Nickname</h4>
                             <h3><ContentEditable
-                                html={text.current}
-                                onBlur={handleBlur}
-                                onChange={handleChange} /></h3>
+                                html={inputedCarNickname.current}
+                                onChange={handleNicknameChange}
+                                disabled={!editing ? true : false}
+                                className={editing ? "vehicle-card__custom-input" : ""}
+                            /></h3>
 
                         </div>
                         <div>
                             <button onClick={editFields} className="vehicle-card__edit-btn">{
                                 !editing ? <img src={editBtn} alt="Edit button" /> : <img src={saveBtn} alt="save button" />
                             }</button>
-                            <button onClick={trackMaintenanceBtn} className="vehicle-card__track-btn ">Track Maintenance</button>
+                            <button onClick={trackMaintenanceBtn} className="vehicle-card__track-btn">Track Maintenance</button>
                         </div>
 
                     </div>
@@ -73,7 +85,12 @@ function MileageTrackerCard({ trackMaintenanceBtn }) {
                         <div className="vehicle-card__col">
                             <div className="vehicle-card__car-item">
                                 <h4 className="g__card__subhead">Owner</h4>
-                                <h3>Placeholder</h3>
+                                <h3><ContentEditable
+                                    html={inputedOwnerName.current}
+                                    onChange={handleOwnerChange}
+                                    disabled={!editing ? true : false}
+                                    className={editing ? "vehicle-card__custom-input" : ""}
+                                /></h3>
                             </div>
                             <div className="vehicle-card__car-item">
                                 <h4 className="g__card__subhead">Model</h4>
