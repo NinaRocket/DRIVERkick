@@ -52,14 +52,17 @@ export default {
     return axios.post("/api/vehicle", vehicleInfo);
   },
 
+  getVehicle: function () {
+    return axios.get("/api/vehicle");
+  },
+
   updateMileage: (currentMile) => {
     return axios.put("/api/vehicle", currentMile);
   },
   getWarranty: () => {
-    return axios.get("/api/warranty")
+    return axios.get("/api/warranty");
   },
   newWarranty: (warranty) => {
     return axios.post("/api/warranty", warranty);
-  }
- 
+  },
 };

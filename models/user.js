@@ -26,14 +26,16 @@ const UserSchema = new Schema({
     required: true,
   },
   // vehical reference
-  vehicle: [{
-    type: Schema.Types.ObjectId,
-    ref: "Vehicle"
-  }],
-  warranty: [{
-    type: Schema.Types.ObjectId,
-    ref: "Warranty"
-  }]
+  // vehicle: [{
+  //   type: Schema.Types.ObjectId,
+  //   ref: "Vehicle"
+  // }],
+  warranty: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Warranty",
+    },
+  ],
 });
 
 // checks if unhashed entered password matches the hashed password in the database
