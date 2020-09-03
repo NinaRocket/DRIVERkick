@@ -1,5 +1,6 @@
 import React from 'react';
 import "./style.css";
+import Table from 'react-bootstrap/Table';
 
 
 function MileageTrackerCard({ mileageTrackingModal }) {
@@ -18,7 +19,31 @@ function MileageTrackerCard({ mileageTrackingModal }) {
                 <button className="g__vehicle-card__btn" onClick={mileageTrackingModal}>Update Current Milage</button>
             </div>
             <div className="mileage-card__history">
-            <h4 className="mileage-card__subhead">History</h4>
+                <h4 className="mileage-card__subhead">History</h4>
+                <Table hover>
+                    <tbody>
+                        <tr>
+                            <td>2/14/2020</td>
+                            <td>75,000</td>
+                        </tr>
+                        <tr>
+                            <td>2/14/2020</td>
+                            <td>75,000</td>
+                        </tr>
+                        <tr>
+                            <td>2/14/2020</td>
+                            <td>75,000</td>
+                        </tr>
+                        <tr>
+                            <td>2/14/2020</td>
+                            <td>75,000</td>
+                        </tr>
+                        <tr>
+                            <td>2/14/2020</td>
+                            <td>75,000</td>
+                        </tr>
+                    </tbody>
+                </Table>
             </div>
 
         </div>
