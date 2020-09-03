@@ -47,17 +47,17 @@ export default {
   },
 
   // VEHICLE ROUTES
-  // saves to MongoDB however no data is in api/vehicle
-  addvehicle: function (vehicleInfo) {
-    return axios.post("/api/vehicle", vehicleInfo);
+  //post VIN
+  addvehicle: function (userVehicleInfo) {
+    return axios.post("/api/vehicle/decode--vin/vin", userVehicleInfo);
   },
 
   getVehicle: function () {
     return axios.get("/api/vehicle");
   },
 
-  getDecodeVIN: function () {
-    return axios.get("/api/vehicle/decode-vin/:vin");
+  getDecodeVIN: function (VIN) {
+    return axios.get(`/api/vehicle/decode-vin/${VIN}`);
   },
 
   updateMileage: (currentMile) => {
