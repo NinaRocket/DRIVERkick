@@ -2,9 +2,9 @@ const db = require("../models");
 
 module.exports = {
     findAllByOwner: function (req, res) {
-        db.Vehicle.find({ owner: req.user.id })
+        db.Vehicle.find({ owner: req.user._id })
             .then(dbVehicles => res.json(dbVehicles))
-            .catch(err => res.status(422).json(err))
+            .catch(err => res.status(422).json(err));
     },
     findById: function (req, res) {
         db.Vehicle.find({ _id: req.params.id })
@@ -14,7 +14,7 @@ module.exports = {
     create: function (req, res) {
         db.Vehicle.create(req.body)
             .then(dbVehicle => res.json(dbVehicle))
-            .catch(err => res.status(422).json(err))
+            .catch(err => res.status(422).json(err));
     },
     update: function (req, res) {
         db.Vehicle.findOneAndUpdate({ _id: req.params.id }, req.body)

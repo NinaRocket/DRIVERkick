@@ -7,7 +7,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import API from "../../utils/API";
 
-function WarrantyCard() {
+function WarrantyCard({ children }) {
   const [warranty, setWarranty] = useState({});
   const [show, setShow] = useState(false);
 
@@ -16,12 +16,36 @@ function WarrantyCard() {
 
   const { id } = useParams();
   useEffect(() => {
-      API.getWarrantyById(id)
-          .then((res) => setWarranty(res.data))
-          .catch((err) => console.log(err));
-      console.log(warranty);
+    API.getWarranty(warranty)
+      .then((res) => setWarranty(res.data))
+      .catch((err) => console.log(err));
+    console.log(warranty);
   }, []);
-  console.log(warranty);
+
+  // function loadWarranties() {
+  //   API.getWarranty()
+  //     .then((res) => setWarranty(res.data))
+  //     .catch((err) => console.log(err));
+  // }
+
+  // function handleFormSubmit(warranty) {
+  //   //event.preventDefault();
+  //   API.getWarranty({
+  //     // title: title,
+  //     // provider: provider,
+  //     // details: details,
+  //     warranty,
+  //   })
+  //     .then((res) => loadWarranties())
+  //     .catch((err) => console.log(err));
+  // }
+
+  //     API.getWarrantyById(id)
+  //         .then((res) => setWarranty(res.data))
+  //         .catch((err) => console.log(err));
+  //     console.log(warranty);
+  // }, []);
+  // console.log(warranty);
 
   // useEffect(() => {
   //   loadWarranties()
@@ -33,7 +57,7 @@ function WarrantyCard() {
   //   .then(res => setWarranty(res.data))
   //   .catch(err => console.log(err));
   // }
- 
+
   // function handleFormSubmit(event) {
   //   event.preventDefault();
   //     API.newWarranty({
@@ -44,7 +68,7 @@ function WarrantyCard() {
   //       .then(res => loadWarranties())
   //       .catch(err => console.log(err));
   // };
-  
+
   // need to dispay EVERY warranty card
   return (
     <>
@@ -63,15 +87,18 @@ function WarrantyCard() {
       </Modal>
 
       <Card className="warrantyCard text-center">
-        <Card.Header>{warranty.title}</Card.Header>
+        <Card.Header>Title {warranty.title}</Card.Header>
         <Card.Body>
-          <Card.Title>
-          {warranty.provider}
-          </Card.Title>
+          <Card.Title>Warranty: {warranty.provider}</Card.Title>
           <Card.Text>{warranty.details} </Card.Text>
           <Button className="warBtn" variant="primary" onClick={handleShow}>
             Add Warranty
           </Button>
+          <br />
+          {/* <Button className="getBtn" variant="primary" onClick={}>
+            Get Warranty
+          </Button>
+          ; */}
         </Card.Body>
       </Card>
     </>

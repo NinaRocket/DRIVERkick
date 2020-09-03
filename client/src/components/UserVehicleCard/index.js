@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
+import API from "../../utils/API";
 
 function UserVehicleCard({ trackMaintenanceBtn }) {
+  const [vehicle, setVehicle] = useState({});
+
+  useEffect(() => {
+    API.getVehicle()
+      .then((res) => setVehicle(res.data))
+      .catch((err) => console.log(err));
+    console.log(vehicle);
+  }, []);
+
   return (
     <div>
       {/* Row */}
