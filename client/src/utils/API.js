@@ -49,7 +49,7 @@ export default {
   // VEHICLE ROUTES
   //post VIN
   addvehicle: function (userVehicleInfo) {
-    return axios.post("/api/vehicle/decode--vin/vin", userVehicleInfo);
+    return axios.post("/api/vehicle/decode-vin/vin", userVehicleInfo);
   },
 
   getVehicle: function () {
