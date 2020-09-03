@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 // the vehicle model is whatever they are CREATING or inputting
 const vehicleSchema = new Schema({
-  // VIN: { type: Number, required: true },
+  VIN: { type: String, required: true },
   vehicleName: { type: String, required: true },
   ownerName:{ type: String, required: true },
   currentMile: { type: Number, required: true },
