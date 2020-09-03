@@ -114,7 +114,7 @@ Colors
 
 
 /* —————————————————————————————————————
-Bootstrap Overides
+Bootstrap Overrides
 ———————————————————————————————————————*/
 .table td, .table th {
   border-top: none;
@@ -128,6 +128,7 @@ button {
   color: #FEEFDD;
   background-color: #FF4000;
   font-weight: 600;
+  cursor: pointer;
 }
 
 button:focus {
@@ -238,7 +239,3 @@ Vehicle Dashboard
   font-weight: bold;
   border: none;
 }
-
-
-
-
