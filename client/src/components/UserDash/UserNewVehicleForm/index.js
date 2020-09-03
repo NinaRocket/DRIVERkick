@@ -8,7 +8,11 @@ import Form from 'react-bootstrap/Form';
 
 function UserNewVehicleForm() {
     const [vinNum, setVinNum] = useState("");
+    const [vinMake, setVinMake] = useState("");
+    const [vinModel, setVinModel] = useState("");
+    const [vinYear, setVinYear] = useState("");
     const [redirect, setRedirect] = useState(false);
+
 
     useEffect(() => {
         setRedirect(true);

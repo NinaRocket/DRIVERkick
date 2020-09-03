@@ -24,7 +24,7 @@ function VehicleMainWrapper({ children }) {
             <div className="container">
                 <Row>
                     <Col lg={3}>
-                        <img src={placeholder} alt="Model car"/>
+                        <img style={{"width": 50}} src={placeholder} alt="Model car"/>
                         <h1 className="g__dash-h1">Radical Roadster</h1>
                         <hr />
                         <div>
