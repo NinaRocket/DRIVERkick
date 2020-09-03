@@ -42,7 +42,7 @@ function VehicleForm() {
   const submitNewVehicle = (event) => {
     event.preventDefault();
     console.log(
-      // VIN,
+      VIN,
       vehicleName,
       ownerName,
       currentMile,
@@ -51,8 +51,8 @@ function VehicleForm() {
       oilInterval
     );
     const vehicleInfo = {
-      // VIN: VIN,
-      vehicleName: vehicleName,
+      VIN: VIN,
+      vehicleName: vehicleNickName,
       ownerName: ownerName,
       currentMile: currentMile,
       estMileOil: estMileOil,
