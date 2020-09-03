@@ -14,7 +14,7 @@ module.exports = {
     create: function (req, res) {
         db.Vehicle.create(req.body)
             .then(dbVehicle => res.json(dbVehicle))
-            .catch(err => res.status(422).json(err))
+            .catch(err => res.status(422).json(err));
     },
     update: function (req, res) {
         db.Vehicle.findOneAndUpdate({ _id: req.params.id }, req.body)
