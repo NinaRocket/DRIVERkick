@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 const DriverKickContext = React.createContext();
 
 
-export function useDriverKickContext() {
+export const useDriverKickContext = () => {
     return useContext(DriverKickContext);
 }
 
@@ -41,10 +41,9 @@ export function DriverKickProvider({ children }) {
 
 
     const [userData, setUserData] = useState({
-        email: "",
-        firstName: "",
-        lastName: "",
-        password: ""
+        make: "N/A",
+        model: "N/A",
+        year: "N/A"
     });
 
     const [vehicleData, setVehicleData] = useState({
@@ -54,7 +53,7 @@ export function DriverKickProvider({ children }) {
 
     const [isVehicleFormNav, setIsVehicleFormNav] = useState(false);
 
-   
+
 
     return (
         <DriverKickContext.Provider value={{

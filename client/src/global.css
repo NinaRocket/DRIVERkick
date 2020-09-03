@@ -136,6 +136,27 @@ button:focus {
   box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
 }
 
+.btn {
+  font-weight: bold;
+}
+
+.form-control, input {
+  background: none;
+  padding: 13px 15px;
+  border-color: #E3D3BE;
+  border-style: solid;
+  border-radius: .25rem;
+}
+
+.form-control:focus,
+input:focus {
+  color: #143642;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
 
 
 /* —————————————————————————————————————
