@@ -3,7 +3,42 @@ import "./style.css";
 import Table from 'react-bootstrap/Table';
 
 
-function MileageTrackerCard({ mileageTrackingModal }) {
+function MileageTrackerPopulated({ mileageTrackingModal }) {
+
+    // ORGINAL CARD'S CODE ——————————————————————————————————|
+    // const [mileage, setUpdateMileage] = useState([]);
+
+    // const updateMileageValue = (event) => {
+    //     setUpdateMileage(event.target.value);
+    // };
+
+    // const submitUpdateMileage = (event) => {
+    //     event.preventDefault();
+    //     console.log(mileage);
+
+    //     API.updateMileage(mileage)
+    //         .then((response) => {
+    //             console.log("update mileage response: ");
+    //             console.log(response);
+    //             if (!response.data.errmsg) {
+    //                 console.log("successfully updated mileage");
+    //                 //   this.state({
+    //                 //     //redirect to login page
+    //                 //     //home for now
+    //                 //     redirectTo: "/home",
+    //                 //   });
+    //             } else {
+    //                 console.log("Nina doesn't know how to code");
+    //             }
+    //         })
+    //         .catch((error) => {
+    //             console.log("adding vehicle error: ");
+    //             console.log(error);
+    //         });
+    // };
+    // ORGINAL CARD'S CODE ——————————————————————————————————|
+
+
     return (
 
         <div className="mileage-card__body">
@@ -53,4 +88,4 @@ function MileageTrackerCard({ mileageTrackingModal }) {
     );
 }
 
-export default MileageTrackerCard;
+export default MileageTrackerPopulated;
