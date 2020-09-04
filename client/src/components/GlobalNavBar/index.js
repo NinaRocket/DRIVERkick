@@ -17,7 +17,7 @@ function GlobalNavBar() {
     const redirect = useHistory();
 
 
-    // Home / Signup / Login Page Buttons
+    // Buttons
     const signUp = () => {
         redirect.push("/signup");
     }
@@ -25,10 +25,7 @@ function GlobalNavBar() {
         redirect.push("/login")
     }
 
-
-
-
-    const formVehicleRedirect = () => {
+    const addNewVehicle = () => {
         redirect.push("/add-vehicle")
     }
 
@@ -40,22 +37,14 @@ function GlobalNavBar() {
 
     return (
         <>
-            <div className={!navType === "userDash" || "newVehicle" || "vehicleDash" ? null : "g__nav-dashboards"}>
+            <div className={(navType === "userDash" || "newVehicle" || "vehicleDash") ? "g__nav-dashboards" : null}>
                 <Navbar className="container navbar justify-content-between flex-column flex-sm-row ">
                     <Navbar.Brand href="/">
-                        {navType === "home" || "notFound" ?
-                            <img
-                                src={LogoDark}
-                                className="d-inline-block align-top"
-                                alt="Drive Kick Logo"
-                            />
-                            :
-                            <img
-                                src={LogoTan}
-                                className="d-inline-block align-top"
-                                alt="Drive Kick Logo"
-                            />
-                        }
+                        <img
+                            src={(navType === "home" || "notFound") ? LogoDark : LogoTan}
+                            className="d-inline-block align-top"
+                            alt="Drive Kick Logo"
+                        />
                     </Navbar.Brand>
                     <Nav>
                         {/* Home */}
@@ -89,18 +78,17 @@ function GlobalNavBar() {
                             <button type="button" className="btn" onClick={signUp}>Sign Up</button> : null
                         }
 
-                        {navType === "userDash" ?
+                        {/* User Dash / Add New Vehicle */}
+                        {(navType === "userDash" || "newVehicle") ?
 
                             <div className="g__nav-btn-group">
-                                {!navType === "newVehicle" ? <Button className="btn" onClick={formVehicleRedirect}><FaPlus />Add New Vehicle</Button> : null}
+                                {navType === "userDash" ? <Button className="btn" onClick={addNewVehicle}><FaPlus />Add New Vehicle</Button> : null}
 
                                 <button
                                     type="button"
                                     className="btn"
                                     onClick={logout}
-                                >
-                                    Logout
-                        </button>
+                                >Logout</button>
                             </div> : null
                         }
                     </Nav>
