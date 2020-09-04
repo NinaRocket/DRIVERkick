@@ -4,7 +4,6 @@ import { useHistory } from "react-router-dom";
 import { useDriverKickContext } from '../../utils/DriverKickContext';
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import Button from "react-bootstrap/Button";
 import LogoTan from "../../images/global/drive-kick-logo-tan.svg";
 import LogoDark from "../../images/global/drive-kick-logo-dark.svg";
 import { FaPlus } from "react-icons/fa";
@@ -27,6 +26,10 @@ function GlobalNavBar() {
 
     const addNewVehicle = () => {
         redirect.push("/add-vehicle")
+    }
+
+    const userDash = () => {
+        redirect.push("/user-dashboard")
     }
 
     const logout = () => {
@@ -82,7 +85,7 @@ function GlobalNavBar() {
                         {(navType === "userDash" || "newVehicle") ?
 
                             <div className="g__nav-btn-group">
-                                {navType === "userDash" ? <Button className="btn" onClick={addNewVehicle}><FaPlus />Add New Vehicle</Button> : null}
+                                {navType === "userDash" ? <button className="btn" onClick={addNewVehicle}><FaPlus />Add New Vehicle</button> : null}
 
                                 <button
                                     type="button"
@@ -91,6 +94,22 @@ function GlobalNavBar() {
                                 >Logout</button>
                             </div> : null
                         }
+
+                        {/* Vehicle Dashboard */}
+                        {navType === "vehicleDash" ?
+                            <div className="g__nav-btn-group">
+                                <button
+                                    type="button"
+                                    className="btn"
+                                    onClick={userDash}>User Dashboard</button>
+
+                                <button
+                                    type="button" className="btn"
+                                    onClick={logout}
+                                >Logout</button>
+                            </div> : null}
+
+
                     </Nav>
                 </Navbar>
             </div>
