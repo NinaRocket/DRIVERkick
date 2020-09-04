@@ -9,8 +9,6 @@ import { useDriverKickContext } from '../../../utils/DriverKickContext';
 
 function MileageTrackerCard({ trackMaintenanceBtn }) {
 
-
-
     const [editing, setEditing] = useState(false);
     const [carNickname, setCarNickname] = useState("Update");
     const [ownerName, setOwnerName] = useState("Update");
@@ -23,7 +21,6 @@ function MileageTrackerCard({ trackMaintenanceBtn }) {
 
     const handleNicknameChange = evt => {
         inputedCarNickname.current = evt.target.value;
-
     };
 
     const handleOwnerChange = evt => {

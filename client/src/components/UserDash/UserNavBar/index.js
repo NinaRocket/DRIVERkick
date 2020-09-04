@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./style.css";
-import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
@@ -11,10 +11,11 @@ import { useDriverKickContext } from '../../../utils/DriverKickContext';
 function UserNavBar() {
     // Context state saying if the current page is the Vehicle Form Page
     const { isVehicleFormNav } = useDriverKickContext();
+    const redirect = useHistory()
 
     const formVehicleRedirect = () => {
         // Need to fix this function as it doesn't redirect
-        return <Redirect to={{ pathname: "/stage-vehicle-form" }} />;
+        redirect.push("/add-vehicle")
     }
 
     const logout = () => {
