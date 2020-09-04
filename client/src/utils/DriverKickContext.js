@@ -51,7 +51,18 @@ export function DriverKickProvider({ children }) {
         warranty: []
     });
 
+    // Nav Bar States
     const [isVehicleFormNav, setIsVehicleFormNav] = useState(false);
+
+    const [isHomeNav, setIsHomeNav] = useState(false);
+
+    const [isLoginNav, setIsLoginNav] = useState(false);
+
+    const [isSignUpNav, setIsSignUpNav] = useState(false);
+
+    const [isUserDashNav, setIsUserDashNav] = useState(false);
+
+    const [isVehicleDashNav, setIsVehicleDashNav] = useState(false);
 
 
 
@@ -66,7 +77,17 @@ export function DriverKickProvider({ children }) {
             vehicleData,
             setVehicleData,
             isVehicleFormNav,
-            setIsVehicleFormNav
+            setIsVehicleFormNav,
+            isHomeNav,
+            setIsHomeNav,
+            isLoginNav,
+            setIsLoginNav,
+            isSignUpNav,
+            setIsSignUpNav,
+            isUserDashNav,
+            setIsUserDashNav,
+            isVehicleDashNav,
+            setIsVehicleDashNav
         }}>
             {children}
         </DriverKickContext.Provider>
