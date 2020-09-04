@@ -26,7 +26,7 @@ function GlobalNavBar() {
     }
 
     // Signup Buttons
-    
+
 
 
     const formVehicleRedirect = () => {
@@ -78,6 +78,11 @@ function GlobalNavBar() {
                                     Login
                         </button>
                             </div> : null
+                        }
+
+                        {/* Sign Up */}
+                        {navType === "signup" ?
+                            <button type="button" className="btn" onClick={login}>Login</button> : null
                         }
 
                         {navType === "userDash" ?
