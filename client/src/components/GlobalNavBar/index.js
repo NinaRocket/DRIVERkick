@@ -17,7 +17,7 @@ function GlobalNavBar() {
     const redirect = useHistory();
 
 
-    // Home Buttons
+    // Home / Signup / Login Page Buttons
     const signUp = () => {
         redirect.push("/signup");
     }
@@ -25,7 +25,6 @@ function GlobalNavBar() {
         redirect.push("/login")
     }
 
-    // Signup Buttons
 
 
 
@@ -83,6 +82,11 @@ function GlobalNavBar() {
                         {/* Sign Up */}
                         {navType === "signup" ?
                             <button type="button" className="btn" onClick={login}>Login</button> : null
+                        }
+
+                        {/* Log In */}
+                        {navType === "login" ?
+                            <button type="button" className="btn" onClick={signUp}>Sign Up</button> : null
                         }
 
                         {navType === "userDash" ?

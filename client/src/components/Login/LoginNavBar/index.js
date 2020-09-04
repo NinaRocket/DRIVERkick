@@ -10,7 +10,6 @@ function LoginNavBar() {
     }
 
     return (
-
         <Navbar className="container navbar justify-content-between flex-column flex-sm-row">
             <Navbar.Brand href="/">
                 <img
