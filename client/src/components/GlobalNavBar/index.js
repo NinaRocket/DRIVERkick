@@ -9,20 +9,14 @@ import LogoDark from "../../images/global/drive-kick-logo-dark.svg";
 import { FaPlus } from "react-icons/fa";
 import { useDriverKickContext } from '../../utils/DriverKickContext';
 
-function UserNavBar() {
-    // Context state saying if the current page is the Vehicle Form Page
-    const { 
-        isHomeNav,
-        isLoginNav,
-        isSignUpNav,
-        isVehicleFormNav,
-        isUserDashNav,
-        isVehicleDashNav
-    } = useDriverKickContext();
+function GlobalNavBar() {
+    // Context state that changes the nav based on the page being used
+    const { navType } = useDriverKickContext();
+
+    // Sets redirects to other pages
     const redirect = useHistory()
 
     const formVehicleRedirect = () => {
-        // Need to fix this function as it doesn't redirect
         redirect.push("/add-vehicle")
     }
 
@@ -34,14 +28,22 @@ function UserNavBar() {
 
     return (
         <>
-            <div className={isUserDashNav || isVehicleDashNav ? "g__nav-dashboards" : null}>
+            <div className={navType === "userDash" || "newVehicle" || "vehicleDash" ? "g__nav-dashboards" : null}>
                 <Navbar className="container navbar justify-content-between flex-column flex-sm-row ">
                     <Navbar.Brand href="/">
-                        <img
-                            src={LogoTan}
-                            className="d-inline-block align-top"
-                            alt="Drive Kick Logo"
-                        />
+                        {navType === "home" || "notFound" ?
+                            <img
+                                src={LogoDark}
+                                className="d-inline-block align-top"
+                                alt="Drive Kick Logo"
+                            />
+                            :
+                            <img
+                                src={LogoTan}
+                                className="d-inline-block align-top"
+                                alt="Drive Kick Logo"
+                            />
+                        }
                     </Navbar.Brand>
                     <Nav>
                         <div className="g__nav-btn-group">
@@ -63,4 +65,4 @@ function UserNavBar() {
     );
 }
 
-export default UserNavBar;
+export default GlobalNavBar;
