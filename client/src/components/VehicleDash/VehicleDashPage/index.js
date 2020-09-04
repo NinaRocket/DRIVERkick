@@ -25,7 +25,7 @@ function VehicleDashPage() {
         <div>
             {/* Add modal for mileage */}
             <VehicleCurrentMileageForm />
-            <VehicleNavBar />
+            <GlobalNavBar />
             <VehicleMainWrapper>
                 <MileageTrackerCard mileageTrackingModal={mileageModal} />
                 {/* <VehicleOilChangeCard />
