@@ -12,7 +12,13 @@ module.exports = {
             .catch(err => res.status(422).json(err));
     },
     create: function (req, res) {
-        db.Vehicle.create(req.body)
+        db.Vehicle.create({
+            user: req.user._id,
+            VIN: req.body.VIN,
+            year: req.body.year,
+            make: req.body.make,
+            model: req.body.model
+        })
             .then(dbVehicle => res.json(dbVehicle))
             .catch(err => res.status(422).json(err));
     },
