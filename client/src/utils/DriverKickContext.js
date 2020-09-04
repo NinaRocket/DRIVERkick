@@ -55,7 +55,7 @@ export function DriverKickProvider({ children }) {
     // Nav Bar States
     const [navType, setNavType] = useState("home");
 
-    // navType Expects: "home" || "notFound" || "login" || "signup" || "newVehicle" || "userDash" || "vehicleDash"
+    // navType Expects: "home" || "notFound" || "login" || "signup" || "newVehicle" || "userDash" || "vehicleDash" 
 
     return (
         <DriverKickContext.Provider value={{

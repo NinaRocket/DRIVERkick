@@ -1,20 +1,20 @@
 import React from 'react';
 import "./style.css";
-import UserMainWrapper from '../UserMainWrapper';
-import UserNavBar from '../UserNavBar';
-import UserVehicleCard from '../UserVehicleCard';
 import { useDriverKickContext } from '../../../utils/DriverKickContext';
+import GlobalNavBar from '../../GlobalNavBar';
+import UserMainWrapper from '../UserMainWrapper';
+import UserVehicleCard from '../UserVehicleCard';
 
 
 
 function UserDashPage() {
 
-    const { setIsVehicleFormNav } = useDriverKickContext();
-    setIsVehicleFormNav(false);
+    const { setNavType } = useDriverKickContext();
+    setNavType("userDash");
 
     return (
         <section>
-            <UserNavBar />
+            <GlobalNavBar />
             <UserMainWrapper>
                 <UserVehicleCard />
             </UserMainWrapper>

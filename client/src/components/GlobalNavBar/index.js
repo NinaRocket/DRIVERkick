@@ -1,20 +1,31 @@
 import React from "react";
 import "./style.css";
 import { useHistory } from "react-router-dom";
+import { useDriverKickContext } from '../../utils/DriverKickContext';
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import LogoTan from "../../images/global/drive-kick-logo-tan.svg";
 import LogoDark from "../../images/global/drive-kick-logo-dark.svg";
 import { FaPlus } from "react-icons/fa";
-import { useDriverKickContext } from '../../utils/DriverKickContext';
 
 function GlobalNavBar() {
     // Context state that changes the nav based on the page being used
     const { navType } = useDriverKickContext();
 
     // Sets redirects to other pages
-    const redirect = useHistory()
+    const redirect = useHistory();
+
+
+    // Home Buttons
+    const signUp = () => {
+        redirect.push("/signup");
+    }
+    const login = () => {
+        redirect.push("/login")
+    }
+
+
 
     const formVehicleRedirect = () => {
         redirect.push("/add-vehicle")
@@ -28,7 +39,7 @@ function GlobalNavBar() {
 
     return (
         <>
-            <div className={navType === "userDash" || "newVehicle" || "vehicleDash" ? "g__nav-dashboards" : null}>
+            <div className={navType === "userDash" || "newVehicle" || "vehicleDash" ? "g__nav-dashboards" : ""}>
                 <Navbar className="container navbar justify-content-between flex-column flex-sm-row ">
                     <Navbar.Brand href="/">
                         {navType === "home" || "notFound" ?
@@ -46,9 +57,13 @@ function GlobalNavBar() {
                         }
                     </Navbar.Brand>
                     <Nav>
+
+
+
+
+
                         <div className="g__nav-btn-group">
-                            {/* Don't Show Button If On The Form Page */}
-                            {!isVehicleFormNav ? <Button className="btn" onClick={formVehicleRedirect}><FaPlus />Add New Vehicle</Button> : ""}
+                            {!navType === "newVehicle"? <Button className="btn" onClick={formVehicleRedirect}><FaPlus />Add New Vehicle</Button> : null}
 
                             <button
                                 type="button"
