@@ -38,18 +38,27 @@ function GlobalNavBar() {
     }
 
 
+
     return (
         <>
-            <div className={(navType === "userDash" || "newVehicle" || "vehicleDash") ? "g__nav-dashboards" : null}>
+            <div className={
+                navType === "userDash" ||
+                    navType === "newVehicle" ||
+                    navType === "vehicleDash" ?
+                    "g__nav-dashboards" : null}>
                 <Navbar className="container navbar justify-content-between flex-column flex-sm-row ">
                     <Navbar.Brand href="/">
                         <img
-                            src={(navType === "home" || "notFound") ? LogoDark : LogoTan}
+                            src={
+                                navType === "home" ||
+                                    navType === "notFound" ?
+                                    LogoDark : LogoTan}
                             className="d-inline-block align-top"
                             alt="Drive Kick Logo"
                         />
                     </Navbar.Brand>
                     <Nav>
+
                         {/* Home */}
                         {navType === "home" ?
                             <div className="g__nav-btn-group">
@@ -82,17 +91,19 @@ function GlobalNavBar() {
                         }
 
                         {/* User Dash / Add New Vehicle */}
-                        {(navType === "userDash" || "newVehicle") ?
+                        {
+                            navType === "userDash" ||
+                                navType === "newVehicle" ?
 
-                            <div className="g__nav-btn-group">
-                                {navType === "userDash" ? <button className="btn" onClick={addNewVehicle}><FaPlus />Add New Vehicle</button> : null}
+                                <div className="g__nav-btn-group">
+                                    {navType === "userDash" ? <button className="btn" onClick={addNewVehicle}><FaPlus />Add New Vehicle</button> : null}
 
-                                <button
-                                    type="button"
-                                    className="btn"
-                                    onClick={logout}
-                                >Logout</button>
-                            </div> : null
+                                    <button
+                                        type="button"
+                                        className="btn"
+                                        onClick={logout}
+                                    >Logout</button>
+                                </div> : null
                         }
 
                         {/* Vehicle Dashboard */}
@@ -108,8 +119,6 @@ function GlobalNavBar() {
                                     onClick={logout}
                                 >Logout</button>
                             </div> : null}
-
-
                     </Nav>
                 </Navbar>
             </div>
