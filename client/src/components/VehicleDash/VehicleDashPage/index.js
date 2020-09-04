@@ -1,6 +1,7 @@
 import React from 'react';
 import "./style.css";
-import VehicleNavBar from '../VehicleNavBar';
+import { useDriverKickContext } from '../../../utils/DriverKickContext';
+import GlobalNavBar from '../../GlobalNavBar';
 import VehicleMainWrapper from '../VehicleMainWrapper';
 import MileageTrackerCard from '../MileageTrackerCard';
 import VehicleOilChangeCard from '../VehicleOilChangeCard';
@@ -9,19 +10,22 @@ import VehicleRecallsCard from '../VehicleRecallsCard';
 import VehicleCurrentMileageForm from '../VehicleCurrentMileageForm';
 
 
-const mileageModal = () => {
-    console.log("Milage Modal To Open")
-}
-
-
-
-
 function VehicleDashPage() {
+
+    const { setNavType } = useDriverKickContext();
+    setNavType("vehicleDash");
+
+
+    const mileageModal = () => {
+        console.log("Milage Modal To Open")
+    }
+
+
     return (
         <div>
             {/* Add modal for mileage */}
             <VehicleCurrentMileageForm />
-            <VehicleNavBar />
+            <GlobalNavBar />
             <VehicleMainWrapper>
                 <MileageTrackerCard mileageTrackingModal={mileageModal} />
                 {/* <VehicleOilChangeCard />
