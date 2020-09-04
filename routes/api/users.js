@@ -1,6 +1,7 @@
 const db = require("../../models");
 const passport = require("../../config/passport");
 const router = require("express").Router();
+const isAuthenticated = require("../../config/middleware/isAuthenticated");
 
 // User Routes ----------------------------------------------- ||
 router.post("/login", passport.authenticate("local"), (req, res) => {
@@ -31,7 +32,7 @@ router.get("/isAuthenticated", function (req, res) {
 });
 
 // Endpoint to get current user
-router.get("/info", function (req, res) {
+router.get("/info", isAuthenticated, function (req, res) {
   db.User.findById(req.user._id)
     .then((dbUser) => res.json(dbUser))
     .catch((err) => res.status(404).json(err));
