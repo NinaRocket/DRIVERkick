@@ -6,6 +6,10 @@
 .global-nav__btn-group {
     display: flex;
 }
+
+.global-nav__btn-group > button {
+    margin-right: 20px;
+}
   
 .global-nav__nav-dashboards {
     background-color: #143642;
