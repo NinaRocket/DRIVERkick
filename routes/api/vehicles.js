@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const vehicleController = require("../../controllers/vehicleController");
+const db = require("../../models");
 
 router.route("/")
   // creates vehicle
@@ -36,5 +37,17 @@ router.route("/decode-vin/:vin")
       })
       .catch(err => res.status(422).json(err));
   });
+
+router.route("/recalls/:id")
+  .get(function (req, res) {
+    db.Vehicle.findById(req.params.id)
+      .then(queryVehicle => {
+        axios.get(`https://one.nhtsa.gov/webapi/api/Recalls/vehicle/modelyear/${queryVehcile.year}/make/${queryVehcile.make}/model/${queryVehicle.model}?format=json`)
+          .then(dbRecalls => {
+            res.json(dbRecalls);
+          })
+      })
+      .catch(err => res.status(422).json(err));
+  })
 
 module.exports = router;
