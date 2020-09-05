@@ -18,8 +18,8 @@ export default {
 
   // VEHICLE ROUTES
   //post VIN
-  addvehicle: function (userVehicleInfo) {
-    return axios.post("/api/vehicle/decode-vin/vin", userVehicleInfo);
+  addvehicle: function (VIN, year, make, model) {
+    return axios.post("/api/vehicle", { VIN, year, make, model });
   },
 
   getVehicle: function () {
@@ -28,6 +28,9 @@ export default {
 
   getDecodeVIN: function (VIN) {
     return axios.get(`/api/vehicle/decode-vin/${VIN}`);
+  },
+  saveDecodeVIN: function (VIN) {
+    return axios.post(`/api/vehicle/${VIN}`);
   },
   // updates vehicle nickname
   updateNickname: function (vehicleId, nickname) {
@@ -41,8 +44,12 @@ export default {
   updateMileage: function (vehicleId, currentMileage) {
     return axios.put(`/api/vehicle/${vehicleId}`, { currentMileage });
   },
+  // updates the vehicle driver
+  updateDriver: function (vehicleId, driverName) {
+    return axios.put(`/api/vehicle/${vehicleId}`, { driverName });
+  },
   // gets the recalls for the vehicle by id
-  getRecalls: function(vehicleId) {
+  getRecalls: function (vehicleId) {
     return axios.get(`/api/vehicle/recalls/${vehicleId}`);
   },
   getWarranty: () => {

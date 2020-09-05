@@ -2,13 +2,15 @@ const db = require("../../models");
 const passport = require("../../config/passport");
 const router = require("express").Router();
 const isAuthenticated = require("../../config/middleware/isAuthenticated");
+const axios = require("axios");
 
 // User Routes ----------------------------------------------- ||
 router.post("/login", passport.authenticate("local"), (req, res) => {
-  res.send(req.user);
+  res.json(req.user);
 });
 
 router.post("/signup", (req, res) => {
+  console.log(req.body);
   db.User.create({
     email: req.body.email,
     password: req.body.password,
@@ -16,10 +18,10 @@ router.post("/signup", (req, res) => {
     lastName: req.body.lastName,
   })
     .then((dbUser) => {
-      res.json( {
+      res.json({
         email: dbUser.email,
         firstName: dbUser.firstName,
-        lastName: dbUser.lastName
+        lastName: dbUser.lastName,
       });
     })
     .catch((err) => {
