@@ -5,6 +5,9 @@
   padding: 0 100px 55px;
   position: relative;
     top: -100px;
+    -webkit-box-shadow: 0px 4px 0px 0px rgba(172,155,135,1);
+    -moz-box-shadow: 0px 4px 0px 0px rgba(172,155,135,1);
+    box-shadow: 0px 4px 0px 0px rgba(172,155,135,1);
 }
 
 .home-feat__roof-txt {
