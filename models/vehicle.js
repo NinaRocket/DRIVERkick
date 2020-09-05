@@ -16,7 +16,7 @@ const vehicleSchema = new Schema({
   currentMilage: { type: Number },
   nextOilChange: { type: Number },
   oilType: { type: String },
-  warranty: [{
+  warranties: [{
     type: Schema.Types.ObjectId,
     ref: "Warranty"
   }]
