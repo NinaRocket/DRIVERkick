@@ -96,7 +96,7 @@ function GlobalNavBar() {
                                 navType === "newVehicle" ?
 
                                 <div className="global-nav__btn-group">
-                                    {navType === "userDash" ? <button className="btn" onClick={addNewVehicle}><FaPlus />Add New Vehicle</button> : null}
+                                    {navType === "userDash" ? <button className="btn" onClick={addNewVehicle}>Add New Vehicle</button> : null}
 
                                     <button
                                         type="button"
