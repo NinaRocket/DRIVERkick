@@ -2,7 +2,7 @@ const db = require("../models");
 
 module.exports = {
     findAllByOwner: function (req, res) {
-        db.Vehicle.find({})
+        db.Vehicle.find({ owner: req.user._id })
             // populate warranties for that vehicle
             .populate('warranties')
             .then(dbVehicles => res.json(dbVehicles))
