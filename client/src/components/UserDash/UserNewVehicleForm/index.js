@@ -115,7 +115,7 @@ function UserNewVehicleForm() {
               </div>
             </div>
             <button
-              className="btn vehicle-form__submit-btn"
+              className="btn g__form-submit-btn"
               onClick={submitUserVehicle}
               type="submit"
             >

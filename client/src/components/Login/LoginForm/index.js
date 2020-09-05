@@ -43,6 +43,7 @@ function LoginForm() {
     return (
         <div className="g__form-container">
             <form>
+                <h2 className="login__title">Login</h2>
                 <div className="g__label-group">
                     <label className="form-label" htmlFor="email">
                         Email
@@ -75,7 +76,7 @@ function LoginForm() {
 
                 </div>
 
-                <button className="btn btn-primary" onClick={submitUserLogin} type="submit"
+                <button className="btn g__form-submit-btn" onClick={submitUserLogin} type="submit"
                 >Login</button>
 
             </form>
