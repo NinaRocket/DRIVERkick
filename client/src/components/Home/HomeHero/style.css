@@ -1,8 +1,9 @@
 .home-hero__bg {
+    background-color: #143642;
     background: url('../../../images/home/home-hero-bg-lg.jpg') center / cover no-repeat;
     color: #143642;
     text-align: center;
-    height: 1050px;
+    height: 1100px;
     padding-top: 130px;
     margin-top: -86px;
 }
@@ -40,6 +41,21 @@
 }
 
 
+
+@media only screen and (min-width: 2200px) {
+
+    .home-hero__bg {
+        background-position: bottom;
+        height: 1450px;
+    }
+}
+
+@media only screen and (min-width: 1800px) and (max-width: 2199px) {
+
+    .home-hero__bg {
+        height: 1150px;
+    }
+}
 
 @media only screen and (max-width: 575px) {
 

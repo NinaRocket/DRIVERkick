@@ -9,3 +9,15 @@
     margin-top: 20px;
     font-weight: bold;
 }
+
+
+@media only screen and (max-width: 575px) {
+    
+    .description-module {
+        width: 275px;
+        margin: 35px auto;
+
+        padding: 0;
+    }
+  
+}
