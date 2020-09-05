@@ -1,19 +1,30 @@
-import React, { useState, useRef } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState, useRef, useEffect } from "react";
+import { useParams, useHistory } from "react-router-dom";
 import "./style.css";
 import editBtn from "../../../images/user-page/edit-btn.svg";
 import saveBtn from "../../../images/user-page/save-btn.svg";
 import ContentEditable from "react-contenteditable";
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
+import API from "../../../utils/API";
 
 function MileageTrackerCard() {
   const [editing, setEditing] = useState(false);
   const [carNickname, setCarNickname] = useState("Update");
   const [ownerName, setOwnerName] = useState("Update");
-  const { userData } = useDriverKickContext();
+  const { userData, logout } = useDriverKickContext();
+  const { user } = useParams();
 
   //redirect to vehicle dashboard
   const redirect = useHistory();
+
+  useEffect(() => {
+    API.getVehicle(user).then((response) => {
+      if (response.data.isAuthenticated === false) {
+        return logout(redirect);
+      }
+      console.log(response);
+    });
+  });
 
   const trackMaintenanceBtn = () => {
     redirect.push("/vehicle-dashboard");
