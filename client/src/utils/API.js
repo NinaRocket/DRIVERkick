@@ -17,11 +17,6 @@ export default {
   },
 
   // VEHICLE ROUTES
-<<<<<<< HEAD
-  // saves to MongoDB however no data is in api/vehicle
-  createVehicle: function (VIN, year, make, model) {
-    return axios.post("/api/vehicle", { VIN, year, make, model });
-=======
   //post VIN
   addvehicle: function (userVehicleInfo) {
     return axios.post("/api/vehicle/decode-vin/vin", userVehicleInfo);
@@ -33,7 +28,6 @@ export default {
 
   getDecodeVIN: function (VIN) {
     return axios.get(`/api/vehicle/decode-vin/${VIN}`);
->>>>>>> master
   },
   // updates vehicle nickname
   updateNickname: function (vehicleId, nickname) {
@@ -56,10 +50,6 @@ export default {
   },
   newWarranty: (warranty) => {
     return axios.post("/api/warranty", warranty);
-<<<<<<< HEAD
-  }
-};
-=======
   },
 };
 // getWarrantyById: (id) => {
@@ -70,4 +60,3 @@ export default {
 // }
 
 // };
->>>>>>> master

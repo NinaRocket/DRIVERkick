@@ -23,7 +23,7 @@ font-family: 'Titillium Web', "Helvetica Neue", Helvetica, Arial, sans-serif;
 h1 {
   font-weight: 900;
   font-size: 50px;
-  line-height: 36px;
+  line-height: 76%;
   text-transform: uppercase;
 }
 
@@ -136,8 +136,36 @@ button:focus {
   box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
 }
 
+button:hover {
+  background-color: #50B2C0;
+  transition: ease .3s;
+}
+
 .btn {
   font-weight: bold;
+  padding: 5px 25px;
+  border-radius: 0;
+}
+
+.g__btn-reset  {
+  background: none;
+}
+
+.g__btn-reset:hover  {
+  background: none;
+}
+
+.g__btn-outline {
+  background: none;
+  border: 2px solid #FF4000;
+  color: #FF4000;
+}
+
+.g__btn-outline:hover {
+  background: #50B2C0;
+  border: 2px solid #50B2C0;
+  color: #FEEFDD;
+  transition: ease .3s;
 }
 
 .form-control, input {
@@ -157,20 +185,11 @@ input:focus {
     box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
 }
 
-
-
-/* —————————————————————————————————————
-Navs
-———————————————————————————————————————*/
-.g__nav-btn-group {
-  display: flex;
+.navbar-brand {
+  margin-right: 0;
 }
 
-.g__nav-dashboards {
-  background-color: #143642;
-  border-bottom: 2px solid #0F4457;
-  padding: 30px 0;
-}
+
 
 
 /* —————————————————————————————————————
@@ -260,3 +279,16 @@ Vehicle Dashboard
   font-weight: bold;
   border: none;
 }
+
+
+
+/* —————————————————————————————————————
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+////////////////////////////////////////
+
+Mobile Styles
+
+////////////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+———————————————————————————————————————*/
+
