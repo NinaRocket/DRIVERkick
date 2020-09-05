@@ -8,9 +8,9 @@
 }
 
 .global-nav__logo:hover {
-    transform:matrix(1.00,0.00,-0.50,1.00,0,0);
-    -ms-transform:matrix(1.00,0.00,-0.50,1.00,0,0);
-    -webkit-transform:matrix(1.00,0.00,-0.50,1.00,0,0);
+    transform:matrix(1.00,0.00,-0.20,1.00,0,0);
+    -ms-transform:matrix(1.00,0.00,-0.20,1.00,0,0);
+    -webkit-transform:matrix(1.00,0.00,-0.20,1.00,0,0);
     transition: ease-in-out .2s;
 }
 
