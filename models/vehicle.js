@@ -17,12 +17,10 @@ const vehicleSchema = new Schema({
   currentMileage: { type: Number },
   nextOilChange: { type: Number },
   oilType: { type: String },
-  warranty: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Warranty",
-    },
-  ],
+  warranties: [{
+    type: Schema.Types.ObjectId,
+    ref: "Warranty"
+  }]
 });
 
 const Vehicle = mongoose.model("Vehicle", vehicleSchema);
