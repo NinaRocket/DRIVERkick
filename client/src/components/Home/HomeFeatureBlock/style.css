@@ -23,3 +23,20 @@
 .home-feat__descriptions {
     justify-content: space-between;
 }
+
+.home-feat__btn {
+ margin: 35px auto 0;
+ display: block;
+ padding: 10px 70px;
+ font-weight: bold;
+ font-size: 18px;
+ border-radius: 40px;
+}
+
+
+@media only screen and (max-width: 575px) {
+
+
+  
+  
+}
