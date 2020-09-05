@@ -26,8 +26,8 @@ function UserNewVehicleForm() {
 
     API.getDecodeVIN(VIN)
       .then((response) => {
-        if (response.isAuthenticated === false) {
-          return logout();
+        if (response.data.isAuthenticated === false) {
+          return logout(redirect);
         }
         setVinData(response.data);
         // Authentication user submitted a vin (changing the state from "False" to a truthy value)
@@ -46,16 +46,25 @@ function UserNewVehicleForm() {
 
   const submitUserVehicle = (event) => {
     event.preventDefault();
-    setUserData(vinData);
+    console.log(vinData);
+    API.addvehicle(vinData.vin, vinData.year, vinData.make, vinData.model);
+    // setUserData(vinData);
     redirect.push("/user-dashboard");
   };
 
-  // API.saveDecodeVIN(VIN).then((response) => {
-  //   console.log(response);
-  //   if (isAuthenticated === false) {
-  //     return logout();
-  //   }
-  // });
+  const saveVINdata = (VIN) => {
+    API.saveDecodeVIN(VIN)
+      .then((response) => {
+        console.log(response);
+        if (response.data.isAuthenticated === false) {
+          return logout(redirect);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  //saveVINdata();
 
   return (
     <div className="g__form-container">
