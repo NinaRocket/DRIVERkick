@@ -1,12 +1,17 @@
 import React from "react";
-import LoginNavBar from "../LoginNavBar";
+import "./style.css";
+import { useDriverKickContext } from "../../../utils/DriverKickContext";
+import GlobalNavBar from "../../GlobalNavBar";
 import LoginMainWrapper from "../LoginMainWrapper";
 import LoginForm from "../LoginForm";
 
 function LoginPage() {
+  const { setNavType } = useDriverKickContext();
+  setNavType("login");
+
   return (
     <div>
-      <LoginNavBar />
+      <GlobalNavBar />
       <LoginMainWrapper>
         <LoginForm />
       </LoginMainWrapper>

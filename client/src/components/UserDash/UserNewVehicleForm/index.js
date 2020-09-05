@@ -45,7 +45,7 @@ function UserNewVehicleForm() {
   const submitUserVehicle = (event) => {
     event.preventDefault();
     setUserData(vinData);
-    redirect.push("/stage-user-dashboard")
+    redirect.push("/user-dashboard")
   };
 
   return (
