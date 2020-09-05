@@ -1,5 +1,4 @@
 const db = require("../models");
-const { Vehicle } = require("../models");
 
 module.exports = {
   findAllByOwner: function (req, res) {
