@@ -6,14 +6,15 @@ const vehicleSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
     ref: "User",
-    required: true
+    required: true,
   },
   VIN: { type: String, required: true },
-  year: {type: Number, required: true },
-  make: { type: String, required: true},
+  year: { type: Number, required: true },
+  make: { type: String, required: true },
   model: { type: String, required: true },
-  vehicleNickname: { type: String },
-  currentMilage: { type: Number },
+  driverName: { type: String },
+  nickname: { type: String },
+  currentMileage: { type: Number },
   nextOilChange: { type: Number },
   oilType: { type: String },
   warranties: [{
@@ -25,4 +26,3 @@ const vehicleSchema = new Schema({
 const Vehicle = mongoose.model("Vehicle", vehicleSchema);
 
 module.exports = Vehicle;
-

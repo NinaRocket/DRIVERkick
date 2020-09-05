@@ -5,8 +5,7 @@ const Schema = mongoose.Schema;
 const warrantySchema = new Schema({
     vehicle: {
         type: Schema.Types.ObjectId,
-        ref: "Vehicle",
-        required: true
+        ref: "Vehicle"
     },
     title: { type: String, required: true },
     provider: { type: String, required: true },

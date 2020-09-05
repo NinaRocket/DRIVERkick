@@ -1,0 +1,67 @@
+.home-feat__block {
+    border-radius: 0px 40px;
+    background: center linear-gradient(0deg, rgba(254, 239, 221, 0.95), rgba(254, 239, 221, 0.95)), url("../../../images/home/feat-block-bg.jpg");
+  background-size:cover;
+  padding: 0 100px 55px;
+  position: relative;
+    top: -100px;
+    -webkit-box-shadow: 0px 4px 0px 0px rgba(172,155,135,1);
+    -moz-box-shadow: 0px 4px 0px 0px rgba(172,155,135,1);
+    box-shadow: 0px 4px 0px 0px rgba(172,155,135,1);
+}
+
+.home-feat__roof-txt {
+    color: #FEEFDD;
+    background: #50B2C0;
+    padding: 30px 12px 2px;
+    width: 150px;
+    margin: 0 auto;
+}
+
+.home-feat__title {
+    color: #143642;
+    text-align: center;
+    font-size: 48px;
+    margin-top: 30px;
+}
+
+.home-feat__descriptions {
+    justify-content: space-between;
+}
+
+.home-feat__btn {
+ margin: 40px auto 0;
+ display: block;
+ padding: 10px 70px;
+ font-weight: bold;
+ font-size: 18px;
+ border-radius: 40px;
+}
+
+@media only screen and (min-width: 2200px) {
+
+    .home-feat__block {
+        top: -180px;
+    }
+}
+
+@media only screen and (min-width: 1800px) and (max-width: 2199px) {
+
+    .home-feat__block {
+        top: -70px;
+    }
+}
+
+
+@media only screen and (max-width: 575px) {
+    .home-feat__block {
+      padding: 0 20px 55px;
+    }
+
+    .home-feat__title {
+        font-size: 42px;
+
+    }
+  
+  
+}
