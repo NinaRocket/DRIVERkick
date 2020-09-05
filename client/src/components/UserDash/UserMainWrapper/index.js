@@ -8,7 +8,6 @@ import API from "../../../utils/API";
 function UserMainWrapper({ children }) {
     const [user, setUser] = useState({});
 
-
     const { id } = useParams();
     useEffect(() => {
         API.getUser(id)
@@ -16,8 +15,6 @@ function UserMainWrapper({ children }) {
             .catch((err) => console.log(err));
         console.log(user);
     }, []);
-    console.log(user);
-
 
     return (
         <section className="g__dashboard-wrapper">

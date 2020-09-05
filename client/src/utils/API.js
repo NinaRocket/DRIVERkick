@@ -23,7 +23,7 @@ export default {
   },
 
   getVehicle: function () {
-    return axios.get("/api/vehicle");
+    return axios.get("/api/vehicle")
   },
 
   getDecodeVIN: function (VIN) {
@@ -51,6 +51,9 @@ export default {
   newWarranty: (warranty) => {
     return axios.post("/api/warranty", warranty);
   },
+  updateOwner: () => {
+    return axios.put()
+  }
 };
 // getWarrantyById: (id) => {
 //   return axios.get("/api/warranty/", id)
