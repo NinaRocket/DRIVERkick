@@ -12,3 +12,14 @@
     width: 150px;
     margin: 0 auto;
 }
+
+.home-feat__title {
+    color: #143642;
+    text-align: center;
+    font-size: 48px;
+    margin-top: 30px;
+}
+
+.home-feat__descriptions {
+    justify-content: space-between;
+}
