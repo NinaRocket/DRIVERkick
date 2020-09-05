@@ -1,0 +1,23 @@
+.description-module {
+    width: 275px;
+    margin: 50px auto 0;
+    text-align: center;
+    padding: 0 15px;
+}
+
+.description-module__subhead {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+
+@media only screen and (max-width: 575px) {
+    
+    .description-module {
+        width: 275px;
+        margin: 35px auto;
+
+        padding: 0;
+    }
+  
+}

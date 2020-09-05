@@ -11,7 +11,7 @@ function HomePage() {
     setNavType("home");
 
     return (
-        <div>
+        <div >
             <GlobalNavBar />
             <HomeHero />
             <HomeFeatureBlock />
