@@ -18,7 +18,7 @@ function HomeHero() {
     }
     return (
         <header className="home-hero__bg">
-            <h1>
+            <h1 className="home-hero__h1">
                 Don’t<br />
                 Be Caught<br />
                 <span className="g__fiery-orange--txt">Off-Guard</span>
