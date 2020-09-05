@@ -12,8 +12,8 @@ const vehicleSchema = new Schema({
   year: {type: Number, required: true },
   make: { type: String, required: true},
   model: { type: String, required: true },
-  vehicleNickname: { type: String },
-  currentMilage: { type: Number },
+  nickname: { type: String },
+  currentMileage: { type: Number },
   nextOilChange: { type: Number },
   oilType: { type: String },
   warranty: [{
