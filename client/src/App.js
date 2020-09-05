@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-// import Footer from "./components/Footer";
+import Footer from "./components/Footer";
 import "./App.css";
 import { DriverKickProvider } from './utils/DriverKickContext';
 import HomePage from "./components/Home/HomePage";
@@ -27,7 +27,7 @@ function App() {
           </DriverKickProvider>
         </Switch>
       </Router>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }
