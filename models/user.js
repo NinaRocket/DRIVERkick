@@ -25,8 +25,8 @@ const UserSchema = new Schema({
     trim: true,
     required: true,
   },
-  // vehical reference
-  vehicle: [
+  // vehicle reference
+  vehicles: [
     {
       type: Schema.Types.ObjectId,
       ref: "Vehicle",
@@ -58,11 +58,13 @@ module.exports = User;
 
 module.exports.getUserByUsername = function (username, callback) {
   var query = { username: username };
-  User.findOne(query, callback);
+  User.findOne(query, callback)
+  .populate('vehicles')
 };
 
 module.exports.getUserById = function (id, callback) {
-  User.findById(id, callback);
+  User.findById(id, callback)
+  .populate('vehicles')
 };
 
 module.exports.comparePassword = function (candidatePassword, hash, callback) {

@@ -2,12 +2,16 @@ const db = require("../models");
 
 module.exports = {
     findAllByOwner: function (req, res) {
-        db.Vehicle.find({ owner: req.user._id })
+        db.Vehicle.find({})
+            // populate warranties for that vehicle
+            .populate('warranties')
             .then(dbVehicles => res.json(dbVehicles))
             .catch(err => res.status(422).json(err));
     },
     findById: function (req, res) {
         db.Vehicle.find({ _id: req.params.id })
+            // populate warranties for that vehicle
+            .populate('warranties')
             .then(dbVehicle => res.json(dbVehicle))
             .catch(err => res.status(422).json(err));
     },

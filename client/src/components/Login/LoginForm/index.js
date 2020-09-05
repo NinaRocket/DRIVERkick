@@ -24,8 +24,9 @@ function LoginForm() {
             .then((response) => {
                 console.log("login response: ");
                 console.log(response);
+                // if successeful
                 if (response.status === 200) {
-                    // update App.js state
+                    // update App.js state to login
                     setLoggedIn(true);
                     setEmail(response.data.email);
                     // update the state to redirect to home
