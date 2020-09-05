@@ -2,16 +2,17 @@ const router = require("express").Router();
 const vehicleController = require("../../controllers/vehicleController");
 const db = require("../../models");
 const axios = require("axios");
+const isAuthenticated = require("../../config/middleware/isAuthenticated")
 
-router
-  .route("/")
+router.use(isAuthenticated);
+
+router.route("/")
   // creates vehicle
   .post(vehicleController.create)
   // returns all vehicles of the logged in user
   .get(vehicleController.findAllByOwner);
 
-router
-  .route("/:id")
+router.route("/:id")
   // gets single vehicle by id
   .get(vehicleController.findById)
   // update vehicle
@@ -19,15 +20,13 @@ router
   //delete vehicle
   .delete(vehicleController.remove);
 
-router
-  .route("/oil/:id")
+router.route("/oil/:id")
   // gets vehicle oil change mileage
   .get(vehicleController.getOilChangeMiles)
   //updates the vehicles oil change
   .get(vehicleController.updateOil);
 
-router
-  .route("/decode-vin/:vin")
+router.route("/decode-vin/:vin")
   // gets vehicle information from vin params
   .get(function (req, res) {
     axios

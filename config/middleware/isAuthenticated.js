@@ -1,4 +1,5 @@
 const path = require("path");
+const { read } = require("fs");
 
 // This is middleware for restricting routes a user is not allowed to visit if not logged in
 module.exports = function(req, res, next) {
@@ -8,5 +9,5 @@ module.exports = function(req, res, next) {
   }
 
   // If the user isn't logged in, redirect them to the login page
-  return res.redirect(path.join(__dirname, "../client/build/index.html"));
+  return res.json({ isAuthenticated: false });
 };
