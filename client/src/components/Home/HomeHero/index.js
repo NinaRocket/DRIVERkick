@@ -25,7 +25,7 @@ function HomeHero() {
                 <br />
             Again
             </h1>
-            <button onClick={scroll} className="home-hero__anchor-btn g__btn-reset" >
+            <button onClick={scroll} className="home-hero__anchor-btn g__btn-reset anchor-bounce" >
                 <img src={anchorCricleBtn} alt="Scroll down button" />
             </button>
 

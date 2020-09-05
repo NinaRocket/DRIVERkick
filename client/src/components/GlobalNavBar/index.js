@@ -72,7 +72,7 @@ function GlobalNavBar() {
                         </button>
                                 <button
                                     type="button"
-                                    className="btn"
+                                    className="btn g__btn-outline"
                                     onClick={login}
                                 >
                                     Login

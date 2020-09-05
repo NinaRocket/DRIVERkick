@@ -136,12 +136,36 @@ button:focus {
   box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
 }
 
+button:hover {
+  background-color: #50B2C0;
+  transition: ease .3s;
+}
+
 .btn {
   font-weight: bold;
+  padding: 5px 25px;
+  border-radius: 0;
 }
 
 .g__btn-reset  {
   background: none;
+}
+
+.g__btn-reset:hover  {
+  background: none;
+}
+
+.g__btn-outline {
+  background: none;
+  border: 2px solid #FF4000;
+  color: #FF4000;
+}
+
+.g__btn-outline:hover {
+  background: #50B2C0;
+  border: 2px solid #50B2C0;
+  color: #FEEFDD;
+  transition: ease .3s;
 }
 
 .form-control, input {

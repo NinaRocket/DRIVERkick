@@ -3,12 +3,23 @@
     z-index: 5;
 }
 
+.global-nav__logo {
+    transition: ease-in-out .2s;
+}
+
+.global-nav__logo:hover {
+    transform:matrix(1.00,0.00,-0.50,1.00,0,0);
+    -ms-transform:matrix(1.00,0.00,-0.50,1.00,0,0);
+    -webkit-transform:matrix(1.00,0.00,-0.50,1.00,0,0);
+    transition: ease-in-out .2s;
+}
+
 .global-nav__btn-group {
     display: flex;
 }
 
 .global-nav__btn-group > button {
-    margin-right: 20px;
+    margin-right: 10px;
 }
   
 .global-nav__nav-dashboards {
