@@ -41,11 +41,11 @@ function GlobalNavBar() {
 
     return (
         <>
-            <div className={
+            <div className={`global-nav ${
                 navType === "userDash" ||
                     navType === "newVehicle" ||
                     navType === "vehicleDash" ?
-                    "g__nav-dashboards" : null}>
+                    "global-nav__nav-dashboards" : null}`}>
                 <Navbar className="container navbar justify-content-between flex-column flex-sm-row ">
                     <Navbar.Brand href="/">
                         <img
@@ -53,7 +53,7 @@ function GlobalNavBar() {
                                 navType === "home" ||
                                     navType === "notFound" ?
                                     LogoDark : LogoTan}
-                            className="d-inline-block align-top"
+                            className="d-inline-block align-top global-nav__logo"
                             alt="Drive Kick Logo"
                         />
                     </Navbar.Brand>
@@ -61,7 +61,7 @@ function GlobalNavBar() {
 
                         {/* Home */}
                         {navType === "home" ?
-                            <div className="g__nav-btn-group">
+                            <div className="global-nav__btn-group">
                                 <button
                                     id="signupBtn"
                                     type="button"
@@ -72,7 +72,7 @@ function GlobalNavBar() {
                         </button>
                                 <button
                                     type="button"
-                                    className="btn"
+                                    className="btn g__btn-outline"
                                     onClick={login}
                                 >
                                     Login
@@ -95,7 +95,7 @@ function GlobalNavBar() {
                             navType === "userDash" ||
                                 navType === "newVehicle" ?
 
-                                <div className="g__nav-btn-group">
+                                <div className="global-nav__btn-group">
                                     {navType === "userDash" ? <button className="btn" onClick={addNewVehicle}><FaPlus />Add New Vehicle</button> : null}
 
                                     <button
@@ -108,7 +108,7 @@ function GlobalNavBar() {
 
                         {/* Vehicle Dashboard */}
                         {navType === "vehicleDash" ?
-                            <div className="g__nav-btn-group">
+                            <div className="global-nav__btn-group">
                                 <button
                                     type="button"
                                     className="btn"
