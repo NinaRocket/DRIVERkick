@@ -2,4 +2,13 @@
     border-radius: 0px 40px;
     background:linear-gradient(0deg, rgba(254, 239, 221, 0.90), rgba(254, 239, 221, 0.90)), url("../../../images/home/feat-block-bg.jpg");
   background-size:cover;
+  padding: 0 100px 55px;
+}
+
+.home-feat__roof-txt {
+    color: #FEEFDD;
+    background: #50B2C0;
+    padding: 30px 12px 2px;
+    width: 150px;
+    margin: 0 auto;
 }
