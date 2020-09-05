@@ -53,7 +53,7 @@ function GlobalNavBar() {
                                 navType === "home" ||
                                     navType === "notFound" ?
                                     LogoDark : LogoTan}
-                            className="d-inline-block align-top"
+                            className="d-inline-block align-top global-nav__logo"
                             alt="Drive Kick Logo"
                         />
                     </Navbar.Brand>

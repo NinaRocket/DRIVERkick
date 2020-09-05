@@ -157,6 +157,10 @@ input:focus {
     box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
 }
 
+.navbar-brand {
+  margin-right: 0;
+}
+
 
 
 /* —————————————————————————————————————
@@ -259,19 +263,3 @@ Mobile Styles
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 ———————————————————————————————————————*/
 
-@media only screen and (max-width: 575px) {
-  /* —————————————————————————————————————
-  Bootstrap Overrides
-  ———————————————————————————————————————*/
-  .navbar-brand {
-    margin-right: 0;
-    margin-bottom: 8px;
-  }
-
-  /* .navbar-expand .navbar-nav {
-    width: 100%;
-  } */
-
-
-
-}
