@@ -1,0 +1,5 @@
+.home-feat__block {
+    border-radius: 0px 40px;
+    background:linear-gradient(0deg, rgba(254, 239, 221, 0.90), rgba(254, 239, 221, 0.90)), url("../../../images/home/feat-block-bg.jpg");
+  background-size:cover;
+}

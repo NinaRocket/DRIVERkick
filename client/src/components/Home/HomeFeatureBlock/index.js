@@ -1,37 +1,13 @@
 import React from 'react';
+import "./style.css"
 
 function HomeFeatureBlock() {
     return (
-        <div className="container" id="featBlock">
-            Feature Block Content Coming So
-            Feature Block Content Coming Soon
-            Feature Block Content Coming Soon
-            Feature Block Content Coming Soon
-            Feature Block Content Coming Soon
-            Feature Block Content Coming Soon
-            Feature Block Content Coming Soon
-            Feature Block Content Coming Soon
-            Feature Block Content Coming Soon
-            Feature Block Content Coming Soon
-            Feature Block Content Coming Soon
-            Feature Block Content Coming Soon
-            Feature Block Content Coming Soon
-            Feature Block Content Coming Soon
-            Feature Block Content Coming Soon
-            Feature Block Content Coming Soon
-            Feature Block Content Coming Soon
-            Feature Block Content Coming Soon
-            Feature Block Content Coming Soon
-            Feature Block Content Coming Soon
-            Feature Block Content Coming Soon
-            Feature Block Content Coming Soon
-            Feature Block Content Coming Soon
-            Feature Block Content Coming Soon
-            Feature Block Content Coming Soon
-            Feature Block Content Coming Soon
-            Feature Block Content Coming Soon
-            Feature Block Content Coming Soon
-        </div>
+        <section className="g__deep-blue--bg">
+            <div className="container home-feat__block" id="featBlock">
+
+            </div>
+        </section>
     );
 }
 
