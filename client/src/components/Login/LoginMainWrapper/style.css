@@ -1,7 +1,25 @@
-.log-wrap__bg {
+.login-wrap__bg {
     background: url('../../../images/login-page/login-pg-bg.jpg') center / cover no-repeat;
     color: #143642;
     text-align: center;
-    height: 900px;
+    height: fit-content;
     padding-top: 120px;
 }
+
+.login__h1 {
+ font-size: 100px;
+ color: #FEEFDD;
+ margin: 0 auto 50px;
+}
+
+.login__h1--stack {
+    display: block;
+}
+
+@media only screen and (max-width: 575px) {
+    .login__h1 {
+        font-size: 50px;
+       }
+  
+  }
+  

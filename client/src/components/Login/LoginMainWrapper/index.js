@@ -5,7 +5,7 @@ import Col from "react-bootstrap/Col";
 
 function LoginMainWrapper({ children }) {
     return (
-        <section className="log-wrap__bg">
+        <section className="login-wrap__bg">
             <div className="container">
                 <Row>
                     <Col lg={5}>
@@ -13,12 +13,24 @@ function LoginMainWrapper({ children }) {
                     </Col>
                     <Col lg={1}></Col>
                     <Col lg={6}>
-                        <h1 className="text-white">
-                            Welcome<br />
-                        Back<br />
-                        Let<span className="g__fiery-orange--txt">’</span>s get<br />
-                        tracking
-                    </h1>
+                        <h1 className="login__h1">
+                            <span className="g__fiery-orange--txt">—</span>
+                            <span className="login__h1--stack">
+                                Welcome
+                            </span>
+                            <span className="login__h1--stack">
+                                Back
+                            </span>
+
+                            <span className="login__h1--stack">
+                                Let<span className="g__fiery-orange--txt">’</span>s get
+                            </span>
+                            <span className="login__h1--stack">
+                                Tracking
+                            </span>
+                            <span className="g__fiery-orange--txt">—</span>
+
+                        </h1>
                     </Col>
                 </Row>
             </div>
