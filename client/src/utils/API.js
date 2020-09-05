@@ -50,10 +50,6 @@ export default {
   },
   newWarranty: (warranty) => {
     return axios.post("/api/warranty", warranty);
-<<<<<<< HEAD
-  }
-};
-=======
   },
 };
 // getWarrantyById: (id) => {
@@ -64,4 +60,3 @@ export default {
 // }
 
 // };
->>>>>>> master

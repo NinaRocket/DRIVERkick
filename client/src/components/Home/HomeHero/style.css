@@ -1,12 +1,80 @@
 .home-hero__bg {
-    background: url('../../../images/home/home-hero-bg.jpg') center / cover no-repeat;
+    background-color: #143642;
+    background: url('../../../images/home/home-hero-bg-lg.jpg') center / cover no-repeat;
     color: #143642;
     text-align: center;
-    height: 900px;
-    padding-top: 120px;
+    height: 1100px;
+    padding-top: 130px;
+    margin-top: -86px;
+}
+
+.home-hero__h1 {
+    font-size: 100px;
+    transition: ease .2s;
 }
 
 .home-hero__anchor-btn {
     margin-top: 50px;
+    align-self: flex-end;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    transform-origin: bottom;
 }
 
+.home-hero__anchor-btn:hover {
+   opacity: .5;
+   transition: ease .5;
+}
+
+.anchor-bounce {
+    animation-name: anchor-bounce;
+    animation-timing-function: cubic-bezier(1.280, 0.840, 0.420, 1);
+}
+@keyframes anchor-bounce {
+    0%   { transform: scale(1,1)      translateY(0); }
+    10%  { transform: scale(1.1,.9)   translateY(2px); }
+    30%  { transform: scale(.9,1.1)   translateY(-4px); }
+    50%  { transform: scale(1.05,.80) translateY(0); }
+    57%  { transform: scale(1,1)      translateY(0); }
+    64%  { transform: scale(1,1)      translateY(0); }
+    100% { transform: scale(1,1)      translateY(0); }
+}
+
+
+
+@media only screen and (min-width: 2200px) {
+
+    .home-hero__bg {
+        background-position: bottom;
+        height: 1450px;
+    }
+}
+
+@media only screen and (min-width: 1800px) and (max-width: 2199px) {
+
+    .home-hero__bg {
+        height: 1150px;
+    }
+}
+
+@media only screen and (max-width: 575px) {
+
+    .home-hero__bg {
+        margin-top: -153px;
+        padding-top: 185px;
+        height: 800px;
+        background: url('../../../images/home/home-hero-bg.jpg') center / cover no-repeat;
+    }
+
+    .home-hero__h1 {
+        font-size: 58px;
+        transition: ease .2s;
+    }
+
+    .home-hero__anchor-btn {
+        margin-top: 20px;
+    }
+  
+  
+}
+  
