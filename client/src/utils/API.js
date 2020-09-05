@@ -29,6 +29,9 @@ export default {
   getDecodeVIN: function (VIN) {
     return axios.get(`/api/vehicle/decode-vin/${VIN}`);
   },
+  saveDecodeVIN: function (VIN) {
+    return axios.post(`/api/vehicle/${VIN}`);
+  },
   // updates vehicle nickname
   updateNickname: function (vehicleId, nickname) {
     return axios.put(`/api/vehicle/${vehicleId}`, { nickname });
