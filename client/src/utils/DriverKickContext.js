@@ -1,76 +1,81 @@
-import React, { useContext, useState } from 'react';
-import { Redirect } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { BrowserRouter, Redirect } from "react-router-dom";
 
 const DriverKickContext = React.createContext();
 
-
 export const useDriverKickContext = () => {
-    return useContext(DriverKickContext);
+  return useContext(DriverKickContext);
+};
+
+function DriverKickRouter(props) {
+  return <BrowserRouter {...props} />;
 }
 
 export function DriverKickProvider({ children }) {
+  const [authenticated, setAuthenticated] = useState(false);
 
-    const [authenticated, setAuthenticated] = useState(false);
+  function login() {
+    setAuthenticated(true);
+  }
 
-    function login() {
-        setAuthenticated(true);
-    }
+  function logout(history) {
+    setAuthenticated(false);
+    // post route to logout session on backend
 
-    function logout() {
-        setAuthenticated(false);
-        // post route to logout session on backend
+    // Route them back to the homepage
+    return history.push("/login");
+  }
 
-        // Route them back to the homepage 
-        return <Redirect to={{ pathname: "/" }} />;
-    }
+  // ****START Child Component Set Up****
+  // (Will remove this comment once set up correctly)
 
+  // *** The setUserData State is imported on the child component
+  //      import { useDriverKickContext } from './DriverContext';
 
-    // ****START Child Component Set Up**** 
-    // (Will remove this comment once set up correctly)
+  // *** We deconstruct the state from the context.
+  //      const { setUserData } = useDriverKickContext();
 
-    // *** The setUserData State is imported on the child component 
-    //      import { useDriverKickContext } from './DriverContext';
+  // ** We then use the state to update the value
+  //     setUserData(value)
 
-    // *** We deconstruct the state from the context.
-    //      const { setUserData } = useDriverKickContext();
+  // ****END Child Component Set Up****
 
-    // ** We then use the state to update the value 
-    //     setUserData(value)
+  const [userData, setUserData] = useState({
+    firstName: "",
+    lastName: "",
+    make: "N/A",
+    model: "N/A",
+    year: "N/A",
+  });
 
-    // ****END Child Component Set Up**** 
+  const [vehicleData, setVehicleData] = useState({
+    vehicle: [],
+    warranty: [],
+  });
 
+  // Nav Bar States
+  const [navType, setNavType] = useState("home");
 
-    const [userData, setUserData] = useState({
-        make: "N/A",
-        model: "N/A",
-        year: "N/A"
-    });
+  // navType Expects: "home" || "notFound" || "login" || "signup" || "newVehicle" || "userDash" || "vehicleDash"
 
-    const [vehicleData, setVehicleData] = useState({
-        vehicle: [],
-        warranty: []
-    });
-
-
-    // Nav Bar States
-    const [navType, setNavType] = useState("home");
-
-    // navType Expects: "home" || "notFound" || "login" || "signup" || "newVehicle" || "userDash" || "vehicleDash" 
-
-    return (
-        <DriverKickContext.Provider value={{
-            login,
-            logout,
-            setUserData,
-            userData,
-            authenticated,
-            setAuthenticated,
-            vehicleData,
-            setVehicleData,
-            navType,
-            setNavType
-        }}>
-            {children}
-        </DriverKickContext.Provider>
-    )
+  return (
+    <DriverKickRouter>
+      <DriverKickContext.Provider
+        value={{
+          login,
+          logout,
+          setUserData,
+          userData,
+          authenticated,
+          setAuthenticated,
+          vehicleData,
+          setVehicleData,
+          navType,
+          setNavType,
+        }}
+      >
+        {children}
+      </DriverKickContext.Provider>
+    </DriverKickRouter>
+  );
 }

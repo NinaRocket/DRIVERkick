@@ -6,12 +6,14 @@ module.exports = {
     findAll: function(req, res) {
         Warranty
           .find({ vehicle: req.body.vehicle })
+          .populate("vehicle")
           .then(dbWarranties => res.json(dbWarranties))
           .catch(err => res.status(422).json(err));
       },
     findById: function(req, res) {
       Warranty
         .findById(req.body.id)
+        .populate("vehicle")
         .then(dbWarranty => res.json(dbWarranty))
         .catch(err => res.status(422).json(err));
       },
