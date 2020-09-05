@@ -3,6 +3,19 @@ import "./style.css"
 import anchorCricleBtn from "../../../images/home/anchor-cricle-btn.svg"
 
 function HomeHero() {
+    const scroll = () => {
+
+        // Controls scrolling for anchor btn
+        const featBlock = document.getElementById("featBlock");
+        featBlock.scrollIntoView(
+            {
+                behavior: "smooth",
+                block: "start",
+                inline: "nearest"
+            }
+        );
+
+    }
     return (
         <header className="home-hero__bg">
             <h1>
@@ -12,10 +25,10 @@ function HomeHero() {
                 <br />
             Again
             </h1>
-            <a href="#scrollFeatBlock">
-            <img src={anchorCricleBtn} className="home-hero__anchor-btn " alt="Scroll down button" />
-            </a>
-            
+            <button onClick={scroll} className="home-hero__anchor-btn g__btn-reset" >
+                <img src={anchorCricleBtn} alt="Scroll down button" />
+            </button>
+
         </header>
     );
 }

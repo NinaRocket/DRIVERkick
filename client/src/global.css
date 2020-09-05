@@ -140,6 +140,10 @@ button:focus {
   font-weight: bold;
 }
 
+.g__btn-reset  {
+  background: none;
+}
+
 .form-control, input {
   background: none;
   padding: 13px 15px;
@@ -160,6 +164,7 @@ input:focus {
 .navbar-brand {
   margin-right: 0;
 }
+
 
 
 
