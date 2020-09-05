@@ -1,5 +1,8 @@
 const router = require("express").Router();
 const warrantyController = require("../../controllers/warrantyController");
+const isAuthenticated = require("../../config/middleware/isAuthenticated");
+
+router.use(isAuthenticated);
 
 router.route("/")
     .get(warrantyController.findAll)
