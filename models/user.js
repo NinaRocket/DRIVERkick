@@ -25,8 +25,8 @@ const UserSchema = new Schema({
     trim: true,
     required: true,
   },
-  // vehical reference
-  vehicle: [
+  // vehicle reference
+  vehicles: [
     {
       type: Schema.Types.ObjectId,
       ref: "Vehicle",
