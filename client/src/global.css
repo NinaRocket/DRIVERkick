@@ -160,20 +160,6 @@ input:focus {
 
 
 /* —————————————————————————————————————
-Navs
-———————————————————————————————————————*/
-.g__nav-btn-group {
-  display: flex;
-}
-
-.g__nav-dashboards {
-  background-color: #143642;
-  border-bottom: 2px solid #0F4457;
-  padding: 30px 0;
-}
-
-
-/* —————————————————————————————————————
 Forms
 ———————————————————————————————————————*/
 .g__form-container {

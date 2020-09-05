@@ -1,0 +1,14 @@
+.global-nav {
+    padding-top: 30px;
+    z-index: 5;
+}
+
+.global-nav__btn-group {
+    display: flex;
+}
+  
+.global-nav__nav-dashboards {
+    background-color: #143642;
+    border-bottom: 2px solid #0F4457;
+    padding: 30px 0;
+}
