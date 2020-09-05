@@ -11,3 +11,12 @@
     margin-top: 50px;
 }
 
+@media only screen and (max-width: 575px) {
+
+    .home-hero__bg {
+        margin-top: -153px;
+    }
+  
+  
+}
+  
