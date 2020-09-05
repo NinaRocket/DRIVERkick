@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato&family=Titillium+Web:wght@300;400;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Titillium+Web:wght@200;400;600;700;900&display=swap');
 
 body {
   margin: 0;
@@ -113,6 +113,51 @@ Colors
 }
 
 
+/* —————————————————————————————————————
+Bootstrap Overrides
+———————————————————————————————————————*/
+.table td, .table th {
+  border-top: none;
+  border-bottom: 3px solid #143642;
+  padding: .75rem 0;
+}
+
+button {
+  background: none;
+  border: none;
+  color: #FEEFDD;
+  background-color: #FF4000;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+.btn {
+  font-weight: bold;
+}
+
+.form-control, input {
+  background: none;
+  padding: 13px 15px;
+  border-color: #E3D3BE;
+  border-style: solid;
+  border-radius: .25rem;
+}
+
+.form-control:focus,
+input:focus {
+  color: #143642;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+
 
 /* —————————————————————————————————————
 Navs
@@ -146,16 +191,72 @@ Forms
   text-align: left;
 }
 
-.g__label-style {
-
-}
-
 
 /* —————————————————————————————————————
-Dashboards
+Global Dashboards
 ———————————————————————————————————————*/
 .g__dashboard-wrapper {
   background-color: #143642;
   color: #FEEFDD;
   padding: 80px 0;
+}
+
+.g__card__subhead {
+  color: #50B2C0;
+}
+
+
+/* —————————————————————————————————————
+User Dashboard
+———————————————————————————————————————*/
+
+
+
+
+/* —————————————————————————————————————
+Vehicle Dashboard
+———————————————————————————————————————*/
+.g__vehicle-card {
+  padding: 40px 0;
+  background-color: #0F4457;
+  border-radius: 0px 20px;  
+  -webkit-box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.1);
+     -moz-box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.1);
+          box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.1);
+  border-top: 6px solid #50B2C0;
+
+}
+
+.g__vehicle-card__header-container {
+  padding: 30px 60px;
+}
+
+.g__vehicle-card__header {
+  display: flex;
+  margin-bottom: 25px;
+}
+
+.g__vehicle-card__title {
+  font-weight: 900;
+  font-size: 50px;
+  line-height: 36px;
+  text-transform: uppercase;
+  margin-left: 20px;
+}
+
+.g__vehicle-card__body-container {
+  padding: 40px 60px 0;
+}
+
+.g__vehicle-card--top-border {
+  border-top: 6px solid #143642;
+}
+
+.g__vehicle-card__btn {
+  padding: 10px;
+  width: 100%;
+  color: #FEEFDD;
+  background-color: #FF4000;
+  font-weight: bold;
+  border: none;
 }

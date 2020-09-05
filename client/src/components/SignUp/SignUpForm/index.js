@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import './style.css'
-import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import API from "../../../utils/API";
 
 function SignUpForm() {
@@ -9,11 +9,7 @@ function SignUpForm() {
     const [lastName, setLastName] = useState([]);
     const [password, setPassword] = useState([]);
     const [confirmPassword, setConfirmPassword] = useState([]);
-    const [redirect, setRedirect] = useState(false);
-
-    useEffect(() => {
-        setRedirect(true);
-    }, []);
+    const redirect = useHistory();
 
     const signupEmailValue = (event) => {
         setEmail(event.target.value);
@@ -44,7 +40,7 @@ function SignUpForm() {
             email: email,
             firstName: firstName,
             lastName: lastName,
-            password: password,
+            password: password
         };
 
         //request to server to add a new email/password
@@ -54,7 +50,7 @@ function SignUpForm() {
                 if (!response.data.errmsg) {
                     console.log("successful signup");
                     //home for now
-                    setRedirect("/userpage");
+                    redirect.push("/add-vehicle")
                 } else {
                     console.log("email already taken");
                 }

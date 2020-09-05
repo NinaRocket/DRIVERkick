@@ -1,66 +1,97 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useRef } from "react";
 import "./style.css";
+import editBtn from '../../../images/user-page/edit-btn.svg';
+import saveBtn from '../../../images/user-page/save-btn.svg';
+import ContentEditable from 'react-contenteditable';
+import { useDriverKickContext } from '../../../utils/DriverKickContext';
 
-function VehicleNavBar({ trackMaintenanceBtn }) {
-    // Edit Code ——————————|
-    const [edit, setEdit] = useState(false);
-    const [customTxt, setCustomTxt] = useState();
+
+
+function MileageTrackerCard({ trackMaintenanceBtn }) {
+
+    const [editing, setEditing] = useState(false);
+    const [carNickname, setCarNickname] = useState("Update");
+    const [ownerName, setOwnerName] = useState("Update");
+    const { userData } = useDriverKickContext();
+
+
+    const inputedCarNickname = useRef(carNickname);
+    const inputedOwnerName = useRef(ownerName);
     
-    const editFunc = () => {
-        const styler = document.getElementById("editVal");
-        styler.setAttribute("style", "color:red; border: 1px solid blue;");
-        setEdit(true)
-    }
 
-    const saveFunc = () => {
-        const values = document.getElementById("editVal");
-        values.removeAttribute("style");
-        setCustomTxt(values)
-        setEdit(false)
+    const handleNicknameChange = evt => {
+        inputedCarNickname.current = evt.target.value;
+    };
+
+    const handleOwnerChange = evt => {
+        inputedOwnerName.current = evt.target.value;
+    };
+
+
+    const editFields = () => {
+        console.log("edit button")
+        editing ? setEditing(false) : setEditing(true);
+        setCarNickname(inputedCarNickname);
+        setOwnerName(inputedOwnerName);
+
     }
-    // Edit Code ——————————|
     return (
-        <div>
-            <button onClick={editFunc}>Edit</button>
-            <button onClick={saveFunc}>Save</button>
+        <div className="vehicle-card">
             {/* Row */}
-            <div>
+            <div className="d-md-flex">
                 {/* Image Col */}
-                <div>Image</div>
+                <div className="vehicle-card__img">
+                </div>
                 {/* Content Col */}
-                <div>
+                <div className="vehicle-card__content">
                     {/* Header Row & Bottom-border*/}
-                    <div>
+                    <div className="vehicle-card__header">
                         <div>
-                            <h4>Car Nickname</h4>
-                            {/* // Edit Code ——————————|     */}
-                            <h3 contentEditable={edit} id="editVal">{!customTxt ? "Edit Me" : customTxt}</h3>
-                            {/* // Edit Code ——————————|     */}
+                            <h4 className="g__card__subhead">Car Nickname</h4>
+                            <h3><ContentEditable
+                                html={inputedCarNickname.current}
+                                onChange={handleNicknameChange}
+                                disabled={!editing ? true : false}
+                                className={editing ? "vehicle-card__custom-input" : ""}
+                            /></h3>
+
                         </div>
-                        <button onClick={trackMaintenanceBtn}>Track Maintenance</button>
+                        <div>
+                            <button onClick={editFields} className="vehicle-card__edit-btn">{
+                                !editing ? <img src={editBtn} alt="Edit button" /> : <img src={saveBtn} alt="save button" />
+                            }</button>
+                            <button onClick={trackMaintenanceBtn} className="vehicle-card__track-btn">Track Maintenance</button>
+                        </div>
+
                     </div>
+
                     {/* Car Specs */}
-                    <div>
-                        {/* Row 1 */}
-                        <div>
-                            <div>
-                                <h4>Make</h4>
-                                <h3>Toyota</h3>
+                    <div className="vehicle-card__car-info">
+                        {/* Col 1 */}
+                        <div className="vehicle-card__col">
+                            <div className="vehicle-card__car-item">
+                                <h4 className="g__card__subhead">Make</h4>
+                                <h3>{userData.make}</h3>
                             </div>
-                            <div>
-                                <h4>Year</h4>
-                                <h3>2001</h3>
+                            <div className="vehicle-card__car-item">
+                                <h4 className="g__card__subhead">Year</h4>
+                                <h3>{userData.year}</h3>
                             </div>
                         </div>
-                        {/* Row 2 */}
-                        <div>
-                            <div>
-                                <h4>Owner</h4>
-                                <h3>Linnea Gear</h3>
+                        {/* Col 2 */}
+                        <div className="vehicle-card__col">
+                            <div className="vehicle-card__car-item">
+                                <h4 className="g__card__subhead">Owner</h4>
+                                <h3><ContentEditable
+                                    html={inputedOwnerName.current}
+                                    onChange={handleOwnerChange}
+                                    disabled={!editing ? true : false}
+                                    className={editing ? "vehicle-card__custom-input" : ""}
+                                /></h3>
                             </div>
-                            <div>
-                                <h4>Model</h4>
-                                <h3>Coup</h3>
+                            <div className="vehicle-card__car-item">
+                                <h4 className="g__card__subhead">Model</h4>
+                                <h3>{userData.model}</h3>
                             </div>
                         </div>
                     </div>
@@ -70,4 +101,4 @@ function VehicleNavBar({ trackMaintenanceBtn }) {
     );
 }
 
-export default VehicleNavBar;
+export default MileageTrackerCard;

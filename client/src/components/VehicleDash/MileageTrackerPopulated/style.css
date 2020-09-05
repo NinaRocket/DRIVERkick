@@ -1,0 +1,27 @@
+.mileage-card__body {
+    display: flex;
+    padding: 20px 60px 0;
+}
+
+.mileage-card__mileage-txt {
+    font-size: 50px;
+    margin-bottom: 50px;
+}
+
+.mileage-card__date-txt {
+    font-weight: 200;
+    font-size: 30px;
+    margin-bottom: 50px;
+}
+
+.mileage-card__current {
+    border-right: 6px solid #143642;
+    flex-grow: 2;
+    padding-right: 60px;
+}
+
+.mileage-card__history {
+    flex-grow: 1;
+    padding-left: 60px;
+}
+

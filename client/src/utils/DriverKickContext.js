@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 const DriverKickContext = React.createContext();
 
 
-export function useDriverKickContext() {
+export const useDriverKickContext = () => {
     return useContext(DriverKickContext);
 }
 
@@ -41,10 +41,9 @@ export function DriverKickProvider({ children }) {
 
 
     const [userData, setUserData] = useState({
-        email: "",
-        firstName: "",
-        lastName: "",
-        password: ""
+        make: "N/A",
+        model: "N/A",
+        year: "N/A"
     });
 
     const [vehicleData, setVehicleData] = useState({
@@ -52,7 +51,11 @@ export function DriverKickProvider({ children }) {
         warranty: []
     });
 
-    const [isVehicleFormNav, setIsVehicleFormNav] = useState(false);
+
+    // Nav Bar States
+    const [navType, setNavType] = useState("home");
+
+    // navType Expects: "home" || "notFound" || "login" || "signup" || "newVehicle" || "userDash" || "vehicleDash" 
 
     return (
         <DriverKickContext.Provider value={{
@@ -64,8 +67,8 @@ export function DriverKickProvider({ children }) {
             setAuthenticated,
             vehicleData,
             setVehicleData,
-            isVehicleFormNav,
-            setIsVehicleFormNav
+            navType,
+            setNavType
         }}>
             {children}
         </DriverKickContext.Provider>

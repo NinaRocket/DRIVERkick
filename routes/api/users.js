@@ -16,7 +16,8 @@ router.post("/signup", (req, res) => {
     lastName: req.body.lastName,
   })
     .then(() => {
-      res.redirect(307, "api/login");
+      res.send(req.user);
+      // res.redirect(307, "api/login");
     })
     .catch((err) => {
       res.status(400).json(err);
