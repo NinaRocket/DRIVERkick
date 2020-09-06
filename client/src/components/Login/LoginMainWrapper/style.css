@@ -2,7 +2,7 @@
     background: url('../../../images/login-page/login-pg-bg.jpg') center / cover no-repeat;
     color: #143642;
     text-align: center;
-    min-height: 900px;
+    min-height: 1012px;
     height: fit-content;
     
 }
@@ -29,6 +29,8 @@ padding-top: 120px;
     .login-wrap__main {
         padding-top: 50px;
     }
+
+ 
   
   }
   
