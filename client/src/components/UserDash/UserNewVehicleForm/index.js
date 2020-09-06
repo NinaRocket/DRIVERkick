@@ -99,7 +99,7 @@ function UserNewVehicleForm() {
               <p className="mb-4">
                 Result looks incorrect? Please double-check the VIN above.
               </p>
-              <div className="d-sm-flex justify-content-around">
+              <div className="d-md-flex justify-content-around">
                 <div className="vehicle-form__vin-item">
                   <h4 className="g__card__subhead">Make</h4>
                   <h3>{vinData.make}</h3>
