@@ -65,18 +65,7 @@ function SignUpForm() {
         <div className="g__form-container">
             <form>
             <h2 className="g__form-title">Sign Up</h2>
-                <div className="g__label-group">
-                    <label className="form-label" htmlFor="email">Email</label>
-                    <input
-                        className="form-input"
-                        type="text"
-                        id="email"
-                        name="email"
-                        placeholder="you@email.com"
-                        value={email}
-                        onChange={signupEmailValue}
-                    />
-                </div>
+               
                 <div className="g__label-group">
                     <label className="form-label" htmlFor="firstName">First Name</label>
                     <input
@@ -99,6 +88,19 @@ function SignUpForm() {
                         placeholder="Smith"
                         value={lastName}
                         onChange={signupLastNameValue}
+                    />
+                </div>
+                <hr className="g__form-divider"/>
+                <div className="g__label-group">
+                    <label className="form-label" htmlFor="email">Email</label>
+                    <input
+                        className="form-input"
+                        type="text"
+                        id="email"
+                        name="email"
+                        placeholder="you@email.com"
+                        value={email}
+                        onChange={signupEmailValue}
                     />
                 </div>
                 <div className="g__label-group">
@@ -129,7 +131,7 @@ function SignUpForm() {
                     />
                 </div>
 
-                <button className="btn btn-primary" onClick={submitUserSignup} type="submit"
+                <button className="btn g__form-submit-btn" onClick={submitUserSignup} type="submit"
                 >Create Account</button>
 
             </form>

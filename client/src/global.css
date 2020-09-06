@@ -226,6 +226,11 @@ Forms
   margin-top: 15px;
 }
 
+.g__form-divider {
+  border: solid 1px #f0e1cf;
+  margin: 40px 0;
+}
+
 
 /* —————————————————————————————————————
 Global Dashboards
