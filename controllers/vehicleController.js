@@ -24,8 +24,8 @@ module.exports = {
             model: req.body.model
         })
             .then(dbVehicle => {
-                db.User.findOneAndUpdate({ _id: req.user._id }, { $push: { vehicles: dbVehicle._id }});
-                return res.json(dbVehicle);
+                db.User.findOneAndUpdate({ _id: req.user._id }, { $push: { vehicles: dbVehicle._id }})
+                .then(dbUser => res.json(dbVehicle));
             })
             .catch(err => res.status(422).json(err));
     },
