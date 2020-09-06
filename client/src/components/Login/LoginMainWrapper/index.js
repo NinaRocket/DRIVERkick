@@ -3,10 +3,13 @@ import "./style.css";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-function LoginMainWrapper({ children }) {
+function LoginMainWrapper({ children, navbar }) {
     return (
         <section className="login-wrap__bg">
-            <div className="container">
+            <div>
+                {navbar}
+            </div>
+            <div className="container login-wrap__main">
                 <Row>
                     <Col lg={5}>
                         {children}

@@ -47,9 +47,6 @@
 
 
 @media only screen and (max-width: 575px) {
-  .footer__subhead {
-    margin-top: 0;
-  }
 
   .footer__os {
     margin-top: 25px;
