@@ -2,6 +2,31 @@
     background: url('../../../images/signup-page/signup-page-bg.jpg') center / cover no-repeat;
     color: #143642;
     text-align: center;
-    height: 900px;
-    padding-top: 120px;
+    min-height: 1012px;
+    height: fit-content;
+}
+
+.signup-wrap__main {
+    padding: 120px 0;
+}
+
+.signup__h1 {
+    font-size: 100px;
+    color: #FEEFDD;
+    margin: 0 auto;
+}
+   
+.signup__h1--stack {
+   display: block;
+}
+   
+@media only screen and (max-width: 575px) {
+   .signup__h1 {
+       font-size: 50px;
+  }
+   
+   .signup-wrap__main {
+       padding: 50px 0;
+   }
+        
 }

@@ -3,10 +3,13 @@ import "./style.css";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-function SignUpMainWrapper({ children }) {
+function SignUpMainWrapper({ children, navbar }) {
     return (
         <section className="sign-wrap__bg">
-            <div className="container">
+            <div>
+                {navbar}
+            </div>
+            <div className="container signup-wrap__main">
                 <Row>
                     <Col lg={5}>
                         {children}
