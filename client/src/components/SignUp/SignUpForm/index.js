@@ -64,6 +64,7 @@ function SignUpForm() {
     return (
         <div className="g__form-container">
             <form>
+            <h2 className="g__form-title">Sign Up</h2>
                 <div className="g__label-group">
                     <label className="form-label" htmlFor="email">Email</label>
                     <input

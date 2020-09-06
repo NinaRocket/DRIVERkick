@@ -10,7 +10,7 @@ function LoginMainWrapper({ children, navbar }) {
                 {navbar}
             </div>
             <div className="container login-wrap__main">
-                <Row>
+                <Row className="login-wrap__main--reverse">
                     <Col lg={5}>
                         {children}
                     </Col>

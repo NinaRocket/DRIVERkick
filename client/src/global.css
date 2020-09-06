@@ -211,6 +211,10 @@ Forms
   text-align: left;
 }
 
+.g__form-title {
+  margin-bottom: 30px;
+}
+
 .g__form-submit-btn {
   padding: 10px;
   width: 100%;
