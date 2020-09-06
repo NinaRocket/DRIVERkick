@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 const Schema = mongoose.Schema;
 const passport = require("passport");
 
-const userSchema = new Schema({
+const UserSchema = new Schema({
   email: {
     type: String,
     unique: true,
@@ -53,5 +53,5 @@ userSchema.pre("save", function (next) {
   }
 });
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model("User", UserSchema);
 module.exports = User;
