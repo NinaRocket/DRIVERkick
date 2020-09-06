@@ -21,8 +21,8 @@ module.exports = {
         db.Warranty
           .create(req.body)
           .then(dbWarranty => {
-            db.Vehicle.findOneAndUpdate({ _id: req.body.vehicle }, { $push: { warranties: dbWarranty._id }});
-            return res.json(dbWarranty);
+            db.Vehicle.findOneAndUpdate({ _id: req.body.vehicle }, { $push: { warranties: dbWarranty._id }})
+            .then(dbVehicle => res.json(dbWarranty));
           })
           .catch(err => res.status(422).json(err));
       },
