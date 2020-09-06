@@ -15,7 +15,6 @@ module.exports = {
       .then((dbVehicle) => res.json(dbVehicle))
       .catch((err) => res.status(422).json(err));
   },
-
   create: function (req, res) {
     db.Vehicle.create({
       user: req.user._id,
@@ -24,7 +23,13 @@ module.exports = {
       make: req.body.make,
       model: req.body.model,
     })
-      .then((dbVehicle) => res.json(dbVehicle))
+      .then((dbVehicle) => {
+        db.User.findOneAndUpdate(
+          { _id: req.user._id },
+          { $push: { vehicles: dbVehicle._id } }
+        );
+        return res.json(dbVehicle);
+      })
       .catch((err) => res.status(422).json(err));
   },
   update: function (req, res) {
