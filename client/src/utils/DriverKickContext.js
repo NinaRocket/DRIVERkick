@@ -26,19 +26,6 @@ export function DriverKickProvider({ children }) {
     return history.push("/login");
   }
 
-  // ****START Child Component Set Up****
-  // (Will remove this comment once set up correctly)
-
-  // *** The setUserData State is imported on the child component
-  //      import { useDriverKickContext } from './DriverContext';
-
-  // *** We deconstruct the state from the context.
-  //      const { setUserData } = useDriverKickContext();
-
-  // ** We then use the state to update the value
-  //     setUserData(value)
-
-  // ****END Child Component Set Up****
 
   const [userData, setUserData] = useState({
     firstName: "",
@@ -62,6 +49,10 @@ export function DriverKickProvider({ children }) {
   const [accordionHelper, setAccordionHelper] = useState(false);
 
 
+  // Select Vehicle Type Options
+  const [selectValue, setSelectValue] = useState();
+
+
   return (
     <DriverKickRouter>
       <DriverKickContext.Provider
@@ -77,7 +68,9 @@ export function DriverKickProvider({ children }) {
           navType,
           setNavType,
           accordionHelper,
-          setAccordionHelper
+          setAccordionHelper,
+          selectValue,
+          setSelectValue
 
         }}
       >
