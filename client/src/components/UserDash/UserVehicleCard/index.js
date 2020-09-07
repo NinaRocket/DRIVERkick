@@ -13,7 +13,9 @@ function UserVehicleCard() {
   const [carNickname, setCarNickname] = useState("Update");
   const [ownerName, setOwnerName] = useState("Update");
   const [iconImage, setIconImage] = useState({});
-  const { userData, selectValue } = useDriverKickContext();
+  const [userInfo, setUserInfo] = useState([]);
+  const [vehicleInfo, setVehicleInfo] = useState([]);
+  const { userData, logout, selectValue } = useDriverKickContext();
 
   //redirect to vehicle dashboard
   const redirect = useHistory();
@@ -32,24 +34,17 @@ function UserVehicleCard() {
         }
         setVehicleInfo(res.data.vehicles);
         setUserInfo(res.data);
-        setMake(res.data.vehicles[0].make);
+
         //setUserInfo({ ...userInfo, ...res.data });
         console.log(res.data);
       })
       .catch((err) => console.log(err));
   }, []);
 
-  const trackMaintenanceBtn = () => {
-    redirect.push("/vehicle-dashboard");
-  };
-
   console.log(vehicleInfo[0]);
   //const vehicleInfo = userInfo.vehicles;
   //const {} = userInfo.vehicles;
   //console.log(vehicleInfo);
-
-  console.log(userInfo);
-  console.log(make);
 
   const inputedCarNickname = useRef(carNickname);
   const inputedOwnerName = useRef(ownerName);
