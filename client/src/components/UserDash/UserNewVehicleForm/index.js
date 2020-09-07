@@ -80,7 +80,7 @@ function UserNewVehicleForm() {
       <form className="g__deep-blue--txt">
         <h2 className="text-center">Add New Vehicle</h2>
         <div className="g__label-group mt-4">
-          <select value={selectValue} onChange={e => setSelectValue(e.currentTarget.value)}>
+          <select value={selectValue} onChange={e => setSelectValue(e.currentTarget.value)} className="form-control">
             <option value="">Choose…</option>
             <option value="sedan">Sedan</option>
             <option value="suv">SUV</option>
