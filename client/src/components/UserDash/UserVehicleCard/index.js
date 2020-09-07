@@ -1,21 +1,21 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import "./style.css";
 import editBtn from "../../../images/user-page/edit-btn.svg";
 import saveBtn from "../../../images/user-page/save-btn.svg";
-import sedanTypeIcon from "../../../images/user-page/car-type-icon.svg";
-import ContentEditable from "react-contenteditable";
+import carIcons from "../../../utils/carIcons.json"; import ContentEditable from "react-contenteditable";
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
 
 function MileageTrackerCard() {
   const [editing, setEditing] = useState(false);
   const [carNickname, setCarNickname] = useState("Update");
   const [ownerName, setOwnerName] = useState("Update");
-  const { userData } = useDriverKickContext();
+  const [iconImage, setIconImage] = useState({});
+  const { userData, selectValue } = useDriverKickContext();
 
   //redirect to vehicle dashboard
   const redirect = useHistory();
-  
+
   // Stores content edit values into States
   const inputedCarNickname = useRef(carNickname);
   const inputedOwnerName = useRef(ownerName);
@@ -43,13 +43,48 @@ function MileageTrackerCard() {
   };
 
 
+  useEffect(() => {
+    // START Switch for Car Icons ———————————————|
+    switch (selectValue) {
+      case "convertible":
+        setIconImage(carIcons[0].image)
+        break;
+      case "miniVan":
+        setIconImage(carIcons[1].image)
+        break;
+      case "motorcycle":
+        setIconImage(carIcons[2].image)
+        break;
+      case "pickup":
+        setIconImage(carIcons[3].image)
+        break;
+      case "rv":
+        setIconImage(carIcons[4].image)
+        break;
+      case "sedan":
+        setIconImage(carIcons[5].image)
+        break;
+      case "sportsCar":
+        setIconImage(carIcons[6].image)
+        break;
+      case "suv":
+        setIconImage(carIcons[7].image)
+        break;
+      case "van":
+        setIconImage(carIcons[8].image)
+        break;
+      default:
+        setIconImage(carIcons[5].image)
+    }
+  }, [])
+
   return (
     <div className="vehicle-card">
       {/* Row */}
       <div className="d-md-flex">
         {/* Image Col */}
         <div className="vehicle-card__img-container">
-          <img src={sedanTypeIcon} alt="Car icon" className="vehicle-card__img" />
+          <img src={iconImage} alt="Car icon" className="vehicle-card__img" />
         </div>
         {/* Content Col */}
         <div className="vehicle-card__content">
@@ -67,9 +102,9 @@ function MileageTrackerCard() {
               </h3>
             </div>
             <div>
-              <button 
-              onClick={editFields} 
-              className="vehicle-card__edit-btn g__btn-reset">
+              <button
+                onClick={editFields}
+                className="vehicle-card__edit-btn g__btn-reset">
                 {!editing ? (
                   <img src={editBtn} alt="Edit button" />
                 ) : (

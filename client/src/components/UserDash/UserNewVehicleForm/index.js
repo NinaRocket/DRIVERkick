@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, createRef } from "react";
 import { useHistory } from "react-router-dom";
 import "./style.css";
 import API from "../../../utils/API";
@@ -10,7 +10,7 @@ import { useDriverKickContext } from "../../../utils/DriverKickContext";
 
 
 function UserNewVehicleForm() {
-  const { setUserData, logout } = useDriverKickContext();
+  const { setUserData, logout, selectValue, setSelectValue } = useDriverKickContext();
   const [vinNum, setVinNum] = useState(false);
   const [vinData, setVinData] = useState();
   const [vinResults, setVinResults] = useState(false);
@@ -44,50 +44,57 @@ function UserNewVehicleForm() {
       });
   };
 
+
+  // const saveVINdata = (VIN) => {
+  //   API.saveDecodeVIN(VIN)
+  //     .then((response) => {
+  //       console.log(response);
+  //       if (response.data.isAuthenticated === false) {
+  //         return logout(redirect);
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
+  //saveVINdata();
+
+
+
+  // Submit Form
   const submitUserVehicle = (event) => {
     event.preventDefault();
-    console.log(vinData);
-    API.addvehicle(vinData.vin, vinData.year, vinData.make, vinData.model);
-    // setUserData(vinData);
-    redirect.push("/user-dashboard");
+    
+    // Validation to make sure they selected a vehicle type
+    if (selectValue) {
+      API.addvehicle(vinData.vin, vinData.year, vinData.make, vinData.model);
+      // setUserData(vinData);
+      redirect.push("/user-dashboard");
+    }
+    return;
   };
 
-  const saveVINdata = (VIN) => {
-    API.saveDecodeVIN(VIN)
-      .then((response) => {
-        console.log(response);
-        if (response.data.isAuthenticated === false) {
-          return logout(redirect);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-  //saveVINdata();
 
   return (
     <div className="g__form-container">
       <form className="g__deep-blue--txt">
         <h2 className="text-center">Add New Vehicle</h2>
-        {/* <div className="g__label-group">
-          <Form.Group controlId="exampleForm.ControlSelect1">
-            <Form.Label>Vehicle Type</Form.Label>
-            <Form.Control as="select" className="form-control-select">
-              <option value="sedan">Sedan</option>
-              <option value="suv">SUV</option>
-              <option value="pickup">Pickup</option>
-              <option value="miniVan">Mini Van</option>
-              <option value="van">Van</option>
-              <option value="sportsCar">Sports Car</option>
-              <option value="convertible">Convertible</option>
-              <option value="rv">RV</option>
-              <option value="motorcycle">Motorcycle</option>
-            </Form.Control>
-          </Form.Group>
-        </div> */}
+        <div className="g__label-group mt-4">
+          <select value={selectValue} onChange={e => setSelectValue(e.currentTarget.value)} className="form-control">
+            <option value="">Choose…</option>
+            <option value="sedan">Sedan</option>
+            <option value="suv">SUV</option>
+            <option value="pickup">Pickup</option>
+            <option value="miniVan">Mini Van</option>
+            <option value="van">Van</option>
+            <option value="sportsCar">Sports Car</option>
+            <option value="convertible">Convertible</option>
+            <option value="rv">RV</option>
+            <option value="motorcycle">Motorcycle</option>
+          </select>
+        </div>
         <div className="g__label-group">
-          <Form.Group className="mt-4">
+          <Form.Group>
             <Form.Label>Vin Number</Form.Label>
             <InputGroup>
               <FormControl
