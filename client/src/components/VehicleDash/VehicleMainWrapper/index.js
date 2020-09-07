@@ -61,14 +61,6 @@ function VehicleMainWrapper({ children }) {
 
   }, []);
   console.log(user);
-  // const { id } = useParams();
-
-  //   useEffect(() => {
-  //     API.getDecodeVIN()
-  //       .then((res) => setUser(res.data))
-  //       .catch((err) => console.log(err));
-  //     console.log(VIN);
-  //   }, []);
 
 
   return (

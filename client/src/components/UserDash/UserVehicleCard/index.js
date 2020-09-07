@@ -3,20 +3,49 @@ import { useHistory } from "react-router-dom";
 import "./style.css";
 import editBtn from "../../../images/user-page/edit-btn.svg";
 import saveBtn from "../../../images/user-page/save-btn.svg";
-import carIcons from "../../../utils/carIcons.json"; import ContentEditable from "react-contenteditable";
+import carIcons from "../../../utils/carIcons.json";
+import ContentEditable from "react-contenteditable";
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
+import API from "../../../utils/API";
 
-function MileageTrackerCard() {
+function UserVehicleCard() {
   const [editing, setEditing] = useState(false);
   const [carNickname, setCarNickname] = useState("Update");
   const [ownerName, setOwnerName] = useState("Update");
   const [iconImage, setIconImage] = useState({});
-  const { userData, selectValue } = useDriverKickContext();
+  const [userInfo, setUserInfo] = useState([]);
+  const [vehicleInfo, setVehicleInfo] = useState([]);
+  const { userData, logout, selectValue } = useDriverKickContext();
 
   //redirect to vehicle dashboard
   const redirect = useHistory();
+  //const ourData = JSON.parse(userInfo);
 
-  // Stores content edit values into States
+  useEffect(() => {
+    API.getUser()
+      .then((res) => {
+        console.log(res);
+        console.log(res.data.vehicles[0]._id);
+        console.log(res.data.vehicles[1].make);
+        console.log(res.data.vehicles[0].warranties);
+
+        if (res.data.isAuthenticated === false) {
+          return logout(redirect);
+        }
+        setVehicleInfo(res.data.vehicles);
+        setUserInfo(res.data);
+
+        //setUserInfo({ ...userInfo, ...res.data });
+        console.log(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  console.log(vehicleInfo[0]);
+  //const vehicleInfo = userInfo.vehicles;
+  //const {} = userInfo.vehicles;
+  //console.log(vehicleInfo);
+
   const inputedCarNickname = useRef(carNickname);
   const inputedOwnerName = useRef(ownerName);
 
@@ -27,7 +56,6 @@ function MileageTrackerCard() {
   const handleOwnerChange = (evt) => {
     inputedOwnerName.current = evt.target.value;
   };
-
 
   // Buttons
   const trackMaintenanceBtn = () => {
@@ -42,41 +70,40 @@ function MileageTrackerCard() {
     setOwnerName(inputedOwnerName);
   };
 
-
   useEffect(() => {
     // START Switch for Car Icons ———————————————|
     switch (selectValue) {
       case "convertible":
-        setIconImage(carIcons[0].image)
+        setIconImage(carIcons[0].image);
         break;
       case "miniVan":
-        setIconImage(carIcons[1].image)
+        setIconImage(carIcons[1].image);
         break;
       case "motorcycle":
-        setIconImage(carIcons[2].image)
+        setIconImage(carIcons[2].image);
         break;
       case "pickup":
-        setIconImage(carIcons[3].image)
+        setIconImage(carIcons[3].image);
         break;
       case "rv":
-        setIconImage(carIcons[4].image)
+        setIconImage(carIcons[4].image);
         break;
       case "sedan":
-        setIconImage(carIcons[5].image)
+        setIconImage(carIcons[5].image);
         break;
       case "sportsCar":
-        setIconImage(carIcons[6].image)
+        setIconImage(carIcons[6].image);
         break;
       case "suv":
-        setIconImage(carIcons[7].image)
+        setIconImage(carIcons[7].image);
         break;
       case "van":
-        setIconImage(carIcons[8].image)
+        setIconImage(carIcons[8].image);
         break;
       default:
-        setIconImage(carIcons[5].image)
+        setIconImage(carIcons[5].image);
     }
-  }, [])
+  }, []);
 
   return (
     <div className="vehicle-card">
@@ -104,17 +131,20 @@ function MileageTrackerCard() {
             <div>
               <button
                 onClick={editFields}
-                className="vehicle-card__edit-btn g__btn-reset">
+                className="vehicle-card__edit-btn g__btn-reset"
+              >
                 {!editing ? (
                   <img src={editBtn} alt="Edit button" />
                 ) : (
-                    <img src={saveBtn} alt="save button" />
-                  )}
+                  <img src={saveBtn} alt="save button" />
+                )}
               </button>
               <button
                 disabled={editing === true}
                 onClick={trackMaintenanceBtn}
-                className={`vehicle-card__track-btn ${editing === true ? "g__disabled-btn" : null}`}
+                className={`vehicle-card__track-btn ${
+                  editing === true ? "g__disabled-btn" : null
+                }`}
               >
                 Track Maintenance
               </button>
@@ -159,4 +189,4 @@ function MileageTrackerCard() {
   );
 }
 
-export default MileageTrackerCard;
+export default UserVehicleCard;
