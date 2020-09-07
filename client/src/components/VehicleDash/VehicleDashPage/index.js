@@ -15,6 +15,8 @@ function MyVerticallyCenteredModal(props) {
   const { setModalShow } = useDriverKickContext();
 
   const [mileage, setMileage] = useState();
+  const [mileageError, setMileageError] = useState(false);
+
 
   const handleMilage = (event) => {
     setMileage(event.target.value);
@@ -22,8 +24,10 @@ function MyVerticallyCenteredModal(props) {
 
   const submitCurrentMilage = (event) => {
     event.preventDefault();
+    if (!mileage) {
+      return setMileageError(true);
+    }
     setModalShow(false)
-
     // Needs to post this to the database
     console.log(mileage)
 
@@ -40,7 +44,8 @@ function MyVerticallyCenteredModal(props) {
       </Modal.Header>
       <div className="g__form-container g__remove-margin-bottom">
         <h2 className="text-center">Update Current Mileage</h2>
-        
+        {mileageError ? <p className="text-center text-danger">Please input your current milage.</p> : null}
+
 
 
         <VehicleCurrentMileageForm
