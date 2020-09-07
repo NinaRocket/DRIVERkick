@@ -55,6 +55,11 @@ export function DriverKickProvider({ children }) {
     //   selectValue Expects: "sedan" || "suv" || "pickup" || "miniVan" || "van" || "sportsCar" || "convertible" || "rv" || "motorcycle"
 
 
+    // Modal Show/Hide States
+    const [modalShow, setModalShow] = React.useState(false);
+
+
+
     return (
         <DriverKickRouter>
             <DriverKickContext.Provider
@@ -72,7 +77,9 @@ export function DriverKickProvider({ children }) {
                     accordionHelper,
                     setAccordionHelper,
                     selectValue,
-                    setSelectValue
+                    setSelectValue,
+                    modalShow,
+                    setModalShow
 
                 }}
             >

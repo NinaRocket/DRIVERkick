@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style.css";
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
 import GlobalNavBar from "../../GlobalNavBar";
@@ -12,19 +12,42 @@ import Modal from 'react-bootstrap/Modal';
 
 
 function MyVerticallyCenteredModal(props) {
+  const { setModalShow } = useDriverKickContext();
+
+  const [mileage, setMileage] = useState();
+
+  const handleMilage = (event) => {
+    setMileage(event.target.value);
+  }
+
+  const submitCurrentMilage = (event) => {
+    event.preventDefault();
+    setModalShow(false)
+
+    // Needs to post this to the database
+    console.log(mileage)
+
+  }
+
   return (
     <Modal
       {...props}
-      size="lg"
+      size="md"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Modal heading
-        </Modal.Title>
       </Modal.Header>
-      <VehicleCurrentMileageForm />
+      <div className="g__form-container g__remove-margin-bottom">
+        <h2 className="text-center">Update Current Mileage</h2>
+        
+
+
+        <VehicleCurrentMileageForm
+          handleMilage={handleMilage}
+          submitCurrentMilage={submitCurrentMilage}
+        />
+      </div>
     </Modal>
   );
 }
@@ -32,10 +55,10 @@ function MyVerticallyCenteredModal(props) {
 
 
 function VehicleDashPage() {
-  const { setNavType } = useDriverKickContext();
+  const { setNavType, modalShow, setModalShow } = useDriverKickContext();
   setNavType("vehicleDash");
 
-  const [modalShow, setModalShow] = React.useState(false);
+
 
   const mileageModal = () => {
     setModalShow(true)

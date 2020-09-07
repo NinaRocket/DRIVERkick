@@ -5,7 +5,7 @@ import Table from 'react-bootstrap/Table';
 
 function MileageTrackerPopulated({ mileageTrackingModal }) {
 
-    // ORGINAL CARD'S CODE ——————————————————————————————————|
+    // ORIGINAL CARD'S CODE ——————————————————————————————————|
     // const [mileage, setUpdateMileage] = useState([]);
 
     // const updateMileageValue = (event) => {
