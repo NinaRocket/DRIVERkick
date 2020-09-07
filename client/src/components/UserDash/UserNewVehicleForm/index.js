@@ -12,6 +12,7 @@ import { useDriverKickContext } from "../../../utils/DriverKickContext";
 function UserNewVehicleForm() {
   const { setUserData, logout, selectValue, setSelectValue } = useDriverKickContext();
   const [vinNum, setVinNum] = useState(false);
+  const [selectError, setSelectError] = useState(false);
   const [vinData, setVinData] = useState();
   const [vinResults, setVinResults] = useState(false);
   const redirect = useHistory();
@@ -64,14 +65,14 @@ function UserNewVehicleForm() {
   // Submit Form
   const submitUserVehicle = (event) => {
     event.preventDefault();
-    
+
     // Validation to make sure they selected a vehicle type
     if (selectValue) {
       API.addvehicle(vinData.vin, vinData.year, vinData.make, vinData.model);
       // setUserData(vinData);
       redirect.push("/user-dashboard");
     }
-    return;
+    return setSelectError(true);
   };
 
 
@@ -79,6 +80,7 @@ function UserNewVehicleForm() {
     <div className="g__form-container">
       <form className="g__deep-blue--txt">
         <h2 className="text-center">Add New Vehicle</h2>
+        {selectError ? <p className="text-center text-danger">Please select a vehicle type.</p> : null}
         <div className="g__label-group mt-4">
           <select value={selectValue} onChange={e => setSelectValue(e.currentTarget.value)} className="form-control">
             <option value="">Choose…</option>
