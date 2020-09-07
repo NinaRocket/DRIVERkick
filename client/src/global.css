@@ -141,6 +141,10 @@ button:hover {
   transition: ease .3s;
 }
 
+button:active {
+  background-color: #FF4000;
+}
+
 .btn {
   font-weight: bold;
   padding: 5px 25px;

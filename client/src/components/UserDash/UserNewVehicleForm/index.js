@@ -4,7 +4,6 @@ import "./style.css";
 import API from "../../../utils/API";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
-import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
 //import isAuthenticated from "../../../../../config/middleware/isAuthenticated";
@@ -95,12 +94,12 @@ function UserNewVehicleForm() {
                 className=""
               />
               <InputGroup.Append>
-                <Button
+                <button
                   onClick={searchUserVehicle}
-                  className="vehicle-form__search-btn"
+                  className="btn vehicle-form__search-btn"
                 >
                   Search
-                </Button>
+                </button>
               </InputGroup.Append>
             </InputGroup>
           </Form.Group>
