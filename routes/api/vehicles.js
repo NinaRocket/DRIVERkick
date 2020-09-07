@@ -30,6 +30,13 @@ router
   .get(vehicleController.updateOil);
 
 router
+  .route("/:id")
+// gets vehicle mileage
+.get(vehicleController.getMiles)
+//updates the vehicles mileage
+.post(vehicleController.postMiles);
+
+router
   .route("/decode-vin/:vin")
   // gets vehicle information from vin params
   .get(function (req, res) {
