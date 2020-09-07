@@ -15,7 +15,8 @@ import { useDriverKickContext } from "../../../utils/DriverKickContext";
 
 function VehicleMainWrapper({ children }) {
   const [user, setUser] = useState({});
-  const { accordionHelper } = useDriverKickContext();
+  const [iconImage, setIconImage] = useState({});
+  const { accordionHelper, selectValue, logout } = useDriverKickContext();
 
   const { id } = useParams();
   useEffect(() => {
@@ -23,6 +24,41 @@ function VehicleMainWrapper({ children }) {
       .then((res) => setUser(res.data))
       .catch((err) => console.log(err));
     console.log(user);
+
+    // START Switch for Car Icons ———————————————|
+    switch (selectValue) {
+      case "convertible":
+        setIconImage(carIcons[0].image)
+        break;
+      case "miniVan":
+        setIconImage(carIcons[1].image)
+        break;
+      case "motorcycle":
+        setIconImage(carIcons[2].image)
+        break;
+      case "pickup":
+        setIconImage(carIcons[3].image)
+        break;
+      case "rv":
+        setIconImage(carIcons[4].image)
+        break;
+      case "sedan":
+        setIconImage(carIcons[5].image)
+        break;
+      case "sportsCar":
+        setIconImage(carIcons[6].image)
+        break;
+      case "suv":
+        setIconImage(carIcons[7].image)
+        break;
+      case "van":
+        setIconImage(carIcons[8].image)
+        break;
+      default:
+        setIconImage(carIcons[5].image)
+    }
+    // END Switch for Car Icons ———————————————|
+
   }, []);
   console.log(user);
   // const { id } = useParams();
@@ -34,6 +70,7 @@ function VehicleMainWrapper({ children }) {
   //     console.log(VIN);
   //   }, []);
 
+
   return (
     <section className="g__dashboard-wrapper">
       <div className="container">
@@ -44,7 +81,7 @@ function VehicleMainWrapper({ children }) {
               <Card>
                 <ContextAwareToggle eventKey="0" >
                   <Card.Header className="vehicle-dash__rule">
-                    <img src={carIcons[0].image} alt="Car icon" className="vehicle-dash__user-img" />
+                    <img src={iconImage} alt="Car icon" className="vehicle-dash__user-img" />
                     <h1 className="g__dash-h1">Radical Roadster</h1>
                     {
                       accordionHelper ?

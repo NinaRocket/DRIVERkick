@@ -64,12 +64,12 @@ function UserNewVehicleForm() {
   // Submit Form
   const submitUserVehicle = (event) => {
     event.preventDefault();
+    
     // Validation to make sure they selected a vehicle type
     if (selectValue) {
       API.addvehicle(vinData.vin, vinData.year, vinData.make, vinData.model);
       // setUserData(vinData);
       redirect.push("/user-dashboard");
-      console.log(selectValue);
     }
     return;
   };
