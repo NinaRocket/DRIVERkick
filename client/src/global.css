@@ -330,6 +330,10 @@ Vehicle Dashboard
   border-top: 6px solid #143642;
 }
 
+.g__vehicle-card__header-icon {
+  width: 45px;
+}
+
 .g__vehicle-card__btn {
   padding: 10px;
   width: 100%;
@@ -365,6 +369,24 @@ Mobile Styles
     padding: 50px 30px;
   }
 
+  .g__vehicle-card__header-container {
+    padding: 10px 20px 20px;
+    text-align: center;
+  }
+
+  .g__vehicle-card__header {
+    flex-direction: column;
+    
+  }
+
+  .g__vehicle-card__header-icon {
+    width: 55px;
+    margin: 0 auto;
+  }
+
+  .g__vehicle-card__title {
+    margin: 15px 0 -10px;
+  }
 
 }
 
