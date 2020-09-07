@@ -9,7 +9,7 @@ import Accordion from 'react-bootstrap/Accordion';
 import openBtnIcon from "../../../images/vehiclepage/open-btn-icon.svg";
 import closeBtnIcon from "../../../images/vehiclepage/close-btn-icon.svg";
 import API from "../../../utils/API";
-import placeholder from "../../../images/user-page/car-type-icon.svg";
+import carIcons from "../../../utils/carIcons.json";
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
 
 
@@ -34,9 +34,10 @@ function VehicleMainWrapper({ children }) {
   //     console.log(VIN);
   //   }, []);
 
-
+  console.log(carIcons[0].image)
   return (
     <section className="g__dashboard-wrapper">
+      <img src={carIcons[0].image} />
       <div className="container">
         <Row>
           <Col lg={3}>
@@ -45,7 +46,7 @@ function VehicleMainWrapper({ children }) {
               <Card>
                 <ContextAwareToggle eventKey="0" >
                   <Card.Header className="vehicle-dash__rule">
-                    <img src={placeholder} alt="Car icon" className="vehicle-dash__user-img" />
+                    <img src={carIcons[0].image} alt="Car icon" className="vehicle-dash__user-img" />
                     <h1 className="g__dash-h1">Radical Roadster</h1>
                     {
                       accordionHelper ?
