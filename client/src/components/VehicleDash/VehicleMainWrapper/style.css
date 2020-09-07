@@ -1,0 +1,21 @@
+.vehicle-dash__user-img {
+    -moz-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.4), 0px 0px 15px rgba(16, 40, 49, 0.5);
+    -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.4), 0px 0px 15px rgba(16, 40, 49, 0.5);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.4), 0px 0px 15px rgba(16, 40, 49, 0.5);
+    border-radius: 50%;
+    margin: 20px 0;
+}
+
+.vehicle-dash__rule {
+    border-bottom: 6px solid #0F4457;
+    padding-bottom: 0;
+}
+
+.vehicle-dash__user-group {
+    margin-bottom: 40px;
+}
+
+.vehicle-dash__accordion-toggle {
+    position: relative;
+    top: 20px;
+}

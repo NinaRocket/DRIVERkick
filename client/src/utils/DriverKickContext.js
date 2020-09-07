@@ -58,6 +58,10 @@ export function DriverKickProvider({ children }) {
 
   // navType Expects: "home" || "notFound" || "login" || "signup" || "newVehicle" || "userDash" || "vehicleDash"
 
+  // Accordion Bootstrap Helper Context
+  const [accordionHelper, setAccordionHelper] = useState(true);
+
+
   return (
     <DriverKickRouter>
       <DriverKickContext.Provider
@@ -72,6 +76,9 @@ export function DriverKickProvider({ children }) {
           setVehicleData,
           navType,
           setNavType,
+          accordionHelper,
+          setAccordionHelper
+
         }}
       >
         {children}

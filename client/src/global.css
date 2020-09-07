@@ -209,7 +209,20 @@ input:focus,
 }
 
 
+.card {
+  position: inherit;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: inherit;
+  flex-direction: none;
+  word-wrap: break-word;
+  background: none;
+  border: 1px solid rgba(0,0,0,.125);
+}
 
+.card-body {
+  padding: 3rem 1.25rem 2rem ;
+}
 
 
 /* —————————————————————————————————————
@@ -278,13 +291,13 @@ Vehicle Dashboard
 ———————————————————————————————————————*/
 .g__vehicle-card {
   padding: 40px 0;
-  background-color: #0F4457;
+  background: rgb(15, 68, 87);
+  background:linear-gradient(0deg, rgba(15, 68, 87, 0.6), rgba(15, 68, 87, 0.8)), url("./images/global/diagonal-lines.svg");
   border-radius: 0px 20px;  
   -webkit-box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.1);
      -moz-box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.1);
           box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.1);
   border-top: 6px solid #50B2C0;
-
 }
 
 .g__vehicle-card__header-container {
