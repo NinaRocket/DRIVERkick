@@ -74,11 +74,15 @@ function UserNewVehicleForm() {
           <Form.Group controlId="exampleForm.ControlSelect1">
             <Form.Label>Vehicle Type</Form.Label>
             <Form.Control as="select" className="form-control-select">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+              <option value="sedan">Sedan</option>
+              <option value="suv">SUV</option>
+              <option value="pickup">Pickup</option>
+              <option value="miniVan">Mini Van</option>
+              <option value="van">Van</option>
+              <option value="sportsCar">Sports Car</option>
+              <option value="convertible">Convertible</option>
+              <option value="rv">RV</option>
+              <option value="motorcycle">Motorcycle</option>
             </Form.Control>
           </Form.Group>
         </div> */}
