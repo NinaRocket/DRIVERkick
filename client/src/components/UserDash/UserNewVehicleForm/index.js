@@ -9,6 +9,7 @@ import Form from "react-bootstrap/Form";
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
 //import isAuthenticated from "../../../../../config/middleware/isAuthenticated";
 
+
 function UserNewVehicleForm() {
   const { setUserData, logout } = useDriverKickContext();
   const [vinNum, setVinNum] = useState(false);
@@ -70,6 +71,18 @@ function UserNewVehicleForm() {
     <div className="g__form-container">
       <form className="g__deep-blue--txt">
         <h2 className="text-center">Add New Vehicle</h2>
+        {/* <div className="g__label-group">
+          <Form.Group controlId="exampleForm.ControlSelect1">
+            <Form.Label>Vehicle Type</Form.Label>
+            <Form.Control as="select" className="form-control-select">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </Form.Control>
+          </Form.Group>
+        </div> */}
         <div className="g__label-group">
           <Form.Group className="mt-4">
             <Form.Label>Vin Number</Form.Label>

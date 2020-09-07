@@ -10,8 +10,6 @@ import VehicleFormPage from "./components/UserDash/VehicleFormPage";
 import UserDashPage from "./components/UserDash/UserDashPage";
 import VehicleDashPage from "./components/VehicleDash/VehicleDashPage";
 
-// Need code to route non authenticated users to the the homepage and authenticated users to the User Dashboard
-
 function App() {
   return (
     <>

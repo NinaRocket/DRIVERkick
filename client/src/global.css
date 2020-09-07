@@ -168,16 +168,21 @@ button:hover {
   transition: ease .3s;
 }
 
-.form-control, input {
+.form-control, 
+input,
+.form-control-select {
   background: none;
   padding: 13px 15px;
+  height: fit-content !important;
   border-color: #E3D3BE;
   border-style: solid;
   border-radius: .25rem;
 }
 
+
 .form-control:focus,
-input:focus {
+input:focus,
+.form-control-select:focus {
   color: #143642;
     background-color: #fff;
     border-color: #80bdff;

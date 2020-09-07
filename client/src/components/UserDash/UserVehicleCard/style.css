@@ -60,3 +60,28 @@
     box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
     background-color: rgba(80, 177, 192, 0.3);
   }
+
+
+  @media only screen and (max-width: 575px) {
+    .vehicle-card {
+      padding: 20px;
+      background-image: none;
+    }
+
+    .vehicle-card__content{
+      padding: 0;
+    }
+
+    .vehicle-card__car-info {
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .vehicle-card__col {
+      width: 100%;
+    }
+  
+  
+  }
+  
