@@ -19,11 +19,19 @@ function HomeHero() {
     return (
         <header className="home-hero__bg">
             <h1 className="home-hero__h1">
-                Don’t<br />
-                Be Caught<br />
+                <span className="home-hero__h1--stack">
+                    Don't
+                </span>
+                <span className="home-hero__h1--stack">
+                    Be Caught
+                </span>
+                <span className="home-hero__h1--stack">
                 <span className="g__fiery-orange--txt">Off-Guard</span>
-                <br />
-            Again
+                </span>
+                <span className="home-hero__h1--stack">
+                    Again
+                </span>
+
             </h1>
             <button onClick={scroll} className="home-hero__anchor-btn g__btn-reset anchor-bounce" >
                 <img src={anchorCricleBtn} alt="Scroll down button" />

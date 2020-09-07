@@ -129,16 +129,21 @@ button {
   background-color: #FF4000;
   font-weight: 600;
   cursor: pointer;
+  padding: 0;
 }
 
 button:focus {
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+  box-shadow: 0 0 0 0.1rem rgba(0,123,255,.10);
 }
 
 button:hover {
   background-color: #50B2C0;
   transition: ease .3s;
+}
+
+button:active {
+  background-color: #FF4000;
 }
 
 .btn {
@@ -155,6 +160,16 @@ button:hover {
   background: none;
 }
 
+.g__disabled-btn {
+  background: rgb(182, 182, 182);
+  color: rgb(117, 117, 117);
+}
+
+.g__disabled-btn:hover {
+  background: rgb(182, 182, 182);
+  color: rgb(117, 117, 117);
+}
+
 .g__btn-outline {
   background: none;
   border: 2px solid #FF4000;
@@ -168,16 +183,25 @@ button:hover {
   transition: ease .3s;
 }
 
-.form-control, input {
+.g__btn-accordion {
+  width: 100%;
+}
+
+.form-control, 
+input,
+.form-control-select {
   background: none;
   padding: 13px 15px;
+  height: fit-content !important;
   border-color: #E3D3BE;
   border-style: solid;
   border-radius: .25rem;
 }
 
+
 .form-control:focus,
-input:focus {
+input:focus,
+.form-control-select:focus {
   color: #143642;
     background-color: #fff;
     border-color: #80bdff;
@@ -190,6 +214,20 @@ input:focus {
 }
 
 
+.card {
+  position: inherit;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: inherit;
+  flex-direction: none;
+  word-wrap: break-word;
+  background: none;
+  border: 1px solid rgba(0,0,0,.125);
+}
+
+.card-body {
+  padding: 3rem 1.25rem 2rem ;
+}
 
 
 /* —————————————————————————————————————
@@ -201,6 +239,7 @@ Forms
   -webkit-box-shadow: 0px 34px 74px rgba(0, 0, 0, 0.05);
   -moz-box-shadow: 0px 34px 74px rgba(0, 0, 0, 0.05);
   box-shadow: 0px 34px 74px rgba(0, 0, 0, 0.05);
+  margin-bottom: 40px;
 }
 
 .g__label-group {
@@ -208,6 +247,26 @@ Forms
   flex-direction: column;
   margin-bottom: 1.5rem;
   text-align: left;
+}
+
+.g__form-title {
+  margin-bottom: 30px;
+}
+
+.g__form-submit-btn {
+  padding: 10px;
+  width: 100%;
+  color: #FEEFDD;
+  background-color: #FF4000;
+  font-weight: bold;
+  border: none;
+  border-radius: 50px;
+  margin-top: 15px;
+}
+
+.g__form-divider {
+  border: solid 1px #f0e1cf;
+  margin: 40px 0;
 }
 
 
@@ -237,13 +296,13 @@ Vehicle Dashboard
 ———————————————————————————————————————*/
 .g__vehicle-card {
   padding: 40px 0;
-  background-color: #0F4457;
+  background: rgb(15, 68, 87);
+  background:linear-gradient(0deg, rgba(15, 68, 87, 0.6), rgba(15, 68, 87, 0.8)), url("./images/global/diagonal-lines.svg");
   border-radius: 0px 20px;  
   -webkit-box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.1);
      -moz-box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.1);
           box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.1);
   border-top: 6px solid #50B2C0;
-
 }
 
 .g__vehicle-card__header-container {
@@ -271,6 +330,10 @@ Vehicle Dashboard
   border-top: 6px solid #143642;
 }
 
+.g__vehicle-card__header-icon {
+  width: 45px;
+}
+
 .g__vehicle-card__btn {
   padding: 10px;
   width: 100%;
@@ -291,4 +354,40 @@ Mobile Styles
 ////////////////////////////////////////
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 ———————————————————————————————————————*/
+
+
+@media only screen and (max-width: 991px) {
+  .g__dashboard-wrapper {
+    padding: 30px 0;
+  }
+  
+}
+
+
+@media only screen and (max-width: 575px) {
+  .g__form-container {
+    padding: 50px 30px;
+  }
+
+  .g__vehicle-card__header-container {
+    padding: 10px 20px 20px;
+    text-align: center;
+  }
+
+  .g__vehicle-card__header {
+    flex-direction: column;
+    
+  }
+
+  .g__vehicle-card__header-icon {
+    width: 55px;
+    margin: 0 auto;
+  }
+
+  .g__vehicle-card__title {
+    margin: 15px 0 -10px;
+  }
+
+}
+
 

@@ -11,8 +11,8 @@ function LoginPage() {
 
   return (
     <div>
-      <GlobalNavBar />
-      <LoginMainWrapper>
+      
+      <LoginMainWrapper navbar={<GlobalNavBar />}>
         <LoginForm />
       </LoginMainWrapper>
     </div>

@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import "./style.css";
 import editBtn from "../../../images/user-page/edit-btn.svg";
 import saveBtn from "../../../images/user-page/save-btn.svg";
+import sedanTypeIcon from "../../../images/user-page/car-type-icon.svg";
 import ContentEditable from "react-contenteditable";
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
 
@@ -14,11 +15,8 @@ function MileageTrackerCard() {
 
   //redirect to vehicle dashboard
   const redirect = useHistory();
-
-  const trackMaintenanceBtn = () => {
-    redirect.push("/vehicle-dashboard");
-  };
-
+  
+  // Stores content edit values into States
   const inputedCarNickname = useRef(carNickname);
   const inputedOwnerName = useRef(ownerName);
 
@@ -30,18 +28,29 @@ function MileageTrackerCard() {
     inputedOwnerName.current = evt.target.value;
   };
 
+
+  // Buttons
+  const trackMaintenanceBtn = () => {
+    redirect.push("/vehicle-dashboard");
+  };
+
+  // Controls edit buttons
   const editFields = () => {
     console.log("edit button");
     editing ? setEditing(false) : setEditing(true);
     setCarNickname(inputedCarNickname);
     setOwnerName(inputedOwnerName);
   };
+
+
   return (
     <div className="vehicle-card">
       {/* Row */}
       <div className="d-md-flex">
         {/* Image Col */}
-        <div className="vehicle-card__img"></div>
+        <div className="vehicle-card__img-container">
+          <img src={sedanTypeIcon} alt="Car icon" className="vehicle-card__img" />
+        </div>
         {/* Content Col */}
         <div className="vehicle-card__content">
           {/* Header Row & Bottom-border*/}
@@ -58,16 +67,19 @@ function MileageTrackerCard() {
               </h3>
             </div>
             <div>
-              <button onClick={editFields} className="vehicle-card__edit-btn">
+              <button 
+              onClick={editFields} 
+              className="vehicle-card__edit-btn g__btn-reset">
                 {!editing ? (
                   <img src={editBtn} alt="Edit button" />
                 ) : (
-                  <img src={saveBtn} alt="save button" />
-                )}
+                    <img src={saveBtn} alt="save button" />
+                  )}
               </button>
               <button
+                disabled={editing === true}
                 onClick={trackMaintenanceBtn}
-                className="vehicle-card__track-btn"
+                className={`vehicle-card__track-btn ${editing === true ? "g__disabled-btn" : null}`}
               >
                 Track Maintenance
               </button>

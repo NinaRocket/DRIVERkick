@@ -82,14 +82,14 @@ function GlobalNavBar() {
 
             {/* Sign Up */}
             {navType === "signup" ? (
-              <button type="button" className="btn" onClick={login}>
+              <button type="button" className="btn g__btn-outline" onClick={login}>
                 Login
               </button>
             ) : null}
 
             {/* Log In */}
             {navType === "login" ? (
-              <button type="button" className="btn" onClick={signUp}>
+              <button type="button" className="btn g__btn-outline " onClick={signUp}>
                 Sign Up
               </button>
             ) : null}

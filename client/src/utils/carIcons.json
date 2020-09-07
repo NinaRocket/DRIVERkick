@@ -1,0 +1,47 @@
+[
+    {
+        "id": 1,
+        "name": "convertible",
+        "image": "https://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/convertable-type-icon.svg"
+    },
+    {
+        "id": 2,
+        "name": "mini van",
+        "image": "https://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/minivan-type-icon.svg"
+    },
+    {
+        "id": 3,
+        "name": "motorcycle",
+        "image": "https://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/motercycler-type-icon.svg"
+    },
+    {
+        "id": 4,
+        "name": "pickup",
+        "image": "https://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/pickup-type-icon.svg"
+    },
+    {
+        "id": 5,
+        "name": "rv",
+        "image": "https://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/rv-type-icon.svg"
+    },
+    {
+        "id": 6,
+        "name": "sedan",
+        "image": "https://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/sedan-type-icon.svg"
+    },
+    {
+        "id": 7,
+        "name": "sports car",
+        "image": "https://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/sportscar-type-icon.svg"
+    },
+    {
+        "id": 8,
+        "name": "suv",
+        "image": "https://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/suv-type-icon.svg"
+    },
+    {
+        "id": 9,
+        "name": "sedan",
+        "image": "https://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/van-type-icon.svg"
+    }
+]
