@@ -15,11 +15,8 @@ function MileageTrackerCard() {
 
   //redirect to vehicle dashboard
   const redirect = useHistory();
-
-  const trackMaintenanceBtn = () => {
-    redirect.push("/vehicle-dashboard");
-  };
-
+  
+  // Stores content edit values into States
   const inputedCarNickname = useRef(carNickname);
   const inputedOwnerName = useRef(ownerName);
 
@@ -31,12 +28,21 @@ function MileageTrackerCard() {
     inputedOwnerName.current = evt.target.value;
   };
 
+
+  // Buttons
+  const trackMaintenanceBtn = () => {
+    redirect.push("/vehicle-dashboard");
+  };
+
+  // Controls edit buttons
   const editFields = () => {
     console.log("edit button");
     editing ? setEditing(false) : setEditing(true);
     setCarNickname(inputedCarNickname);
     setOwnerName(inputedOwnerName);
   };
+
+
   return (
     <div className="vehicle-card">
       {/* Row */}
@@ -61,7 +67,9 @@ function MileageTrackerCard() {
               </h3>
             </div>
             <div>
-              <button onClick={editFields} className="vehicle-card__edit-btn">
+              <button 
+              onClick={editFields} 
+              className="vehicle-card__edit-btn g__btn-reset">
                 {!editing ? (
                   <img src={editBtn} alt="Edit button" />
                 ) : (
@@ -69,8 +77,9 @@ function MileageTrackerCard() {
                   )}
               </button>
               <button
+                disabled={editing === true}
                 onClick={trackMaintenanceBtn}
-                className="vehicle-card__track-btn"
+                className={`vehicle-card__track-btn ${editing === true ? "g__disabled-btn" : null}`}
               >
                 Track Maintenance
               </button>

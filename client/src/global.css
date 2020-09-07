@@ -159,6 +159,16 @@ button:active {
   background: none;
 }
 
+.g__disabled-btn {
+  background: rgb(182, 182, 182);
+  color: rgb(117, 117, 117);
+}
+
+.g__disabled-btn:hover {
+  background: rgb(182, 182, 182);
+  color: rgb(117, 117, 117);
+}
+
 .g__btn-outline {
   background: none;
   border: 2px solid #FF4000;
