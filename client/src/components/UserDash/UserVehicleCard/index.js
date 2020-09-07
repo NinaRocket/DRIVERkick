@@ -7,28 +7,51 @@ import ContentEditable from "react-contenteditable";
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
 import API from "../../../utils/API";
 
-function MileageTrackerCard() {
+function UserVehicleCard() {
   const [editing, setEditing] = useState(false);
   const [carNickname, setCarNickname] = useState("Update");
   const [ownerName, setOwnerName] = useState("Update");
-  const { userData, logout } = useDriverKickContext();
-  const { user } = useParams();
+  const { userData, setUserData, logout } = useDriverKickContext();
+  const [vehicleInfo, setVehicleInfo] = useState([]);
+  const [userInfo, setUserInfo] = useState([]);
+  const [make, setMake] = useState([]);
+  const { id } = useParams();
 
   //redirect to vehicle dashboard
   const redirect = useHistory();
+  //const ourData = JSON.parse(userInfo);
 
   useEffect(() => {
-    API.getVehicle(user).then((response) => {
-      if (response.data.isAuthenticated === false) {
-        return logout(redirect);
-      }
-      console.log(response);
-    });
-  });
+    API.getUser()
+      .then((res) => {
+        console.log(res);
+        console.log(res.data.vehicles[0]._id);
+        console.log(res.data.vehicles[1].make);
+        console.log(res.data.vehicles[0].warranties);
+
+        if (res.data.isAuthenticated === false) {
+          return logout(redirect);
+        }
+        setVehicleInfo(res.data.vehicles);
+        setUserInfo(res.data);
+        setMake(res.data.vehicles[0].make);
+        //setUserInfo({ ...userInfo, ...res.data });
+        console.log(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   const trackMaintenanceBtn = () => {
     redirect.push("/vehicle-dashboard");
   };
+
+  console.log(vehicleInfo[0]);
+  //const vehicleInfo = userInfo.vehicles;
+  //const {} = userInfo.vehicles;
+  //console.log(vehicleInfo);
+
+  console.log(userInfo);
+  console.log(make);
 
   const inputedCarNickname = useRef(carNickname);
   const inputedOwnerName = useRef(ownerName);
@@ -123,4 +146,4 @@ function MileageTrackerCard() {
   );
 }
 
-export default MileageTrackerCard;
+export default UserVehicleCard;

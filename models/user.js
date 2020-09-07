@@ -35,12 +35,12 @@ const UserSchema = new Schema({
 });
 
 // checks if unhashed entered password matches the hashed password in the database
-userSchema.methods.validPassword = function (password) {
+UserSchema.methods.validPassword = function (password) {
   return bcrypt.compareSync(password, this.password);
 };
 
 // hashes user password before saving a new user
-userSchema.pre("save", function (next) {
+UserSchema.pre("save", function (next) {
   if (this.isNew) {
     this.password = bcrypt.hashSync(
       this.password,
