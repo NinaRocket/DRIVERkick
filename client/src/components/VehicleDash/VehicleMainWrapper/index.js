@@ -41,10 +41,10 @@ function VehicleMainWrapper({ children }) {
         <Row>
           <Col lg={3}>
 
-            <Accordion defaultActiveKey="0">
+            <Accordion defaultActiveKey="1">
               <Card>
-                <Card.Header className="vehicle-dash__rule">
-                  <ContextAwareToggle eventKey="0" >
+                <ContextAwareToggle eventKey="0" >
+                  <Card.Header className="vehicle-dash__rule">
                     <img src={placeholder} alt="Car icon" className="vehicle-dash__user-img" />
                     <h1 className="g__dash-h1">Radical Roadster</h1>
                     {
@@ -53,8 +53,8 @@ function VehicleMainWrapper({ children }) {
                         <img src={openBtnIcon} alt="Open icon" className="vehicle-dash__accordion-toggle" />
 
                     }
-                  </ContextAwareToggle>
-                </Card.Header>
+                  </Card.Header>
+                </ContextAwareToggle>
                 <Accordion.Collapse eventKey="0">
                   <Card.Body className="text-center">
                     <div className="vehicle-dash__user-group">

@@ -7,8 +7,14 @@
 }
 
 .vehicle-dash__rule {
-    border-bottom: 6px solid #0F4457;
+    border-bottom: 3px solid #0F4457;
     padding-bottom: 0;
+    transition: ease-in .2s;
+}
+
+.vehicle-dash__rule:hover {
+    border-bottom: 10px solid #0F4457;
+    transition: ease-in .2s;
 }
 
 .vehicle-dash__user-group {
@@ -17,5 +23,6 @@
 
 .vehicle-dash__accordion-toggle {
     position: relative;
-    top: 20px;
+    top: 19px;
 }
+

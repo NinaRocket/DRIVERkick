@@ -129,11 +129,12 @@ button {
   background-color: #FF4000;
   font-weight: 600;
   cursor: pointer;
+  padding: 0;
 }
 
 button:focus {
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+  box-shadow: 0 0 0 0.1rem rgba(0,123,255,.10);
 }
 
 button:hover {

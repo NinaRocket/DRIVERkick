@@ -23,7 +23,7 @@ function ContextAwareToggle({ children, eventKey, callback }) {
   return (
     <button
       type="button"
-      className="g__btn-reset"
+      className="g__btn-reset "
       onClick={decoratedOnClick}
     >
       {children}
