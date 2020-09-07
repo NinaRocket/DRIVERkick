@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import "./style.css";
 import editBtn from "../../../images/user-page/edit-btn.svg";
 import saveBtn from "../../../images/user-page/save-btn.svg";
+import sedanTypeIcon from "../../../images/user-page/car-type-icon.svg";
 import ContentEditable from "react-contenteditable";
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
 
@@ -41,7 +42,9 @@ function MileageTrackerCard() {
       {/* Row */}
       <div className="d-md-flex">
         {/* Image Col */}
-        <div className="vehicle-card__img"></div>
+        <div className="vehicle-card__img-container">
+          <img src={sedanTypeIcon} alt="Car icon" className="vehicle-card__img" />
+        </div>
         {/* Content Col */}
         <div className="vehicle-card__content">
           {/* Header Row & Bottom-border*/}
@@ -62,8 +65,8 @@ function MileageTrackerCard() {
                 {!editing ? (
                   <img src={editBtn} alt="Edit button" />
                 ) : (
-                  <img src={saveBtn} alt="save button" />
-                )}
+                    <img src={saveBtn} alt="save button" />
+                  )}
               </button>
               <button
                 onClick={trackMaintenanceBtn}
