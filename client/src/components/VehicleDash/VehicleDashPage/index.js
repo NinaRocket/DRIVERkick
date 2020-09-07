@@ -8,19 +8,43 @@ import VehicleOilChangeCard from "../VehicleOilChangeCard";
 import VehicleWarrantyCard from "../VehicleWarrantyCard";
 import VehicleRecallsCard from "../VehicleRecallsCard";
 import VehicleCurrentMileageForm from "../VehicleCurrentMileageForm";
+import Modal from 'react-bootstrap/Modal';
+
+
+function MyVerticallyCenteredModal(props) {
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Modal heading
+        </Modal.Title>
+      </Modal.Header>
+      <VehicleCurrentMileageForm />
+    </Modal>
+  );
+}
+
+
 
 function VehicleDashPage() {
   const { setNavType } = useDriverKickContext();
   setNavType("vehicleDash");
 
+  const [modalShow, setModalShow] = React.useState(false);
+
   const mileageModal = () => {
-    console.log("Milage Modal To Open");
+    setModalShow(true)
   };
 
   return (
     <div>
       {/* Add modal for mileage */}
-      <VehicleCurrentMileageForm />
+
       <GlobalNavBar />
       <VehicleMainWrapper>
         <MileageTrackerCard mileageTrackingModal={mileageModal} />
@@ -28,6 +52,10 @@ function VehicleDashPage() {
                 <VehicleWarrantyCard />
                 <VehicleRecallsCard /> */}
       </VehicleMainWrapper>
+      <MyVerticallyCenteredModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
     </div>
   );
 }
