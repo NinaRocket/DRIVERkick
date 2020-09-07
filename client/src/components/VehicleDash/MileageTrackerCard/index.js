@@ -10,7 +10,7 @@ import MileageTrackerPopulated from '../MileageTrackerPopulated';
 function MileageTrackerCard({ mileageTrackingModal }) {
 
     // Determines if the initial content or populated content component show up.  
-    const [newUser, setNewUser] = useState(false);
+    const [newUser, setNewUser] = useState(true);
 
     return (
         <div className="g__vehicle-card">

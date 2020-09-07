@@ -21,6 +21,10 @@
     margin-bottom: 40px;
 }
 
+.vehicle-dash__accordion {
+    margin-bottom: 3rem;
+}
+
 .vehicle-dash__accordion-toggle {
     position: relative;
     top: 19px;

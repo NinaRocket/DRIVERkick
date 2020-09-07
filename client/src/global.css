@@ -183,6 +183,10 @@ button:active {
   transition: ease .3s;
 }
 
+.g__btn-accordion {
+  width: 100%;
+}
+
 .form-control, 
 input,
 .form-control-select {

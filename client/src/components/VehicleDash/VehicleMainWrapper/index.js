@@ -41,7 +41,7 @@ function VehicleMainWrapper({ children }) {
         <Row>
           <Col lg={3}>
 
-            <Accordion defaultActiveKey="1">
+            <Accordion defaultActiveKey="1" className="vehicle-dash__accordion">
               <Card>
                 <ContextAwareToggle eventKey="0" >
                   <Card.Header className="vehicle-dash__rule">
