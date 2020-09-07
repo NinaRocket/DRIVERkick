@@ -4,78 +4,80 @@ import { BrowserRouter, Redirect } from "react-router-dom";
 const DriverKickContext = React.createContext();
 
 export const useDriverKickContext = () => {
-  return useContext(DriverKickContext);
+    return useContext(DriverKickContext);
 };
 
 function DriverKickRouter(props) {
-  return <BrowserRouter {...props} />;
+    return <BrowserRouter {...props} />;
 }
 
 export function DriverKickProvider({ children }) {
-  const [authenticated, setAuthenticated] = useState(false);
+    const [authenticated, setAuthenticated] = useState(false);
 
-  function login() {
-    setAuthenticated(true);
-  }
+    function login() {
+        setAuthenticated(true);
+    }
 
-  function logout(history) {
-    setAuthenticated(false);
-    // post route to logout session on backend
+    function logout(history) {
+        setAuthenticated(false);
+        // post route to logout session on backend
 
-    // Route them back to the homepage
-    return history.push("/login");
-  }
+        // Route them back to the homepage
+        return history.push("/login");
+    }
 
-  // ****START Child Component Set Up****
-  // (Will remove this comment once set up correctly)
 
-  // *** The setUserData State is imported on the child component
-  //      import { useDriverKickContext } from './DriverContext';
+    const [userData, setUserData] = useState({
+        firstName: "",
+        lastName: "",
+        make: "N/A",
+        model: "N/A",
+        year: "N/A",
+    });
 
-  // *** We deconstruct the state from the context.
-  //      const { setUserData } = useDriverKickContext();
+    const [vehicleData, setVehicleData] = useState({
+        vehicle: [],
+        warranty: [],
+    });
 
-  // ** We then use the state to update the value
-  //     setUserData(value)
+    // Nav Bar States
+    const [navType, setNavType] = useState("home");
 
-  // ****END Child Component Set Up****
+    // navType Expects: "home" || "notFound" || "login" || "signup" || "newVehicle" || "userDash" || "vehicleDash"
 
-  const [userData, setUserData] = useState({
-    firstName: "",
-    lastName: "",
-    make: "N/A",
-    model: "N/A",
-    year: "N/A",
-  });
+    // Accordion Bootstrap Helper Context
+    const [accordionHelper, setAccordionHelper] = useState(false);
 
-  const [vehicleData, setVehicleData] = useState({
-    vehicle: [],
-    warranty: [],
-  });
 
-  // Nav Bar States
-  const [navType, setNavType] = useState("home");
+    // Select Vehicle Type Options
+    const [selectValue, setSelectValue] = useState();
 
-  // navType Expects: "home" || "notFound" || "login" || "signup" || "newVehicle" || "userDash" || "vehicleDash"
+    //   selectValue Expects: "sedan" || "suv" || "pickup" || "miniVan" || "van" || "sportsCar" || "convertible" || "rv" || "motorcycle"
 
-  return (
-    <DriverKickRouter>
-      <DriverKickContext.Provider
-        value={{
-          login,
-          logout,
-          setUserData,
-          userData,
-          authenticated,
-          setAuthenticated,
-          vehicleData,
-          setVehicleData,
-          navType,
-          setNavType,
-        }}
-      >
-        {children}
-      </DriverKickContext.Provider>
-    </DriverKickRouter>
-  );
+
+    return (
+        <DriverKickRouter>
+            <DriverKickContext.Provider
+                value={{
+                    login,
+                    logout,
+                    setUserData,
+                    userData,
+                    authenticated,
+                    setAuthenticated,
+                    vehicleData,
+                    setVehicleData,
+                    navType,
+                    setNavType,
+                    accordionHelper,
+                    setAccordionHelper,
+                    selectValue,
+                    setSelectValue
+
+                }}
+            >
+                {children}
+            </DriverKickContext.Provider>
+        </DriverKickRouter>
+    );
 }

@@ -13,6 +13,10 @@
     transition: ease .2s;
 }
 
+.home-hero__h1--stack {
+    display: block;
+}
+
 .home-hero__anchor-btn {
     margin-top: 50px;
     align-self: flex-end;

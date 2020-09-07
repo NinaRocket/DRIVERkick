@@ -2,6 +2,42 @@
     background: url('../../../images/signup-page/signup-page-bg.jpg') center / cover no-repeat;
     color: #143642;
     text-align: center;
-    height: 900px;
-    padding-top: 120px;
+    height: fit-content;
+}
+
+.signup-wrap__main {
+    padding: 120px 0;
+}
+
+.signup__h1 {
+    font-size: 100px;
+    color: #FEEFDD;
+    margin: 0 auto;
+}
+   
+.signup__h1--stack {
+   display: block;
+}
+   
+@media only screen and (max-width: 992px) {
+    .signup-wrap__main--reverse {
+        flex-direction: column-reverse;
+    }
+
+    .signup__h1 {
+        margin-bottom: 40px;
+        font-size: 65px;
+    }
+
+    .signup-wrap__main {
+        padding: 50px 0;
+    }
+     
+}
+   
+@media only screen and (max-width: 575px) {
+   .signup__h1 {
+       font-size: 50px;
+  }
+
 }

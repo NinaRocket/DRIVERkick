@@ -1,7 +1,45 @@
-.log-wrap__bg {
+.login-wrap__bg {
     background: url('../../../images/login-page/login-pg-bg.jpg') center / cover no-repeat;
     color: #143642;
     text-align: center;
-    height: 900px;
-    padding-top: 120px;
+    height: fit-content;
+    
 }
+
+.login-wrap__main {
+padding: 120px 0;
+}
+
+.login__h1 {
+ font-size: 100px;
+ color: #FEEFDD;
+ margin: 0 auto;
+}
+
+.login__h1--stack {
+    display: block;
+}
+
+@media only screen and (max-width: 992px) {
+    .login-wrap__main--reverse {
+        flex-direction: column-reverse;
+    }
+
+    .login__h1 {
+        margin-bottom: 40px;
+        font-size: 65px;
+    }
+
+    .login-wrap__main {
+        padding: 50px 0;
+    }
+     
+}
+   
+@media only screen and (max-width: 575px) {
+   .login__h1 {
+       font-size: 50px;
+  }
+
+}
+  
