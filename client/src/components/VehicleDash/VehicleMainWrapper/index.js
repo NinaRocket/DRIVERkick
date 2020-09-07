@@ -34,10 +34,8 @@ function VehicleMainWrapper({ children }) {
   //     console.log(VIN);
   //   }, []);
 
-  console.log(carIcons[0].image)
   return (
     <section className="g__dashboard-wrapper">
-      <img src={carIcons[0].image} />
       <div className="container">
         <Row>
           <Col lg={3}>
