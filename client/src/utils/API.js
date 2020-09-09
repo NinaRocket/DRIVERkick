@@ -41,11 +41,8 @@ export default {
     return axios.put(`/api/vehicle/${vehicleId}`, { nextOilChange });
   },
   // updates the vehicles current mileage
-  updateMileage: function (vehicleId, currentMileage) {
-    return axios.put(`/api/vehicle/${vehicleId}`, { currentMileage });
-  },
-  // postMileage: function (vehicleId, currentMileage) {
-  //   return axios.post(`/api/vehicle/${vehicleId}`, { currentMileage });
+  // updateMileage: function (vehicleId, currentMileage) {
+  //   return axios.put(`/api/mileage/:id`, {vehicleId, currentMileage });
   // },
   postMileage: function (id) {
     return axios.post(`/api/vehicle/` + id);

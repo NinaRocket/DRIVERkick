@@ -229,6 +229,21 @@ input:focus,
   padding: 3rem 1.25rem 2rem ;
 }
 
+.modal-content {
+  background: none;
+  border: none;
+}
+
+.modal-header {
+  position: relative;
+  top: 56px;
+  border-bottom: none;
+}
+
+.modal-header .close {
+  padding: 1rem 1.5rem;
+}
+
 
 /* —————————————————————————————————————
 Forms
@@ -240,6 +255,10 @@ Forms
   -moz-box-shadow: 0px 34px 74px rgba(0, 0, 0, 0.05);
   box-shadow: 0px 34px 74px rgba(0, 0, 0, 0.05);
   margin-bottom: 40px;
+}
+
+.g__remove-margin-bottom {
+  margin-bottom: 0;
 }
 
 .g__label-group {

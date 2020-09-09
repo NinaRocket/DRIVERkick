@@ -27,7 +27,7 @@ module.exports = {
         db.User.findOneAndUpdate(
           { _id: req.user._id },
           { $push: { vehicles: dbVehicle._id } }
-        ).then((dbUser) => res.json(dbVehicle));
+        ).then((dbVehicle) => res.json(dbVehicle));
       })
       .catch((err) => res.status(422).json(err));
   },

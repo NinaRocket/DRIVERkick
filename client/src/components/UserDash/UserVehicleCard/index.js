@@ -13,46 +13,39 @@ function UserVehicleCard() {
   const [carNickname, setCarNickname] = useState("Update");
   const [ownerName, setOwnerName] = useState("Update");
   const [iconImage, setIconImage] = useState({});
-  const [userInfo, setUserInfo] = useState({});
-  const [vehicleInfo, setVehicleInfo] = useState([]);
+  const [userInfo, setUserInfo] = useState([]);
+  const [vehicleInfo, setVehicleInfo] = useState({});
   const { userData, logout, selectValue } = useDriverKickContext();
   let userStuff = {};
   //redirect to vehicle dashboard
   const redirect = useHistory();
+  //const ourData = JSON.parse(userInfo);
+  let userStuff;
 
   useEffect(() => {
     API.getUser()
       .then((res) => {
         // console.log(res);
-        console.log(res.data.vehicles[0]._id);
+        // console.log(res.data.vehicles[0]._id);
         // console.log(res.data.vehicles[1].make);
         // console.log(res.data.vehicles[0].warranties);
+        let userStuff = res.data;
+        console.log(userStuff);
 
         if (res.data.isAuthenticated === false) {
           return logout(redirect);
         }
-
-        // setUserInfo({ ...userInfo, ...res.data });
-
+        // setVehicleInfo(res.data.vehicles);
         // setUserInfo(res.data);
-        // console.log(userInfo.vehicles[0].make);
-        //setVehicleInfo(res.data.vehicles);
 
-        const userStuff = res.data;
-
-        console.log(userStuff.vehicles[0].make);
-        console.log(userStuff.vehicles[0].model);
-        console.log(userStuff.vehicles[0].year);
-        console.log(userStuff.vehicles[0].warranties);
-
-        //return userStuff;
+        //setUserInfo({ ...userInfo, ...res.data });
       })
       .catch((err) => console.log(err));
   }, []);
 
-  //console.log(userStuff);
-  // console.log(userInfo.vehicles);
-  // console.log(vehicleInfo[0]);
+  console.log(userStuff);
+
+  // console.log(vehicleInfo.make);
   //const vehicleInfo = userInfo.vehicles;
   //const {} = userInfo.vehicles;
   //console.log(vehicleInfo);
@@ -168,7 +161,7 @@ function UserVehicleCard() {
             <div className="vehicle-card__col">
               <div className="vehicle-card__car-item">
                 <h4 className="g__card__subhead">Make</h4>
-                <h3>{userData.make}</h3>
+                <h3>{vehicleInfo.make}</h3>
               </div>
               <div className="vehicle-card__car-item">
                 <h4 className="g__card__subhead">Year</h4>
