@@ -63,4 +63,23 @@ module.exports = {
       .then((dbVehicle) => res.json(dbVehicle))
       .catch((err) => res.status(422).json(err));
   },
+  getMiles: function (req, res) {
+    db.Vehicle.findById(req.params.id)
+      .then((dbVehicle) => {
+        const response = {
+          currentMileage: dbVehicle.currentMileage,
+        };
+        res.json(response);
+      })
+      .catch((err) => res.status(422).json(err));
+  },
+  postMiles: function (req, res) {
+    db.Vehicle.findOneAndUpdate(
+      { _id: req.params.id },
+      { currentMileage: req.body },
+      { new: true }
+    )
+      .then((dbVehicle) => res.json(dbVehicle))
+      .catch((err) => res.status(422).json(err));
+  },
 };
