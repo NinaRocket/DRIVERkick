@@ -12,6 +12,8 @@ function UserVehicleCard({ vehicleIcon, vehicleMake, vehicleYear, vehicleModel }
   //redirect to vehicle dashboard
   const redirect = useHistory();
 
+
+
   // START Custom Editing Code  ———————————————|
   const [editing, setEditing] = useState(false);
 
@@ -37,6 +39,8 @@ function UserVehicleCard({ vehicleIcon, vehicleMake, vehicleYear, vehicleModel }
     inputedOwnerName.current = evt.target.value;
   };
   // END Custom Editing Code  ———————————————|
+
+
 
   // Buttons
   const trackMaintenanceBtn = () => {

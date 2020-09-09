@@ -27,7 +27,8 @@ function UserDashPage() {
     //redirect to vehicle dashboard
     const redirect = useHistory();
 
-    // API Call to Database 
+    
+    // START API Call to Database ————————————————|
     useEffect(() => {
         API.getVehicles()
             .then((res) => {
@@ -38,7 +39,7 @@ function UserDashPage() {
                 }
 
                 // const deepCopy = Object.assign([], res.data)
-                 // setVehicleInfo(deepCopy);
+                // setVehicleInfo(deepCopy);
 
                 // THIS WORKS
                 setVehicleInfo(res.data[0]);
@@ -47,8 +48,9 @@ function UserDashPage() {
             })
             .catch((err) => console.log(err));
     }, []);
-    console.log("vehicleInfo")
-    console.log(vehicleInfo)
+    // END API Call to Database ————————————————|
+
+
     // START Switch for Car Icons ———————————————|
     useEffect(() => {
         switch (selectValue) {
