@@ -7,11 +7,11 @@ import ContentEditable from "react-contenteditable";
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
 import API from "../../../utils/API";
 
-function UserVehicleCard({vehicleIcon, vehicleMake, vehicleYear, vehicleModel}) {
+function UserVehicleCard({ vehicleIcon, vehicleMake, vehicleYear, vehicleModel }) {
   const { userData, logout, selectValue } = useDriverKickContext();
-  
+
   //redirect to vehicle dashboard
-    const redirect = useHistory();
+  const redirect = useHistory();
 
   // START Custom Editing Code  ———————————————|
   const [editing, setEditing] = useState(false);
