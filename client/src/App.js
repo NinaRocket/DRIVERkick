@@ -13,18 +13,16 @@ import VehicleDashPage from "./components/VehicleDash/VehicleDashPage";
 function App() {
   return (
     <>
-      <div className="site-content">
-        <DriverKickProvider>
-          <Switch>
-            <Route exact path="/" component={HomePage} />
-            <Route exact path="/login" component={LoginPage} />
-            <Route exact path="/signup" component={SignUpPage} />
-            <Route exact path="/add-vehicle" component={VehicleFormPage} />
-            <Route exact path="/user-dashboard" component={UserDashPage} />
-            <Route exact path="/vehicle-dashboard" component={VehicleDashPage} />
-          </Switch>
-        </DriverKickProvider>
-      </div>
+      <DriverKickProvider>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/login" component={LoginPage} />
+          <Route exact path="/signup" component={SignUpPage} />
+          <Route exact path="/add-vehicle" component={VehicleFormPage} />
+          <Route exact path="/user-dashboard" component={UserDashPage} />
+          <Route exact path="/vehicle-dashboard" component={VehicleDashPage} />
+        </Switch>
+      </DriverKickProvider>
       <Footer />
     </>
   );
