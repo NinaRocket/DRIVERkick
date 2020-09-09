@@ -3,12 +3,11 @@ import { useHistory } from "react-router-dom";
 import "./style.css";
 import editBtn from "../../../images/user-page/edit-btn.svg";
 import saveBtn from "../../../images/user-page/save-btn.svg";
-
 import ContentEditable from "react-contenteditable";
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
 import API from "../../../utils/API";
 
-function UserVehicleCard(vehicleIcon, vehicleMake, vehicleYear, vehicleModel) {
+function UserVehicleCard({vehicleIcon, vehicleMake, vehicleYear, vehicleModel}) {
   const { userData, logout, selectValue } = useDriverKickContext();
   
   //redirect to vehicle dashboard
