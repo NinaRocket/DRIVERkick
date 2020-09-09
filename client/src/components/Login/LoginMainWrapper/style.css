@@ -2,7 +2,7 @@
     background: url('../../../images/login-page/login-pg-bg.jpg') center / cover no-repeat;
     color: #143642;
     text-align: center;
-    height: fit-content;
+    min-height: calc(100vh - 322px);
     
 }
 

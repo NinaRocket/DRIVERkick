@@ -6,7 +6,6 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import LogoTan from "../../images/global/drive-kick-logo-tan.svg";
 import LogoDark from "../../images/global/drive-kick-logo-dark.svg";
-import { FaPlus } from "react-icons/fa";
 
 function GlobalNavBar() {
   // Context state that changes the nav based on the page being used
@@ -99,7 +98,6 @@ function GlobalNavBar() {
               <div className="global-nav__btn-group">
                 {navType === "userDash" ? (
                   <button className="btn" onClick={addNewVehicle}>
-                    <FaPlus />
                     Add New Vehicle
                   </button>
                 ) : null}
