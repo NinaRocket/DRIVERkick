@@ -3,57 +3,30 @@ import { useHistory } from "react-router-dom";
 import "./style.css";
 import editBtn from "../../../images/user-page/edit-btn.svg";
 import saveBtn from "../../../images/user-page/save-btn.svg";
-import carIcons from "../../../utils/carIcons.json";
+
 import ContentEditable from "react-contenteditable";
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
 import API from "../../../utils/API";
 
-function UserVehicleCard() {
+function UserVehicleCard(vehicleIcon, vehicleMake, vehicleYear, vehicleModel) {
+  const { userData, logout, selectValue } = useDriverKickContext();
+  
+  //redirect to vehicle dashboard
+    const redirect = useHistory();
+
+  // START Custom Editing Code  ———————————————|
   const [editing, setEditing] = useState(false);
+
+  // Controls edit buttons
+  const editFields = () => {
+    // console.log("edit button");
+    editing ? setEditing(false) : setEditing(true);
+    setCarNickname(inputedCarNickname);
+    setOwnerName(inputedOwnerName);
+  };
+
   const [carNickname, setCarNickname] = useState("Update");
   const [ownerName, setOwnerName] = useState("Update");
-  const [iconImage, setIconImage] = useState({});
-  const [userInfo, setUserInfo] = useState([]);
-  const [vehicleInfo, setVehicleInfo] = useState([]);
-  const { userData, logout, selectValue } = useDriverKickContext();
-
-  //redirect to vehicle dashboard
-  const redirect = useHistory();
-  //const ourData = JSON.parse(userInfo);
-  // let userStuff;
-
-
-
-  useEffect(() => {
-    API.getVehicles()
-      .then((res) => {
-      
-      
-        if (res.data.isAuthenticated === false) {
-          return logout(redirect);
-        }
-        
-        setVehicleInfo(res.data[0]);
-
-
-        // const { vehicles } = res.data;
-        // const [ VIN, make, model, year ] = res.data.vehicles[0];
-        // console.log(VIN, make, model, year);
-        // example: const { warranties } = res.data.vehicles[0];
-
-        // setVehicleInfo(vehicles);
-     
-
-      })
-      .catch((err) => console.log(err));
-  }, []);
-
-
-  console.log("vehicleInfo")
-  console.log(vehicleInfo);
-  console.log(vehicleInfo.make);
-
-
 
   const inputedCarNickname = useRef(carNickname);
   const inputedOwnerName = useRef(ownerName);
@@ -65,54 +38,15 @@ function UserVehicleCard() {
   const handleOwnerChange = (evt) => {
     inputedOwnerName.current = evt.target.value;
   };
+  // END Custom Editing Code  ———————————————|
 
   // Buttons
   const trackMaintenanceBtn = () => {
     redirect.push("/vehicle-dashboard");
   };
 
-  // Controls edit buttons
-  const editFields = () => {
-    // console.log("edit button");
-    editing ? setEditing(false) : setEditing(true);
-    setCarNickname(inputedCarNickname);
-    setOwnerName(inputedOwnerName);
-  };
 
-  useEffect(() => {
-    // START Switch for Car Icons ———————————————|
-    switch (selectValue) {
-      case "convertible":
-        setIconImage(carIcons[0].image);
-        break;
-      case "miniVan":
-        setIconImage(carIcons[1].image);
-        break;
-      case "motorcycle":
-        setIconImage(carIcons[2].image);
-        break;
-      case "pickup":
-        setIconImage(carIcons[3].image);
-        break;
-      case "rv":
-        setIconImage(carIcons[4].image);
-        break;
-      case "sedan":
-        setIconImage(carIcons[5].image);
-        break;
-      case "sportsCar":
-        setIconImage(carIcons[6].image);
-        break;
-      case "suv":
-        setIconImage(carIcons[7].image);
-        break;
-      case "van":
-        setIconImage(carIcons[8].image);
-        break;
-      default:
-        setIconImage(carIcons[5].image);
-    }
-  }, []);
+
 
   return (
     <div className="vehicle-card">
@@ -120,7 +54,7 @@ function UserVehicleCard() {
       <div className="d-md-flex">
         {/* Image Col */}
         <div className="vehicle-card__img-container">
-          <img src={iconImage} alt="Car icon" className="vehicle-card__img" />
+          <img src={vehicleIcon} alt={`${vehicleIcon} icon`} className="vehicle-card__img" />
         </div>
         {/* Content Col */}
         <div className="vehicle-card__content">
@@ -166,12 +100,12 @@ function UserVehicleCard() {
             <div className="vehicle-card__col">
               <div className="vehicle-card__car-item">
                 <h4 className="g__card__subhead">Make</h4>
-                <h3>{vehicleInfo.make}</h3>
+                <h3>{vehicleMake}</h3>
 
               </div>
               <div className="vehicle-card__car-item">
                 <h4 className="g__card__subhead">Year</h4>
-                <h3>{vehicleInfo.year}</h3>
+                <h3>{vehicleYear}</h3>
               </div>
             </div>
             {/* Col 2 */}
@@ -189,7 +123,7 @@ function UserVehicleCard() {
               </div>
               <div className="vehicle-card__car-item">
                 <h4 className="g__card__subhead">Model</h4>
-                <h3>{vehicleInfo.model}</h3>
+                <h3>{vehicleModel}</h3>
               </div>
             </div>
           </div>
