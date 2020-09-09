@@ -8,7 +8,6 @@ import { useDriverKickContext } from "../../../utils/DriverKickContext";
 import API from "../../../utils/API";
 
 function UserVehicleCard({ vehicleIcon, vehicleMake, vehicleYear, vehicleModel }) {
-  const { userData, logout, selectValue } = useDriverKickContext();
 
   //redirect to vehicle dashboard
   const redirect = useHistory();

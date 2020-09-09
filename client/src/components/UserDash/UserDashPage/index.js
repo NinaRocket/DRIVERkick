@@ -37,12 +37,18 @@ function UserDashPage() {
                     return logout(redirect);
                 }
 
+                // const deepCopy = Object.assign([], res.data)
+                 // setVehicleInfo(deepCopy);
+
+                // THIS WORKS
                 setVehicleInfo(res.data[0]);
+
 
             })
             .catch((err) => console.log(err));
     }, []);
-
+    console.log("vehicleInfo")
+    console.log(vehicleInfo)
     // START Switch for Car Icons ———————————————|
     useEffect(() => {
         switch (selectValue) {
@@ -83,12 +89,24 @@ function UserDashPage() {
         <section>
             <GlobalNavBar />
             <UserMainWrapper>
+                {/* {vehicleInfo.map(v => (
+                    <UserVehicleCard
+                        key={v._id}
+                        vehicleIcon={v.iconImage}
+                        vehicleMake={v.vehicleInfo.make}
+                        vehicleYear={v.vehicleInfo.year}
+                        vehicleModel={v.vehicleInfo.model}
+                    />
+                ))} */}
+
                 <UserVehicleCard
                     vehicleIcon={iconImage}
                     vehicleMake={vehicleInfo.make}
                     vehicleYear={vehicleInfo.year}
                     vehicleModel={vehicleInfo.model}
                 />
+
+
             </UserMainWrapper>
         </section>
     );
