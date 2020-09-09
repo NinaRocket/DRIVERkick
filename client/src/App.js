@@ -13,6 +13,7 @@ import VehicleDashPage from "./components/VehicleDash/VehicleDashPage";
 function App() {
   return (
     <>
+      <div className="site-content">
         <DriverKickProvider>
           <Switch>
             <Route exact path="/" component={HomePage} />
@@ -23,6 +24,7 @@ function App() {
             <Route exact path="/vehicle-dashboard" component={VehicleDashPage} />
           </Switch>
         </DriverKickProvider>
+      </div>
       <Footer />
     </>
   );

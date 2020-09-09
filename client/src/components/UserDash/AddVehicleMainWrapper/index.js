@@ -6,7 +6,7 @@ import Col from "react-bootstrap/Col";
 import API from "../../../utils/API";
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
 
-function UserMainWrapper({ children }) {
+function AddVehicleMainWrapper({ children }) {
   const { userData, setUserData, logout } = useDriverKickContext();
   const history = useHistory();
   const { id } = useParams();
@@ -42,4 +42,4 @@ function UserMainWrapper({ children }) {
   );
 }
 
-export default UserMainWrapper;
+export default AddVehicleMainWrapper;

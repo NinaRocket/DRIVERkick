@@ -14,42 +14,46 @@ function UserVehicleCard() {
   const [ownerName, setOwnerName] = useState("Update");
   const [iconImage, setIconImage] = useState({});
   const [userInfo, setUserInfo] = useState([]);
-  const [vehicleInfo, setVehicleInfo] = useState({});
+  const [vehicleInfo, setVehicleInfo] = useState([]);
   const { userData, logout, selectValue } = useDriverKickContext();
 
   //redirect to vehicle dashboard
   const redirect = useHistory();
   //const ourData = JSON.parse(userInfo);
-  let userStuff;
+  // let userStuff;
+
+
 
   useEffect(() => {
-    API.getUser()
+    API.getVehicles()
       .then((res) => {
-        // console.log(res);
-        // console.log(res.data.vehicles[0]._id);
-        // console.log(res.data.vehicles[1].make);
-        // console.log(res.data.vehicles[0].warranties);
-        let userStuff = res.data;
-        console.log(userStuff);
-
+      
+      
         if (res.data.isAuthenticated === false) {
           return logout(redirect);
         }
-        // setVehicleInfo(res.data.vehicles);
-        // setUserInfo(res.data);
-
-        //setUserInfo({ ...userInfo, ...res.data });
         
+        setVehicleInfo(res.data[0]);
+
+
+        // const { vehicles } = res.data;
+        // const [ VIN, make, model, year ] = res.data.vehicles[0];
+        // console.log(VIN, make, model, year);
+        // example: const { warranties } = res.data.vehicles[0];
+
+        // setVehicleInfo(vehicles);
+     
+
       })
       .catch((err) => console.log(err));
   }, []);
 
-  console.log(userStuff)
 
-  // console.log(vehicleInfo.make);
-  //const vehicleInfo = userInfo.vehicles;
-  //const {} = userInfo.vehicles;
-  //console.log(vehicleInfo);
+  console.log("vehicleInfo")
+  console.log(vehicleInfo);
+  console.log(vehicleInfo.make);
+
+
 
   const inputedCarNickname = useRef(carNickname);
   const inputedOwnerName = useRef(ownerName);
@@ -69,7 +73,7 @@ function UserVehicleCard() {
 
   // Controls edit buttons
   const editFields = () => {
-    console.log("edit button");
+    // console.log("edit button");
     editing ? setEditing(false) : setEditing(true);
     setCarNickname(inputedCarNickname);
     setOwnerName(inputedOwnerName);
@@ -141,15 +145,15 @@ function UserVehicleCard() {
                 {!editing ? (
                   <img src={editBtn} alt="Edit button" />
                 ) : (
-                  <img src={saveBtn} alt="save button" />
-                )}
+                    <img src={saveBtn} alt="save button" />
+                  )}
               </button>
               <button
                 disabled={editing === true}
                 onClick={trackMaintenanceBtn}
                 className={`vehicle-card__track-btn ${
                   editing === true ? "g__disabled-btn" : null
-                }`}
+                  }`}
               >
                 Track Maintenance
               </button>
@@ -163,11 +167,11 @@ function UserVehicleCard() {
               <div className="vehicle-card__car-item">
                 <h4 className="g__card__subhead">Make</h4>
                 <h3>{vehicleInfo.make}</h3>
-                
+
               </div>
               <div className="vehicle-card__car-item">
                 <h4 className="g__card__subhead">Year</h4>
-                <h3>{userData.year}</h3>
+                <h3>{vehicleInfo.year}</h3>
               </div>
             </div>
             {/* Col 2 */}
@@ -185,7 +189,7 @@ function UserVehicleCard() {
               </div>
               <div className="vehicle-card__car-item">
                 <h4 className="g__card__subhead">Model</h4>
-                <h3>{userData.model}</h3>
+                <h3>{vehicleInfo.model}</h3>
               </div>
             </div>
           </div>

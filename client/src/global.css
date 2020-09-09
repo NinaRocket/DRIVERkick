@@ -6,6 +6,19 @@ body {
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
+}
+
+
+/* Forces footer to the bottom of page */
+#root {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column
+}
+
+.site-content {
+  flex: 1;
 }
 
 
@@ -302,6 +315,8 @@ Global Dashboards
   color: #50B2C0;
 }
 
+g_dashboard-user-info
+
 
 /* —————————————————————————————————————
 User Dashboard
@@ -364,6 +379,13 @@ Vehicle Dashboard
 
 
 
+
+
+
+
+
+
+
 /* —————————————————————————————————————
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 ////////////////////////////////////////
@@ -378,6 +400,11 @@ Mobile Styles
 @media only screen and (max-width: 991px) {
   .g__dashboard-wrapper {
     padding: 30px 0;
+  }
+
+  .g__dashboard-user-info {
+    text-align: center;
+    margin-bottom: 10px;
   }
   
 }
