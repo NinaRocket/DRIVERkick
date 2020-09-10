@@ -15,9 +15,13 @@ function UserMainWrapper() {
   // Stores vehicle info from the database
   const [vehicleInfo, setVehicleInfo] = useState([]);
 
+  // Sets up page redirect 
   const history = useHistory();
+
+
   const { id } = useParams();
 
+  // API Call for User and Vehicle Info
   useEffect(() => {
     API.getUser(id)
       .then((res) => {
@@ -35,13 +39,22 @@ function UserMainWrapper() {
           return logout(history);
         }
         setVehicleInfo(res.data);
-        console.log(res.data)
+        console.log(vehicleInfo)
       })
       .catch((err) => console.log(err));
 
-
-
   }, []);
+
+  // NEED TO WORK ON THIS
+  // Checks to see if the user has vehicles, if not they get kicked back to the Add Vehicle screen
+  // useEffect(() => {
+  //   console.log(vehicleInfo)
+  //   if (vehicleInfo.length === 0) {
+  //     history.push("/add-vehicle")
+  //   } else {
+  //     return;
+  //   }
+  // }, [vehicleInfo])
 
 
   const getLatestVehicles = () => {
