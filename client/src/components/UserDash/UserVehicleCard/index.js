@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import "./style.css";
 import editBtn from "../../../images/user-page/edit-btn.svg";
@@ -7,15 +7,15 @@ import ContentEditable from "react-contenteditable";
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
 import API from "../../../utils/API";
 
-function UserVehicleCard({ 
-  vehicleIcon, 
-  vehicleMake, 
-  vehicleYear, 
-  vehicleModel, 
-  vehicleID, 
-  carNickname, 
-  ownerName, 
-  getLatestVehicles 
+function UserVehicleCard({
+  vehicleIcon,
+  vehicleMake,
+  vehicleYear,
+  vehicleModel,
+  vehicleID,
+  carNickname,
+  ownerName,
+  getLatestVehicles
 }) {
 
   const { logout } = useDriverKickContext();
@@ -72,11 +72,18 @@ function UserVehicleCard({
     history.push("/vehicle-dashboard");
   };
 
-
+  const cardBgStyle = {
+    "padding": "40 40 0",
+    "borderRadius": "0px 20px",
+    "WebkitBoxShadow": "0px 4px 4px 0px rgba(0,0,0,0.1)",
+    "MozBoxShadow": "0px 4px 4px 0px rgba(0,0,0,0.1)",
+    "boxShadow": "0px 4px 4px 0px rgba(0,0,0,0.1)",
+    "marginBottom": "40px"
+  }
 
 
   return (
-    <div className="vehicle-card">
+    <div style={cardBgStyle}>
       {/* Row */}
       <div className="d-md-flex">
         {/* Image Col */}

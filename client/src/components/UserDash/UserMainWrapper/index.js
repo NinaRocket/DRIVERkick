@@ -54,6 +54,8 @@ function UserMainWrapper() {
       .catch((err) => console.log(err));
   }
 
+  
+
 
   return (
     <section className="g__dashboard-wrapper">
@@ -79,6 +81,7 @@ function UserMainWrapper() {
                 carNickname={v.nickname}
                 ownerName={v.driverName}
                 getLatestVehicles={getLatestVehicles}
+                bgCardImage={}
 
               />
             ))}
