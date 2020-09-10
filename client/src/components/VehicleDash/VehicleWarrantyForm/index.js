@@ -25,6 +25,7 @@ function VehicleWarrantyForm() {
       title: title,
       provider: provider,
       details: details,
+      vehicle: //vehicle id goes here
     };
 
     API.newWarranty(warrantyInfo)

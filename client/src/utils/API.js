@@ -18,8 +18,8 @@ export default {
 
   // VEHICLE ROUTES
   //post VIN
-  addvehicle: function (VIN, year, make, model) {
-    return axios.post("/api/vehicle", { VIN, year, make, model });
+  addvehicle: function (VIN, year, make, model, icon) {
+    return axios.post("/api/vehicle", { VIN, year, make, model, icon });
   },
 
   getVehicle: function () {
