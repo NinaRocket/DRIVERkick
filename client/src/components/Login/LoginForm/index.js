@@ -49,7 +49,7 @@ function LoginForm() {
                     setLoggedIn(true);
                     setEmail(response.data.email);
                     // update the state to redirect to home
-                    redirect.push("/add-vehicle");
+                    redirect.push("/user-dashboard");
                 }
             })
             .catch((error) => {
