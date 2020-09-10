@@ -39,11 +39,11 @@ function GlobalNavBar() {
       <div
         className={`global-nav ${
           navType === "userDash" ||
-          navType === "newVehicle" ||
-          navType === "vehicleDash"
+            navType === "newVehicle" ||
+            navType === "vehicleDash"
             ? "global-nav__nav-dashboards"
             : null
-        }`}
+          }`}
       >
         <Navbar className="container navbar justify-content-between flex-column flex-sm-row ">
           <Navbar.Brand href="/">
@@ -59,7 +59,7 @@ function GlobalNavBar() {
           </Navbar.Brand>
           <Nav>
             {/* Home */}
-            {navType === "home" ? (
+            {navType === "home" || navType === "notFound" ? (
               <div className="global-nav__btn-group">
                 <button
                   id="signupBtn"

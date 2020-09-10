@@ -1,0 +1,21 @@
+.not-found__hero-bg {
+    background-color: #143642;
+    background: url('../../images/not-found-page/not-found-bg-hero.jpg') center / cover no-repeat;
+    color: #143642;
+    text-align: center;
+    height: 1000px;
+    padding-top: 130px;
+    margin-top: -86px;
+}
+
+.not-found__h1 {
+    font-size: 100px;
+    transition: ease .2s;
+    margin-top: 3rem;
+}
+
+.not-found__h2 {
+    color: #FF4000;
+    max-width: 600px;
+    margin: 2rem auto 0;
+}
