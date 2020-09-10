@@ -7,15 +7,18 @@ import ContentEditable from "react-contenteditable";
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
 import API from "../../../utils/API";
 
-function UserVehicleCard({ vehicleIcon, vehicleMake, vehicleYear, vehicleModel, vehicleID, carNickname, ownerName, getLatestVehicles }) {
+function UserVehicleCard({ 
+  vehicleIcon, 
+  vehicleMake, 
+  vehicleYear, 
+  vehicleModel, 
+  vehicleID, 
+  carNickname, 
+  ownerName, 
+  getLatestVehicles 
+}) {
 
-  const { userData, setUserData, selectValue, logout } = useDriverKickContext();
-
-  // // Stores Driver/Owner name 
-  // const [driverName, setDriverName] = useState({});
-
-  // // Stores Car Nickname 
-  // const [carNickname, setCarNickname] = useState({});
+  const { logout } = useDriverKickContext();
 
   //redirect to vehicle dashboard
   const history = useHistory();
@@ -26,6 +29,7 @@ function UserVehicleCard({ vehicleIcon, vehicleMake, vehicleYear, vehicleModel, 
   const [editing, setEditing] = useState(false);
   const inputedCarNickname = useRef(carNickname);
   const inputedOwnerName = useRef(ownerName);
+
 
   // Controls edit buttons
   const editFields = async () => {
@@ -49,7 +53,6 @@ function UserVehicleCard({ vehicleIcon, vehicleMake, vehicleYear, vehicleModel, 
         console.log(error);
       }
 
-      // console.log(inputedCarNickname.current);
     }
   };
 
@@ -65,7 +68,6 @@ function UserVehicleCard({ vehicleIcon, vehicleMake, vehicleYear, vehicleModel, 
 
 
 
-  // Buttons
   const trackMaintenanceBtn = () => {
     history.push("/vehicle-dashboard");
   };

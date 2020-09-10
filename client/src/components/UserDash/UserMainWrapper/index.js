@@ -5,7 +5,6 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import API from "../../../utils/API";
 import UserVehicleCard from '../UserVehicleCard';
-import carIcons from "../../../utils/carIcons.json";
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
 
 function UserMainWrapper() {
@@ -13,10 +12,6 @@ function UserMainWrapper() {
 
   // Stores vehicle info from the database
   const [vehicleInfo, setVehicleInfo] = useState([]);
-
-  // Stores vehicle icon from the Switch 
-  const [iconImage, setIconImage] = useState({});
-
 
 
   const history = useHistory();
