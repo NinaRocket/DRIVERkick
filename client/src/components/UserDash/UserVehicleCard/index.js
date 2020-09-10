@@ -83,8 +83,6 @@ function UserVehicleCard({
     background: `linear-gradient(0deg, rgba(15, 68, 87, 0.5), rgba(15, 68, 87, 0.5)), url(${bgCardImage})`,
     backgroundSize: "cover",
     backgroundPosition: "center"
-
-
   }
 
 
