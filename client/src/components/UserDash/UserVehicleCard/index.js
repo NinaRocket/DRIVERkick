@@ -7,29 +7,52 @@ import ContentEditable from "react-contenteditable";
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
 import API from "../../../utils/API";
 
-function UserVehicleCard({ vehicleIcon, vehicleMake, vehicleYear, vehicleModel }) {
+function UserVehicleCard({ vehicleIcon, vehicleMake, vehicleYear, vehicleModel, vehicleID, carNickname, ownerName, getLatestVehicles }) {
+
+  const { userData, setUserData, selectValue, logout } = useDriverKickContext();
+
+  // // Stores Driver/Owner name 
+  // const [driverName, setDriverName] = useState({});
+
+  // // Stores Car Nickname 
+  // const [carNickname, setCarNickname] = useState({});
 
   //redirect to vehicle dashboard
-  const redirect = useHistory();
+  const history = useHistory();
 
 
 
   // START Custom Editing Code  ———————————————|
   const [editing, setEditing] = useState(false);
-
-  // Controls edit buttons
-  const editFields = () => {
-    // console.log("edit button");
-    editing ? setEditing(false) : setEditing(true);
-    setCarNickname(inputedCarNickname);
-    setOwnerName(inputedOwnerName);
-  };
-
-  const [carNickname, setCarNickname] = useState("Update");
-  const [ownerName, setOwnerName] = useState("Update");
-
   const inputedCarNickname = useRef(carNickname);
   const inputedOwnerName = useRef(ownerName);
+
+  // Controls edit buttons
+  const editFields = async () => {
+    // console.log("edit button");
+    editing ? setEditing(false) : setEditing(true);
+    if (editing) {
+
+      try {
+
+        const driverUpdateRes = await API.updateDriver(vehicleID, inputedOwnerName.current);
+
+        const nicknameUpdateRes = await API.updateNickname(vehicleID, inputedCarNickname.current);
+
+        if (driverUpdateRes.data.isAuthenticated === false || nicknameUpdateRes.data.isAuthenticated === false) {
+          return logout(history);
+        }
+        
+        getLatestVehicles();
+
+      } catch (error) {
+        console.log(error);
+      }
+
+      // console.log(inputedCarNickname.current);
+    }
+  };
+
 
   const handleNicknameChange = (evt) => {
     inputedCarNickname.current = evt.target.value;
@@ -44,7 +67,7 @@ function UserVehicleCard({ vehicleIcon, vehicleMake, vehicleYear, vehicleModel }
 
   // Buttons
   const trackMaintenanceBtn = () => {
-    redirect.push("/vehicle-dashboard");
+    history.push("/vehicle-dashboard");
   };
 
 
@@ -65,8 +88,15 @@ function UserVehicleCard({ vehicleIcon, vehicleMake, vehicleYear, vehicleModel }
             <div>
               <h4 className="g__card__subhead">Car Nickname</h4>
               <h3>
+                {/* <ContentEditable
+                  html={inputedCarNickname.current ? inputedCarNickname.current.html : "Update"}
+                  innerRef={inputedCarNickname}
+                  onChange={handleNicknameChange}
+                  disabled={!editing ? true : false}
+                  className={editing ? "vehicle-card__custom-input" : ""}
+                /> */}
                 <ContentEditable
-                  html={inputedCarNickname.current}
+                  html={carNickname}
                   onChange={handleNicknameChange}
                   disabled={!editing ? true : false}
                   className={editing ? "vehicle-card__custom-input" : ""}
@@ -116,7 +146,7 @@ function UserVehicleCard({ vehicleIcon, vehicleMake, vehicleYear, vehicleModel }
                 <h4 className="g__card__subhead">Owner</h4>
                 <h3>
                   <ContentEditable
-                    html={inputedOwnerName.current}
+                    html={ownerName}
                     onChange={handleOwnerChange}
                     disabled={!editing ? true : false}
                     className={editing ? "vehicle-card__custom-input" : ""}
