@@ -17,7 +17,7 @@
 ## Table of Contents
 1. [Technology Used](#technology-used)
 2. [Installations](#installations)
-3. [Links](#links)
+3. [Deployed Link](#deployed-link)
 4. [Code Components](#code-components)
 5. [Future Development](#future-development)
 6. [Contact Info](#contact-info)
@@ -47,10 +47,11 @@ $ npm react-contenteditable
 ```
 <br>
 
-## Links:
+## Deployed Link:
  
-**[Click link to see Project in action!]()**
- 
+**[Click link to see Project in action!](https://www.figma.com/file/EHbfwBaOA1QPQggMB3rZby/A-Team-%E2%80%94-Car-Maintainence-Tracker?node-id=448%3A435)**
+
+ <br>
 
 ## Code Components-
  
@@ -67,7 +68,40 @@ $ npm react-contenteditable
 1. 
  
 
-## Contact Info -
- 
-Email: <lathisha.n@gmail.com>
-LinkedIn: <https://www.linkedin.com/in/lathishanair/>
+## Team Contact Information -
+<br>
+
+### <span style="color:#F0B537">Lathisha Nair</span> | Project Manager/ QA Specialist
+Email: | <lathisha.n@gmail.com> |
+--- | --- 
+LinkedIn: | <https://www.linkedin.com/in/lathishanair/> |
+
+<br>
+
+### <span style="color:#007cba">Gedalya Krycer</span> | Front-end/ Design Specialist
+Email: | <gedalya@krycer.com> |
+--- | --- 
+LinkedIn: | <https://www.linkedin.com/in/gedalyakrycer/> |
+
+<br>
+
+### <span style="color:#0AFFDD">Nina Rocket</span> | Front-end/ Javascript Boss
+Email: | <ninamrocket@gmail.com> |
+--- | --- 
+LinkedIn: | <https://www.linkedin.com/in/ninarocket/> |
+
+<br>
+
+### <span style="color:#26FFAD">Jacob Cravey</span> | Back-end/ Routes Specialist
+Email: | <> |
+--- | --- 
+LinkedIn: | <https://www.linkedin.com/in/jacob-cravey-2367561a8/> |
+
+<br>
+
+### <span style="color:#F8963F">Linnea Gear</span> | Back-end/ MonGOD
+Email: | <linneagear@gmail.com> |
+--- | --- 
+LinkedIn: | <https://www.linkedin.com/in/linnea-gear/> |
+
+<br>
