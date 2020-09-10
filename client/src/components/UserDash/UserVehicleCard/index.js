@@ -15,7 +15,8 @@ function UserVehicleCard({
   vehicleID,
   carNickname,
   ownerName,
-  getLatestVehicles
+  getLatestVehicles,
+  bgCardImage
 }) {
 
   const { logout } = useDriverKickContext();
@@ -73,12 +74,17 @@ function UserVehicleCard({
   };
 
   const cardBgStyle = {
-    "padding": "40 40 0",
-    "borderRadius": "0px 20px",
-    "WebkitBoxShadow": "0px 4px 4px 0px rgba(0,0,0,0.1)",
-    "MozBoxShadow": "0px 4px 4px 0px rgba(0,0,0,0.1)",
-    "boxShadow": "0px 4px 4px 0px rgba(0,0,0,0.1)",
-    "marginBottom": "40px"
+    padding: "40px 40px 0",
+    borderRadius: "0px 20px",
+    WebkitBoxShadow: "0px 4px 4px 0px rgba(0,0,0,0.1)",
+    MozBoxShadow: "0px 4px 4px 0px rgba(0,0,0,0.1)",
+    boxShadow: "0px 4px 4px 0px rgba(0,0,0,0.1)",
+    marginBottom: "40px",
+    background: `linear-gradient(0deg, rgba(15, 68, 87, 0.5), rgba(15, 68, 87, 0.5)), url(${bgCardImage})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center"
+
+
   }
 
 

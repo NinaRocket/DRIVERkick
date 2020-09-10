@@ -5,10 +5,11 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import API from "../../../utils/API";
 import UserVehicleCard from '../UserVehicleCard';
+import bgImages from '../../../images/user-page/vehicleCardBgImages.json';
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
 
 function UserMainWrapper() {
-  const { userData, setUserData, selectValue, logout } = useDriverKickContext();
+  const { userData, setUserData, logout } = useDriverKickContext();
 
   // Stores vehicle info from the database
   const [vehicleInfo, setVehicleInfo] = useState([]);
@@ -54,7 +55,7 @@ function UserMainWrapper() {
       .catch((err) => console.log(err));
   }
 
-  
+
 
 
   return (
@@ -81,7 +82,7 @@ function UserMainWrapper() {
                 carNickname={v.nickname}
                 ownerName={v.driverName}
                 getLatestVehicles={getLatestVehicles}
-                bgCardImage={}
+                bgCardImage={bgImages[6].image}
 
               />
             ))}
