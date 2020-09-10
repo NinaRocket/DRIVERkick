@@ -22,7 +22,7 @@ export default {
     return axios.post("/api/vehicle", { VIN, year, make, model });
   },
 
-  getVehicle: function () {
+  getVehicles: function () {
     return axios.get("/api/vehicle");
   },
 
