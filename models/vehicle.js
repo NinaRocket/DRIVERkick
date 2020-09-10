@@ -12,6 +12,7 @@ const vehicleSchema = new Schema({
   year: { type: Number, required: true },
   make: { type: String, required: true },
   model: { type: String, required: true },
+  icon: { type: String, required: true },
   driverName: { type: String },
   nickname: { type: String },
   currentMileage: { type: Number },
