@@ -1,13 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./style.css";
-import AccordionContext from 'react-bootstrap/AccordionContext';
 import { useAccordionToggle } from 'react-bootstrap/AccordionToggle';
 import { useDriverKickContext } from "../DriverKickContext";
 
-
-
 function ContextAwareToggle({ children, eventKey, callback }) {
-  const currentEventKey = useContext(AccordionContext);
   const { accordionHelper, setAccordionHelper } = useDriverKickContext();
 
   const decoratedOnClick = useAccordionToggle(
@@ -17,8 +13,6 @@ function ContextAwareToggle({ children, eventKey, callback }) {
       accordionHelper ? setAccordionHelper(false) : setAccordionHelper(true)
     }
   );
-
-  const isCurrentEventKey = currentEventKey === eventKey;
 
   return (
     <button

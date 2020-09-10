@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { BrowserRouter, Redirect } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
 const DriverKickContext = React.createContext();
 
@@ -40,7 +40,7 @@ export function DriverKickProvider({ children }) {
 
     // navType Expects: "home" || "notFound" || "login" || "signup" || "newVehicle" || "userDash" || "vehicleDash"
 
-    
+
     // Accordion Bootstrap Helper Context
     const [accordionHelper, setAccordionHelper] = useState(false);
 
