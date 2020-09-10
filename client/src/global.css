@@ -288,6 +288,11 @@ Forms
   margin: 40px 0;
 }
 
+.g__form-input-err {
+  border-color: red;
+  color: red;
+}
+
 
 /* —————————————————————————————————————
 Global Dashboards
@@ -303,7 +308,6 @@ Global Dashboards
   color: #50B2C0;
 }
 
-g_dashboard-user-info
 
 
 /* —————————————————————————————————————

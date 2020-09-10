@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "image": "https://res.cloudinary.com/dmziz08wb/image/upload/v1599726302/card-bg-7_xgjsrt.jpg"
+    },
+    {
+        "id": 2,
+        "image": "https://res.cloudinary.com/dmziz08wb/image/upload/v1599726302/card-bg-8_fjgcio.jpg"
+    },
+    {
+        "id": 3,
+        "image": "https://res.cloudinary.com/dmziz08wb/image/upload/v1599726302/card-bg-5_p6y717.jpg"
+    },
+    {
+        "id": 4,
+        "image": "https://res.cloudinary.com/dmziz08wb/image/upload/v1599726302/card-bg-9_jbpv52.jpg"
+    },
+    {
+        "id": 5,
+        "image": "https://res.cloudinary.com/dmziz08wb/image/upload/v1599726302/card-bg-1_wazbbc.jpg"
+    },
+    {
+        "id": 6,
+        "image": "https://res.cloudinary.com/dmziz08wb/image/upload/v1599726302/card-bg-4_n0ebkt.jpg"
+    },
+    {
+        "id": 7,
+        "image": "https://res.cloudinary.com/dmziz08wb/image/upload/v1599726302/card-bg-6_ldl4ov.jpg"
+    },
+    {
+        "id": 8,
+        "image": "https://res.cloudinary.com/dmziz08wb/image/upload/v1599726302/card-bg-3_nx1x0r.jpg"
+    },
+    {
+        "id": 9,
+        "image": "https://res.cloudinary.com/dmziz08wb/image/upload/v1599726302/card-bg-2_wsqxeg.jpg"
+    }
+]

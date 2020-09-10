@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import "./style.css";
 import editBtn from "../../../images/user-page/edit-btn.svg";
@@ -7,15 +7,19 @@ import ContentEditable from "react-contenteditable";
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
 import API from "../../../utils/API";
 
-function UserVehicleCard({ vehicleIcon, vehicleMake, vehicleYear, vehicleModel, vehicleID, carNickname, ownerName, getLatestVehicles }) {
+function UserVehicleCard({
+  vehicleIcon,
+  vehicleMake,
+  vehicleYear,
+  vehicleModel,
+  vehicleID,
+  carNickname,
+  ownerName,
+  getLatestVehicles,
+  bgCardImage
+}) {
 
-  const { userData, setUserData, selectValue, logout } = useDriverKickContext();
-
-  // // Stores Driver/Owner name 
-  // const [driverName, setDriverName] = useState({});
-
-  // // Stores Car Nickname 
-  // const [carNickname, setCarNickname] = useState({});
+  const { logout } = useDriverKickContext();
 
   //redirect to vehicle dashboard
   const history = useHistory();
@@ -26,6 +30,7 @@ function UserVehicleCard({ vehicleIcon, vehicleMake, vehicleYear, vehicleModel, 
   const [editing, setEditing] = useState(false);
   const inputedCarNickname = useRef(carNickname);
   const inputedOwnerName = useRef(ownerName);
+
 
   // Controls edit buttons
   const editFields = async () => {
@@ -42,14 +47,13 @@ function UserVehicleCard({ vehicleIcon, vehicleMake, vehicleYear, vehicleModel, 
         if (driverUpdateRes.data.isAuthenticated === false || nicknameUpdateRes.data.isAuthenticated === false) {
           return logout(history);
         }
-        
+
         getLatestVehicles();
 
       } catch (error) {
         console.log(error);
       }
 
-      // console.log(inputedCarNickname.current);
     }
   };
 
@@ -64,22 +68,31 @@ function UserVehicleCard({ vehicleIcon, vehicleMake, vehicleYear, vehicleModel, 
   // END Custom Editing Code  ———————————————|
 
 
-
-  // Buttons
   const trackMaintenanceBtn = () => {
     history.push("/vehicle-dashboard");
   };
 
-
+  // Special style so background image can be dynamically replaced with prompts
+  const cardBgStyle = {
+    padding: "40px 40px 0",
+    borderRadius: "0px 20px",
+    WebkitBoxShadow: "0px 4px 4px 0px rgba(0,0,0,0.1)",
+    MozBoxShadow: "0px 4px 4px 0px rgba(0,0,0,0.1)",
+    boxShadow: "0px 4px 4px 0px rgba(0,0,0,0.1)",
+    marginBottom: "40px",
+    background: `linear-gradient(0deg, rgba(15, 68, 87, 0.5), rgba(15, 68, 87, 0.5)), url(${bgCardImage})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center"
+  }
 
 
   return (
-    <div className="vehicle-card">
+    <div style={cardBgStyle}>
       {/* Row */}
       <div className="d-md-flex">
         {/* Image Col */}
         <div className="vehicle-card__img-container">
-          <img src={vehicleIcon} alt={`${vehicleIcon} icon`} className="vehicle-card__img" />
+          <img src={vehicleIcon} alt={`${vehicleMake} icon`} className="vehicle-card__img" />
         </div>
         {/* Content Col */}
         <div className="vehicle-card__content">
@@ -88,22 +101,15 @@ function UserVehicleCard({ vehicleIcon, vehicleMake, vehicleYear, vehicleModel, 
             <div>
               <h4 className="g__card__subhead">Car Nickname</h4>
               <h3>
-                {/* <ContentEditable
-                  html={inputedCarNickname.current ? inputedCarNickname.current.html : "Update"}
-                  innerRef={inputedCarNickname}
-                  onChange={handleNicknameChange}
-                  disabled={!editing ? true : false}
-                  className={editing ? "vehicle-card__custom-input" : ""}
-                /> */}
                 <ContentEditable
                   html={carNickname}
                   onChange={handleNicknameChange}
                   disabled={!editing ? true : false}
-                  className={editing ? "vehicle-card__custom-input" : ""}
+                  className={`vehicle-card__overflow-txt ${editing ? "vehicle-card__custom-input" : ""}`}
                 />
               </h3>
             </div>
-            <div>
+            <div className="vehicle-card__btn-group">
               <button
                 onClick={editFields}
                 className="vehicle-card__edit-btn g__btn-reset"
@@ -143,20 +149,21 @@ function UserVehicleCard({ vehicleIcon, vehicleMake, vehicleYear, vehicleModel, 
             {/* Col 2 */}
             <div className="vehicle-card__col">
               <div className="vehicle-card__car-item">
+                <h4 className="g__card__subhead">Model</h4>
+                <h3>{vehicleModel}</h3>
+              </div>
+              <div className="vehicle-card__car-item">
                 <h4 className="g__card__subhead">Owner</h4>
                 <h3>
                   <ContentEditable
                     html={ownerName}
                     onChange={handleOwnerChange}
                     disabled={!editing ? true : false}
-                    className={editing ? "vehicle-card__custom-input" : ""}
+                    className={`vehicle-card__overflow-txt ${editing ? "vehicle-card__custom-input" : ""}`}
                   />
                 </h3>
               </div>
-              <div className="vehicle-card__car-item">
-                <h4 className="g__card__subhead">Model</h4>
-                <h3>{vehicleModel}</h3>
-              </div>
+
             </div>
           </div>
         </div>
