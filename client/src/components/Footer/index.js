@@ -6,6 +6,7 @@ import LogoTan from "../../images/global/drive-kick-logo-tan.svg";
 
 function Footer() {
   return (
+
     <footer className="footer">
       <div className="container">
         <div className="row footer_main-content">
@@ -38,6 +39,7 @@ function Footer() {
 
       </div>
     </footer>
+
 
   );
 };

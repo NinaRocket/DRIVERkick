@@ -1,17 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, createRef } from "react";
 import { useHistory } from "react-router-dom";
 import "./style.css";
 import API from "../../../utils/API";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
-import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
 //import isAuthenticated from "../../../../../config/middleware/isAuthenticated";
 
+
 function UserNewVehicleForm() {
-  const { setUserData, logout } = useDriverKickContext();
+  const { setUserData, logout, selectValue, setSelectValue } = useDriverKickContext();
   const [vinNum, setVinNum] = useState(false);
+  const [selectError, setSelectError] = useState(false);
   const [vinData, setVinData] = useState();
   const [vinResults, setVinResults] = useState(false);
   const redirect = useHistory();
@@ -44,34 +45,58 @@ function UserNewVehicleForm() {
       });
   };
 
+
+  // const saveVINdata = (VIN) => {
+  //   API.saveDecodeVIN(VIN)
+  //     .then((response) => {
+  //       console.log(response);
+  //       if (response.data.isAuthenticated === false) {
+  //         return logout(redirect);
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
+  //saveVINdata();
+
+
+
+  // Submit Form
   const submitUserVehicle = (event) => {
     event.preventDefault();
-    console.log(vinData);
-    API.addvehicle(vinData.vin, vinData.year, vinData.make, vinData.model);
-    // setUserData(vinData);
-    redirect.push("/user-dashboard");
+
+    // Validation to make sure they selected a vehicle type
+    if (selectValue) {
+      API.addvehicle(vinData.vin, vinData.year, vinData.make, vinData.model, selectValue);
+      // setUserData(vinData);
+      redirect.push("/user-dashboard");
+    }
+    return setSelectError(true);
   };
 
-  const saveVINdata = (VIN) => {
-    API.saveDecodeVIN(VIN)
-      .then((response) => {
-        console.log(response);
-        if (response.data.isAuthenticated === false) {
-          return logout(redirect);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-  //saveVINdata();
 
   return (
     <div className="g__form-container">
       <form className="g__deep-blue--txt">
         <h2 className="text-center">Add New Vehicle</h2>
+        {selectError ? <p className="text-center text-danger">Please select a vehicle type.</p> : null}
+        <div className="g__label-group mt-4">
+          <select value={selectValue} onChange={e => setSelectValue(e.currentTarget.value)} className="form-control">
+            <option value="">Choose…</option>
+            <option value="https://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/sedan-type-icon.svg">Sedan</option>
+            <option value="suhttps://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/suv-type-icon.svgv">SUV</option>
+            <option value="https://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/pickup-type-icon.svg">Pickup</option>
+            <option value="https://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/minivan-type-icon.svg">Mini Van</option>
+            <option value="https://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/van-type-icon.svg">Van</option>
+            <option value="https://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/sportscar-type-icon.svg">Sports Car</option>
+            <option value="https://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/convertable-type-icon.svg">Convertible</option>
+            <option value="https://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/rv-type-icon.svg">RV</option>
+            <option value="https://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/motercycler-type-icon.svg">Motorcycle</option>
+          </select>
+        </div>
         <div className="g__label-group">
-          <Form.Group className="mt-4">
+          <Form.Group>
             <Form.Label>Vin Number</Form.Label>
             <InputGroup>
               <FormControl
@@ -82,12 +107,12 @@ function UserNewVehicleForm() {
                 className=""
               />
               <InputGroup.Append>
-                <Button
+                <button
                   onClick={searchUserVehicle}
-                  className="vehicle-form__search-btn"
+                  className="btn vehicle-form__search-btn"
                 >
                   Search
-                </Button>
+                </button>
               </InputGroup.Append>
             </InputGroup>
           </Form.Group>
@@ -99,7 +124,7 @@ function UserNewVehicleForm() {
               <p className="mb-4">
                 Result looks incorrect? Please double-check the VIN above.
               </p>
-              <div className="d-sm-flex justify-content-around">
+              <div className="d-md-flex justify-content-around">
                 <div className="vehicle-form__vin-item">
                   <h4 className="g__card__subhead">Make</h4>
                   <h3>{vinData.make}</h3>
@@ -115,7 +140,7 @@ function UserNewVehicleForm() {
               </div>
             </div>
             <button
-              className="btn vehicle-form__submit-btn"
+              className="btn g__form-submit-btn"
               onClick={submitUserVehicle}
               type="submit"
             >

@@ -27,7 +27,7 @@ function UserMainWrapper({ children }) {
     <section className="g__dashboard-wrapper">
       <div className="container">
         <Row>
-          <Col lg={3}>
+          <Col lg={3} className="g__dashboard-user-info">
             <h1 className="g__dash-h1">Welcome {userData.firstName}</h1>
             <p>
               Here are the vehicles you are tracking maintenance for. Add new

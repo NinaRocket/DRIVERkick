@@ -1,23 +1,32 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import "./style.css";
 import editBtn from "../../../images/user-page/edit-btn.svg";
 import saveBtn from "../../../images/user-page/save-btn.svg";
 import ContentEditable from "react-contenteditable";
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
+import API from "../../../utils/API";
 
-function MileageTrackerCard() {
-  const [editing, setEditing] = useState(false);
-  const [carNickname, setCarNickname] = useState("Update");
-  const [ownerName, setOwnerName] = useState("Update");
-  const { userData } = useDriverKickContext();
+function UserVehicleCard({ vehicleIcon, vehicleMake, vehicleYear, vehicleModel }) {
 
   //redirect to vehicle dashboard
   const redirect = useHistory();
 
-  const trackMaintenanceBtn = () => {
-    redirect.push("/vehicle-dashboard");
+
+
+  // START Custom Editing Code  ———————————————|
+  const [editing, setEditing] = useState(false);
+
+  // Controls edit buttons
+  const editFields = () => {
+    // console.log("edit button");
+    editing ? setEditing(false) : setEditing(true);
+    setCarNickname(inputedCarNickname);
+    setOwnerName(inputedOwnerName);
   };
+
+  const [carNickname, setCarNickname] = useState("Update");
+  const [ownerName, setOwnerName] = useState("Update");
 
   const inputedCarNickname = useRef(carNickname);
   const inputedOwnerName = useRef(ownerName);
@@ -29,19 +38,26 @@ function MileageTrackerCard() {
   const handleOwnerChange = (evt) => {
     inputedOwnerName.current = evt.target.value;
   };
+  // END Custom Editing Code  ———————————————|
 
-  const editFields = () => {
-    console.log("edit button");
-    editing ? setEditing(false) : setEditing(true);
-    setCarNickname(inputedCarNickname);
-    setOwnerName(inputedOwnerName);
+
+
+  // Buttons
+  const trackMaintenanceBtn = () => {
+    redirect.push("/vehicle-dashboard");
   };
+
+
+
+
   return (
     <div className="vehicle-card">
       {/* Row */}
       <div className="d-md-flex">
         {/* Image Col */}
-        <div className="vehicle-card__img"></div>
+        <div className="vehicle-card__img-container">
+          <img src={vehicleIcon} alt={`${vehicleIcon} icon`} className="vehicle-card__img" />
+        </div>
         {/* Content Col */}
         <div className="vehicle-card__content">
           {/* Header Row & Bottom-border*/}
@@ -58,16 +74,22 @@ function MileageTrackerCard() {
               </h3>
             </div>
             <div>
-              <button onClick={editFields} className="vehicle-card__edit-btn">
+              <button
+                onClick={editFields}
+                className="vehicle-card__edit-btn g__btn-reset"
+              >
                 {!editing ? (
                   <img src={editBtn} alt="Edit button" />
                 ) : (
-                  <img src={saveBtn} alt="save button" />
-                )}
+                    <img src={saveBtn} alt="save button" />
+                  )}
               </button>
               <button
+                disabled={editing === true}
                 onClick={trackMaintenanceBtn}
-                className="vehicle-card__track-btn"
+                className={`vehicle-card__track-btn ${
+                  editing === true ? "g__disabled-btn" : null
+                  }`}
               >
                 Track Maintenance
               </button>
@@ -80,11 +102,12 @@ function MileageTrackerCard() {
             <div className="vehicle-card__col">
               <div className="vehicle-card__car-item">
                 <h4 className="g__card__subhead">Make</h4>
-                <h3>{userData.make}</h3>
+                <h3>{vehicleMake}</h3>
+
               </div>
               <div className="vehicle-card__car-item">
                 <h4 className="g__card__subhead">Year</h4>
-                <h3>{userData.year}</h3>
+                <h3>{vehicleYear}</h3>
               </div>
             </div>
             {/* Col 2 */}
@@ -102,7 +125,7 @@ function MileageTrackerCard() {
               </div>
               <div className="vehicle-card__car-item">
                 <h4 className="g__card__subhead">Model</h4>
-                <h3>{userData.model}</h3>
+                <h3>{vehicleModel}</h3>
               </div>
             </div>
           </div>
@@ -112,4 +135,4 @@ function MileageTrackerCard() {
   );
 }
 
-export default MileageTrackerCard;
+export default UserVehicleCard;

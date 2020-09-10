@@ -5,7 +5,7 @@ import Table from 'react-bootstrap/Table';
 
 function MileageTrackerPopulated({ mileageTrackingModal }) {
 
-    // ORGINAL CARD'S CODE ——————————————————————————————————|
+    // ORIGINAL CARD'S CODE ——————————————————————————————————|
     // const [mileage, setUpdateMileage] = useState([]);
 
     // const updateMileageValue = (event) => {
@@ -44,17 +44,17 @@ function MileageTrackerPopulated({ mileageTrackingModal }) {
         <div className="mileage-card__body">
             <div className="mileage-card__current">
                 <div>
-                    <h4 className="mileage-card__subhead">Current Mileage</h4>
+                    <h4 className="g__card__subhead">Current Mileage</h4>
                     <h3 className="mileage-card__mileage-txt">76,000</h3>
                 </div>
                 <div>
-                    <h4 className="mileage-card__subhead">Last Updated</h4>
+                    <h4 className="g__card__subhead">Last Updated</h4>
                     <h3 className="mileage-card__date-txt">2/28/2020</h3>
                 </div>
-                <button className="g__vehicle-card__btn" onClick={mileageTrackingModal}>Update Current Milage</button>
+                <button className="g__vehicle-card__btn" onClick={mileageTrackingModal}>Update Milage</button>
             </div>
             <div className="mileage-card__history">
-                <h4 className="mileage-card__subhead">History</h4>
+                <h4 className="g__card__subhead">History</h4>
                 <Table hover>
                     <tbody>
                         <tr>

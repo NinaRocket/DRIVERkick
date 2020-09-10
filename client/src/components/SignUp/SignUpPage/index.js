@@ -10,8 +10,7 @@ function SignUpPage() {
     setNavType("signup");
     return (
         <div>
-            <GlobalNavBar />
-            <SignUpMainWrapper>
+            <SignUpMainWrapper navbar={<GlobalNavBar />}>
                 <SignUpForm />
             </SignUpMainWrapper>
         </div>
