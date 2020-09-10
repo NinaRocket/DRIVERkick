@@ -42,7 +42,7 @@ function UserVehicleCard({ vehicleIcon, vehicleMake, vehicleYear, vehicleModel, 
         if (driverUpdateRes.data.isAuthenticated === false || nicknameUpdateRes.data.isAuthenticated === false) {
           return logout(history);
         }
-        
+
         getLatestVehicles();
 
       } catch (error) {
@@ -92,7 +92,7 @@ function UserVehicleCard({ vehicleIcon, vehicleMake, vehicleYear, vehicleModel, 
                   html={carNickname}
                   onChange={handleNicknameChange}
                   disabled={!editing ? true : false}
-                  className={editing ? "vehicle-card__custom-input" : ""}
+                  className={`vehicle-card__overflow-txt ${editing ? "vehicle-card__custom-input" : ""}`}
                 />
               </h3>
             </div>
@@ -136,20 +136,21 @@ function UserVehicleCard({ vehicleIcon, vehicleMake, vehicleYear, vehicleModel, 
             {/* Col 2 */}
             <div className="vehicle-card__col">
               <div className="vehicle-card__car-item">
+                <h4 className="g__card__subhead">Model</h4>
+                <h3>{vehicleModel}</h3>
+              </div>
+              <div className="vehicle-card__car-item">
                 <h4 className="g__card__subhead">Owner</h4>
                 <h3>
                   <ContentEditable
                     html={ownerName}
                     onChange={handleOwnerChange}
                     disabled={!editing ? true : false}
-                    className={editing ? "vehicle-card__custom-input" : ""}
+                    className={`vehicle-card__overflow-txt ${editing ? "vehicle-card__custom-input" : ""}`}
                   />
                 </h3>
               </div>
-              <div className="vehicle-card__car-item">
-                <h4 className="g__card__subhead">Model</h4>
-                <h3>{vehicleModel}</h3>
-              </div>
+
             </div>
           </div>
         </div>
