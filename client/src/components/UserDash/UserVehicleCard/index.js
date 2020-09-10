@@ -68,11 +68,11 @@ function UserVehicleCard({
   // END Custom Editing Code  ———————————————|
 
 
-
   const trackMaintenanceBtn = () => {
     history.push("/vehicle-dashboard");
   };
 
+  // Special style so background image can be dynamically replaced with prompts
   const cardBgStyle = {
     padding: "40px 40px 0",
     borderRadius: "0px 20px",
