@@ -25,6 +25,7 @@ function UserVehicleCard({ vehicleIcon, vehicleMake, vehicleYear, vehicleModel }
     setOwnerName(inputedOwnerName);
   };
 
+  
   const [carNickname, setCarNickname] = useState("Update");
   const [ownerName, setOwnerName] = useState("Update");
 

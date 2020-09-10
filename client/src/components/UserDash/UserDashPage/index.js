@@ -10,7 +10,6 @@ import API from "../../../utils/API";
 
 
 
-
 function UserDashPage() {
 
     const { setNavType, userData, logout, selectValue } = useDriverKickContext();
@@ -30,19 +29,22 @@ function UserDashPage() {
     
     // START API Call to Database ————————————————|
     useEffect(() => {
-        API.getVehicles()
+        API.getUser()
             .then((res) => {
 
                 // Validates if the user is signed in
                 if (res.data.isAuthenticated === false) {
                     return logout(redirect);
                 }
-
+                const { vehicles } = res.data;
+                console.log(vehicles);
+                setVehicleInfo(vehicles);
+                
                 // const deepCopy = Object.assign([], res.data)
                 // setVehicleInfo(deepCopy);
 
                 // THIS WORKS
-                setVehicleInfo(res.data[0]);
+                // setVehicleInfo(res.data[0]);
 
 
             })
