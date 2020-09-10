@@ -39,6 +39,7 @@ function UserMainWrapper() {
           return logout(history);
         }
         setVehicleInfo(res.data);
+        console.log(res.data)
       })
       .catch((err) => console.log(err));
 
@@ -58,41 +59,6 @@ function UserMainWrapper() {
       .catch((err) => console.log(err));
   }
 
-  // START Switch for Car Icons ———————————————|
-  useEffect(() => {
-    switch (selectValue) {
-      case "convertible":
-        setIconImage(carIcons[0].image);
-        break;
-      case "miniVan":
-        setIconImage(carIcons[1].image);
-        break;
-      case "motorcycle":
-        setIconImage(carIcons[2].image);
-        break;
-      case "pickup":
-        setIconImage(carIcons[3].image);
-        break;
-      case "rv":
-        setIconImage(carIcons[4].image);
-        break;
-      case "sedan":
-        setIconImage(carIcons[5].image);
-        break;
-      case "sportsCar":
-        setIconImage(carIcons[6].image);
-        break;
-      case "suv":
-        setIconImage(carIcons[7].image);
-        break;
-      case "van":
-        setIconImage(carIcons[8].image);
-        break;
-      default:
-        setIconImage(carIcons[5].image);
-    }
-  }, []);
-  // END Switch for Car Icons ———————————————|
 
   return (
     <section className="g__dashboard-wrapper">
@@ -111,7 +77,7 @@ function UserMainWrapper() {
               <UserVehicleCard
                 key={v._id}
                 vehicleID={v._id}
-                vehicleIcon={v.iconImage}
+                vehicleIcon={v.icon}
                 vehicleMake={v.make}
                 vehicleYear={v.year}
                 vehicleModel={v.model}

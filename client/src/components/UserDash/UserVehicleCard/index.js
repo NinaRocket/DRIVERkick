@@ -79,7 +79,7 @@ function UserVehicleCard({ vehicleIcon, vehicleMake, vehicleYear, vehicleModel, 
       <div className="d-md-flex">
         {/* Image Col */}
         <div className="vehicle-card__img-container">
-          <img src={vehicleIcon} alt={`${vehicleIcon} icon`} className="vehicle-card__img" />
+          <img src={vehicleIcon} alt={`${vehicleMake} icon`} className="vehicle-card__img" />
         </div>
         {/* Content Col */}
         <div className="vehicle-card__content">
@@ -88,13 +88,6 @@ function UserVehicleCard({ vehicleIcon, vehicleMake, vehicleYear, vehicleModel, 
             <div>
               <h4 className="g__card__subhead">Car Nickname</h4>
               <h3>
-                {/* <ContentEditable
-                  html={inputedCarNickname.current ? inputedCarNickname.current.html : "Update"}
-                  innerRef={inputedCarNickname}
-                  onChange={handleNicknameChange}
-                  disabled={!editing ? true : false}
-                  className={editing ? "vehicle-card__custom-input" : ""}
-                /> */}
                 <ContentEditable
                   html={carNickname}
                   onChange={handleNicknameChange}
