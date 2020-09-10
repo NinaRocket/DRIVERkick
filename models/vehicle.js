@@ -13,11 +13,11 @@ const vehicleSchema = new Schema({
   make: { type: String, required: true },
   model: { type: String, required: true },
   icon: { type: String, required: true },
-  driverName: { type: String },
-  nickname: { type: String },
-  currentMileage: { type: Number },
-  nextOilChange: { type: Number },
-  oilType: { type: String },
+  driverName: { type: String, default: "Update" },
+  nickname: { type: String, default: "Update" },
+  currentMileage: { type: Number, default: 0},
+  nextOilChange: { type: Number, default: 0 },
+  oilType: { type: String, default: "Update" },
   warranties: [{
     type: Schema.Types.ObjectId,
     ref: "Warranty"
