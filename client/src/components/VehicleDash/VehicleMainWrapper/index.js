@@ -42,7 +42,6 @@ function VehicleMainWrapper({ children }) {
           return logout(history);
         }
         setVehicleInfo(res.data);
-        console.log(res.data)
       })
       .catch((err) => console.log(err));
 

@@ -93,7 +93,7 @@ function UserNewVehicleForm() {
         {vinError ? <p className="text-center text-danger">Please confirm an accurate VIN has been specified.</p> : null}
 
         <div className="g__label-group mt-4">
-          <select value={selectValue} onChange={e => setSelectValue(e.currentTarget.value)} className={`form-control ${selectError ? "vehicle-form__input-err" : null}`}>
+          <select value={selectValue} onChange={e => setSelectValue(e.currentTarget.value)} className={`form-control ${selectError ? "g__form-input-err" : null}`}>
             <option value="">Choose…</option>
             <option value="https://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/sedan-type-icon.svg">Sedan</option>
             <option value="https://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/suv-type-icon.svg">SUV</option>
@@ -115,7 +115,7 @@ function UserNewVehicleForm() {
                 aria-label="Recipient's username"
                 aria-describedby="basic-addon2"
                 onChange={vinNumValue}
-                className={vinError ? "vehicle-form__input-err" : null}
+                className={vinError ? "g__form-input-err" : null}
               />
               <InputGroup.Append>
                 <button

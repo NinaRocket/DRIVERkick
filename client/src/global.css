@@ -288,6 +288,11 @@ Forms
   margin: 40px 0;
 }
 
+.g__form-input-err {
+  border-color: red;
+  color: red;
+}
+
 
 /* —————————————————————————————————————
 Global Dashboards

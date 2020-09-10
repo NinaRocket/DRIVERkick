@@ -9,6 +9,18 @@ function LoginForm() {
     const [loggedIn, setLoggedIn] = useState(false);
     const redirect = useHistory();
 
+    // Error States
+    const [emailError, setEmailError] = useState(false);
+
+    const emailValidator = () => {
+        if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)
+        ) {
+            setEmailError(false);
+        } else {
+            setEmailError(true);
+        }
+    }
+
     const userEmailValue = (event) => {
         setEmail(event.target.value);
     };
@@ -19,6 +31,12 @@ function LoginForm() {
     const submitUserLogin = (event) => {
         event.preventDefault();
         console.log("handleSubmit");
+
+        // Email Validation
+        emailValidator()
+        if (emailError) {
+            return;
+        }
 
         API.login(email, password)
             .then((response) => {
@@ -44,13 +62,15 @@ function LoginForm() {
         <div className="g__form-container">
             <form>
                 <h2 className="g__form-title">Login</h2>
+
+                {emailError ? <p className="text-center text-danger">Please make sure your email is formated correctly.</p> : null}
                 <div className="g__label-group">
                     <label className="form-label" htmlFor="email">
                         Email
                              </label>
 
                     <input
-                        className="form-input"
+                        className={`form-input ${emailError ? "g__form-input-err" : null}`}
                         type="text"
                         id="email"
                         name="email"
