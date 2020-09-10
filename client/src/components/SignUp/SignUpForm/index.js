@@ -11,6 +11,22 @@ function SignUpForm() {
     const [confirmPassword, setConfirmPassword] = useState([]);
     const redirect = useHistory();
 
+    // START Error States ——————————————————————————|
+    const [emailError, setEmailError] = useState(false);
+    
+
+    const emailValidator = () => {
+        if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)
+        ) {
+            setEmailError(false);
+        } else {
+            setEmailError(true);
+        }
+    }
+
+
+    // END Error States ——————————————————————————|
+
     const signupEmailValue = (event) => {
         setEmail(event.target.value);
     };
@@ -32,10 +48,12 @@ function SignUpForm() {
     };
 
     const submitUserSignup = (event) => {
-        console.log("sign-up handleSubmit, email: ");
-        console.log(email);
         event.preventDefault();
-        console.log(email, firstName, lastName, password);
+        // Email Validation
+        emailValidator()
+        if (emailError) {
+            return;
+        }
         const userInfo = {
             email: email,
             firstName: firstName,
@@ -64,8 +82,8 @@ function SignUpForm() {
     return (
         <div className="g__form-container">
             <form>
-            <h2 className="g__form-title">Sign Up</h2>
-               
+                <h2 className="g__form-title">Sign Up</h2>
+                {emailError ? <p className="text-center text-danger">Please make sure your email is formatted correctly.</p> : null}
                 <div className="g__label-group">
                     <label className="form-label" htmlFor="firstName">First Name</label>
                     <input
@@ -90,11 +108,11 @@ function SignUpForm() {
                         onChange={signupLastNameValue}
                     />
                 </div>
-                <hr className="g__form-divider"/>
+                <hr className="g__form-divider" />
                 <div className="g__label-group">
                     <label className="form-label" htmlFor="email">Email</label>
                     <input
-                        className="form-input"
+                        className={`form-input ${emailError ? "g__form-input-err" : null}`}
                         type="text"
                         id="email"
                         name="email"

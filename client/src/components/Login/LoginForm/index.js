@@ -9,7 +9,7 @@ function LoginForm() {
     const [loggedIn, setLoggedIn] = useState(false);
     const redirect = useHistory();
 
-    // Error States
+    // START Error States ——————————————————————————|
     const [emailError, setEmailError] = useState(false);
 
     const emailValidator = () => {
@@ -20,6 +20,7 @@ function LoginForm() {
             setEmailError(true);
         }
     }
+    // END Error States ——————————————————————————|
 
     const userEmailValue = (event) => {
         setEmail(event.target.value);
@@ -63,7 +64,7 @@ function LoginForm() {
             <form>
                 <h2 className="g__form-title">Login</h2>
 
-                {emailError ? <p className="text-center text-danger">Please make sure your email is formated correctly.</p> : null}
+                {emailError ? <p className="text-center text-danger">Please make sure your email is formatted correctly.</p> : null}
                 <div className="g__label-group">
                     <label className="form-label" htmlFor="email">
                         Email
