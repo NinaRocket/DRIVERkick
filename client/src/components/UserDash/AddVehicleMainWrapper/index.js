@@ -30,8 +30,7 @@ function AddVehicleMainWrapper({ children }) {
           <Col lg={3} className="g__dashboard-user-info">
             <h1 className="g__dash-h1">Welcome {userData.firstName}</h1>
             <p>
-              Here are the vehicles you are tracking maintenance for. Add new
-              ones at any time!
+              Let's add a new vehicle to begin tracking it's maintenance! 
             </p>
           </Col>
           <Col lg={1}></Col>

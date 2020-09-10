@@ -6,11 +6,10 @@ import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Form from "react-bootstrap/Form";
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
-//import isAuthenticated from "../../../../../config/middleware/isAuthenticated";
 
 
 function UserNewVehicleForm() {
-  const { setUserData, logout, selectValue, setSelectValue } = useDriverKickContext();
+  const { logout, selectValue, setSelectValue } = useDriverKickContext();
   const [vinNum, setVinNum] = useState(false);
   const [selectError, setSelectError] = useState(false);
   const [vinError, setVinError] = useState(false);
@@ -74,7 +73,6 @@ function UserNewVehicleForm() {
       return setVinError(true);
     } else {
       API.addvehicle(vinData.vin, vinData.year, vinData.make, vinData.model, selectValue);
-      // setUserData(vinData);
       redirect.push("/user-dashboard");
     }
 

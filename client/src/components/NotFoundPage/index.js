@@ -14,7 +14,7 @@ function NotFoundPage() {
                 <h1 className="not-found__h1">
                     404
                 </h1>
-                <h3 className="not-found__h2">Hmm… Seems like this page can use some maintenance tracking. While, we get on that, please try logging or signing up in again.</h3>
+                <h3 className="not-found__h2">Hmm… Seems like this page could also use some maintenance tracking. While, we get on that, please try logging in or signing up again.</h3>
 
 
             </header>

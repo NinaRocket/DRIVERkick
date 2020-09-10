@@ -1,13 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './style.css'
 import { useHistory } from "react-router-dom";
 import API from "../../../utils/API";
 
 function LoginForm() {
+
+    // Stores form values
     const [email, setEmail] = useState([]);
     const [password, setPassword] = useState([]);
+
+    // Not sure what this does
     const [loggedIn, setLoggedIn] = useState(false);
-    const redirect = useHistory();
+
+    // Sets up page redirect 
+    const history = useHistory();
+
 
     // START Error States ——————————————————————————|
     const [emailError, setEmailError] = useState(false);
@@ -22,6 +29,8 @@ function LoginForm() {
     }
     // END Error States ——————————————————————————|
 
+
+    // START Email Value Capture —————————————————|
     const userEmailValue = (event) => {
         setEmail(event.target.value);
     };
@@ -29,9 +38,11 @@ function LoginForm() {
     const userPasswordValue = (event) => {
         setPassword(event.target.value);
     };
+    // END Email Value Capture —————————————————|
+
+
     const submitUserLogin = (event) => {
         event.preventDefault();
-        console.log("handleSubmit");
 
         // Email Validation
         emailValidator()
@@ -41,20 +52,17 @@ function LoginForm() {
 
         API.login(email, password)
             .then((response) => {
-                console.log("login response: ");
-                console.log(response);
                 // if successeful
                 if (response.status === 200) {
                     // update App.js state to login
                     setLoggedIn(true);
                     setEmail(response.data.email);
-                    // update the state to redirect to home
-                    redirect.push("/add-vehicle");
+
+                    history.push("/user-dashboard")
                 }
             })
             .catch((error) => {
-                console.log("login error: ");
-                console.log(error);
+                console.log(`login error: ${error}`);
             });
     };
 
