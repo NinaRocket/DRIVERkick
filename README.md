@@ -7,7 +7,12 @@
 
 
 ![Main Pages](./rm-img/DriverKickPages.JPG)
+<br><br>
+
+## <center> User Story
+<center><h3> As a <span style="color:#50B2C0">vehicle owner,</span> I want a multi-purpose vehicle <span style="color:#50B2C0">maintenance tracker</span> so that I can ensure I am up to date on my vehicle’s upkeep.</h3> </center>
  
+ <br><br>
  
 ## Table of Contents
 1. [Technology Used](#technology-used)
@@ -17,18 +22,18 @@
 5. [Future Development](#future-development)
 6. [Contact Info](#contact-info)
 
-## User Story
-As a **vehicle owner,** I want a multi-purpose vehicle **maintenance tracker** so that I can ensure I am up to date on my vehicle’s upkeep.
- 
-## Technologies Used:
+<br>
+
+## Technology Used:
 - HTML
 - JSX
 - React
 - MongoDB
 - Express
 - Passport
- 
- 
+
+<br>
+
 ## Installations:
 ```
 $ npm axios
@@ -40,11 +45,13 @@ $ npm mongoose
 $ npm passport
 $ npm react-contenteditable
 ```
- 
+<br>
+
 ## Links:
  
 **[Click link to see Project in action!]()**
  
+
 ## Code Components-
  
 > Code goes here!
@@ -59,6 +66,7 @@ $ npm react-contenteditable
  
 1. 
  
+
 ## Contact Info -
  
 Email: <lathisha.n@gmail.com>
