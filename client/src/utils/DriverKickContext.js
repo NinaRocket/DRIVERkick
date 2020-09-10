@@ -35,16 +35,12 @@ export function DriverKickProvider({ children }) {
         year: "N/A",
     });
 
-    // const [vehicleData, setVehicleData] = useState({
-    //     vehicle: [],
-    //     warranty: [],
-    // });
-
     // Nav Bar States
     const [navType, setNavType] = useState("home");
 
     // navType Expects: "home" || "notFound" || "login" || "signup" || "newVehicle" || "userDash" || "vehicleDash"
 
+    
     // Accordion Bootstrap Helper Context
     const [accordionHelper, setAccordionHelper] = useState(false);
 
@@ -70,8 +66,6 @@ export function DriverKickProvider({ children }) {
                     userData,
                     authenticated,
                     setAuthenticated,
-                    // vehicleData,
-                    // setVehicleData,
                     navType,
                     setNavType,
                     accordionHelper,

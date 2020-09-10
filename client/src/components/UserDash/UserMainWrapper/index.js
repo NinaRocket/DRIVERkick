@@ -9,11 +9,11 @@ import bgImages from '../../../images/user-page/vehicleCardBgImages.json';
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
 
 function UserMainWrapper() {
+  // Context import
   const { userData, setUserData, logout } = useDriverKickContext();
 
   // Stores vehicle info from the database
   const [vehicleInfo, setVehicleInfo] = useState([]);
-
 
   const history = useHistory();
   const { id } = useParams();
