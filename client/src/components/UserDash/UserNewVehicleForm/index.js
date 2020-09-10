@@ -68,7 +68,7 @@ function UserNewVehicleForm() {
 
     // Validation to make sure they selected a vehicle type
     if (selectValue) {
-      API.addvehicle(vinData.vin, vinData.year, vinData.make, vinData.model);
+      API.addvehicle(vinData.vin, vinData.year, vinData.make, vinData.model, selectValue);
       // setUserData(vinData);
       redirect.push("/user-dashboard");
     }
@@ -84,15 +84,15 @@ function UserNewVehicleForm() {
         <div className="g__label-group mt-4">
           <select value={selectValue} onChange={e => setSelectValue(e.currentTarget.value)} className="form-control">
             <option value="">Choose…</option>
-            <option value="sedan">Sedan</option>
-            <option value="suv">SUV</option>
-            <option value="pickup">Pickup</option>
-            <option value="miniVan">Mini Van</option>
-            <option value="van">Van</option>
-            <option value="sportsCar">Sports Car</option>
-            <option value="convertible">Convertible</option>
-            <option value="rv">RV</option>
-            <option value="motorcycle">Motorcycle</option>
+            <option value="https://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/sedan-type-icon.svg">Sedan</option>
+            <option value="suhttps://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/suv-type-icon.svgv">SUV</option>
+            <option value="https://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/pickup-type-icon.svg">Pickup</option>
+            <option value="https://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/minivan-type-icon.svg">Mini Van</option>
+            <option value="https://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/van-type-icon.svg">Van</option>
+            <option value="https://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/sportscar-type-icon.svg">Sports Car</option>
+            <option value="https://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/convertable-type-icon.svg">Convertible</option>
+            <option value="https://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/rv-type-icon.svg">RV</option>
+            <option value="https://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/motercycler-type-icon.svg">Motorcycle</option>
           </select>
         </div>
         <div className="g__label-group">
