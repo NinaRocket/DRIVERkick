@@ -98,7 +98,7 @@ function UserVehicleCard({
                 />
               </h3>
             </div>
-            <div>
+            <div className="vehicle-card__btn-group">
               <button
                 onClick={editFields}
                 className="vehicle-card__edit-btn g__btn-reset"

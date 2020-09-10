@@ -33,7 +33,7 @@
 
   .vehicle-card__track-btn {
     padding: 5px 10px;
-    margin-left: 10px;
+    margin-left: 20px;
   }
 
   .vehicle-card__car-info {
@@ -44,13 +44,17 @@
   .vehicle-card__col {
     width: 50%;
   }
-
+  
   .vehicle-card__car-item {
       margin-bottom: 40px;
   }
 
+  .vehicle-card__car-item h3 {
+      font-size: 24px;
+  }
+
 .vehicle-card__overflow-txt {
-  width: 250px;
+  max-width: 250px;
   word-break: break-all;
 }
 
@@ -92,12 +96,20 @@
     .vehicle-card__col {
       width: 100%;
     }
+
+    .vehicle-card__overflow-txt {
+      margin: 0 auto;
+    }
   
   }
   
   @media only screen and (max-width: 575px) {
     .vehicle-card {
       padding: 40px 20px 20px;
+    }
+
+    .vehicle-card__btn-group {
+      margin-top: 10px;
     }
   
   }
