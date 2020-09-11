@@ -44,28 +44,57 @@ function VehicleMainWrapper({ children }) {
 
   const { id } = useParams();
 
-  useEffect(async () => {
-    try {
-      const fetchUser = await API.getUser(id);
-      const fetchVehicles = await API.getVehicleById(vehID);
+  // REACT'S SUGGESTED ASYNC USE-EFFECT SYNTAX
+  useEffect(() => {
+    async function getInfo() {
+      try {
+        const fetchUser = await API.getUser(id);
+        const fetchVehicles = await API.getVehicleById(vehID);
 
-      console.log(fetchVehicles.data[0]);
+        console.log(fetchVehicles.data[0]);
 
-      if (
-        fetchUser.data.isAuthenticated === false ||
-        fetchVehicles.data.isAuthenticated === false
-      ) {
-        return logout(history);
+        if (
+          fetchUser.data.isAuthenticated === false ||
+          fetchVehicles.data.isAuthenticated === false
+        ) {
+          return logout(history);
+        }
+
+        setUserData({ ...userData, ...fetchUser.data });
+        setVehicleInfo(fetchVehicles.data[0]);
+        console.log(vehicleInfo);
+      } catch (error) {
+        console.log(error);
       }
-
-      setUserData({ ...userData, ...fetchUser.data });
-      setVehicleInfo(fetchVehicles.data[0]);
-      console.log(vehicleInfo);
-    } catch (error) {
-      console.log(error);
     }
+    getInfo()
   }, []);
 
+
+  // OUR ORIGINAL ASYNC USEEFFECT
+  // useEffect(async () => {
+  //   try {
+  //     const fetchUser = await API.getUser(id);
+  //     const fetchVehicles = await API.getVehicleById(vehID);
+
+  //     console.log(fetchVehicles.data[0]);
+
+  //     if (
+  //       fetchUser.data.isAuthenticated === false ||
+  //       fetchVehicles.data.isAuthenticated === false
+  //     ) {
+  //       return logout(history);
+  //     }
+
+  //     setUserData({ ...userData, ...fetchUser.data });
+  //     setVehicleInfo(fetchVehicles.data[0]);
+  //     console.log(vehicleInfo);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }, []);
+
+  // NON-ASYNC USE EFFECT
   // useEffect(() => {
   //   API.getUser(id)
   //     .then((res) => {
@@ -82,7 +111,7 @@ function VehicleMainWrapper({ children }) {
   //       if (res.data.isAuthenticated === false) {
   //         return logout(history);
   //       }
-  //       setVehicleInfo(res.data);
+  //       setVehicleInfo(res.data[0]);
   //     })
   //     .catch((err) => console.log(err));
   // }, []);
@@ -112,12 +141,12 @@ function VehicleMainWrapper({ children }) {
                         className="vehicle-dash__accordion-toggle"
                       />
                     ) : (
-                      <img
-                        src={openBtnIcon}
-                        alt="Open icon"
-                        className="vehicle-dash__accordion-toggle"
-                      />
-                    )}
+                        <img
+                          src={openBtnIcon}
+                          alt="Open icon"
+                          className="vehicle-dash__accordion-toggle"
+                        />
+                      )}
                   </Card.Header>
                 </ContextAwareToggle>
                 <Accordion.Collapse eventKey="0">

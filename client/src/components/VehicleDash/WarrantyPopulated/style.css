@@ -1,0 +1,16 @@
+.recall-card__body {
+    border-top: 6px solid #143642;
+    word-wrap: break-word;
+}
+
+.recall-card__content {
+    padding: 60px 60px 0;
+}
+
+
+@media only screen and (max-width: 575px) {
+    .recall-card__content {
+        padding: 20px 20px 0;
+    }
+    
+}

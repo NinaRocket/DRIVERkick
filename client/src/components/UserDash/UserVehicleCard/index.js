@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import "./style.css";
 import editBtn from "../../../images/user-page/edit-btn.svg";
 import saveBtn from "../../../images/user-page/save-btn.svg";
+import deleteBtn from "../../../images/user-page/delete-btn.svg";
 import ContentEditable from "react-contenteditable";
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
 import API from "../../../utils/API";
@@ -30,7 +31,6 @@ function UserVehicleCard({
 
   // Controls edit buttons
   const editFields = async () => {
-    // console.log("edit button");
     editing ? setEditing(false) : setEditing(true);
     if (editing) {
       try {
@@ -58,6 +58,11 @@ function UserVehicleCard({
     }
   };
 
+  // Most likely will need to combine into above function 
+  const deleteFields = () => {
+    console.log("delete function")
+  }
+
   const handleNicknameChange = (evt) => {
     inputedCarNickname.current = evt.target.value;
   };
@@ -74,7 +79,6 @@ function UserVehicleCard({
 
   // Special style so background image can be dynamically replaced with prompts
   const cardBgStyle = {
-    padding: "40px 40px 0",
     borderRadius: "0px 20px",
     WebkitBoxShadow: "0px 4px 4px 0px rgba(0,0,0,0.1)",
     MozBoxShadow: "0px 4px 4px 0px rgba(0,0,0,0.1)",
@@ -88,7 +92,7 @@ function UserVehicleCard({
   return (
     <div style={cardBgStyle}>
       {/* Row */}
-      <div className="d-md-flex">
+      <div className="vehicle-card__flex ">
         {/* Image Col */}
         <div className="vehicle-card__img-container">
           <img
@@ -110,11 +114,20 @@ function UserVehicleCard({
                   disabled={!editing ? true : false}
                   className={`vehicle-card__overflow-txt ${
                     editing ? "vehicle-card__custom-input" : ""
-                  }`}
+                    }`}
                 />
               </h3>
             </div>
             <div className="vehicle-card__btn-group">
+
+              {editing ? <button
+                onClick={deleteFields}
+                className="vehicle-card__edit-btn g__btn-reset"
+              >
+                <img src={deleteBtn} alt="delete button" />
+              </button> : null}
+
+
               <button
                 onClick={editFields}
                 className="vehicle-card__edit-btn g__btn-reset"
@@ -122,15 +135,15 @@ function UserVehicleCard({
                 {!editing ? (
                   <img src={editBtn} alt="Edit button" />
                 ) : (
-                  <img src={saveBtn} alt="save button" />
-                )}
+                    <img src={saveBtn} alt="save button" />
+                  )}
               </button>
               <button
                 disabled={editing === true}
                 onClick={trackMaintenanceBtn}
                 className={`vehicle-card__track-btn ${
                   editing === true ? "g__disabled-btn" : null
-                }`}
+                  }`}
               >
                 Track Maintenance
               </button>
@@ -165,7 +178,7 @@ function UserVehicleCard({
                     disabled={!editing ? true : false}
                     className={`vehicle-card__overflow-txt ${
                       editing ? "vehicle-card__custom-input" : ""
-                    }`}
+                      }`}
                   />
                 </h3>
               </div>

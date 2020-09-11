@@ -5,7 +5,9 @@
 
 .mileage-card__mileage-txt {
     font-size: 50px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
+    padding-bottom: 35px; 
+    border-bottom: solid 1px #143642;
 }
 
 .mileage-card__date-txt {

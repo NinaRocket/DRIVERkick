@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import API from "../../../utils/API";
+import "./style.css";
+import Form from 'react-bootstrap/form';
 
 function VehicleWarrantyForm() {
   const [title, setWarrantyTitle] = useState([]);
@@ -51,77 +53,56 @@ function VehicleWarrantyForm() {
   };
 
   return (
-    <div className="VehicleWarrantyForm">
-      <form className="form-horizontal">
-        <div className="form-group">
-          <div className="col-1 col-ml-auto">
-            <label className="form-label" htmlFor="warrantyTitle">
-              Warranty Title
-            </label>
-          </div>
-          <div className="col-3 col-mr-auto">
-            <input
-              className="form-input"
-              type="text"
-              id="warrantyTitle"
-              name="warrantyTitle"
-              placeholder="name of warranty"
-              value={title}
-              onChange={addWarrantyTitle}
-            />
-          </div>
-        </div>
+    <form className="g__deep-blue--txt">
+      <div className="g__label-group mt-4">
+        <Form.Group>
+          <Form.Label htmlFor="warrantyProvider">Current Mileage</Form.Label>
+          <Form.Control
+            type="text"
+            id="warrantyTitle"
+            name="warrantyTitle"
+            placeholder="Name of warranty…"
+            value={title}
+            onChange={addWarrantyTitle} />
+        </Form.Group>
+      </div>
 
-        <div className="form-group">
-          <div className="col-1 col-ml-auto">
-            <label className="form-label" htmlFor="wwarrantyProvider">
-              Warranty Provider
-            </label>
-          </div>
-          <div className="col-3 col-mr-auto">
-            <input
-              className="form-input"
-              type="text"
-              id="warrantyProvider"
-              name="wwarrantyProvider"
-              placeholder="Store or company..."
-              value={provider}
-              onChange={addWarrantyProvider}
-            />
-          </div>
-        </div>
 
-        <div className="form-group">
-          <div className="col-1 col-ml-auto">
-            <label className="form-label" htmlFor="warrantyDetails">
-              Warranty Details
-            </label>
-          </div>
-          <div className="col-3 col-mr-auto">
-            <input
-              className="form-input"
-              type="text"
-              id="warrantyDetails"
-              name="warrantyDetails"
-              placeholder="Provide any relevant notes that will need to be referred to in the future"
-              value={details}
-              onChange={addWarrantyDetails}
-            />
-          </div>
-        </div>
 
-        <div className="form-group ">
-          <div className="col-7"></div>
-          <button
-            className="btn btn-primary col-1 col-mr-auto"
-            onClick={submitNewWarranty}
-            type="submit"
-          >
-            Add Warranty
-          </button>
-        </div>
-      </form>
-    </div>
+      <div className="g__label-group mt-4">
+        <Form.Group>
+          <Form.Label htmlFor="warrantyProvider">Current Mileage</Form.Label>
+          <Form.Control
+            type="text"
+            id="warrantyProvider"
+            name="warrantyProvider"
+            placeholder="Store or company..."
+            value={provider}
+            onChange={addWarrantyProvider} />
+        </Form.Group>
+      </div>
+
+      <div className="g__label-group mt-4">
+        <Form.Group>
+          <Form.Label htmlFor="warrantyDetails">Current Mileage</Form.Label>
+          <Form.Control
+            as="textarea"
+            rows="3"
+            id="warrantyDetails"
+            name="warrantyDetails"
+            placeholder="Provide any relevant notes that will need to be referred to in the future…"
+            value={details}
+            onChange={addWarrantyDetails} />
+        </Form.Group>
+      </div>
+
+
+      <button
+        className="btn g__form-submit-btn"
+        onClick={submitNewWarranty}
+        type="submit"
+      >Add Warranty</button>
+    </form>
   );
 }
 
