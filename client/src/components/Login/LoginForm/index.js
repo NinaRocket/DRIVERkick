@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import './style.css'
 import { useHistory } from "react-router-dom";
 import API from "../../../utils/API";
@@ -10,7 +10,7 @@ function LoginForm() {
     const [password, setPassword] = useState([]);
 
     // Not sure what this does
-    const [loggedIn, setLoggedIn] = useState(false);
+    // const [loggedIn, setLoggedIn] = useState(false);
 
     // Sets up page redirect 
     const history = useHistory();
@@ -55,7 +55,7 @@ function LoginForm() {
                 // if successeful
                 if (response.status === 200) {
                     // update App.js state to login
-                    setLoggedIn(true);
+                    // setLoggedIn(true);
                     setEmail(response.data.email);
 
                     history.push("/user-dashboard")

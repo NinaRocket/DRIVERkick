@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import "./style.css";
 import mileageTrackerIcon from '../../../images/vehiclepage/vehicle-mileage-icon.svg';
+import VehicleDashCardHeader from '../VehicleDashCardHeader';
 import MileageTrackerInitial from '../MileageTrackerInitial';
 import MileageTrackerPopulated from '../MileageTrackerPopulated';
 
@@ -15,15 +16,12 @@ function MileageTrackerCard({ mileageTrackingModal }) {
 
     return (
         <div className="g__vehicle-card">
-            {/* Header Col */}
-            <div className="g__vehicle-card__header-container">
-                <div className="g__vehicle-card__header">
-                    <img src={mileageTrackerIcon} alt="Mileage tracker icon"
-                        className="g__vehicle-card__header-icon" />
-                    <h2 className="g__vehicle-card__title">Mileage Tracker</h2>
-                </div>
-                <p>Frequently updating your mileage generates the most accurate recommendations.</p>
-            </div>
+            <VehicleDashCardHeader
+                icon={mileageTrackerIcon}
+                alt={"Mileage Tracker Icon"}
+                title={"Mileage Tracker"}
+                description={"Frequently updating your mileage generates the most accurate recommendations."}
+            />
             {newUser ? <MileageTrackerInitial mileageTrackingModal={mileageTrackingModal} /> : <MileageTrackerPopulated mileageTrackingModal={mileageTrackingModal} />
 
             }

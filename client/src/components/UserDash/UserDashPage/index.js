@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 import "./style.css";
 import { useDriverKickContext } from '../../../utils/DriverKickContext';
