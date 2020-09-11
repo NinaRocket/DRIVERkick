@@ -8,16 +8,21 @@ import MileageTrackerForm from "../MileageTrackerForm";
 import Modal from 'react-bootstrap/Modal';
 
 function CurrentMilageModal(props) {
+    // Modal Show/Hide State
     const [modalShow, setModalShow] = React.useState(false);
 
+    // Milage Form Value State
     const [mileage, setMileage] = useState();
+
+    // Error State
     const [mileageError, setMileageError] = useState(false);
 
-
+    // Sets the form value state
     const handleMilage = (event) => {
         setMileage(event.target.value);
     }
 
+    // Submits the form value state and validates errors
     const submitCurrentMilage = (event) => {
         event.preventDefault();
         if (!mileage) {
