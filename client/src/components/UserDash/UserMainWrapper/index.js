@@ -4,8 +4,8 @@ import { useParams, useHistory } from "react-router-dom";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import API from "../../../utils/API";
-import UserVehicleCard from '../UserVehicleCard';
-import bgImages from '../../../images/user-page/vehicleCardBgImages.json';
+import UserVehicleCard from "../UserVehicleCard";
+import bgImages from "../../../images/user-page/vehicleCardBgImages.json";
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
 
 function UserMainWrapper() {
@@ -15,9 +15,8 @@ function UserMainWrapper() {
   // Stores vehicle info from the database
   const [vehicleInfo, setVehicleInfo] = useState([]);
 
-  // Sets up page redirect 
+  // Sets up page redirect
   const history = useHistory();
-
 
   const { id } = useParams();
 
@@ -39,10 +38,9 @@ function UserMainWrapper() {
           return logout(history);
         }
         setVehicleInfo(res.data);
-        console.log(vehicleInfo)
+        console.log(vehicleInfo);
       })
       .catch((err) => console.log(err));
-
   }, []);
 
   // NEED TO WORK ON THIS
@@ -56,7 +54,6 @@ function UserMainWrapper() {
   //   }
   // }, [vehicleInfo])
 
-
   const getLatestVehicles = () => {
     API.getVehicles()
       .then((res) => {
@@ -66,11 +63,8 @@ function UserMainWrapper() {
         setVehicleInfo(res.data);
       })
       .catch((err) => console.log(err));
-  }
-
-
-
-
+  };
+  //console.log(vehicleInfo[0].make);
   return (
     <section className="g__dashboard-wrapper">
       <div className="container">
@@ -84,7 +78,7 @@ function UserMainWrapper() {
           </Col>
           <Col xl={1}></Col>
           <Col xl={8}>
-            {vehicleInfo.map(v => (
+            {vehicleInfo.map((v) => (
               <UserVehicleCard
                 key={v._id}
                 vehicleID={v._id}
@@ -96,7 +90,6 @@ function UserMainWrapper() {
                 ownerName={v.driverName}
                 getLatestVehicles={getLatestVehicles}
                 bgCardImage={bgImages[6].image}
-
               />
             ))}
           </Col>

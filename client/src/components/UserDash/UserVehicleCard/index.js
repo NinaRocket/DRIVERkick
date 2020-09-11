@@ -18,7 +18,7 @@ function UserVehicleCard({
   getLatestVehicles,
   bgCardImage,
 }) {
-  const { logout } = useDriverKickContext();
+  const { logout, setVehID } = useDriverKickContext();
 
   //redirect to vehicle dashboard
   const history = useHistory();
@@ -68,6 +68,7 @@ function UserVehicleCard({
   // END Custom Editing Code  ———————————————|
 
   const trackMaintenanceBtn = () => {
+    setVehID(vehicleID);
     history.push("/vehicle-dashboard");
   };
 

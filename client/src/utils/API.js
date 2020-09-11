@@ -26,6 +26,10 @@ export default {
     return axios.get("/api/vehicle");
   },
 
+  getVehicleById: function (vehicleId) {
+    return axios.get(`/api/vehicle/${vehicleId}`);
+  },
+
   getDecodeVIN: function (VIN) {
     return axios.get(`/api/vehicle/decode-vin/${VIN}`);
   },

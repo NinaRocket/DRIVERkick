@@ -1,72 +1,119 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
 import { useParams, useHistory } from "react-router-dom";
-import ContextAwareToggle from "../../../utils/ContextAwareToggle"
+import ContextAwareToggle from "../../../utils/ContextAwareToggle";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
-import Accordion from 'react-bootstrap/Accordion';
+import Accordion from "react-bootstrap/Accordion";
 import openBtnIcon from "../../../images/vehiclepage/open-btn-icon.svg";
 import closeBtnIcon from "../../../images/vehiclepage/close-btn-icon.svg";
 import API from "../../../utils/API";
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
 
-
 function VehicleMainWrapper({ children }) {
-  const { 
-    userData, 
-    setUserData, 
+  const {
+    userData,
+    setUserData,
     accordionHelper,
-    logout 
+    logout,
+    vehID,
   } = useDriverKickContext();
 
-  const [vehicleInfo, setVehicleInfo] = useState();
+  const vehicleTemplate = {
+    VIN: "",
+    year: "",
+    make: "",
+    model: "",
+    icon: "",
+    driverName: "",
+    nickname: "",
+    currentMileage: "",
+    nextOilChange: "",
+    oilType: "",
+    warranties: [],
+  };
+
+  const [vehicleInfo, setVehicleInfo] = useState(vehicleTemplate);
 
   const history = useHistory();
 
   const { id } = useParams();
 
-  useEffect(() => {
-    API.getUser(id)
-      .then((res) => {
-        if (res.data.isAuthenticated === false) {
-          return logout(history);
-        }
-        setUserData({ ...userData, ...res.data });
-      })
-      .catch((err) => console.log(err));
+  useEffect(async () => {
+    try {
+      const fetchUser = await API.getUser(id);
+      const fetchVehicles = await API.getVehicleById(vehID);
 
-    API.getVehicles()
-      .then((res) => {
-        if (res.data.isAuthenticated === false) {
-          return logout(history);
-        }
-        setVehicleInfo(res.data);
-      })
-      .catch((err) => console.log(err));
+      console.log(fetchVehicles.data[0]);
 
+      if (
+        fetchUser.data.isAuthenticated === false ||
+        fetchVehicles.data.isAuthenticated === false
+      ) {
+        return logout(history);
+      }
+
+      setUserData({ ...userData, ...fetchUser.data });
+      setVehicleInfo(fetchVehicles.data[0]);
+      console.log(vehicleInfo);
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
-  console.log(vehicleInfo)
+  // useEffect(() => {
+  //   API.getUser(id)
+  //     .then((res) => {
+  //       if (res.data.isAuthenticated === false) {
+  //         return logout(history);
+  //       }
+  //       setUserData({ ...userData, ...res.data });
+  //     })
+  //     .catch((err) => console.log(err));
+
+  //   //const { vehID } = useParams();
+  //   API.getVehicleById(vehID)
+  //     .then((res) => {
+  //       if (res.data.isAuthenticated === false) {
+  //         return logout(history);
+  //       }
+  //       setVehicleInfo(res.data);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, []);
+
+  console.log(vehID);
+  console.log(vehicleInfo);
 
   return (
     <section className="g__dashboard-wrapper">
       <div className="container">
         <Row>
           <Col lg={3}>
-
             <Accordion defaultActiveKey="1" className="vehicle-dash__accordion">
               <Card>
-                <ContextAwareToggle eventKey="0" >
+                <ContextAwareToggle eventKey="0">
                   <Card.Header className="vehicle-dash__rule">
-                    <img src={"vehicleInfo.icon"} alt="Car icon" className="vehicle-dash__user-img" />
-                    <h1 className="g__dash-h1">Radical Roadster</h1>
-                    {
-                      accordionHelper ?
-                        < img src={closeBtnIcon} alt="Close icon" className="vehicle-dash__accordion-toggle" /> :
-                        <img src={openBtnIcon} alt="Open icon" className="vehicle-dash__accordion-toggle" />
-
-                    }
+                    <img
+                      src={vehicleInfo.icon}
+                      alt="Car icon"
+                      className="vehicle-dash__user-img"
+                    />
+                    <h1 className="g__dash-h1">{vehicleInfo.nickname}</h1>
+                    {accordionHelper ? (
+                      <img
+                        src={closeBtnIcon}
+                        alt="Close icon"
+                        className="vehicle-dash__accordion-toggle"
+                      />
+                    ) : (
+                      <img
+                        src={openBtnIcon}
+                        alt="Open icon"
+                        className="vehicle-dash__accordion-toggle"
+                      />
+                    )}
                   </Card.Header>
                 </ContextAwareToggle>
                 <Accordion.Collapse eventKey="0">
@@ -77,15 +124,15 @@ function VehicleMainWrapper({ children }) {
                     </div>
                     <div className="vehicle-dash__user-group">
                       <h4 className="g__card__subhead">Model</h4>
-                      <h3>{"vehicleInfo.model"}</h3>
+                      <h3>{vehicleInfo.model}</h3>
                     </div>
                     <div className="vehicle-dash__user-group">
                       <h4 className="g__card__subhead">Make</h4>
-                      <h3>{"vehicleInfo.make"}</h3>
+                      <h3>{vehicleInfo.make}</h3>
                     </div>
                     <div>
                       <h4 className="g__card__subhead">Year</h4>
-                      <h3>{"vehicleInfo.year"}</h3>
+                      <h3>{vehicleInfo.year}</h3>
                     </div>
                   </Card.Body>
                 </Accordion.Collapse>
