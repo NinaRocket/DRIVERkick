@@ -27,11 +27,18 @@
 
   .vehicle-card__edit-btn {
     background: none;
+    margin-right: 15px;
+    transition: ease .4s;
+  }
+
+  .vehicle-card__edit-btn:hover {
+    transition: ease .4s;
+    opacity: .7;
   }
 
   .vehicle-card__track-btn {
     padding: 5px 10px;
-    margin-left: 20px;
+    
   }
 
   .vehicle-card__car-info {
@@ -52,7 +59,7 @@
   }
 
 .vehicle-card__overflow-txt {
-  max-width: 250px;
+  max-width: 220px;
   word-break: break-all;
 }
 
