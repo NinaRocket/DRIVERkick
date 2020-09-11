@@ -16,47 +16,47 @@ function UserVehicleCard({
   carNickname,
   ownerName,
   getLatestVehicles,
-  bgCardImage
+  bgCardImage,
 }) {
-
-  const { logout } = useDriverKickContext();
+  const { logout, setVehID } = useDriverKickContext();
 
   //redirect to vehicle dashboard
   const history = useHistory();
-
-
 
   // START Custom Editing Code  ———————————————|
   const [editing, setEditing] = useState(false);
   const inputedCarNickname = useRef(carNickname);
   const inputedOwnerName = useRef(ownerName);
 
-
   // Controls edit buttons
   const editFields = async () => {
     // console.log("edit button");
     editing ? setEditing(false) : setEditing(true);
     if (editing) {
-
       try {
+        const driverUpdateRes = await API.updateDriver(
+          vehicleID,
+          inputedOwnerName.current
+        );
 
-        const driverUpdateRes = await API.updateDriver(vehicleID, inputedOwnerName.current);
+        const nicknameUpdateRes = await API.updateNickname(
+          vehicleID,
+          inputedCarNickname.current
+        );
 
-        const nicknameUpdateRes = await API.updateNickname(vehicleID, inputedCarNickname.current);
-
-        if (driverUpdateRes.data.isAuthenticated === false || nicknameUpdateRes.data.isAuthenticated === false) {
+        if (
+          driverUpdateRes.data.isAuthenticated === false ||
+          nicknameUpdateRes.data.isAuthenticated === false
+        ) {
           return logout(history);
         }
 
         getLatestVehicles();
-
       } catch (error) {
         console.log(error);
       }
-
     }
   };
-
 
   const handleNicknameChange = (evt) => {
     inputedCarNickname.current = evt.target.value;
@@ -67,8 +67,8 @@ function UserVehicleCard({
   };
   // END Custom Editing Code  ———————————————|
 
-
   const trackMaintenanceBtn = () => {
+    setVehID(vehicleID);
     history.push("/vehicle-dashboard");
   };
 
@@ -82,9 +82,8 @@ function UserVehicleCard({
     marginBottom: "40px",
     background: `linear-gradient(0deg, rgba(15, 68, 87, 0.5), rgba(15, 68, 87, 0.5)), url(${bgCardImage})`,
     backgroundSize: "cover",
-    backgroundPosition: "center"
-  }
-
+    backgroundPosition: "center",
+  };
 
   return (
     <div style={cardBgStyle}>
@@ -92,7 +91,11 @@ function UserVehicleCard({
       <div className="d-md-flex">
         {/* Image Col */}
         <div className="vehicle-card__img-container">
-          <img src={vehicleIcon} alt={`${vehicleMake} icon`} className="vehicle-card__img" />
+          <img
+            src={vehicleIcon}
+            alt={`${vehicleMake} icon`}
+            className="vehicle-card__img"
+          />
         </div>
         {/* Content Col */}
         <div className="vehicle-card__content">
@@ -105,7 +108,9 @@ function UserVehicleCard({
                   html={carNickname}
                   onChange={handleNicknameChange}
                   disabled={!editing ? true : false}
-                  className={`vehicle-card__overflow-txt ${editing ? "vehicle-card__custom-input" : ""}`}
+                  className={`vehicle-card__overflow-txt ${
+                    editing ? "vehicle-card__custom-input" : ""
+                  }`}
                 />
               </h3>
             </div>
@@ -117,15 +122,15 @@ function UserVehicleCard({
                 {!editing ? (
                   <img src={editBtn} alt="Edit button" />
                 ) : (
-                    <img src={saveBtn} alt="save button" />
-                  )}
+                  <img src={saveBtn} alt="save button" />
+                )}
               </button>
               <button
                 disabled={editing === true}
                 onClick={trackMaintenanceBtn}
                 className={`vehicle-card__track-btn ${
                   editing === true ? "g__disabled-btn" : null
-                  }`}
+                }`}
               >
                 Track Maintenance
               </button>
@@ -139,7 +144,6 @@ function UserVehicleCard({
               <div className="vehicle-card__car-item">
                 <h4 className="g__card__subhead">Make</h4>
                 <h3>{vehicleMake}</h3>
-
               </div>
               <div className="vehicle-card__car-item">
                 <h4 className="g__card__subhead">Year</h4>
@@ -159,11 +163,12 @@ function UserVehicleCard({
                     html={ownerName}
                     onChange={handleOwnerChange}
                     disabled={!editing ? true : false}
-                    className={`vehicle-card__overflow-txt ${editing ? "vehicle-card__custom-input" : ""}`}
+                    className={`vehicle-card__overflow-txt ${
+                      editing ? "vehicle-card__custom-input" : ""
+                    }`}
                   />
                 </h3>
               </div>
-
             </div>
           </div>
         </div>

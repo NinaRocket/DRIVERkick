@@ -23,7 +23,11 @@ export default {
   },
 
   getVehicles: function () {
-    return axios.get("/api/vehicle")
+    return axios.get("/api/vehicle");
+  },
+
+  getVehicleById: function (vehicleId) {
+    return axios.get(`/api/vehicle/${vehicleId}`);
   },
 
   getDecodeVIN: function (VIN) {
@@ -44,17 +48,19 @@ export default {
   // updateMileage: function (vehicleId, currentMileage) {
   //   return axios.put(`/api/mileage/:id`, {vehicleId, currentMileage });
   // },
-  postMileage: function (id) {
-    return axios.post(`/api/vehicle/` + id);
+  // postMileage: function (id) {
+  //   return axios.post(`/api/vehicle/` + id);
+  // },
+  putMileage: function (id, currentMileage) {
+    return axios.put(`/api/vehicle/` + id, { currentMileage });
   },
-
   // updates the vehicle driver
   updateDriver: function (vehicleId, driverName) {
     return axios.put(`/api/vehicle/${vehicleId}`, { driverName });
   },
   // gets the recalls for the vehicle by id
-  getRecalls: function (vehicleId) {
-    return axios.get(`/api/vehicle/recalls/${vehicleId}`);
+  getRecalls: function (VIN) {
+    return axios.get(`/api/vehicle/recalls/${VIN}`);
   },
   getWarranty: () => {
     return axios.get("/api/warranty");
@@ -63,14 +69,6 @@ export default {
     return axios.post("/api/warranty", warranty);
   },
   updateOwner: () => {
-    return axios.put()
-  }
+    return axios.put();
+  },
 };
-// getWarrantyById: (id) => {
-//   return axios.get("/api/warranty/", id)
-// },
-// newWarranty: (warranty) => {
-//   return axios.post("/api/warranty", warranty);
-// }
-
-// };
