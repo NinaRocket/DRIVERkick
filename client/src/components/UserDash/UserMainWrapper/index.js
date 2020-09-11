@@ -22,11 +22,12 @@ function UserMainWrapper() {
 
   // API Call for User and Vehicle Info
   useEffect(() => {
-    API.getUser(id)
+    API.getUser()
       .then((res) => {
         if (res.data.isAuthenticated === false) {
           return logout(history);
         }
+
         setUserData({ ...userData, ...res.data });
       })
       .catch((err) => console.log(err));
@@ -36,6 +37,10 @@ function UserMainWrapper() {
       .then((res) => {
         if (res.data.isAuthenticated === false) {
           return logout(history);
+        }
+        console.log(res.data);
+        if (res.data.length === 0) {
+          history.push("/add-vehicle");
         }
         setVehicleInfo(res.data);
         console.log(vehicleInfo);
@@ -89,7 +94,7 @@ function UserMainWrapper() {
                 carNickname={v.nickname}
                 ownerName={v.driverName}
                 getLatestVehicles={getLatestVehicles}
-                bgCardImage={bgImages[6].image}
+                bgCardImage={bgImages[2].image}
               />
             ))}
           </Col>
