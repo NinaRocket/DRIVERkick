@@ -17,6 +17,11 @@
     transition: ease-in .2s;
 }
 
+.vehicle-dash__rule:hover .vehicle-dash__accordion-toggle {
+    transform: rotate(45deg);
+    transition: ease-in .2s;
+}
+
 .vehicle-dash__user-group {
     margin-bottom: 40px;
 }
@@ -28,5 +33,6 @@
 .vehicle-dash__accordion-toggle {
     position: relative;
     top: 19px;
+    transition: ease-in .2s;
 }
 

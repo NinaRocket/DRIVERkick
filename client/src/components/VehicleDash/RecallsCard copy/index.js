@@ -5,7 +5,7 @@ import VehicleDashCardHeader from '../VehicleDashCardHeader';
 import RecallTrackerInitial from '../RecallTrackerInitial';
 import RecallTrackerPopulated from '../RecallTrackerPopulated';
 
-function VehicleRecallsCard() {
+function RecallsCard() {
     // Determines if the initial content or populated content component show up.  
     const [noRecall, setNoRecall] = useState(false);
 
@@ -25,4 +25,4 @@ function VehicleRecallsCard() {
     );
 }
 
-export default VehicleRecallsCard;
+export default RecallsCard;

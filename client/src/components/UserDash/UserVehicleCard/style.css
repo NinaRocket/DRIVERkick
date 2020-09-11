@@ -7,11 +7,21 @@
     margin-bottom: 40px;
   }
 
+  .vehicle-card__flex {
+    display: flex;
+    padding: 40px 40px 0;
+  }
+
+  .vehicle-card__btn-group {
+    display: flex;
+    align-items: baseline;
+  }
 
   .vehicle-card__img {
     margin: 0 auto 30px;
     display: block;
   }
+
 
   .vehicle-card__content {
     padding-left: 40px;
@@ -27,11 +37,20 @@
 
   .vehicle-card__edit-btn {
     background: none;
+    margin-right: 15px;
+    transition: ease .4s;
+  }
+
+  .vehicle-card__edit-btn:hover {
+    transition: ease .4s;
+    opacity: .7;
   }
 
   .vehicle-card__track-btn {
     padding: 5px 10px;
-    margin-left: 20px;
+    height: 35px;
+    width: 100%;
+    
   }
 
   .vehicle-card__car-info {
@@ -52,7 +71,7 @@
   }
 
 .vehicle-card__overflow-txt {
-  max-width: 250px;
+  max-width: 220px;
   word-break: break-all;
 }
 
@@ -60,6 +79,27 @@
     box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
     background-color: rgba(80, 177, 192, 0.5);
   }
+
+
+  @media only screen and (max-width: 1199px) {
+
+    .vehicle-card__flex {
+      flex-direction: column;
+    }
+
+    .vehicle-card__content {
+      padding-left: 0;
+    }
+  }  
+
+  @media only screen and (max-width: 991px) {
+
+    .vehicle-card__overflow-txt {
+      max-width: 330px;
+    }
+  }  
+
+
 
 
   @media only screen and (max-width: 767px) {
@@ -70,13 +110,12 @@
       text-align: center;
     }
 
+    
+    
+
     .vehicle-card__header h3 {
       margin-bottom: 20px;
   
-    }
-
-    .vehicle-card__track-btn {
-      width: 75%;
     }
 
 
@@ -106,8 +145,25 @@
       padding: 40px 20px 20px;
     }
 
+    .vehicle-card__flex {
+      padding: 20px 20px 0;
+    }
+   
+
     .vehicle-card__btn-group {
       margin-top: 10px;
+    }
+
+    .vehicle-card__edit-btn {
+      margin-right: 8px;
+
+    }
+
+    .vehicle-card__track-btn {
+      padding: 5px 10px;
+      height: 35px;
+      width: 100%;
+      
     }
   
   }
