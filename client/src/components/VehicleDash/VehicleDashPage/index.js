@@ -6,7 +6,7 @@ import VehicleMainWrapper from "../VehicleMainWrapper";
 import MileageTrackerCard from "../MileageTrackerCard";
 import VehicleOilChangeCard from "../VehicleOilChangeCard";
 import VehicleWarrantyCard from "../VehicleWarrantyCard";
-import VehicleRecallsCard from "../VehicleRecallsCard";
+import RecallsCard from "../RecallsCard";
 import VehicleCurrentMileageForm from "../VehicleCurrentMileageForm";
 import Modal from 'react-bootstrap/Modal';
 
@@ -78,7 +78,7 @@ function VehicleDashPage() {
         <MileageTrackerCard mileageTrackingModal={mileageModal} />
         {/* <VehicleOilChangeCard />
         <VehicleWarrantyCard /> */}
-        <VehicleRecallsCard />
+        <RecallsCard />
       </VehicleMainWrapper>
       <MyVerticallyCenteredModal
         show={modalShow}
