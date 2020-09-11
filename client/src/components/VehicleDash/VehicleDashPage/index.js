@@ -5,13 +5,13 @@ import GlobalNavBar from "../../GlobalNavBar";
 import VehicleMainWrapper from "../VehicleMainWrapper";
 import MileageTrackerCard from "../MileageTrackerCard";
 import VehicleOilChangeCard from "../VehicleOilChangeCard";
-import VehicleWarrantyCard from "../VehicleWarrantyCard";
+import WarrantyCard from "../WarrantyCard";
 import RecallsCard from "../RecallsCard";
 import VehicleCurrentMileageForm from "../VehicleCurrentMileageForm";
 import Modal from 'react-bootstrap/Modal';
 
 
-function MyVerticallyCenteredModal(props) {
+function CurrentMilageModal(props) {
   const { setModalShow } = useDriverKickContext();
 
   const [mileage, setMileage] = useState();
@@ -65,9 +65,7 @@ function VehicleDashPage() {
 
 
 
-  const mileageModal = () => {
-    setModalShow(true)
-  };
+  const mileageModal = () => setModalShow(true);
 
   return (
     <div>
@@ -76,11 +74,11 @@ function VehicleDashPage() {
       <GlobalNavBar />
       <VehicleMainWrapper>
         <MileageTrackerCard mileageTrackingModal={mileageModal} />
-        {/* <VehicleOilChangeCard />
-        <VehicleWarrantyCard /> */}
+        {/* <OilChangeCard /> */}
+        <WarrantyCard />
         <RecallsCard />
       </VehicleMainWrapper>
-      <MyVerticallyCenteredModal
+      <CurrentMilageModal
         show={modalShow}
         onHide={() => setModalShow(false)}
       />

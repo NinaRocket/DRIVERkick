@@ -40,7 +40,7 @@ function VehicleMainWrapper({ children }) {
 
   const { id } = useParams();
 
-  // REACT'S SUGGESTED ASYNC USEEFFECT SYNTAX
+  // REACT'S SUGGESTED ASYNC USE-EFFECT SYNTAX
   useEffect(() => {
     async function getInfo() {
       try {
@@ -64,7 +64,7 @@ function VehicleMainWrapper({ children }) {
       }
     }
     getInfo()
-  }, [vehicleInfo]);
+  }, []);
 
 
   // OUR ORIGINAL ASYNC USEEFFECT
