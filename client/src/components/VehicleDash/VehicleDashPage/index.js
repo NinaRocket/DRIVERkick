@@ -77,8 +77,8 @@ function VehicleDashPage() {
       <VehicleMainWrapper>
         <MileageTrackerCard mileageTrackingModal={mileageModal} />
         {/* <VehicleOilChangeCard />
-                <VehicleWarrantyCard />
-                <VehicleRecallsCard /> */}
+        <VehicleWarrantyCard /> */}
+        <VehicleRecallsCard />
       </VehicleMainWrapper>
       <MyVerticallyCenteredModal
         show={modalShow}

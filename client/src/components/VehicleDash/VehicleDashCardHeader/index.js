@@ -4,7 +4,7 @@ import "./style.css";
 
 
 
-function MileageTrackerCard({ icon, alt, title, description }) {
+function VehicleDashCardHeader({ icon, alt, title, description }) {
 
     return (
 
@@ -21,4 +21,4 @@ function MileageTrackerCard({ icon, alt, title, description }) {
     );
 }
 
-export default MileageTrackerCard;
+export default VehicleDashCardHeader;
