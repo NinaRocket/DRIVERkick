@@ -2,7 +2,7 @@ import React from 'react';
 import "./style.css";
 import { useDriverKickContext } from '../../../utils/DriverKickContext';
 import GlobalNavBar from '../../GlobalNavBar';
-import UserMainWrapper from '../UserMainWrapper'
+import AddVehicleMainWrapper from '../AddVehicleMainWrapper'
 import UserNewVehicleForm from '../UserNewVehicleForm'
 
 
@@ -15,9 +15,9 @@ function VehicleFormPage() {
 
         <section>
             <GlobalNavBar />
-            <UserMainWrapper>
+            <AddVehicleMainWrapper>
                 <UserNewVehicleForm />
-            </UserMainWrapper>
+            </AddVehicleMainWrapper>
         </section>
 
     );

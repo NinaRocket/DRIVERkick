@@ -1,11 +1,10 @@
 .vehicle-card {
     padding: 40px 40px 0;
-    background: rgb(15, 68, 87);
-    background:linear-gradient(0deg, rgba(15, 68, 87, 0.6), rgba(15, 68, 87, 0.8)), url("../../../images/global/diagonal-lines.svg");
     border-radius: 0px 20px;  
     -webkit-box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.1);
        -moz-box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.1);
             box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.1);
+    margin-bottom: 40px;
   }
 
 
@@ -32,7 +31,7 @@
 
   .vehicle-card__track-btn {
     padding: 5px 10px;
-    margin-left: 10px;
+    margin-left: 20px;
   }
 
   .vehicle-card__car-info {
@@ -43,10 +42,19 @@
   .vehicle-card__col {
     width: 50%;
   }
-
+  
   .vehicle-card__car-item {
       margin-bottom: 40px;
   }
+
+  .vehicle-card__car-item h3 {
+      font-size: 24px;
+  }
+
+.vehicle-card__overflow-txt {
+  max-width: 250px;
+  word-break: break-all;
+}
 
   .vehicle-card__custom-input {
     box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
@@ -86,12 +94,20 @@
     .vehicle-card__col {
       width: 100%;
     }
+
+    .vehicle-card__overflow-txt {
+      margin: 0 auto;
+    }
   
   }
   
   @media only screen and (max-width: 575px) {
     .vehicle-card {
       padding: 40px 20px 20px;
+    }
+
+    .vehicle-card__btn-group {
+      margin-top: 10px;
     }
   
   }

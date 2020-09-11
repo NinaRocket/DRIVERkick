@@ -288,6 +288,11 @@ Forms
   margin: 40px 0;
 }
 
+.g__form-input-err {
+  border-color: red;
+  color: red;
+}
+
 
 /* —————————————————————————————————————
 Global Dashboards
@@ -303,7 +308,6 @@ Global Dashboards
   color: #50B2C0;
 }
 
-g_dashboard-user-info
 
 
 /* —————————————————————————————————————
@@ -319,12 +323,13 @@ Vehicle Dashboard
 .g__vehicle-card {
   padding: 40px 0;
   background: rgb(15, 68, 87);
-  background:linear-gradient(0deg, rgba(15, 68, 87, 0.6), rgba(15, 68, 87, 0.8)), url("./images/global/diagonal-lines.svg");
+  background:linear-gradient(0deg, rgb(6 22 28 / 60%), rgb(9 41 53 / 80%)), url(/static/media/diagonal-lines.7575030a.svg);
   border-radius: 0px 20px;  
   -webkit-box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.1);
      -moz-box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.1);
           box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.1);
   border-top: 6px solid #50B2C0;
+  margin-bottom: 40px;
 }
 
 .g__vehicle-card__header-container {

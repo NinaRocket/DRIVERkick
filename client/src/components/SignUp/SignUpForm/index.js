@@ -1,15 +1,47 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import './style.css'
 import { useHistory } from "react-router-dom";
 import API from "../../../utils/API";
 
 function SignUpForm() {
-    const [email, setEmail] = useState([]);
-    const [firstName, setFirstName] = useState([]);
-    const [lastName, setLastName] = useState([]);
-    const [password, setPassword] = useState([]);
-    const [confirmPassword, setConfirmPassword] = useState([]);
+    const [email, setEmail] = useState();
+    const [firstName, setFirstName] = useState();
+    const [lastName, setLastName] = useState();
+    const [password, setPassword] = useState();
+    const [confirmPassword, setConfirmPassword] = useState();
     const redirect = useHistory();
+
+
+    // START Error States ——————————————————————————|
+    const [emailError, setEmailError] = useState(false);
+    const [passwordError, setPasswordError] = useState(false);
+    const [requiredError, setRequiredError] = useState(false);
+
+
+    const emailValidator = () => {
+        if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)
+        ) {
+            setEmailError(false);
+        } else {
+            setEmailError(true);
+        }
+    }
+
+    const passwordValidator = () => {
+        if (!password === confirmPassword) {
+            setPasswordError(true);
+        } else {
+            setPasswordError(false);
+        }
+    }
+
+    const requiredValidator = () => {
+        if (!firstName || !lastName || !email || !password || !confirmPassword) {
+            console.log("Required function")
+            setRequiredError(true);
+        }
+    }
+    // END Error States ——————————————————————————|
 
     const signupEmailValue = (event) => {
         setEmail(event.target.value);
@@ -32,10 +64,16 @@ function SignUpForm() {
     };
 
     const submitUserSignup = (event) => {
-        console.log("sign-up handleSubmit, email: ");
-        console.log(email);
         event.preventDefault();
-        console.log(email, firstName, lastName, password);
+        // Validators
+        emailValidator()
+        passwordValidator()
+        requiredValidator()
+        if (emailError) {
+            return;
+        } else if (passwordError) {
+            return;
+        }
         const userInfo = {
             email: email,
             firstName: firstName,
@@ -64,43 +102,56 @@ function SignUpForm() {
     return (
         <div className="g__form-container">
             <form>
-            <h2 className="g__form-title">Sign Up</h2>
-               
+                <h2 className="g__form-title">Sign Up</h2>
+
+                {/* Email Validation Error */}
+                {emailError ? <p className="text-center text-danger">Please make sure your email is formatted correctly.</p> : null}
+
+                {/* Password Validation Error */}
+                {passwordError ? <p className="text-center text-danger">Please make sure your password matches.</p> : null}
+
+                {/* Required Validation Error */}
+                {requiredError ? <p className="text-center text-danger">Please confirm all fields are filled out.</p> : null}
+
+
                 <div className="g__label-group">
                     <label className="form-label" htmlFor="firstName">First Name</label>
                     <input
-                        className="form-input"
+                        className={`form-input ${requiredError ? "g__form-input-err" : null}`}
                         type="text"
                         id="firstName"
                         name="firstName"
                         placeholder="Jane"
                         value={firstName}
                         onChange={signupFirstNameValue}
+                        required
                     />
                 </div>
                 <div className="g__label-group">
                     <label className="form-label" htmlFor="lastName">Last Name</label>
                     <input
-                        className="form-input"
+                        className={`form-input ${requiredError ? "g__form-input-err" : null}`}
                         type="text"
                         id="lastName"
                         name="lastName"
                         placeholder="Smith"
                         value={lastName}
                         onChange={signupLastNameValue}
+                        required
                     />
                 </div>
-                <hr className="g__form-divider"/>
+                <hr className="g__form-divider" />
                 <div className="g__label-group">
                     <label className="form-label" htmlFor="email">Email</label>
                     <input
-                        className="form-input"
+                        className={`form-input ${emailError ? "g__form-input-err" : null} ${requiredError ? "g__form-input-err" : null}`}
                         type="text"
                         id="email"
                         name="email"
                         placeholder="you@email.com"
                         value={email}
                         onChange={signupEmailValue}
+                        required
                     />
                 </div>
                 <div className="g__label-group">
@@ -108,12 +159,13 @@ function SignUpForm() {
                         Password
                         </label>
                     <input
-                        className="form-input"
+                        className={`form-input ${passwordError ? "g__form-input-err" : null} ${requiredError ? "g__form-input-err" : null}`}
                         type="password"
                         name="password"
                         id="password"
                         value={password}
                         onChange={signupPasswordValue}
+                        required
                     />
                 </div>
                 <div className="g__label-group">
@@ -121,13 +173,14 @@ function SignUpForm() {
                         Confirm Password
                         </label>
                     <input
-                        className="form-input"
+                        className={`form-input ${passwordError ? "g__form-input-err" : null} ${requiredError ? "g__form-input-err" : null}`}
                         type="password"
                         placeholder="retype password"
                         name="confirmPassword"
                         id="confirmPassword"
                         value={confirmPassword}
                         onChange={signupConfirmPasswordValue}
+                        required
                     />
                 </div>
 

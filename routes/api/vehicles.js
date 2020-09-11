@@ -29,12 +29,21 @@ router
   //updates the vehicles oil change
   .get(vehicleController.updateOil);
 
+<<<<<<< HEAD
 router
   .route("/:id")
   // gets vehicle mileage
   .get(vehicleController.getMiles)
   //updates the vehicles mileage
   .post(vehicleController.postMiles);
+=======
+// router
+//   .route("/:id")
+// // gets vehicle mileage
+// .get(vehicleController.getMiles)
+// //updates the vehicles mileage
+// .post(vehicleController.postMiles);
+>>>>>>> master
 
 router
   .route("/decode-vin/:vin")
