@@ -7,7 +7,7 @@ import RecallTrackerPopulated from '../RecallTrackerPopulated';
 
 function VehicleRecallsCard() {
     // Determines if the initial content or populated content component show up.  
-    const [noRecall, setNoRecall] = useState(true);
+    const [noRecall, setNoRecall] = useState(false);
 
     return (
         <div className="g__vehicle-card">
