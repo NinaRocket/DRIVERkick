@@ -18,7 +18,10 @@ function VehicleMainWrapper({ children }) {
     accordionHelper,
     logout,
     vehID,
+    setVehID,
   } = useDriverKickContext();
+
+  setVehID(vehID);
 
   const vehicleTemplate = {
     VIN: "",
@@ -32,6 +35,7 @@ function VehicleMainWrapper({ children }) {
     nextOilChange: "",
     oilType: "",
     warranties: [],
+    _id: vehID,
   };
 
   const [vehicleInfo, setVehicleInfo] = useState(vehicleTemplate);
