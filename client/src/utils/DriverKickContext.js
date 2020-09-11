@@ -48,7 +48,7 @@ export function DriverKickProvider({ children }) {
   //   selectValue Expects: "sedan" || "suv" || "pickup" || "miniVan" || "van" || "sportsCar" || "convertible" || "rv" || "motorcycle"
 
   // Modal Show/Hide States
-  const [modalShow, setModalShow] = React.useState(false);
+  // const [modalShow, setModalShow] = React.useState(false);
 
   //vehicle ID for maintenance tracking
   const [vehID, setVehID] = useState();
@@ -69,8 +69,8 @@ export function DriverKickProvider({ children }) {
           setAccordionHelper,
           selectValue,
           setSelectValue,
-          modalShow,
-          setModalShow,
+          // modalShow,
+          // setModalShow,
           vehID,
           setVehID,
         }}
