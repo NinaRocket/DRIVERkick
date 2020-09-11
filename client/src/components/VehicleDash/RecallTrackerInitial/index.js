@@ -2,10 +2,10 @@ import React from 'react';
 import "./style.css";
 
 
-function RecallTrackerInitial({ mileageTrackingModal }) {
+function RecallTrackerInitial() {
     return (
         <div className="g__vehicle-card__body-container g__vehicle-card--top-border">
-            <button className="g__vehicle-card__btn" onClick={mileageTrackingModal}>Start Tracking</button>
+            <h2 className="g__sky-blue--txt">No recalls at this time. 👍🏾</h2>
         </div>
     );
 }
