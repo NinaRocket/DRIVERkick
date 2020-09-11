@@ -4,7 +4,7 @@ import mileageTrackerIcon from '../../../images/vehiclepage/vehicle-mileage-icon
 import VehicleDashCardHeader from '../VehicleDashCardHeader';
 import MileageTrackerInitial from '../MileageTrackerInitial';
 import MileageTrackerPopulated from '../MileageTrackerPopulated';
-import VehicleCurrentMileageForm from "../VehicleCurrentMileageForm";
+import MileageTrackerForm from "../MileageTrackerForm";
 import Modal from 'react-bootstrap/Modal';
 
 function CurrentMilageModal(props) {
@@ -24,7 +24,7 @@ function CurrentMilageModal(props) {
             return setMileageError(true);
         }
         setModalShow(false)
-        
+
         // Needs to post this to the database
         console.log(mileage)
 
@@ -45,7 +45,7 @@ function CurrentMilageModal(props) {
 
 
 
-                <VehicleCurrentMileageForm
+                <MileageTrackerForm
                     handleMilage={handleMilage}
                     submitCurrentMilage={submitCurrentMilage}
                 />
@@ -56,14 +56,14 @@ function CurrentMilageModal(props) {
 
 
 function MileageTrackerCard() {
-
-
     const [modalShow, setModalShow] = React.useState(false);
 
     // Determines if the initial content or populated content component show up.  
     const [newUser, setNewUser] = useState(false);
 
+    // Opens and closes modal
     const mileageModal = () => setModalShow(true);
+
     return (
         <div className="g__vehicle-card">
             <VehicleDashCardHeader

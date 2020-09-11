@@ -3,7 +3,7 @@ import "./style.css";
 import Form from 'react-bootstrap/form';
 
 
-function VehicleCurrentMileageForm({ handleMilage, submitCurrentMilage }) {
+function MileageTrackerForm({ handleMilage, submitCurrentMilage }) {
 
 
     return (
@@ -32,4 +32,4 @@ function VehicleCurrentMileageForm({ handleMilage, submitCurrentMilage }) {
     );
 }
 
-export default VehicleCurrentMileageForm;
+export default MileageTrackerForm;
