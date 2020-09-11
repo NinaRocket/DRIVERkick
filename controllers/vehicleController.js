@@ -2,7 +2,7 @@ const db = require("../models");
 
 module.exports = {
   findAllByOwner: function (req, res) {
-    db.Vehicle.find({user: req.user._id })
+    db.Vehicle.find({ user: req.user._id })
       // populate warranties for that vehicle
       .then((dbVehicles) => res.json(dbVehicles))
       .catch((err) => res.status(422).json(err));
@@ -31,7 +31,7 @@ module.exports = {
       .catch((err) => res.status(422).json(err));
   },
   update: function (req, res) {
-    db.Vehicle.findOneAndUpdate({ _id: req.params.id }, req.body)
+    db.Vehicle.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
       .then((dbVehicle) => res.json(dbVehicle))
       .catch((err) => res.status(422).json(err));
   },
