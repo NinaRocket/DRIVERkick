@@ -5,14 +5,13 @@ import VehicleDashCardHeader from '../VehicleDashCardHeader';
 import WarrantyInitial from '../WarrantyInitial';
 import WarrantyPopulated from '../WarrantyPopulated';
 import VehicleWarrantyIcon from '../../../images/vehiclepage/vehicle-warranty-icon.svg';
-import WarrantyForm from "../VehicleWarrantyForm";
 import API from "../../../utils/API";
 
 function WarrantyCard({ warrantyModal }) {
     const [warranty, setWarranty] = useState({});
 
     // Determines if the initial content or populated content component show up.  
-    const [newUser, setNewUser] = useState(false);
+    const [newUser, setNewUser] = useState(true);
 
 
     const { id } = useParams();
