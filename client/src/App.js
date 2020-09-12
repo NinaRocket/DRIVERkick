@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Footer from "./components/Footer";
 import "./App.css";
 import { DriverKickProvider } from "./utils/DriverKickContext";
@@ -9,6 +9,7 @@ import SignUpPage from "./components/SignUp/SignUpPage";
 import VehicleFormPage from "./components/UserDash/VehicleFormPage";
 import UserDashPage from "./components/UserDash/UserDashPage";
 import VehicleDashPage from "./components/VehicleDash/VehicleDashPage";
+import NotFoundPage from "./components/NotFoundPage";
 
 function App() {
   return (
@@ -20,7 +21,12 @@ function App() {
           <Route exact path="/signup" component={SignUpPage} />
           <Route exact path="/add-vehicle" component={VehicleFormPage} />
           <Route exact path="/user-dashboard" component={UserDashPage} />
-          <Route exact path="/vehicle-dashboard" component={VehicleDashPage} />
+          <Route
+            exact
+            path="/vehicle-dashboard/:id"
+            component={VehicleDashPage}
+          />
+          <NotFoundPage />
         </Switch>
       </DriverKickProvider>
       <Footer />

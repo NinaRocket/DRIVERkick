@@ -1,89 +1,94 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
 import "./style.css";
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
+import API from "../../../utils/API";
 import GlobalNavBar from "../../GlobalNavBar";
 import VehicleMainWrapper from "../VehicleMainWrapper";
 import MileageTrackerCard from "../MileageTrackerCard";
-import VehicleOilChangeCard from "../VehicleOilChangeCard";
-import VehicleWarrantyCard from "../VehicleWarrantyCard";
-import VehicleRecallsCard from "../VehicleRecallsCard";
-import VehicleCurrentMileageForm from "../VehicleCurrentMileageForm";
-import Modal from 'react-bootstrap/Modal';
-
-
-function MyVerticallyCenteredModal(props) {
-  const { setModalShow } = useDriverKickContext();
-
-  const [mileage, setMileage] = useState();
-  const [mileageError, setMileageError] = useState(false);
-
-
-  const handleMilage = (event) => {
-    setMileage(event.target.value);
-  }
-
-  const submitCurrentMilage = (event) => {
-    event.preventDefault();
-    if (!mileage) {
-      return setMileageError(true);
-    }
-    setModalShow(false)
-    // Needs to post this to the database
-    console.log(mileage)
-
-  }
-
-  return (
-    <Modal
-      {...props}
-      size="md"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton>
-      </Modal.Header>
-      <div className="g__form-container g__remove-margin-bottom">
-        <h2 className="text-center">Update Current Mileage</h2>
-        {mileageError ? <p className="text-center text-danger">Please input your current milage.</p> : null}
-
-
-
-        <VehicleCurrentMileageForm
-          handleMilage={handleMilage}
-          submitCurrentMilage={submitCurrentMilage}
-        />
-      </div>
-    </Modal>
-  );
-}
-
-
+import WarrantyCard from "../WarrantyCard";
+import RecallsCard from "../RecallsCard";
 
 function VehicleDashPage() {
-  const { setNavType, modalShow, setModalShow } = useDriverKickContext();
+  // Sets which buttons show in the nav
+  const {
+    setNavType,
+    userData,
+    setUserData,
+    logout,
+    vehID,
+    setVehID,
+  } = useDriverKickContext();
+  const { id } = useParams();
+
   setNavType("vehicleDash");
+  useEffect(() => {
+    setVehID(id);
+  }, [id]);
 
+  const history = useHistory();
 
-
-  const mileageModal = () => {
-    setModalShow(true)
+  const vehicleTemplate = {
+    VIN: "",
+    year: "",
+    make: "",
+    model: "",
+    icon: "",
+    driverName: "",
+    nickname: "",
+    currentMileage: "",
+    nextOilChange: "",
+    oilType: "",
+    warranties: [],
+    _id: vehID,
   };
+
+  const [vehicleInfo, setVehicleInfo] = useState(vehicleTemplate);
+
+  async function getInfo() {
+    try {
+      const fetchUser = await API.getUser();
+      const fetchVehicles = await API.getVehicleById(vehID);
+
+      console.log(fetchVehicles.data[0]);
+
+      if (
+        fetchUser.data.isAuthenticated === false ||
+        fetchVehicles.data.isAuthenticated === false
+      ) {
+        return logout(history);
+      }
+
+      setUserData({
+        ...userData,
+        ...fetchUser.data,
+        ...fetchVehicles.data[0],
+      });
+      setVehicleInfo(fetchVehicles.data[0]);
+      console.log(vehicleInfo);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  // REACT'S SUGGESTED ASYNC USE-EFFECT SYNTAX
+  useEffect(() => {
+    console.log(vehID);
+    if (vehID) {
+      getInfo();
+    }
+  }, [vehID]);
+
+  console.log(vehicleInfo);
 
   return (
     <div>
-      {/* Add modal for mileage */}
-
       <GlobalNavBar />
-      <VehicleMainWrapper>
-        <MileageTrackerCard mileageTrackingModal={mileageModal} />
-        {/* <VehicleOilChangeCard />
-                <VehicleWarrantyCard />
-                <VehicleRecallsCard /> */}
+      <VehicleMainWrapper vehicleInfo={vehicleInfo} userData={userData}>
+        <MileageTrackerCard vehicleInfo={vehicleInfo} />
+        {/* <OilChangeCard /> */}
+        <WarrantyCard />
+        <RecallsCard />
       </VehicleMainWrapper>
-      <MyVerticallyCenteredModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-      />
     </div>
   );
 }

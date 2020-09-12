@@ -1,4 +1,4 @@
-import React, { useState, createRef } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./style.css";
 import API from "../../../utils/API";
@@ -6,13 +6,13 @@ import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Form from "react-bootstrap/Form";
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
-//import isAuthenticated from "../../../../../config/middleware/isAuthenticated";
 
 
 function UserNewVehicleForm() {
-  const { setUserData, logout, selectValue, setSelectValue } = useDriverKickContext();
+  const { logout, selectValue, setSelectValue } = useDriverKickContext();
   const [vinNum, setVinNum] = useState(false);
   const [selectError, setSelectError] = useState(false);
+  const [vinError, setVinError] = useState(false);
   const [vinData, setVinData] = useState();
   const [vinResults, setVinResults] = useState(false);
   const redirect = useHistory();
@@ -66,13 +66,16 @@ function UserNewVehicleForm() {
   const submitUserVehicle = (event) => {
     event.preventDefault();
 
-    // Validation to make sure they selected a vehicle type
-    if (selectValue) {
+    // Validation to make sure they selected a vehicle type and submitted an accurate
+    if (!selectValue) {
+      return setSelectError(true);
+    } else if (!vinData.make && !vinData.model && !vinData.year) {
+      return setVinError(true);
+    } else {
       API.addvehicle(vinData.vin, vinData.year, vinData.make, vinData.model, selectValue);
-      // setUserData(vinData);
       redirect.push("/user-dashboard");
     }
-    return setSelectError(true);
+
   };
 
 
@@ -80,12 +83,18 @@ function UserNewVehicleForm() {
     <div className="g__form-container">
       <form className="g__deep-blue--txt">
         <h2 className="text-center">Add New Vehicle</h2>
-        {selectError ? <p className="text-center text-danger">Please select a vehicle type.</p> : null}
+
+        {/* Error Validation */}
+        {selectError ? <p className="text-center text-danger">Please confirm a vehicle type has been specified.</p> : null}
+
+        {/* Error Validation */}
+        {vinError ? <p className="text-center text-danger">Please confirm an accurate VIN has been specified.</p> : null}
+
         <div className="g__label-group mt-4">
-          <select value={selectValue} onChange={e => setSelectValue(e.currentTarget.value)} className="form-control">
+          <select value={selectValue} onChange={e => setSelectValue(e.currentTarget.value)} className={`form-control ${selectError ? "g__form-input-err" : null}`}>
             <option value="">Choose…</option>
             <option value="https://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/sedan-type-icon.svg">Sedan</option>
-            <option value="suhttps://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/suv-type-icon.svgv">SUV</option>
+            <option value="https://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/suv-type-icon.svg">SUV</option>
             <option value="https://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/pickup-type-icon.svg">Pickup</option>
             <option value="https://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/minivan-type-icon.svg">Mini Van</option>
             <option value="https://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/van-type-icon.svg">Van</option>
@@ -104,7 +113,7 @@ function UserNewVehicleForm() {
                 aria-label="Recipient's username"
                 aria-describedby="basic-addon2"
                 onChange={vinNumValue}
-                className=""
+                className={vinError ? "g__form-input-err" : null}
               />
               <InputGroup.Append>
                 <button

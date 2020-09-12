@@ -1,0 +1,31 @@
+.warranty-card__container {
+    border-top: 6px solid #143642;
+    word-wrap: break-word;
+    padding: 60px 60px 0;
+}
+
+.warranty-card__header {
+    color: #FF4000;
+    display: flex;
+    justify-content: space-between;
+    border-top: 2px solid #143642;
+    padding: 30px 0;
+}
+
+.warranty-card__meta-container {
+    display: flex;
+}
+
+.warranty-card__meta-container h5 {
+    margin-right: 15px;
+    font-weight: bold;
+}
+
+
+
+@media only screen and (max-width: 575px) {
+    .warranty-card__container {
+        padding: 20px 20px 0;
+    }
+    
+}
