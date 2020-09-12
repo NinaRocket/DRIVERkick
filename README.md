@@ -37,9 +37,13 @@
 - Express
 - Passport
 - [NHTSA Vehical API](https://vpic.nhtsa.dot.gov/api/)
-- Trello (Team Collaboration / Task Management)
-- Figma (Design Layout)
-- G Suite (Component Organization / Slides Presentation)
+- Project Management Tools:
+    - Trello (Team Collaboration / Task Management)
+    - Figma (Design Layout)
+    - G Suite (Component Organization / Slides Presentation)
+- Deployed Application:
+    - Heroku (App Link)
+    - MongoDB Atlas (Database link)
 
 <br>
 
