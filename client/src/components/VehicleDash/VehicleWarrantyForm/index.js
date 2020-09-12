@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 // import Form from 'react-bootstrap/Form';
-const Form = require("react-bootstrap/Form");
+const { Form } = require("react-bootstrap");
 
 function VehicleWarrantyForm({
   title,
