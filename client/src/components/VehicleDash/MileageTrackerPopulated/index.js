@@ -57,7 +57,7 @@ function MileageTrackerPopulated({ mileageTrackingModal }) {
           <h3 className="mileage-card__date-txt">2/28/2020</h3>
         </div>
         <button className="g__vehicle-card__btn" onClick={mileageTrackingModal}>
-          Update Milage
+          Update Mileage
         </button>
       </div>
       <div className="mileage-card__history">

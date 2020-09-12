@@ -48,11 +48,11 @@ export default {
   // updateMileage: function (vehicleId, currentMileage) {
   //   return axios.put(`/api/vehicle/${vehicleId}`, { currentMileage });
   // },
-  postMileage: function (id) {
-    return axios.post(`/api/vehicle/` + id);
-  },
-  putMileage: function (vehicleId, currentMileage) {
-    return axios.put(`/api/vehicle/${vehicleId}`, { currentMileage });
+  // postMileage: function (id) {
+  //   return axios.post(`/api/vehicle/` + id);
+  // },
+  putMileage: function (vehID, currentMileage) {
+    return axios.put(`/api/vehicle/${vehID}`, { currentMileage });
   },
   // updates the vehicle driver
   updateDriver: function (vehicleId, driverName) {

@@ -140,8 +140,8 @@ function VehicleMainWrapper({ children }) {
   //     .catch((err) => console.log(err));
   // }, []);
 
-  console.log(vehID);
-  console.log(vehicleInfo);
+  // console.log(vehID);
+  // console.log(vehicleInfo);
 
   return (
     <section className="g__dashboard-wrapper">
