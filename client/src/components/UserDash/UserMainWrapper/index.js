@@ -83,7 +83,7 @@ function UserMainWrapper() {
           </Col>
           <Col lg={1}></Col>
           <Col lg={8}>
-            {vehicleInfo.map((v) => (
+            {vehicleInfo.map((v, index) => (
               <UserVehicleCard
                 key={v._id}
                 vehicleID={v._id}
@@ -94,7 +94,7 @@ function UserMainWrapper() {
                 carNickname={v.nickname}
                 ownerName={v.driverName}
                 getLatestVehicles={getLatestVehicles}
-                bgCardImage={bgImages[2].image}
+                bgCardImage={bgImages[index%bgImages.length-1].image}
               />
             ))}
           </Col>
