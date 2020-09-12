@@ -1,6 +1,6 @@
 import React from "react";
 import "./style.css";
-import Form from "react-bootstrap/form";
+import Form from "react-bootstrap/Form";
 
 function MileageTrackerForm({ handleMilage, submitCurrentMilage }) {
   return (
