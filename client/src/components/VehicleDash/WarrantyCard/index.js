@@ -56,7 +56,7 @@ function WarrantyModal(props) {
         // Lets other components know to close the modal
         setModalFormSubmit(true)
 
-
+        // adding warranty info from above structure
         API.newWarranty(warrantyInfo)
             .then((response) => {
                 console.log("new warranty response: ");
@@ -64,7 +64,6 @@ function WarrantyModal(props) {
                 if (!response.data.errmsg) {
                     console.log("successfully added warranty");
                     console.log(warrantyInfo);
-
 
                 } else {
                     console.log("Nina doesn't know how to code");
@@ -74,8 +73,6 @@ function WarrantyModal(props) {
                 console.log("adding warranty error: ");
                 console.log(error);
             });
-
-
     };
 
     // END Form Field  ————————————————————|
@@ -114,7 +111,7 @@ function WarrantyCard() {
     const { modalFormSubmit, setModalFormSubmit } = useDriverKickContext();
 
     const [modalShow, setModalShow] = React.useState(false);
-    const [warranty, setWarranty] = useState({});
+
 
     // Updates global context of if the modal form was submitted 
     useEffect(() => {
@@ -133,13 +130,14 @@ function WarrantyCard() {
     const [newUser, setNewUser] = useState(false);
 
 
-    const { id } = useParams();
-    useEffect(() => {
-        API.getWarranty(warranty)
-            .then((res) => setWarranty(res.data))
-            .catch((err) => console.log(err));
-        console.log(warranty);
-    }, []);
+    // const { id } = useParams();
+    // just in case it is needed
+    // useEffect(() => {
+    //     API.getWarranty(warranty)
+    //         .then((res) => setWarranty(res.data))
+    //         .catch((err) => console.log(err));
+    //     console.log(warranty);
+    // }, []);
 
     return (
         <div className="g__vehicle-card">
