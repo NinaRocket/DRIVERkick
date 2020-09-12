@@ -5,6 +5,12 @@
 ![total contributors](https://img.shields.io/github/contributors/NinaRocket/Project3)
 ![last commit](https://img.shields.io/github/last-commit/NinaRocket/Project3/master)
 
+<br>
+
+<center>
+
+# [DriverKick Deployed Link]()
+</center>
 
 ![Main Pages](./rm-img/DriverKickPages.JPG)
 <br><br>
@@ -17,10 +23,9 @@
 ## Table of Contents
 1. [Technology Used](#technology-used)
 2. [Installations](#installations)
-3. [Deployed Link](#deployed-link)
 4. [Code Components](#code-components)
 5. [Future Development](#future-development)
-6. [Contact Info](#contact-info)
+6. [Team Contact Information](#team-contact-information)
 
 <br>
 
@@ -31,6 +36,9 @@
 - MongoDB
 - Express
 - Passport
+- Trello (Team Collaboration / Task Management)
+- Figma (Design Layout)
+- G Suite (Component Organization / Slides Presentation)
 
 <br>
 
@@ -47,27 +55,26 @@ $ npm react-contenteditable
 ```
 <br>
 
-## Deployed Link:
-**[Click link to see Project in action!]()**
-
- <br>
-
 ## Code Components-
 
-> Code goes here!
-- Run `npm i` to download the node packages.
+> Feature gif goes here
+- Explanation~
  
+ <br>
  
-> Code goes here!
-- 
+> Feature gif goes here
+- Explanation~
 
  <br>
  
 ## Future Development:
 
-- Scheduling maintenance alerts
-- Push notification every few days to update mileage
+- Scheduling maintenance alerts for oil change
+- Push notification for Mileage tracking
 - Oil change meter has dynamic animation when user is close to an oil change
+- PWA the site for mobile and offline use
+- Local maintenance shop tracker with ratings
+- Create a light mode for the dashboard
 
  <br>
 
@@ -79,6 +86,8 @@ Email: | <lathisha.n@gmail.com> |
 --- | --- 
 LinkedIn: | <https://www.linkedin.com/in/lathishanair/> |
 
+![Followers](https://img.shields.io/github/followers/lnair1997?logoColor=%23F0B537&style=social)
+
 <br>
 
 ### <span style="color:#007cba">Gedalya Krycer</span> | Front-end / Design Specialist
@@ -86,6 +95,7 @@ Email: | <gedalya@krycer.com> |
 --- | --- 
 LinkedIn: | <https://www.linkedin.com/in/gedalyakrycer/> |
 
+![Followers](https://img.shields.io/github/followers/GedalyaKrycer?logoColor=%23007cba&style=social)
 <br>
 
 ### <span style="color:#0AFFDD">Nina Rocket</span> | Front-end / Javascript Boss
@@ -93,6 +103,7 @@ Email: | <ninamrocket@gmail.com> |
 --- | --- 
 LinkedIn: | <https://www.linkedin.com/in/ninarocket/> |
 
+![Followers](https://img.shields.io/github/followers/NinaRocket?logoColor=%230AFFDD&style=social)
 <br>
 
 ### <span style="color:#26FFAD">Jacob Cravey</span> | Back-end / Routes Specialist
@@ -100,11 +111,14 @@ Email: | <> |
 --- | --- 
 LinkedIn: | <https://www.linkedin.com/in/jacob-cravey-2367561a8/> |
 
+![Followers](https://img.shields.io/github/followers/jtcravey1991?logoColor=%2326FFAD&style=social)
 <br>
 
 ### <span style="color:#F8963F">Linnea Gear</span> | Back-end / MonGOD
 Email: | <linneagear@gmail.com> |
 --- | --- 
 LinkedIn: | <https://www.linkedin.com/in/linnea-gear/> |
+
+![Followers](https://img.shields.io/github/followers/linneagear?logoColor=%23F8963F&style=social)
 
 <br>
