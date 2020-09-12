@@ -3,6 +3,7 @@ const passport = require("../../config/passport");
 const router = require("express").Router();
 const isAuthenticated = require("../../config/middleware/isAuthenticated");
 const axios = require("axios");
+const path = require("path");
 
 // User Routes ----------------------------------------------- ||
 router.post("/login", passport.authenticate("local"), (req, res) => {
@@ -29,6 +30,12 @@ router.post("/signup", (req, res) => {
     });
 });
 
+// logout
+router.get("/logout", (req, res) => {
+  req.logout();
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+})
+
 // checks and returns wether or not the ser is authenticated
 router.get("/isAuthenticated", function (req, res) {
   const isAuthenticated = {
@@ -47,12 +54,6 @@ router.get("/info", isAuthenticated, function (req, res) {
     })
     .then((dbUser) => res.json(dbUser))
     .catch((err) => res.status(404).json(err));
-});
-
-// Endpoint to logout
-router.get("/logout", function (req, res) {
-  req.logout();
-  res.send(null);
 });
 
 module.exports = router;

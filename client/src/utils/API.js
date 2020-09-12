@@ -71,6 +71,9 @@ export default {
   newWarranty: (warranty) => {
     return axios.post("/api/warranty", warranty);
   },
+  updateWarranty: () => {
+    return axios.put("/api/warranty" )
+  },
   updateOwner: () => {
     return axios.put();
   },
