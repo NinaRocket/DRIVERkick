@@ -1,29 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./style.css";
-import { useDriverKickContext } from "../../../utils/DriverKickContext";
 import Card from "react-bootstrap/Card";
 import Accordion from "react-bootstrap/Accordion";
 import API from "../../../utils/API";
 import openBtnIcon from "../../../images/vehiclepage/open-btn-icon.svg";
 import closeBtnIcon from "../../../images/vehiclepage/close-btn-icon.svg";
-import ContextAwareToggle from "../../../utils/ContextAwareToggle";
+import { useAccordionToggle } from 'react-bootstrap/AccordionToggle';
 
 
+
+// ACCORDION HELPER COMPONENT ==========================
+function ContextAwareToggle({ children, eventKey, callback, accordionHelper, setAccordionHelper }) {
+
+
+    const decoratedOnClick = useAccordionToggle(
+        eventKey,
+        () => {
+            callback && callback(eventKey)
+            accordionHelper ? setAccordionHelper(false) : setAccordionHelper(true)
+        }
+    );
+
+    return (
+        <button
+            type="button"
+            className="g__btn-reset g__btn-accordion"
+            onClick={decoratedOnClick}
+        >
+            {children}
+        </button>
+    );
+}
+
+
+// Warranty COMPONENT ==============================
 function WarrantyPopulated({ warrantyModal }) {
 
-    const {
-        accordionHelper,
-    } = useDriverKickContext();
-
+    // Sets state for accordion
+    const [accordionHelper, setAccordionHelper] = useState(false);
 
     return (
 
         <div className="warranty-card__body">
             <Accordion defaultActiveKey="1" className="vehicle-dash__accordion">
                 <Card>
-                    <ContextAwareToggle eventKey="0">
+                    <ContextAwareToggle eventKey="0" accordionHelper={accordionHelper} setAccordionHelper={setAccordionHelper}>
                         <Card.Header className="vehicle-dash__rule">
-                            
+
                             <h1 className="g__dash-h1"></h1>
                             {accordionHelper ? (
                                 <img

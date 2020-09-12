@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
 import { useParams, useHistory } from "react-router-dom";
 import Row from "react-bootstrap/Row";
@@ -14,7 +14,7 @@ import { useAccordionToggle } from 'react-bootstrap/AccordionToggle';
 
 // ACCORDION HELPER COMPONENT ==========================
 function ContextAwareToggle({ children, eventKey, callback, accordionHelper, setAccordionHelper }) {
-  // const [accordionHelper, setAccordionHelper] = useState(false);
+
 
   const decoratedOnClick = useAccordionToggle(
     eventKey,
@@ -45,6 +45,7 @@ function VehicleMainWrapper({ children }) {
     vehID,
   } = useDriverKickContext();
 
+  // Sets state for accordion
   const [accordionHelper, setAccordionHelper] = useState(false);
 
   const vehicleTemplate = {
