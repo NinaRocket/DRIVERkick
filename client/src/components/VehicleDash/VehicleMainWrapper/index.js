@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./style.css";
-import { useParams, useHistory } from "react-router-dom";
+
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Accordion from "react-bootstrap/Accordion";
 import openBtnIcon from "../../../images/vehiclepage/open-btn-icon.svg";
 import closeBtnIcon from "../../../images/vehiclepage/close-btn-icon.svg";
-import API from "../../../utils/API";
-import { useDriverKickContext } from "../../../utils/DriverKickContext";
+
 import { useAccordionToggle } from "react-bootstrap/AccordionToggle";
 
 // ACCORDION HELPER COMPONENT ==========================
@@ -36,112 +35,9 @@ function ContextAwareToggle({
 }
 
 // MAIN WRAPPER COMPONENT ==============================
-function VehicleMainWrapper({ children }) {
-  const {
-    userData,
-    setUserData,
-    logout,
-    vehID,
-    setVehID,
-  } = useDriverKickContext();
-
+function VehicleMainWrapper({ children, vehicleInfo, userData }) {
   // Sets state for accordion
   const [accordionHelper, setAccordionHelper] = useState(false);
-
-  const vehicleTemplate = {
-    VIN: "",
-    year: "",
-    make: "",
-    model: "",
-    icon: "",
-    driverName: "",
-    nickname: "",
-    currentMileage: "",
-    nextOilChange: "",
-    oilType: "",
-    warranties: [],
-    _id: vehID,
-  };
-
-  const [vehicleInfo, setVehicleInfo] = useState(vehicleTemplate);
-
-  const history = useHistory();
-
-  const { id } = useParams();
-
-  // REACT'S SUGGESTED ASYNC USE-EFFECT SYNTAX
-  useEffect(() => {
-    async function getInfo() {
-      try {
-        const fetchUser = await API.getUser(id);
-        const fetchVehicles = await API.getVehicleById(vehID);
-
-        console.log(fetchVehicles.data[0]);
-
-        if (
-          fetchUser.data.isAuthenticated === false ||
-          fetchVehicles.data.isAuthenticated === false
-        ) {
-          return logout(history);
-        }
-
-        setUserData({ ...userData, ...fetchUser.data });
-        setVehicleInfo(fetchVehicles.data[0]);
-        console.log(vehicleInfo);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    getInfo();
-  }, []);
-
-  // OUR ORIGINAL ASYNC USEEFFECT
-  // useEffect(async () => {
-  //   try {
-  //     const fetchUser = await API.getUser(id);
-  //     const fetchVehicles = await API.getVehicleById(vehID);
-
-  //     console.log(fetchVehicles.data[0]);
-
-  //     if (
-  //       fetchUser.data.isAuthenticated === false ||
-  //       fetchVehicles.data.isAuthenticated === false
-  //     ) {
-  //       return logout(history);
-  //     }
-
-  //     setUserData({ ...userData, ...fetchUser.data });
-  //     setVehicleInfo(fetchVehicles.data[0]);
-  //     console.log(vehicleInfo);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }, []);
-
-  // NON-ASYNC USE EFFECT
-  // useEffect(() => {
-  //   API.getUser(id)
-  //     .then((res) => {
-  //       if (res.data.isAuthenticated === false) {
-  //         return logout(history);
-  //       }
-  //       setUserData({ ...userData, ...res.data });
-  //     })
-  //     .catch((err) => console.log(err));
-
-  //   //const { vehID } = useParams();
-  //   API.getVehicleById(vehID)
-  //     .then((res) => {
-  //       if (res.data.isAuthenticated === false) {
-  //         return logout(history);
-  //       }
-  //       setVehicleInfo(res.data[0]);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, []);
-
-  // console.log(vehID);
-  // console.log(vehicleInfo);
 
   return (
     <section className="g__dashboard-wrapper">

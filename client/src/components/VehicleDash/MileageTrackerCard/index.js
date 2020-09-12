@@ -27,9 +27,6 @@ function CurrentMilageModal(props) {
   // Error State
   const [mileageError, setMileageError] = useState(false);
 
-  //set state for milealge
-  //   const [currentMileage, setUpdateMileage] = useState();
-
   setVehID(vehID);
   console.log(vehID);
 
@@ -93,7 +90,7 @@ function CurrentMilageModal(props) {
   );
 }
 
-function MileageTrackerCard() {
+function MileageTrackerCard({ vehicleInfo }) {
   const { modalFormSubmit, setModalFormSubmit } = useDriverKickContext();
 
   const [modalShow, setModalShow] = React.useState(false);
@@ -126,7 +123,10 @@ function MileageTrackerCard() {
       {newUser ? (
         <MileageTrackerInitial mileageTrackingModal={mileageModal} />
       ) : (
-        <MileageTrackerPopulated mileageTrackingModal={mileageModal} />
+        <MileageTrackerPopulated
+          mileageTrackingModal={mileageModal}
+          vehicleInfo={vehicleInfo}
+        />
       )}
       <CurrentMilageModal show={modalShow} onHide={() => setModalShow(false)} />
     </div>
