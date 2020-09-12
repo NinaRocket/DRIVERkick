@@ -42,6 +42,8 @@ export function DriverKickProvider({ children }) {
   // Accordion Bootstrap Helper Context
   const [accordionHelper, setAccordionHelper] = useState(false);
 
+  const [accordionBtnToggle, setAccordionBtnToggle] = useState(false);
+
   // Select Vehicle Type Options
   const [selectValue, setSelectValue] = useState();
 
@@ -71,7 +73,8 @@ export function DriverKickProvider({ children }) {
           setSelectValue,
           vehID,
           setVehID,
-          modalFormSubmit, setModalFormSubmit
+          modalFormSubmit, setModalFormSubmit,
+          accordionBtnToggle, setAccordionBtnToggle
         }}
       >
         {children}

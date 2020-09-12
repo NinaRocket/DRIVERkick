@@ -1,37 +1,70 @@
 import React from 'react';
 import "./style.css";
-import Table from 'react-bootstrap/Table';
+import { useDriverKickContext } from "../../../utils/DriverKickContext";
+import Card from "react-bootstrap/Card";
+import Accordion from "react-bootstrap/Accordion";
+import API from "../../../utils/API";
+import openBtnIcon from "../../../images/vehiclepage/open-btn-icon.svg";
+import closeBtnIcon from "../../../images/vehiclepage/close-btn-icon.svg";
+import ContextAwareToggle from "../../../utils/ContextAwareToggle";
 
 
-function WarrantyPopulated({ mileageTrackingModal }) {
+function WarrantyPopulated({ warrantyModal }) {
+
+    const {
+        accordionHelper,
+    } = useDriverKickContext();
 
 
     return (
-        // START Hard Code Placeholders ————————|
-        <div className="recall-card__body">
-            <div className="recall-card__content">
 
-                <h5>2/21/17</h5>
-                <h2 className="g__sky-blue--txt">Toyota Recalls Door Handles</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh etiam libero malesuada vehicula sed justo, tincidunt. In ridiculus magna semper purus. Faucibus morbi feugiat et, ac, luctus quis. Sodales nunc bibendum ut at suspendisse. Ultricies quis viverra nec pharetra morbi consequat fames. Vestibulum, sed gravida dui, tortor erat morbi venenatis. Eget ultrices sed felis mattis et. Etiam aliquam, massa felis, ut at porttitor. Porttitor tristique ultric.</p>
-            </div>
+        <div className="warranty-card__body">
+            <Accordion defaultActiveKey="1" className="vehicle-dash__accordion">
+                <Card>
+                    <ContextAwareToggle eventKey="0">
+                        <Card.Header className="vehicle-dash__rule">
+                            
+                            <h1 className="g__dash-h1"></h1>
+                            {accordionHelper ? (
+                                <img
+                                    src={closeBtnIcon}
+                                    alt="Close icon"
+                                    className="vehicle-dash__accordion-toggle"
+                                />
+                            ) : (
+                                    <img
+                                        src={openBtnIcon}
+                                        alt="Open icon"
+                                        className="vehicle-dash__accordion-toggle"
+                                    />
+                                )}
+                        </Card.Header>
+                    </ContextAwareToggle>
+                    <Accordion.Collapse eventKey="0">
+                        <Card.Body className="text-center">
+                            <div className="vehicle-dash__user-group">
+                                <h4 className="g__card__subhead">Owner</h4>
 
+                            </div>
+                            <div className="vehicle-dash__user-group">
+                                <h4 className="g__card__subhead">Model</h4>
+
+                            </div>
+                            <div className="vehicle-dash__user-group">
+                                <h4 className="g__card__subhead">Make</h4>
+                            </div>
+                            <div>
+                                <h4 className="g__card__subhead">Year</h4>
+
+                            </div>
+                        </Card.Body>
+                    </Accordion.Collapse>
+                </Card>
+            </Accordion>
+
+            <button className="g__vehicle-card__btn" onClick={warrantyModal}>Update Milage</button>
         </div>
-        // END Hard Code Placeholders ————————|
 
-        // START ———— Production code to use when the API has been integrated.
-
-        // <div className="recall-card__body">
-        //     <div className="recall-card__content">
-
-        //         <h5>{recall.date}</h5>
-        //         <h2 className="g__sky-blue--txt">{recall.title}</h2>
-        //         <p>{recall.description}</p>
-        //     </div>
-
-        // </div>
-
-        // END ———— Production code to use when the API has been integrated.
 
 
     );

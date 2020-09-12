@@ -1,6 +1,7 @@
-.recall-card__body {
+.warranty-card__body {
     border-top: 6px solid #143642;
     word-wrap: break-word;
+    padding: 60px;
 }
 
 .recall-card__content {
