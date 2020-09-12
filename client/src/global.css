@@ -244,6 +244,9 @@ input:focus,
   padding: 1rem 1.5rem;
 }
 
+.g__border-reset {
+  border: none;
+}
 
 /* —————————————————————————————————————
 Forms

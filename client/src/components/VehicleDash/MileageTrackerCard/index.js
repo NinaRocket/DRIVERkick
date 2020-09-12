@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./style.css";
 import mileageTrackerIcon from '../../../images/vehiclepage/vehicle-mileage-icon.svg';
 import VehicleDashCardHeader from '../VehicleDashCardHeader';
@@ -6,8 +6,13 @@ import MileageTrackerInitial from '../MileageTrackerInitial';
 import MileageTrackerPopulated from '../MileageTrackerPopulated';
 import MileageTrackerForm from "../MileageTrackerForm";
 import Modal from 'react-bootstrap/Modal';
+import { useDriverKickContext } from "../../../utils/DriverKickContext";
+
 
 function CurrentMilageModal(props) {
+    const { setModalFormSubmit } = useDriverKickContext();
+
+
     // Modal Show/Hide State
     const [modalShow, setModalShow] = React.useState(false);
 
@@ -28,7 +33,9 @@ function CurrentMilageModal(props) {
         if (!mileage) {
             return setMileageError(true);
         }
-        setModalShow(false)
+
+        // Lets other components know to close the modal
+        setModalFormSubmit(true)
 
         // Needs to post this to the database
         console.log(mileage)
@@ -61,13 +68,25 @@ function CurrentMilageModal(props) {
 
 
 function MileageTrackerCard() {
+    const { modalFormSubmit, setModalFormSubmit } = useDriverKickContext();
+
     const [modalShow, setModalShow] = React.useState(false);
 
     // Determines if the initial content or populated content component show up.  
     const [newUser, setNewUser] = useState(false);
 
+
+    useEffect(() => {
+        if (modalFormSubmit) {
+            setModalShow(false)
+        }
+    }, [modalFormSubmit])
+
     // Opens and closes modal
-    const mileageModal = () => setModalShow(true);
+    const mileageModal = () => {
+        setModalShow(true);
+        setModalFormSubmit(false)
+    };
 
     return (
         <div className="g__vehicle-card">

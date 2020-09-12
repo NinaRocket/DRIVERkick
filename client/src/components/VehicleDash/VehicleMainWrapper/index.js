@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
 import { useParams, useHistory } from "react-router-dom";
-import ContextAwareToggle from "../../../utils/ContextAwareToggle";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
@@ -10,18 +9,44 @@ import openBtnIcon from "../../../images/vehiclepage/open-btn-icon.svg";
 import closeBtnIcon from "../../../images/vehiclepage/close-btn-icon.svg";
 import API from "../../../utils/API";
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
+import { useAccordionToggle } from "react-bootstrap/AccordionToggle";
 
+// ACCORDION HELPER COMPONENT ==========================
+function ContextAwareToggle({
+  children,
+  eventKey,
+  callback,
+  accordionHelper,
+  setAccordionHelper,
+}) {
+  const decoratedOnClick = useAccordionToggle(eventKey, () => {
+    callback && callback(eventKey);
+    accordionHelper ? setAccordionHelper(false) : setAccordionHelper(true);
+  });
+
+  return (
+    <button
+      type="button"
+      className="g__btn-reset g__btn-accordion"
+      onClick={decoratedOnClick}
+    >
+      {children}
+    </button>
+  );
+}
+
+// MAIN WRAPPER COMPONENT ==============================
 function VehicleMainWrapper({ children }) {
   const {
     userData,
     setUserData,
-    accordionHelper,
     logout,
     vehID,
     setVehID,
   } = useDriverKickContext();
 
-  setVehID(vehID);
+  // Sets state for accordion
+  const [accordionHelper, setAccordionHelper] = useState(false);
 
   const vehicleTemplate = {
     VIN: "",
@@ -67,9 +92,8 @@ function VehicleMainWrapper({ children }) {
         console.log(error);
       }
     }
-    getInfo()
+    getInfo();
   }, []);
-
 
   // OUR ORIGINAL ASYNC USEEFFECT
   // useEffect(async () => {
@@ -126,7 +150,11 @@ function VehicleMainWrapper({ children }) {
           <Col lg={3}>
             <Accordion defaultActiveKey="1" className="vehicle-dash__accordion">
               <Card>
-                <ContextAwareToggle eventKey="0">
+                <ContextAwareToggle
+                  eventKey="0"
+                  accordionHelper={accordionHelper}
+                  setAccordionHelper={setAccordionHelper}
+                >
                   <Card.Header className="vehicle-dash__rule">
                     <img
                       src={vehicleInfo.icon}
@@ -141,12 +169,12 @@ function VehicleMainWrapper({ children }) {
                         className="vehicle-dash__accordion-toggle"
                       />
                     ) : (
-                        <img
-                          src={openBtnIcon}
-                          alt="Open icon"
-                          className="vehicle-dash__accordion-toggle"
-                        />
-                      )}
+                      <img
+                        src={openBtnIcon}
+                        alt="Open icon"
+                        className="vehicle-dash__accordion-toggle"
+                      />
+                    )}
                   </Card.Header>
                 </ContextAwareToggle>
                 <Accordion.Collapse eventKey="0">

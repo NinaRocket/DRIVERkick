@@ -39,8 +39,6 @@ export function DriverKickProvider({ children }) {
 
   // navType Expects: "home" || "notFound" || "login" || "signup" || "newVehicle" || "userDash" || "vehicleDash"
 
-  // Accordion Bootstrap Helper Context
-  const [accordionHelper, setAccordionHelper] = useState(false);
 
   // Select Vehicle Type Options
   const [selectValue, setSelectValue] = useState();
@@ -49,6 +47,9 @@ export function DriverKickProvider({ children }) {
 
   //vehicle ID for maintenance tracking
   const [vehID, setVehID] = useState();
+
+  // Lets other components know to close the modal
+  const [modalFormSubmit, setModalFormSubmit] = useState(false);
 
   return (
     <DriverKickRouter>
@@ -62,12 +63,11 @@ export function DriverKickProvider({ children }) {
           setAuthenticated,
           navType,
           setNavType,
-          accordionHelper,
-          setAccordionHelper,
           selectValue,
           setSelectValue,
           vehID,
           setVehID,
+          modalFormSubmit, setModalFormSubmit
         }}
       >
         {children}
