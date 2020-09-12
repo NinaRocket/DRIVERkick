@@ -6,6 +6,7 @@ import VehicleMainWrapper from "../VehicleMainWrapper";
 import MileageTrackerCard from "../MileageTrackerCard";
 import WarrantyCard from "../WarrantyCard";
 import RecallsCard from "../RecallsCard";
+import OilChangeCard from "../OilChangeCard";
 
 
 function VehicleDashPage() {
@@ -19,7 +20,7 @@ function VehicleDashPage() {
       <GlobalNavBar />
       <VehicleMainWrapper>
         <MileageTrackerCard />
-        {/* <OilChangeCard /> */}
+        <OilChangeCard />
         <WarrantyCard />
         <RecallsCard />
       </VehicleMainWrapper>

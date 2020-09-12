@@ -326,7 +326,7 @@ Vehicle Dashboard
 .g__vehicle-card {
   padding: 40px 0;
   background: rgb(15, 68, 87);
-  background:linear-gradient(0deg, rgb(6 22 28 / 60%), rgb(9 41 53 / 80%)), url("./images/global/diagonal-lines.svg");
+  background:linear-gradient(0deg, rgb(6 22 28 / 60%), rgb(9 41 53 / 80%));
   border-radius: 0px 20px;  
   -webkit-box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.1);
      -moz-box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.1);

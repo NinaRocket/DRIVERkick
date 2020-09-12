@@ -3,8 +3,6 @@ import "./style.css";
 import Card from "react-bootstrap/Card";
 import Accordion from "react-bootstrap/Accordion";
 import API from "../../../utils/API";
-import openBtnIcon from "../../../images/vehiclepage/open-btn-icon.svg";
-import closeBtnIcon from "../../../images/vehiclepage/close-btn-icon.svg";
 import { useAccordionToggle } from 'react-bootstrap/AccordionToggle';
 import { FaPlus, FaMinus } from 'react-icons/fa';
 
@@ -112,7 +110,7 @@ function WarrantyPopulated({ warrantyModal }) {
                 </Card>
             </Accordion>
 
-            <button className="g__vehicle-card__btn mt-3" onClick={warrantyModal}>Update Milage</button>
+            <button className="g__vehicle-card__btn mt-3" onClick={warrantyModal}>Add a Warranty</button>
         </div>
 
 

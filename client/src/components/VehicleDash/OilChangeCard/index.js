@@ -1,6 +1,6 @@
 import React from 'react';
 
-function VehicleOilChangeCard() {
+function OilChangeCard() {
     return (
         <div>
 
@@ -8,4 +8,4 @@ function VehicleOilChangeCard() {
     );
 }
 
-export default VehicleOilChangeCard;
+export default OilChangeCard;
