@@ -39,8 +39,6 @@ export function DriverKickProvider({ children }) {
 
   // navType Expects: "home" || "notFound" || "login" || "signup" || "newVehicle" || "userDash" || "vehicleDash"
 
-  // Accordion Bootstrap Helper Context
-  const [accordionHelper, setAccordionHelper] = useState(false);
 
   // Select Vehicle Type Options
   const [selectValue, setSelectValue] = useState();
@@ -65,8 +63,6 @@ export function DriverKickProvider({ children }) {
           setAuthenticated,
           navType,
           setNavType,
-          accordionHelper,
-          setAccordionHelper,
           selectValue,
           setSelectValue,
           vehID,

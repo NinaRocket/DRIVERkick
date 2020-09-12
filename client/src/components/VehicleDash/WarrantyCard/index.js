@@ -132,7 +132,7 @@ function WarrantyCard() {
     }
 
     // Determines if the initial content or populated content component show up.  
-    const [newUser, setNewUser] = useState(true);
+    const [newUser, setNewUser] = useState(false);
 
 
     const { id } = useParams();

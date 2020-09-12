@@ -1,37 +1,120 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./style.css";
-import Table from 'react-bootstrap/Table';
+import Card from "react-bootstrap/Card";
+import Accordion from "react-bootstrap/Accordion";
+import API from "../../../utils/API";
+import openBtnIcon from "../../../images/vehiclepage/open-btn-icon.svg";
+import closeBtnIcon from "../../../images/vehiclepage/close-btn-icon.svg";
+import { useAccordionToggle } from 'react-bootstrap/AccordionToggle';
+import { FaPlus, FaMinus } from 'react-icons/fa';
 
 
-function WarrantyPopulated({ mileageTrackingModal }) {
 
+// ACCORDION HELPER COMPONENT ==========================
+function ContextAwareToggle({ children, eventKey, callback, accordionHelper, setAccordionHelper }) {
+
+
+    const decoratedOnClick = useAccordionToggle(
+        eventKey,
+        () => {
+            callback && callback(eventKey)
+            accordionHelper ? setAccordionHelper(false) : setAccordionHelper(true)
+        }
+    );
 
     return (
-        // START Hard Code Placeholders ————————|
-        <div className="recall-card__body">
-            <div className="recall-card__content">
+        <button
+            type="button"
+            className="g__btn-reset g__btn-accordion"
+            onClick={decoratedOnClick}
+        >
+            {children}
+        </button>
+    );
+}
 
-                <h5>2/21/17</h5>
-                <h2 className="g__sky-blue--txt">Toyota Recalls Door Handles</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh etiam libero malesuada vehicula sed justo, tincidunt. In ridiculus magna semper purus. Faucibus morbi feugiat et, ac, luctus quis. Sodales nunc bibendum ut at suspendisse. Ultricies quis viverra nec pharetra morbi consequat fames. Vestibulum, sed gravida dui, tortor erat morbi venenatis. Eget ultrices sed felis mattis et. Etiam aliquam, massa felis, ut at porttitor. Porttitor tristique ultric.</p>
-            </div>
 
+// Warranty COMPONENT ==============================
+function WarrantyPopulated({ warrantyModal }) {
+
+    // Sets state for accordion
+    const [accordionHelper, setAccordionHelper] = useState(false);
+
+    return (
+
+        <div className="warranty-card__container">
+            <Accordion defaultActiveKey="1" >
+                <Card className="g__border-reset">
+                    <ContextAwareToggle eventKey="0" accordionHelper={accordionHelper} setAccordionHelper={setAccordionHelper}>
+                        <div className="warranty-card__header">
+
+                            <h4>Some Headline</h4>
+
+                            <FaPlus />
+
+                        </div>
+                    </ContextAwareToggle>
+                    <Accordion.Collapse eventKey="0">
+                        <div className="warranty-card__body" >
+                            <div className="warranty-card__meta-container">
+                                <h5>Walmart</h5>
+                                <h5>2/21/17</h5>
+                            </div>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh etiam libero malesuada vehicula sed justo, tincidunt. In ridiculus magna semper purus. Faucibus morbi feugiat et, ac, luctus quis. Sodales nunc bibendum ut at suspendisse.
+                            </p>
+                        </div>
+                    </Accordion.Collapse>
+                </Card>
+                <Card className="g__border-reset">
+                    <ContextAwareToggle eventKey="1" accordionHelper={accordionHelper} setAccordionHelper={setAccordionHelper}>
+                        <div className="warranty-card__header">
+
+                            <h4>Some Headline</h4>
+
+                            <FaPlus />
+
+                        </div>
+                    </ContextAwareToggle>
+                    <Accordion.Collapse eventKey="1">
+                        <div className="warranty-card__body" >
+                            <div className="warranty-card__meta-container">
+                                <h5>Walmart</h5>
+                                <h5>2/21/17</h5>
+                            </div>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh etiam libero malesuada vehicula sed justo, tincidunt. In ridiculus magna semper purus. Faucibus morbi feugiat et, ac, luctus quis. Sodales nunc bibendum ut at suspendisse.
+                            </p>
+                        </div>
+                    </Accordion.Collapse>
+                </Card>
+                <Card className="g__border-reset">
+                    <ContextAwareToggle eventKey="2" accordionHelper={accordionHelper} setAccordionHelper={setAccordionHelper}>
+                        <div className="warranty-card__header">
+
+                            <h4>Some Headline</h4>
+
+                            <FaPlus />
+
+                        </div>
+                    </ContextAwareToggle>
+                    <Accordion.Collapse eventKey="2">
+                        <div className="warranty-card__body" >
+                            <div className="warranty-card__meta-container">
+                                <h5>Walmart</h5>
+                                <h5>2/21/17</h5>
+                            </div>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh etiam libero malesuada vehicula sed justo, tincidunt. In ridiculus magna semper purus. Faucibus morbi feugiat et, ac, luctus quis. Sodales nunc bibendum ut at suspendisse.
+                            </p>
+                        </div>
+                    </Accordion.Collapse>
+                </Card>
+            </Accordion>
+
+            <button className="g__vehicle-card__btn mt-3" onClick={warrantyModal}>Update Milage</button>
         </div>
-        // END Hard Code Placeholders ————————|
 
-        // START ———— Production code to use when the API has been integrated.
-
-        // <div className="recall-card__body">
-        //     <div className="recall-card__content">
-
-        //         <h5>{recall.date}</h5>
-        //         <h2 className="g__sky-blue--txt">{recall.title}</h2>
-        //         <p>{recall.description}</p>
-        //     </div>
-
-        // </div>
-
-        // END ———— Production code to use when the API has been integrated.
 
 
     );
