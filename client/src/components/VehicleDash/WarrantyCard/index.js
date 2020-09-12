@@ -118,6 +118,7 @@ function WarrantyCard() {
     const [modalShow, setModalShow] = React.useState(false);
     const [warranty, setWarranty] = useState({});
 
+    // Updates global context of if the modal form was submitted 
     useEffect(() => {
         if (modalFormSubmit) {
             setModalShow(false)
