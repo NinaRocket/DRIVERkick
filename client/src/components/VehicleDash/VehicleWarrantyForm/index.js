@@ -56,7 +56,7 @@ function VehicleWarrantyForm() {
     <form className="g__deep-blue--txt">
       <div className="g__label-group mt-4">
         <Form.Group>
-          <Form.Label htmlFor="warrantyProvider">Current Mileage</Form.Label>
+          <Form.Label htmlFor="warrantyTitle">Warranty Title </Form.Label>
           <Form.Control
             type="text"
             id="warrantyTitle"
@@ -71,7 +71,7 @@ function VehicleWarrantyForm() {
 
       <div className="g__label-group mt-4">
         <Form.Group>
-          <Form.Label htmlFor="warrantyProvider">Current Mileage</Form.Label>
+          <Form.Label htmlFor="warrantyProvider">Warranty Provider</Form.Label>
           <Form.Control
             type="text"
             id="warrantyProvider"
@@ -84,10 +84,10 @@ function VehicleWarrantyForm() {
 
       <div className="g__label-group mt-4">
         <Form.Group>
-          <Form.Label htmlFor="warrantyDetails">Current Mileage</Form.Label>
+          <Form.Label htmlFor="warrantyDetails">Warranty Details</Form.Label>
           <Form.Control
             as="textarea"
-            rows="3"
+            rows="5"
             id="warrantyDetails"
             name="warrantyDetails"
             placeholder="Provide any relevant notes that will need to be referred to in the future…"
