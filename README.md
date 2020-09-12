@@ -23,9 +23,9 @@
 ## Table of Contents
 1. [Technology Used](#technology-used)
 2. [Installations](#installations)
-4. [Code Components](#code-components)
-5. [Future Development](#future-development)
-6. [Team Contact Information](#team-contact-information)
+3. [Future Development](#future-development)
+4. [Awesome Feature Code](#awesome-feature-code)
+5. [Team Contact Information](#team-contact-information)
 
 <br>
 
@@ -36,6 +36,7 @@
 - MongoDB
 - Express
 - Passport
+- [NHTSA Vehical API](https://vpic.nhtsa.dot.gov/api/)
 - Trello (Team Collaboration / Task Management)
 - Figma (Design Layout)
 - G Suite (Component Organization / Slides Presentation)
@@ -54,18 +55,6 @@ $ npm passport
 $ npm react-contenteditable
 ```
 <br>
-
-## Code Components-
-
-> Feature gif goes here
-- Explanation~
- 
- <br>
- 
-> Feature gif goes here
-- Explanation~
-
- <br>
  
 ## Future Development:
 
@@ -75,6 +64,18 @@ $ npm react-contenteditable
 - PWA the site for mobile and offline use
 - Local maintenance shop tracker with ratings
 - Create a light mode for the dashboard
+
+ <br>
+
+ ## Awesome Feature Code-
+
+> Feature gif goes here
+- Explanation~
+ 
+ <br>
+ 
+> Feature gif goes here
+- Explanation~
 
  <br>
 
