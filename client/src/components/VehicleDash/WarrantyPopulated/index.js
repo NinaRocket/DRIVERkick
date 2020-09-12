@@ -38,38 +38,42 @@ function ContextAwareToggle({ children, eventKey, callback, accordionHelper, set
 // Warranty COMPONENT ==============================
 function WarrantyPopulated({ warrantyModal }) {
 
+    // does not work if nothing in database
+    // doesn't refresh when adding warranty
+    
     // Sets state for accordion
     const [accordionHelper, setAccordionHelper] = useState(false);
 
-    const warrantyTemplate = {
+    // Sets state for warranty
+    const [warranty, setWarranty] = useState({
         title: "",
         provider: "",
         details: ""
-    }
-    // Sets state for warranty
-    const [warranty, setWarranty] = useState(warrantyTemplate);
+    });
 
-    // get Warranties
-    // const { id } = useParams();
-
-    // REACT'S SUGGESTED ASYNC USE-EFFECT SYNTAX
-    useEffect(() => {
-      async function displayWarranty() {
+ function displayWarranty() {
         try {
         //   const fetchUser = await API.getUser(id);
-          const fetchWarranty = await API.getWarranty();
+          const fetchWarranty = API.getWarranty();
   
-          console.log(fetchWarranty.data[1]);
+          console.log(fetchWarranty.data[0]);
   
         //   setUserData({ ...userData, ...fetchUser.data });
-          setWarranty(fetchWarranty.data[1]);
+          setWarranty(fetchWarranty.data[0]);
           console.log(warranty);
 
         } catch (error) {
           console.log(error);
         }
       }
-      displayWarranty()
+    
+    // get Warranties
+    // const { id } = useParams();
+
+    // REACT'S SUGGESTED ASYNC USE-EFFECT SYNTAX
+    useEffect(() => {
+
+        displayWarranty();
     }, []);
 
     return (
@@ -98,11 +102,11 @@ function WarrantyPopulated({ warrantyModal }) {
                         </div>
                     </Accordion.Collapse>
                 </Card>
-                {/* <Card className="g__border-reset">
+                <Card className="g__border-reset">
                     <ContextAwareToggle eventKey="1" accordionHelper={accordionHelper} setAccordionHelper={setAccordionHelper}>
                         <div className="warranty-card__header">
 
-                            <h4>Some Headline</h4>
+                        <h4>Warranty #2</h4>
 
                             <FaPlus />
 
@@ -124,7 +128,7 @@ function WarrantyPopulated({ warrantyModal }) {
                     <ContextAwareToggle eventKey="2" accordionHelper={accordionHelper} setAccordionHelper={setAccordionHelper}>
                         <div className="warranty-card__header">
 
-                            <h4>Some Headline</h4>
+                            <h4>Warranty #3</h4>
 
                             <FaPlus />
 
@@ -141,7 +145,7 @@ function WarrantyPopulated({ warrantyModal }) {
                             </p>
                         </div>
                     </Accordion.Collapse>
-                </Card> */}
+                </Card>
             </Accordion>
 
             <button className="g__vehicle-card__btn mt-3" onClick={warrantyModal}>Update Warranty</button>
