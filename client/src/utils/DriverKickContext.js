@@ -50,6 +50,9 @@ export function DriverKickProvider({ children }) {
   //vehicle ID for maintenance tracking
   const [vehID, setVehID] = useState();
 
+  // Lets other components know to close the modal
+  const [modalFormSubmit, setModalFormSubmit] = useState(false);
+
   return (
     <DriverKickRouter>
       <DriverKickContext.Provider
@@ -68,6 +71,7 @@ export function DriverKickProvider({ children }) {
           setSelectValue,
           vehID,
           setVehID,
+          modalFormSubmit, setModalFormSubmit
         }}
       >
         {children}
