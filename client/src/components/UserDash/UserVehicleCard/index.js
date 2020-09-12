@@ -58,10 +58,10 @@ function UserVehicleCard({
     }
   };
 
-  // Most likely will need to combine into above function 
+  // Most likely will need to combine into above function
   const deleteFields = () => {
-    console.log("delete function")
-  }
+    console.log("delete function");
+  };
 
   const handleNicknameChange = (evt) => {
     inputedCarNickname.current = evt.target.value;
@@ -73,8 +73,7 @@ function UserVehicleCard({
   // END Custom Editing Code  ———————————————|
 
   const trackMaintenanceBtn = () => {
-    setVehID(vehicleID);
-    history.push("/vehicle-dashboard");
+    history.push(`/vehicle-dashboard/${vehicleID}`);
   };
 
   // Special style so background image can be dynamically replaced with prompts
@@ -114,19 +113,19 @@ function UserVehicleCard({
                   disabled={!editing ? true : false}
                   className={`vehicle-card__overflow-txt ${
                     editing ? "vehicle-card__custom-input" : ""
-                    }`}
+                  }`}
                 />
               </h3>
             </div>
             <div className="vehicle-card__btn-group">
-
-              {editing ? <button
-                onClick={deleteFields}
-                className="vehicle-card__edit-btn g__btn-reset"
-              >
-                <img src={deleteBtn} alt="delete button" />
-              </button> : null}
-
+              {editing ? (
+                <button
+                  onClick={deleteFields}
+                  className="vehicle-card__edit-btn g__btn-reset"
+                >
+                  <img src={deleteBtn} alt="delete button" />
+                </button>
+              ) : null}
 
               <button
                 onClick={editFields}
@@ -135,15 +134,15 @@ function UserVehicleCard({
                 {!editing ? (
                   <img src={editBtn} alt="Edit button" />
                 ) : (
-                    <img src={saveBtn} alt="save button" />
-                  )}
+                  <img src={saveBtn} alt="save button" />
+                )}
               </button>
               <button
                 disabled={editing === true}
                 onClick={trackMaintenanceBtn}
                 className={`vehicle-card__track-btn ${
                   editing === true ? "g__disabled-btn" : null
-                  }`}
+                }`}
               >
                 Track Maintenance
               </button>
@@ -178,7 +177,7 @@ function UserVehicleCard({
                     disabled={!editing ? true : false}
                     className={`vehicle-card__overflow-txt ${
                       editing ? "vehicle-card__custom-input" : ""
-                      }`}
+                    }`}
                   />
                 </h3>
               </div>

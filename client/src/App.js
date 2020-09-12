@@ -21,7 +21,11 @@ function App() {
           <Route exact path="/signup" component={SignUpPage} />
           <Route exact path="/add-vehicle" component={VehicleFormPage} />
           <Route exact path="/user-dashboard" component={UserDashPage} />
-          <Route exact path="/vehicle-dashboard" component={VehicleDashPage} />
+          <Route
+            exact
+            path="/vehicle-dashboard/:id"
+            component={VehicleDashPage}
+          />
           <NotFoundPage />
         </Switch>
       </DriverKickProvider>
