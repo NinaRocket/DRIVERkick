@@ -6,6 +6,7 @@ import API from "../../../utils/API";
 import openBtnIcon from "../../../images/vehiclepage/open-btn-icon.svg";
 import closeBtnIcon from "../../../images/vehiclepage/close-btn-icon.svg";
 import { useAccordionToggle } from 'react-bootstrap/AccordionToggle';
+import { FaPlus, FaMinus } from 'react-icons/fa';
 
 
 
@@ -41,51 +42,77 @@ function WarrantyPopulated({ warrantyModal }) {
 
     return (
 
-        <div className="warranty-card__body">
-            <Accordion defaultActiveKey="1" className="vehicle-dash__accordion">
-                <Card>
+        <div className="warranty-card__container">
+            <Accordion defaultActiveKey="1" >
+                <Card className="g__border-reset">
                     <ContextAwareToggle eventKey="0" accordionHelper={accordionHelper} setAccordionHelper={setAccordionHelper}>
-                        <Card.Header className="vehicle-dash__rule">
+                        <div className="warranty-card__header">
 
-                            <h1 className="g__dash-h1"></h1>
-                            {accordionHelper ? (
-                                <img
-                                    src={closeBtnIcon}
-                                    alt="Close icon"
-                                    className="vehicle-dash__accordion-toggle"
-                                />
-                            ) : (
-                                    <img
-                                        src={openBtnIcon}
-                                        alt="Open icon"
-                                        className="vehicle-dash__accordion-toggle"
-                                    />
-                                )}
-                        </Card.Header>
+                            <h4>Some Headline</h4>
+
+                            <FaPlus />
+
+                        </div>
                     </ContextAwareToggle>
                     <Accordion.Collapse eventKey="0">
-                        <Card.Body className="text-center">
-                            <div className="vehicle-dash__user-group">
-                                <h4 className="g__card__subhead">Owner</h4>
+                        <div className="warranty-card__body" >
+                            <div className="warranty-card__meta-container">
+                                <h5>Walmart</h5>
+                                <h5>2/21/17</h5>
+                            </div>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh etiam libero malesuada vehicula sed justo, tincidunt. In ridiculus magna semper purus. Faucibus morbi feugiat et, ac, luctus quis. Sodales nunc bibendum ut at suspendisse.
+                            </p>
+                        </div>
+                    </Accordion.Collapse>
+                </Card>
+                <Card className="g__border-reset">
+                    <ContextAwareToggle eventKey="1" accordionHelper={accordionHelper} setAccordionHelper={setAccordionHelper}>
+                        <div className="warranty-card__header">
 
-                            </div>
-                            <div className="vehicle-dash__user-group">
-                                <h4 className="g__card__subhead">Model</h4>
+                            <h4>Some Headline</h4>
 
-                            </div>
-                            <div className="vehicle-dash__user-group">
-                                <h4 className="g__card__subhead">Make</h4>
-                            </div>
-                            <div>
-                                <h4 className="g__card__subhead">Year</h4>
+                            <FaPlus />
 
+                        </div>
+                    </ContextAwareToggle>
+                    <Accordion.Collapse eventKey="1">
+                        <div className="warranty-card__body" >
+                            <div className="warranty-card__meta-container">
+                                <h5>Walmart</h5>
+                                <h5>2/21/17</h5>
                             </div>
-                        </Card.Body>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh etiam libero malesuada vehicula sed justo, tincidunt. In ridiculus magna semper purus. Faucibus morbi feugiat et, ac, luctus quis. Sodales nunc bibendum ut at suspendisse.
+                            </p>
+                        </div>
+                    </Accordion.Collapse>
+                </Card>
+                <Card className="g__border-reset">
+                    <ContextAwareToggle eventKey="2" accordionHelper={accordionHelper} setAccordionHelper={setAccordionHelper}>
+                        <div className="warranty-card__header">
+
+                            <h4>Some Headline</h4>
+
+                            <FaPlus />
+
+                        </div>
+                    </ContextAwareToggle>
+                    <Accordion.Collapse eventKey="2">
+                        <div className="warranty-card__body" >
+                            <div className="warranty-card__meta-container">
+                                <h5>Walmart</h5>
+                                <h5>2/21/17</h5>
+                            </div>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh etiam libero malesuada vehicula sed justo, tincidunt. In ridiculus magna semper purus. Faucibus morbi feugiat et, ac, luctus quis. Sodales nunc bibendum ut at suspendisse.
+                            </p>
+                        </div>
                     </Accordion.Collapse>
                 </Card>
             </Accordion>
 
-            <button className="g__vehicle-card__btn" onClick={warrantyModal}>Update Milage</button>
+            <button className="g__vehicle-card__btn mt-3" onClick={warrantyModal}>Update Milage</button>
         </div>
 
 
