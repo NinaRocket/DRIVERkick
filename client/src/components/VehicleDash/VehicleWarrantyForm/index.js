@@ -13,7 +13,7 @@ function VehicleWarrantyForm({
 }) {
 
   return (
-    <form className="g__deep-blue--txt">
+    <Form className="g__deep-blue--txt">
       <div className="g__label-group mt-4">
         <Form.Group>
           <Form.Label htmlFor="warrantyTitle">Warranty Title </Form.Label>
@@ -62,7 +62,7 @@ function VehicleWarrantyForm({
         onClick={submitWarrantyForm}
         type="submit"
       >Add Warranty</button>
-    </form>
+    </Form>
   );
 }
 
