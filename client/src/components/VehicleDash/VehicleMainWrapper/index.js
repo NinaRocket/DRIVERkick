@@ -59,7 +59,7 @@ function VehicleMainWrapper({ children }) {
     currentMileage: "",
     nextOilChange: "",
     oilType: "",
-    warranties: [],
+    warranties: []
   };
 
   const [vehicleInfo, setVehicleInfo] = useState(vehicleTemplate);

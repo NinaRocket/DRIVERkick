@@ -32,12 +32,7 @@ function WarrantyCard({ warrantyModal }) {
 
     // function handleFormSubmit(warranty) {
     //   //event.preventDefault();
-    //   API.getWarranty({
-    //     // title: title,
-    //     // provider: provider,
-    //     // details: details,
-    //     warranty,
-    //   })
+    //   API.getWarranty()
     //     .then((res) => loadWarranties())
     //     .catch((err) => console.log(err));
     // }
