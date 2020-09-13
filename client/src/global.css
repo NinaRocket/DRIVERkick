@@ -259,6 +259,10 @@ input:focus,
   height: 20px;
 }
 
+.g__progress-override .progress-bar  {
+  background-color: #FF4000;
+}
+
 
 /* —————————————————————————————————————
 Forms
