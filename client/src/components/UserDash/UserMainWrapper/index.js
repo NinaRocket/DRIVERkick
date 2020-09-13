@@ -22,16 +22,20 @@ function UserMainWrapper() {
 
   // API Call for User and Vehicle Info
   useEffect(() => {
-    API.getUser()
+    // This is clean up for "Can't perform a React state update on an unmounted component." error
+    const abortController = new AbortController();
+    const signal = abortController.signal;
+
+    API.getUser({ signal: signal })
       .then((res) => {
         if (res.data.isAuthenticated === false) {
           return logout(history);
         }
 
         setUserData({ ...userData, ...res.data });
+        console.log(res.data)
       })
       .catch((err) => console.log(err));
-    //console.log(userData);
 
     API.getVehicles()
       .then((res) => {
@@ -46,18 +50,14 @@ function UserMainWrapper() {
         //console.log(vehicleInfo);
       })
       .catch((err) => console.log(err));
+      
+    // This is clean up for "Can't perform a React state update on an unmounted component." error
+    return function cleanup() {
+      abortController.abort()
+    }
   }, []);
 
-  // NEED TO WORK ON THIS
-  // Checks to see if the user has vehicles, if not they get kicked back to the Add Vehicle screen
-  // useEffect(() => {
-  //   //console.log(vehicleInfo)
-  //   if (vehicleInfo.length === 0) {
-  //     history.push("/add-vehicle")
-  //   } else {
-  //     return;
-  //   }
-  // }, [vehicleInfo])
+  console.log(userData)
 
   const getLatestVehicles = () => {
     API.getVehicles()
@@ -69,7 +69,7 @@ function UserMainWrapper() {
       })
       .catch((err) => console.log(err));
   };
-  ////console.log(vehicleInfo[0].make);
+
   return (
     <section className="g__dashboard-wrapper">
       <div className="container">
@@ -85,21 +85,22 @@ function UserMainWrapper() {
           <Col lg={8}>
             {vehicleInfo.map((v, index) => {
               console.log(bgImages.length);
-              const imgIndex = index%bgImages.length
-              return(
-              <UserVehicleCard
-                key={v._id}
-                vehicleID={v._id}
-                vehicleIcon={v.icon}
-                vehicleMake={v.make}
-                vehicleYear={v.year}
-                vehicleModel={v.model}
-                carNickname={v.nickname}
-                ownerName={v.driverName}
-                getLatestVehicles={getLatestVehicles}
-                bgCardImage={bgImages[imgIndex].image}
-              />
-            )})}
+              const imgIndex = index % bgImages.length
+              return (
+                <UserVehicleCard
+                  key={v._id}
+                  vehicleID={v._id}
+                  vehicleIcon={v.icon}
+                  vehicleMake={v.make}
+                  vehicleYear={v.year}
+                  vehicleModel={v.model}
+                  carNickname={v.nickname}
+                  ownerName={v.driverName}
+                  getLatestVehicles={getLatestVehicles}
+                  bgCardImage={bgImages[imgIndex].image}
+                />
+              )
+            })}
           </Col>
         </Row>
       </div>

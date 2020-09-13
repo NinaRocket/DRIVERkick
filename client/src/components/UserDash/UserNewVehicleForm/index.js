@@ -26,6 +26,7 @@ function UserNewVehicleForm() {
 
     API.getDecodeVIN(VIN)
       .then((response) => {
+        console.log("Search API Ran");
         if (response.data.isAuthenticated === false) {
           return logout(redirect);
         }
@@ -39,24 +40,10 @@ function UserNewVehicleForm() {
         }
       })
       .catch((error) => {
-        //console.log("Vehicle adding error: ");
-        //console.log(error);
+        console.log(`login error: ${error}`);
       });
   };
 
-  // const saveVINdata = (VIN) => {
-  //   API.saveDecodeVIN(VIN)
-  //     .then((response) => {
-  //       //console.log(response);
-  //       if (response.data.isAuthenticated === false) {
-  //         return logout(redirect);
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       //console.log(error);
-  //     });
-  // };
-  //saveVINdata();
 
   // Submit Form
   const submitUserVehicle = (event) => {
