@@ -47,7 +47,6 @@ function WarrantyModal(props) {
     details: details,
   };
 
-
   // Submit Warranty Form Function
   const submitWarrantyForm = (event) => {
     event.preventDefault();
@@ -59,7 +58,7 @@ function WarrantyModal(props) {
     setModalFormSubmit(true);
 
     // adding warranty info from above structure
-    API.newWarranty(warrantyInfo)
+    API.createWarranty(warrantyInfo)
       .then((response) => {
         if (response.data.isAuthenticated === false) {
           return logout(history);
@@ -77,8 +76,7 @@ function WarrantyModal(props) {
       });
 
     // Re-runs GET to populate any new content
-    props.runWarranty()
-
+    props.runWarranty();
   };
 
   // END Form Field  ————————————————————|
@@ -115,7 +113,11 @@ function WarrantyModal(props) {
 
 // Card Component =============================|
 function WarrantyCard() {
-  const { modalFormSubmit, setModalFormSubmit, logout } = useDriverKickContext();
+  const {
+    modalFormSubmit,
+    setModalFormSubmit,
+    logout,
+  } = useDriverKickContext();
 
   const [modalShow, setModalShow] = React.useState(false);
 
@@ -141,10 +143,9 @@ function WarrantyCard() {
   // Determines if the initial content or populated content component show up.
   const [newUser, setNewUser] = useState(false);
 
-
-// Function with GET call in it
+  // Function with GET call in it
   const runWarranty = () => {
-    API.getWarranty()
+    API.getAllWarranties()
       .then((res) => {
         if (res.data.isAuthenticated === false) {
           return logout(history);
@@ -154,15 +155,12 @@ function WarrantyCard() {
         // console.log(res.data);
       })
       .catch((err) => console.log(err));
-  }
+  };
 
   useEffect(() => {
-    // Calls GET Function 
-    runWarranty()
-
+    // Calls GET Function
+    runWarranty();
   }, []);
-
-
 
   return (
     <div className="g__vehicle-card">
@@ -177,10 +175,8 @@ function WarrantyCard() {
       {newUser ? (
         <WarrantyInitial warrantyModal={warrantyModal} />
       ) : (
-          <WarrantyPopulated 
-          warrantyModal={warrantyModal} 
-          warranty={warranty}/>
-        )}
+        <WarrantyPopulated warrantyModal={warrantyModal} warranty={warranty} />
+      )}
       <WarrantyModal
         show={modalShow}
         onHide={() => setModalShow(false)}
