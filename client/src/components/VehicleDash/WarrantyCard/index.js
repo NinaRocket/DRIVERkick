@@ -67,7 +67,7 @@ function WarrantyModal(props) {
       })
       .catch((error) => {
         //console.log("adding warranty error: ");
-        //console.log(error);
+        console.log(error);
       });
   };
 
