@@ -13,26 +13,26 @@ import { useDriverKickContext } from "../../../utils/DriverKickContext";
 // ACCORDION HELPER COMPONENT ==========================
 // controls which warranty opens
 function ContextAwareToggle({
-  children,
-  eventKey,
-  callback,
-  accordionHelper,
-  setAccordionHelper,
+    children,
+    eventKey,
+    callback,
+    accordionHelper,
+    setAccordionHelper,
 }) {
-  const decoratedOnClick = useAccordionToggle(eventKey, () => {
-    callback && callback(eventKey);
-    accordionHelper ? setAccordionHelper(false) : setAccordionHelper(true);
-  });
+    const decoratedOnClick = useAccordionToggle(eventKey, () => {
+        callback && callback(eventKey);
+        accordionHelper ? setAccordionHelper(false) : setAccordionHelper(true);
+    });
 
-  return (
-    <button
-      type="button"
-      className="g__btn-reset g__btn-accordion"
-      onClick={decoratedOnClick}
-    >
-      {children}
-    </button>
-  );
+    return (
+        <button
+            type="button"
+            className="g__btn-reset g__btn-accordion"
+            onClick={decoratedOnClick}
+        >
+            {children}
+        </button>
+    );
 }
 
 // Warranty COMPONENT ==============================
@@ -76,18 +76,18 @@ warranty.forEach(element => {
 })
 
     return (
-        
+
         <div className="warranty-card__container">
             <Accordion defaultActiveKey="1" >
                 {
                     renderWarranties
-                } 
+                }
             </Accordion>
 
             <button className="g__vehicle-card__btn mt-3" onClick={warrantyModal}>Add Warranty</button>
         </div>
 
-  );
+    );
 }
 
 export default WarrantyPopulated;
