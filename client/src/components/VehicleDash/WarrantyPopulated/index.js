@@ -97,12 +97,15 @@ function WarrantyPopulated({ warrantyModal }) {
 const renderWarranties = [];
 let warrantyEventKey = 0;
 
-warranty.forEach(element => {
 
+warranty.forEach(element => {
+    console.log(warrantyEventKey++)
+    warrantyEventKey++;
+    
     renderWarranties.push(
 
     <Card className="g__border-reset">
-    <ContextAwareToggle eventKey={warrantyEventKey} accordionHelper={accordionHelper} setAccordionHelper={setAccordionHelper}>
+    <ContextAwareToggle eventKey={warrantyEventKey.toString()} accordionHelper={accordionHelper} setAccordionHelper={setAccordionHelper}>
         <div className="warranty-card__header">
            
             <h4>{element.title}</h4>
@@ -111,7 +114,7 @@ warranty.forEach(element => {
 
         </div>
     </ContextAwareToggle>
-    <Accordion.Collapse eventKey={warrantyEventKey}>
+    <Accordion.Collapse eventKey={warrantyEventKey.toString()} >
         <div className="warranty-card__body" >
             <div className="warranty-card__meta-container">
                 <h5>{element.provider}</h5>
@@ -133,7 +136,6 @@ warranty.forEach(element => {
                 {
                     renderWarranties
                 } 
-
             </Accordion>
 
             <button className="g__vehicle-card__btn mt-3" onClick={warrantyModal}>Update Warranty</button>
