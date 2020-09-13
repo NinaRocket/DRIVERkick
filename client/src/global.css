@@ -257,6 +257,7 @@ input:focus,
 .progress-bar {
   background-color: #50B2C0;
   height: 20px;
+  transition: ease-in .3s;
 }
 
 .g__progress-override .progress-bar  {

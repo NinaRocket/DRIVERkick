@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
-import Card from "react-bootstrap/Card";
 import { useHistory } from "react-router-dom";
-import Accordion from "react-bootstrap/Accordion";
 import API from "../../../utils/API";
-import { useAccordionToggle } from 'react-bootstrap/AccordionToggle';
 import oilCan from '../../../images/vehiclepage/oil-can.svg'
 import oilCanFire from '../../../images/vehiclepage/oil-can-fire.svg'
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
@@ -15,7 +12,8 @@ import ProgressBar from 'react-bootstrap/ProgressBar'
 // Warranty COMPONENT ==============================
 function OilChangePopulated({ oilChangeTrackingModal, warranty }) {
 
-  const [status, setStatus] = useState(70);
+  // Controls progress bar amount
+  const [status, setStatus] = useState(40);
 
   return (
 
