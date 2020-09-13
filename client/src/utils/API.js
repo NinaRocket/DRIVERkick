@@ -52,7 +52,7 @@ export default {
   //   return axios.post(`/api/vehicle/` + id);
   // },
   putMileage: function (id, currentMileage) {
-    return axios.put(`/api/vehicle/` + id, { currentMileage });
+    return axios.put(`/api/vehicle/mileage/` + id, { currentMileage });
   },
   // updates the vehicle driver
   updateDriver: function (vehicleId, driverName) {
