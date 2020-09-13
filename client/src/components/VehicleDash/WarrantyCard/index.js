@@ -12,7 +12,12 @@ import { useDriverKickContext } from "../../../utils/DriverKickContext";
 
 // Component For Warranty Modal ===============|
 function WarrantyModal(props) {
-  const { setModalFormSubmit, logout } = useDriverKickContext();
+  const {
+    setModalFormSubmit,
+    logout,
+    vehID,
+    setVehID,
+  } = useDriverKickContext();
 
   // Modal States
   const [modalShow, setModalShow] = React.useState(false);
@@ -42,10 +47,13 @@ function WarrantyModal(props) {
   };
 
   const warrantyInfo = {
+    vehID: vehID,
     title: title,
     provider: provider,
     details: details,
   };
+
+  setVehID(vehID);
 
   // Submit Warranty Form Function
   const submitWarrantyForm = (event) => {
@@ -56,9 +64,11 @@ function WarrantyModal(props) {
 
     // Lets other components know to close the modal
     setModalFormSubmit(true);
+    console.log(props.vehicleInfo);
 
     // adding warranty info from above structure
-    API.createWarranty(warrantyInfo)
+    API.createWarranty(props.vehicleInfo.warranties)
+
       .then((response) => {
         if (response.data.isAuthenticated === false) {
           return logout(history);
@@ -112,11 +122,13 @@ function WarrantyModal(props) {
 }
 
 // Card Component =============================|
-function WarrantyCard() {
+function WarrantyCard({ vehicleInfo, getInfo }) {
   const {
     modalFormSubmit,
     setModalFormSubmit,
     logout,
+    vehID,
+    setVehID,
   } = useDriverKickContext();
 
   const [modalShow, setModalShow] = React.useState(false);
@@ -126,6 +138,8 @@ function WarrantyCard() {
 
   // Sets up page redirect
   const history = useHistory();
+
+  setVehID(vehID);
 
   // Updates global context of if the modal form was submitted
   useEffect(() => {
@@ -145,7 +159,7 @@ function WarrantyCard() {
 
   // Function with GET call in it
   const runWarranty = () => {
-    API.getAllWarranties()
+    API.getAllWarranties(vehID)
       .then((res) => {
         if (res.data.isAuthenticated === false) {
           return logout(history);
@@ -181,6 +195,7 @@ function WarrantyCard() {
         show={modalShow}
         onHide={() => setModalShow(false)}
         runWarranty={runWarranty}
+        vehicleInfo={vehicleInfo}
       />
     </div>
   );
