@@ -15,6 +15,7 @@ function SignUpForm() {
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [requiredError, setRequiredError] = useState(false);
+  const [signupFail, setSignupFail] = useState(false);
 
   const emailValidator = () => {
     if (
@@ -95,8 +96,8 @@ function SignUpForm() {
         }
       })
       .catch((error) => {
-        //console.log("signup error: ");
-        //console.log(error);
+        setSignupFail(true)
+        console.log(`login error: ${error}`);
       });
   };
 
@@ -123,6 +124,13 @@ function SignUpForm() {
         {requiredError ? (
           <p className="text-center text-danger">
             Please confirm all fields are filled out.
+          </p>
+        ) : null}
+
+        {/* SignUp Failed Validation Error */}
+        {signupFail ? (
+          <p className="text-center text-danger">
+            This email may have been used already, please try a different one.
           </p>
         ) : null}
 
