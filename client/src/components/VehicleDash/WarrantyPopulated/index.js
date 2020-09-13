@@ -94,88 +94,46 @@ function WarrantyPopulated({ warrantyModal }) {
         .catch((err) => console.log(err));
     }, []);
   
+const renderWarranties = [];
+let warrantyEventKey = 0;
 
-console.log(warranty[0]);
-// console.log(warranty[0].title);
+warranty.forEach(element => {
+
+    renderWarranties.push(
+
+    <Card className="g__border-reset">
+    <ContextAwareToggle eventKey={warrantyEventKey} accordionHelper={accordionHelper} setAccordionHelper={setAccordionHelper}>
+        <div className="warranty-card__header">
+           
+            <h4>{element.title}</h4>
+
+            <FaPlus />
+
+        </div>
+    </ContextAwareToggle>
+    <Accordion.Collapse eventKey={warrantyEventKey}>
+        <div className="warranty-card__body" >
+            <div className="warranty-card__meta-container">
+                <h5>{element.provider}</h5>
+                <h5>{element.date}</h5>
+            </div>
+            <p>
+                {element.details}
+            </p>
+        </div>
+    </Accordion.Collapse>
+</Card>
+    )
+})
 
     return (
 
         <div className="warranty-card__container">
             <Accordion defaultActiveKey="1" >
                 {
-                    warranty.forEach(element => {
-                        console.log(element.title)
-                        console.log(element.provider)
-                        console.log(element.details)
-                        console.log(element.date)
-                    })
+                    renderWarranties
                 } 
-                <Card className="g__border-reset">
-                    <ContextAwareToggle eventKey="0" accordionHelper={accordionHelper} setAccordionHelper={setAccordionHelper}>
-                        <div className="warranty-card__header">
-                            {console.log(warranty[0])}
-                            <h4>Warranty #1</h4>
 
-                            <FaPlus />
-
-                        </div>
-                    </ContextAwareToggle>
-                    <Accordion.Collapse eventKey="0">
-                        <div className="warranty-card__body" >
-                            <div className="warranty-card__meta-container">
-                                <h5>{warranty.title}</h5>
-                                <h5>provider</h5>
-                            </div>
-                            <p>
-                                details
-                            </p>
-                        </div>
-                    </Accordion.Collapse>
-                </Card>
-                <Card className="g__border-reset">
-                    <ContextAwareToggle eventKey="1" accordionHelper={accordionHelper} setAccordionHelper={setAccordionHelper}>
-                        <div className="warranty-card__header">
-
-                            <h4>Some Headline</h4>
-
-                            <FaPlus />
-
-                        </div>
-                    </ContextAwareToggle>
-                    <Accordion.Collapse eventKey="1">
-                        <div className="warranty-card__body" >
-                            <div className="warranty-card__meta-container">
-                                <h5>Walmart</h5>
-                                <h5>2/21/17</h5>
-                            </div>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh etiam libero malesuada vehicula sed justo, tincidunt. In ridiculus magna semper purus. Faucibus morbi feugiat et, ac, luctus quis. Sodales nunc bibendum ut at suspendisse.
-                            </p>
-                        </div>
-                    </Accordion.Collapse>
-                </Card>
-                <Card className="g__border-reset">
-                    <ContextAwareToggle eventKey="2" accordionHelper={accordionHelper} setAccordionHelper={setAccordionHelper}>
-                        <div className="warranty-card__header">
-
-                            <h4>Some Headline</h4>
-
-                            <FaPlus />
-
-                        </div>
-                    </ContextAwareToggle>
-                    <Accordion.Collapse eventKey="2">
-                        <div className="warranty-card__body" >
-                            <div className="warranty-card__meta-container">
-                                <h5>Walmart</h5>
-                                <h5>2/21/17</h5>
-                            </div>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nibh etiam libero malesuada vehicula sed justo, tincidunt. In ridiculus magna semper purus. Faucibus morbi feugiat et, ac, luctus quis. Sodales nunc bibendum ut at suspendisse.
-                            </p>
-                        </div>
-                    </Accordion.Collapse>
-                </Card>
             </Accordion>
 
             <button className="g__vehicle-card__btn mt-3" onClick={warrantyModal}>Update Warranty</button>
