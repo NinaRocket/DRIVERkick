@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import "./style.css";
 import VehicleDashCardHeader from "../VehicleDashCardHeader";
 import WarrantyInitial from "../WarrantyInitial";

@@ -46,16 +46,13 @@ export default {
   },
   // updates the vehicles current mileage
   // updateMileage: function (vehicleId, currentMileage) {
-  //   return axios.put(`/api/vehicle/${vehicleId}`, { currentMileage });
+  //   return axios.put(`/api/mileage/:id`, {vehicleId, currentMileage });
   // },
   // postMileage: function (id) {
   //   return axios.post(`/api/vehicle/` + id);
   // },
-  putMileage: function (vehID, currentMileage) {
-    return axios.put(`/api/vehicle/${vehID}`, { currentMileage });
-  },
-  getMileage: function (vehID, currentMileage) {
-    return axios.get(`/api/vehicle/${vehID}`, { currentMileage });
+  putMileage: function (id, currentMileage) {
+    return axios.put(`/api/vehicle/` + id, { currentMileage });
   },
   // updates the vehicle driver
   updateDriver: function (vehicleId, driverName) {
@@ -71,10 +68,7 @@ export default {
   newWarranty: (warranty) => {
     return axios.post("/api/warranty", warranty);
   },
-  updateWarranty: () => {
-    return axios.put("/api/warranty" )
-  },
   updateOwner: () => {
     return axios.put();
-  },
+  }
 };

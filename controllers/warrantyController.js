@@ -4,7 +4,7 @@ const db = require("../models");
 // need a create, update, and find route, for warranty and recalls
 module.exports = {
   findAll: function (req, res) {
-    db.Warranty.find({ vehicle: req.params.id })
+    db.Warranty.find()
       .populate("vehicle")
       .then((dbWarranties) => res.json(dbWarranties))
       .catch((err) => res.status(422).json(err));
@@ -21,7 +21,7 @@ module.exports = {
         db.Vehicle.findOneAndUpdate(
           { _id: req.body.vehicle },
           { $push: { warranties: dbWarranty._id } }
-        ).then((dbVehicle) => res.json(dbWarranty));
+        ).then((dbWarranty) => res.json(dbWarranty));
       })
       .catch((err) => res.status(422).json(err));
   },
