@@ -8,6 +8,7 @@ import VehicleMainWrapper from "../VehicleMainWrapper";
 import MileageTrackerCard from "../MileageTrackerCard";
 import WarrantyCard from "../WarrantyCard";
 import RecallsCard from "../RecallsCard";
+import OilChangeCard from "../OilChangeCard";
 
 function VehicleDashPage() {
   // Sets which buttons show in the nav
@@ -18,6 +19,7 @@ function VehicleDashPage() {
     logout,
     vehID,
     setVehID,
+    setNewUser
   } = useDriverKickContext();
   const { id } = useParams();
 
@@ -85,9 +87,12 @@ function VehicleDashPage() {
   return (
     <div>
       <GlobalNavBar />
-      <VehicleMainWrapper vehicleInfo={vehicleInfo} userData={userData}>
+      <VehicleMainWrapper
+        vehicleInfo={vehicleInfo}
+        userData={userData}
+        getInfo={getInfo}>
         <MileageTrackerCard vehicleInfo={vehicleInfo} getInfo={getInfo} />
-        {/* <OilChangeCard /> */}
+        <OilChangeCard />
         <WarrantyCard />
         <RecallsCard />
       </VehicleMainWrapper>

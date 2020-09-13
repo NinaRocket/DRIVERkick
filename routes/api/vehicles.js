@@ -23,6 +23,10 @@ router
   .delete(vehicleController.remove);
 
 router
+  .route("/mileage/:id")
+  .put(vehicleController.updateMileage);
+
+router
   .route("/oil/:id")
   // gets vehicle oil change mileage
   .get(vehicleController.getOilChangeMiles)

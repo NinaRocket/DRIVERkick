@@ -16,9 +16,27 @@
     display: flex;
 }
 
-.warranty-card__meta-container h5 {
+.warranty-card__provider {
+    font-weight: 700;
     margin-right: 15px;
-    font-weight: bold;
+}
+
+.warranty-card__toggle {
+    transition: ease-in .2s;
+}
+.warranty-card__plus {
+    transition: ease-in .2s;
+    font-size: 1.1rem;
+}
+
+.warranty-card__toggle:hover {
+    transition: ease-in .2s;
+    color: #50B2C0;
+}
+
+.warranty-card__toggle:hover .warranty-card__plus {
+    transform: rotate(90deg);
+    transition: ease-in .2s;
 }
 
 

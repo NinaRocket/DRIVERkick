@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
+import { useHistory } from "react-router-dom";
 import VehicleDashCardHeader from "../VehicleDashCardHeader";
 import WarrantyInitial from "../WarrantyInitial";
 import WarrantyPopulated from "../WarrantyPopulated";
@@ -9,9 +10,9 @@ import API from "../../../utils/API";
 import Modal from "react-bootstrap/Modal";
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
 
-// Component For Warranty Modal
+// Component For Warranty Modal ===============|
 function WarrantyModal(props) {
-  const { setModalFormSubmit } = useDriverKickContext();
+  const { setModalFormSubmit, logout } = useDriverKickContext();
 
   // Modal States
   const [modalShow, setModalShow] = React.useState(false);
@@ -23,6 +24,9 @@ function WarrantyModal(props) {
   const [provider, setWarrantyProvider] = useState();
   const [details, setWarrantyDetails] = useState();
   const [warrantyError, setWarrantyError] = useState(false);
+
+  //redirect to vehicle dashboard
+  const history = useHistory();
 
   // Sets input values into State
   const addWarrantyTitle = (event) => {
@@ -43,6 +47,7 @@ function WarrantyModal(props) {
     details: details,
   };
 
+
   // Submit Warranty Form Function
   const submitWarrantyForm = (event) => {
     event.preventDefault();
@@ -56,8 +61,9 @@ function WarrantyModal(props) {
     // adding warranty info from above structure
     API.newWarranty(warrantyInfo)
       .then((response) => {
-        //console.log("new warranty response: ");
-        //console.log(response);
+        if (response.data.isAuthenticated === false) {
+          return logout(history);
+        }
         if (!response.data.errmsg) {
           //console.log("successfully added warranty");
           //console.log(warrantyInfo);
@@ -69,6 +75,10 @@ function WarrantyModal(props) {
         //console.log("adding warranty error: ");
         console.log(error);
       });
+
+    // Re-runs GET to populate any new content
+    props.runWarranty()
+
   };
 
   // END Form Field  ————————————————————|
@@ -103,11 +113,17 @@ function WarrantyModal(props) {
   );
 }
 
-// Card Component
+// Card Component =============================|
 function WarrantyCard() {
-  const { modalFormSubmit, setModalFormSubmit } = useDriverKickContext();
+  const { modalFormSubmit, setModalFormSubmit, logout } = useDriverKickContext();
 
   const [modalShow, setModalShow] = React.useState(false);
+
+  // Warranties from the Database get stored here
+  const [warranty, setWarranty] = useState([]);
+
+  // Sets up page redirect
+  const history = useHistory();
 
   // Updates global context of if the modal form was submitted
   useEffect(() => {
@@ -125,14 +141,28 @@ function WarrantyCard() {
   // Determines if the initial content or populated content component show up.
   const [newUser, setNewUser] = useState(false);
 
-  // const { id } = useParams();
-  // just in case it is needed
-  // useEffect(() => {
-  //     API.getWarranty(warranty)
-  //         .then((res) => setWarranty(res.data))
-  //         .catch((err) => //console.log(err));
-  //     //console.log(warranty);
-  // }, []);
+
+// Function with GET call in it
+  const runWarranty = () => {
+    API.getWarranty()
+      .then((res) => {
+        if (res.data.isAuthenticated === false) {
+          return logout(history);
+        }
+
+        setWarranty(res.data);
+        // console.log(res.data);
+      })
+      .catch((err) => console.log(err));
+  }
+
+  useEffect(() => {
+    // Calls GET Function 
+    runWarranty()
+
+  }, []);
+
+
 
   return (
     <div className="g__vehicle-card">
@@ -147,9 +177,15 @@ function WarrantyCard() {
       {newUser ? (
         <WarrantyInitial warrantyModal={warrantyModal} />
       ) : (
-        <WarrantyPopulated warrantyModal={warrantyModal} />
-      )}
-      <WarrantyModal show={modalShow} onHide={() => setModalShow(false)} />
+          <WarrantyPopulated 
+          warrantyModal={warrantyModal} 
+          warranty={warranty}/>
+        )}
+      <WarrantyModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        runWarranty={runWarranty}
+      />
     </div>
   );
 }

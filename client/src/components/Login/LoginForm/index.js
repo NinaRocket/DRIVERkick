@@ -5,17 +5,17 @@ import API from "../../../utils/API";
 
 function LoginForm() {
   // Stores form values
-  const [email, setEmail] = useState([]);
-  const [password, setPassword] = useState([]);
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
 
-  // Not sure what this does
-  // const [loggedIn, setLoggedIn] = useState(false);
 
   // Sets up page redirect
   const history = useHistory();
 
   // START Error States ——————————————————————————|
   const [emailError, setEmailError] = useState(false);
+  const [emptyFieldError, setEmptyFieldError] = useState(false);
+  const [loginFail, setLoginFail] = useState(false);
 
   const emailValidator = () => {
     if (
@@ -26,6 +26,13 @@ function LoginForm() {
       setEmailError(false);
     } else {
       setEmailError(true);
+    }
+  };
+  const emptyFieldValidator = () => {
+    if (email && password) {
+      setEmptyFieldError(false);
+    } else {
+      setEmptyFieldError(true);
     }
   };
   // END Error States ——————————————————————————|
@@ -45,7 +52,8 @@ function LoginForm() {
 
     // Email Validation
     emailValidator();
-    if (emailError) {
+    emptyFieldValidator();
+    if (emailError || emptyFieldError) {
       return;
     }
 
@@ -61,7 +69,8 @@ function LoginForm() {
         }
       })
       .catch((error) => {
-        //console.log(`login error: ${error}`);
+        setLoginFail(true)
+        console.log(`login error: ${error}`);
       });
   };
 
@@ -69,12 +78,22 @@ function LoginForm() {
     <div className="g__form-container">
       <form>
         <h2 className="g__form-title">Login</h2>
-
+        
+        {/* Validation Error Messages */}
         {emailError ? (
           <p className="text-center text-danger">
             Please make sure your email is formatted correctly.
           </p>
         ) : null}
+        {emptyFieldError ? (
+          <p className="text-center text-danger">
+            Please make sure your entered both your email and password.</p>
+        ) : null}
+        {loginFail ? (
+          <p className="text-center text-danger">
+            Oops, login did not work. Please check you used the correct info and have an account set up already.</p>
+        ) : null}
+
         <div className="g__label-group">
           <label className="form-label" htmlFor="email">
             Email
@@ -86,7 +105,7 @@ function LoginForm() {
             id="email"
             name="email"
             placeholder="you@email.com"
-            value={email}
+            // value={email}
             onChange={userEmailValue}
           />
         </div>
@@ -95,11 +114,12 @@ function LoginForm() {
             Password
           </label>
           <input
-            className="form-input"
+            className={`form-input ${emptyFieldError ? "g__form-input-err" : null}`}
             type="password"
             name="password"
             id="password"
-            value={password}
+            placeholder="Password"
+            // value={password}
             onChange={userPasswordValue}
           />
         </div>
