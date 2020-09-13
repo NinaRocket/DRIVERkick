@@ -62,13 +62,26 @@ export default {
   getRecalls: function (VIN) {
     return axios.get(`/api/vehicle/recalls/${VIN}`);
   },
-  getWarranty: () => {
-    return axios.get("/api/warranty");
-  },
-  newWarranty: (warranty) => {
-    return axios.post("/api/warranty", warranty);
-  },
   updateOwner: () => {
     return axios.put();
+  },
+  // Warranty Functions ---------------||
+  // returns all warranties for specific vehicle
+  getAllWarranties: (vehicleId) => {
+    return axios.get(`/api/warranty/${vehicleId}`);
+  },
+  //create a single warranty
+  createWarranty: (vehicle, title, provider, details) => {
+    return axios.post("/api/warranty",
+    { vehicle, title, provider, details });
+  },
+  //update a warranty
+  updateWarranty: (id, title, provider, details) => {
+    return axios.put(`/api/warranty/${id}`,
+    { title, provider, details });
+  },
+  // delete a warranty
+  deleteWarranty: (id) => {
+    return axios.delete(`/api/warranty/${id}`);
   }
 };
