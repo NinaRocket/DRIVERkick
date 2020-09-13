@@ -21,7 +21,8 @@ function VehicleDashPage() {
   } = useDriverKickContext();
   const { id } = useParams();
 
-  setNavType("vehicleDash");
+  useEffect(() => setNavType("vehicleDash"), []);
+
   useEffect(() => {
     setVehID(id);
   }, [id]);
@@ -50,7 +51,7 @@ function VehicleDashPage() {
       const fetchUser = await API.getUser();
       const fetchVehicles = await API.getVehicleById(vehID);
 
-      console.log(fetchVehicles.data[0]);
+      //console.log(fetchVehicles.data[0]);
 
       if (
         fetchUser.data.isAuthenticated === false ||
@@ -65,14 +66,15 @@ function VehicleDashPage() {
         ...fetchVehicles.data[0],
       });
       setVehicleInfo(fetchVehicles.data[0]);
-      console.log(vehicleInfo);
+
+      //console.log(vehicleInfo);
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   }
   // REACT'S SUGGESTED ASYNC USE-EFFECT SYNTAX
   useEffect(() => {
-    console.log(vehID);
+    //console.log(vehID);
     if (vehID) {
       getInfo();
     }
@@ -84,7 +86,7 @@ function VehicleDashPage() {
     <div>
       <GlobalNavBar />
       <VehicleMainWrapper vehicleInfo={vehicleInfo} userData={userData}>
-        <MileageTrackerCard vehicleInfo={vehicleInfo} />
+        <MileageTrackerCard vehicleInfo={vehicleInfo} getInfo={getInfo} />
         {/* <OilChangeCard /> */}
         <WarrantyCard />
         <RecallsCard />

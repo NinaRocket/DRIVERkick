@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import "./style.css";
 import Card from "react-bootstrap/Card";
 import { useHistory } from "react-router-dom";
@@ -14,43 +14,58 @@ import { useDriverKickContext } from "../../../utils/DriverKickContext";
 
 // ACCORDION HELPER COMPONENT ==========================
 // controls which warranty opens
-function ContextAwareToggle({ children, eventKey, callback, accordionHelper, setAccordionHelper }) {
+function ContextAwareToggle({
+  children,
+  eventKey,
+  callback,
+  accordionHelper,
+  setAccordionHelper,
+}) {
+  const decoratedOnClick = useAccordionToggle(eventKey, () => {
+    callback && callback(eventKey);
+    accordionHelper ? setAccordionHelper(false) : setAccordionHelper(true);
+  });
 
-
-    const decoratedOnClick = useAccordionToggle(
-        eventKey,
-        () => {
-            callback && callback(eventKey)
-            accordionHelper ? setAccordionHelper(false) : setAccordionHelper(true)
-        }
-    );
-
-    return (
-        <button
-            type="button"
-            className="g__btn-reset g__btn-accordion"
-            onClick={decoratedOnClick}
-        >
-            {children}
-        </button>
-    );
+  return (
+    <button
+      type="button"
+      className="g__btn-reset g__btn-accordion"
+      onClick={decoratedOnClick}
+    >
+      {children}
+    </button>
+  );
 }
-
 
 // Warranty COMPONENT ==============================
 function WarrantyPopulated({ warrantyModal }) {
+  // Sets state for accordion
+  const [accordionHelper, setAccordionHelper] = useState(false);
 
-    // Sets state for accordion
-    const [accordionHelper, setAccordionHelper] = useState(false);
-    // set initial state to empty
-    const warrantyTemplate = {
-        title: "",
-        provider: "",
-        details: "",
-        date: ""
-    }
-    // Sets state for warranty
-    const [warranty, setWarranty] = useState([]);
+//   const warrantyTemplate = {
+//     title: "",
+//     provider: "",
+//     details: "",
+//   };
+  // Sets state for warranty
+  const [warranty, setWarranty] = useState(warrantyTemplate);
+
+  // get Warranties
+  // const { id } = useParams();
+
+  // REACT'S SUGGESTED ASYNC USE-EFFECT SYNTAX
+//   useEffect(() => {
+//     async function displayWarranty() {
+//       try {
+//         //   const fetchUser = await API.getUser(id);
+//         const fetchWarranty = await API.getWarranty();
+
+//     // Sets state for accordion
+//     const [accordionHelper, setAccordionHelper] = useState(false);
+//     // set initial state to empty
+   
+//     // Sets state for warranty
+//     const [warranty, setWarranty] = useState([]);
 
     // get Warranties
     // const { id } = useParams();
@@ -76,7 +91,7 @@ function WarrantyPopulated({ warrantyModal }) {
     // }, []);
 
      // Context import
-  const { userData, setUserData, logout } = useDriverKickContext();
+  const { logout } = useDriverKickContext();
 
      // Sets up page redirect
   const history = useHistory();
@@ -130,7 +145,7 @@ warranty.forEach(element => {
 })
 
     return (
-
+        <>
         <div className="warranty-card__container">
             <Accordion defaultActiveKey="1" >
                 {
@@ -141,9 +156,11 @@ warranty.forEach(element => {
             <button className="g__vehicle-card__btn mt-3" onClick={warrantyModal}>Update Warranty</button>
         </div>
 
-
-
-    );
+      <button className="g__vehicle-card__btn mt-3" onClick={warrantyModal}>
+        Update Warranty
+      </button>
+    </>
+  );
 }
 
 export default WarrantyPopulated;
