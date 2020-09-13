@@ -20,29 +20,29 @@ function WarrantyCard({ warrantyModal }) {
     useEffect(() => {
         API.getWarranty(warranty)
             .then((res) => setWarranty(res.data))
-            .catch((err) => console.log(err));
-        console.log(warranty);
+            .catch((err) => //console.log(err));
+        //console.log(warranty);
     }, []);
 
     // function loadWarranties() {
     //   API.getWarranty()
     //     .then((res) => setWarranty(res.data))
-    //     .catch((err) => console.log(err));
+    //     .catch((err) => //console.log(err));
     // }
 
     // function handleFormSubmit(warranty) {
     //   //event.preventDefault();
     //   API.getWarranty()
     //     .then((res) => loadWarranties())
-    //     .catch((err) => console.log(err));
+    //     .catch((err) => //console.log(err));
     // }
 
     //     API.getWarrantyById(id)
     //         .then((res) => setWarranty(res.data))
-    //         .catch((err) => console.log(err));
-    //     console.log(warranty);
+    //         .catch((err) => //console.log(err));
+    //     //console.log(warranty);
     // }, []);
-    // console.log(warranty);
+    // //console.log(warranty);
 
     // useEffect(() => {
     //   loadWarranties()
@@ -52,7 +52,7 @@ function WarrantyCard({ warrantyModal }) {
     // function loadWarranties() {
     //   API.getWarranty()
     //   .then(res => setWarranty(res.data))
-    //   .catch(err => console.log(err));
+    //   .catch(err => //console.log(err));
     // }
 
     // function handleFormSubmit(event) {
@@ -63,7 +63,7 @@ function WarrantyCard({ warrantyModal }) {
     //       details: details
     //     })
     //       .then(res => loadWarranties())
-    //       .catch(err => console.log(err));
+    //       .catch(err => //console.log(err));
     // };
 
     // need to dislpay EVERY warranty card
