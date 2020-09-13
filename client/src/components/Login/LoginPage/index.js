@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./style.css";
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
 import GlobalNavBar from "../../GlobalNavBar";
@@ -7,7 +7,7 @@ import LoginForm from "../LoginForm";
 
 function LoginPage() {
   const { setNavType } = useDriverKickContext();
-  setNavType("login");
+  useEffect(() => setNavType("login"), []);
 
   return (
     <div>

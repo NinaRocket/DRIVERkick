@@ -53,14 +53,14 @@ function UserVehicleCard({
 
         getLatestVehicles();
       } catch (error) {
-        console.log(error);
+        //console.log(error);
       }
     }
   };
 
   // Most likely will need to combine into above function
   const deleteFields = () => {
-    console.log("delete function");
+    //console.log("delete function");
   };
 
   const handleNicknameChange = (evt) => {
