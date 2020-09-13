@@ -4,7 +4,17 @@
     padding: 60px 60px 0;
 }
 
+.oil-change-card_body {
+    display: flex;
+}
 
+.oil-change-card_number {
+    max-width: 160px;
+}
+
+.oil-change-card__mileage-txt {
+    font-size: 40px;
+}
 
 
 @media only screen and (max-width: 575px) {

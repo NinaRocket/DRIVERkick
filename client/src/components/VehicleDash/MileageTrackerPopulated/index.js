@@ -15,7 +15,7 @@ function MileageTrackerPopulated({ mileageTrackingModal, vehicleInfo }) {
         <div>
           <h4 className="g__card__subhead">Last Updated</h4>
           <h3 className="mileage-card__date-txt">
-            {/* {vehicleInfo.currentMileage.date} */}
+            {vehicleInfo.currentMileage.date}
           </h3>
         </div>
 

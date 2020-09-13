@@ -81,7 +81,7 @@ function CurrentOilChangeModal(props) {
         >
             <Modal.Header closeButton></Modal.Header>
             <div className="g__form-container g__remove-margin-bottom">
-                <h2 className="text-center">Update Current Mileage</h2>
+                <h2 className="text-center">Update Oil Change</h2>
                 {oilChangeError ? (
                     <p className="text-center text-danger">
                         Please double check all fields have been filled out.
