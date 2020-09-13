@@ -28,7 +28,7 @@ function CurrentMilageModal(props) {
   const [mileageError, setMileageError] = useState(false);
 
   setVehID(vehID);
-  console.log(vehID);
+  //console.log(vehID);
 
   // Sets up page redirect
   const history = useHistory();
@@ -37,7 +37,7 @@ function CurrentMilageModal(props) {
   const handleMilage = (event) => {
     setCurrentMileage(event.target.value);
   };
-
+  //console.log(props);
   // Submits the form value state and validates errors
   const submitCurrentMilage = (event) => {
     event.preventDefault();
@@ -46,23 +46,24 @@ function CurrentMilageModal(props) {
     }
     API.putMileage(vehID, currentMileage)
       .then((response) => {
-        console.log("update mileage response: ");
-        console.log(response);
+        //console.log("update mileage response: ");
+        //console.log(response);
         if (response.data.isAuthenticated === false) {
           return logout(history);
         }
-        setCurrentMileage(currentMileage);
-        console.log(currentMileage);
-        console.log("this ran");
+        props.getInfo();
+        //setCurrentMileage(currentMileage);
+        //console.log(currentMileage);
+        //console.log("this ran");
       })
       .catch((error) => {
-        console.log("adding mileage error: ");
-        console.log(error);
+        //console.log("adding mileage error: ");
+        //console.log(error);
       });
     // Lets other components know to close the modal
     setModalFormSubmit(true);
     // Needs to post this to the database
-    console.log(currentMileage);
+    //console.log(currentMileage);
   };
 
   return (
@@ -90,7 +91,7 @@ function CurrentMilageModal(props) {
   );
 }
 
-function MileageTrackerCard({ vehicleInfo }) {
+function MileageTrackerCard({ vehicleInfo, getInfo }) {
   const { modalFormSubmit, setModalFormSubmit } = useDriverKickContext();
 
   const [modalShow, setModalShow] = React.useState(false);
@@ -128,7 +129,11 @@ function MileageTrackerCard({ vehicleInfo }) {
           vehicleInfo={vehicleInfo}
         />
       )}
-      <CurrentMilageModal show={modalShow} onHide={() => setModalShow(false)} />
+      <CurrentMilageModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        getInfo={getInfo}
+      />
     </div>
   );
 }
