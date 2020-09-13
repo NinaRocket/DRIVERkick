@@ -12,7 +12,12 @@ import { useDriverKickContext } from "../../../utils/DriverKickContext";
 
 // Component For Warranty Modal ===============|
 function WarrantyModal(props) {
-  const { setModalFormSubmit, logout, vehID, setVehID } = useDriverKickContext();
+  const {
+    setModalFormSubmit,
+    logout,
+    vehID,
+    setVehID,
+  } = useDriverKickContext();
 
   // Modal States
   const [modalShow, setModalShow] = React.useState(false);
@@ -24,7 +29,6 @@ function WarrantyModal(props) {
   const [provider, setWarrantyProvider] = useState();
   const [details, setWarrantyDetails] = useState();
   const [warrantyError, setWarrantyError] = useState(false);
-  
 
   //redirect to vehicle dashboard
   const history = useHistory();
@@ -59,12 +63,12 @@ function WarrantyModal(props) {
     }
 
     // Lets other components know to close the modal
-    setModalFormSubmit(true)
-console.log(props.vehicleInfo)
+    setModalFormSubmit(true);
+    console.log(props.vehicleInfo);
 
     // adding warranty info from above structure
     API.createWarranty(props.vehicleInfo.warranties)
-    
+
       .then((response) => {
         if (response.data.isAuthenticated === false) {
           return logout(history);
@@ -83,7 +87,6 @@ console.log(props.vehicleInfo)
 
     // Re-runs GET to populate any new content
     props.runWarranty();
-
   };
 
   // END Form Field  ————————————————————|
@@ -120,7 +123,13 @@ console.log(props.vehicleInfo)
 
 // Card Component =============================|
 function WarrantyCard({ vehicleInfo, getInfo }) {
-  const { modalFormSubmit, setModalFormSubmit, logout, vehID, setVehID } = useDriverKickContext();
+  const {
+    modalFormSubmit,
+    setModalFormSubmit,
+    logout,
+    vehID,
+    setVehID,
+  } = useDriverKickContext();
 
   const [modalShow, setModalShow] = React.useState(false);
 
@@ -147,9 +156,8 @@ function WarrantyCard({ vehicleInfo, getInfo }) {
 
   // Determines if the initial content or populated content component show up.
   const [newUser, setNewUser] = useState(false);
-    
 
-// Function with GET call in it
+  // Function with GET call in it
   const runWarranty = () => {
     API.getAllWarranties(vehID)
       .then((res) => {
@@ -161,15 +169,12 @@ function WarrantyCard({ vehicleInfo, getInfo }) {
         // console.log(res.data);
       })
       .catch((err) => console.log(err));
-  }
+  };
 
   useEffect(() => {
-    // Calls GET Function 
+    // Calls GET Function
     runWarranty();
-
   }, []);
-
-
 
   return (
     <div className="g__vehicle-card">
@@ -184,10 +189,8 @@ function WarrantyCard({ vehicleInfo, getInfo }) {
       {newUser ? (
         <WarrantyInitial warrantyModal={warrantyModal} />
       ) : (
-          <WarrantyPopulated 
-          warrantyModal={warrantyModal} 
-          warranty={warranty}/>
-        )}
+        <WarrantyPopulated warrantyModal={warrantyModal} warranty={warranty} />
+      )}
       <WarrantyModal
         show={modalShow}
         onHide={() => setModalShow(false)}

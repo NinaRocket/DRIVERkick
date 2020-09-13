@@ -29,7 +29,7 @@ function UserMainWrapper() {
         }
 
         setUserData({ ...userData, ...res.data });
-        console.log(res.data)
+        console.log(res.data);
       })
       .catch((err) => console.log(err));
 
@@ -73,8 +73,8 @@ function UserMainWrapper() {
           <Col lg={1}></Col>
           <Col lg={8}>
             {vehicleInfo.map((v, index) => {
-              console.log(bgImages.length);
-              const imgIndex = index % bgImages.length
+              //console.log(bgImages.length);
+              const imgIndex = index % bgImages.length;
               return (
                 <UserVehicleCard
                   key={v._id}
@@ -88,7 +88,7 @@ function UserMainWrapper() {
                   getLatestVehicles={getLatestVehicles}
                   bgCardImage={bgImages[imgIndex].image}
                 />
-              )
+              );
             })}
           </Col>
         </Row>
