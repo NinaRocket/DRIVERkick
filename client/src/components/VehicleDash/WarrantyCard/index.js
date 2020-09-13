@@ -59,7 +59,7 @@ function WarrantyModal(props) {
     setModalFormSubmit(true);
 
     // adding warranty info from above structure
-    API.newWarranty(warrantyInfo)
+    API.createWarranty(warrantyInfo)
       .then((response) => {
         if (response.data.isAuthenticated === false) {
           return logout(history);
@@ -144,7 +144,7 @@ function WarrantyCard() {
 
 // Function with GET call in it
   const runWarranty = () => {
-    API.getWarranty()
+    API.getAllWarranties()
       .then((res) => {
         if (res.data.isAuthenticated === false) {
           return logout(history);
