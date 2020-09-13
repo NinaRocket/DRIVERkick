@@ -16,7 +16,8 @@ function CurrentMilageModal(props) {
     vehID,
     logout,
     setVehID,
-    setNewUserMileage
+    setNewUserMileage,
+
   } = useDriverKickContext();
 
   // Modal Show/Hide State
@@ -94,7 +95,7 @@ function CurrentMilageModal(props) {
 }
 
 function MileageTrackerCard({ vehicleInfo, getInfo }) {
-  const { modalFormSubmit, setModalFormSubmit } = useDriverKickContext();
+  const { modalFormSubmit, setModalFormSubmit, newUserMileage } = useDriverKickContext();
 
   const [modalShow, setModalShow] = React.useState(false);
 
@@ -126,11 +127,11 @@ function MileageTrackerCard({ vehicleInfo, getInfo }) {
       {newUserMileage ? (
         <MileageTrackerInitial mileageTrackingModal={mileageModal} />
       ) : (
-        <MileageTrackerPopulated
-          mileageTrackingModal={mileageModal}
-          vehicleInfo={vehicleInfo}
-        />
-      )}
+          <MileageTrackerPopulated
+            mileageTrackingModal={mileageModal}
+            vehicleInfo={vehicleInfo}
+          />
+        )}
       <CurrentMilageModal
         show={modalShow}
         onHide={() => setModalShow(false)}
