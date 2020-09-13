@@ -130,7 +130,7 @@ warranty.forEach(element => {
     <Accordion.Collapse eventKey={warrantyEventKey.toString()} >
         <div className="warranty-card__body" >
             <div className="warranty-card__meta-container">
-                <h5>{element.provider}</h5>
+                <h5 className="warranty-card__provider">{element.provider}</h5>
                 <h5>{element.date}</h5>
             </div>
             <p>

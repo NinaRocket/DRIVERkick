@@ -16,9 +16,9 @@
     display: flex;
 }
 
-.warranty-card__meta-container h5 {
+.warranty-card__provider {
+    font-weight: 700;
     margin-right: 15px;
-    font-weight: bold;
 }
 
 
