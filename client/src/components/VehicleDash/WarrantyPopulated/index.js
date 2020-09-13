@@ -39,73 +39,6 @@ function ContextAwareToggle({
 function WarrantyPopulated({ warrantyModal, warranty }) {
   // Sets state for accordion
   const [accordionHelper, setAccordionHelper] = useState(false);
-
-//   const warrantyTemplate = {
-//     title: "",
-//     provider: "",
-//     details: "",
-//   };
-  // Sets state for warranty
-  // const [warranty, setWarranty] = useState([]);
-
-  // get Warranties
-  // const { id } = useParams();
-
-  // REACT'S SUGGESTED ASYNC USE-EFFECT SYNTAX
-//   useEffect(() => {
-//     async function displayWarranty() {
-//       try {
-//         //   const fetchUser = await API.getUser(id);
-//         const fetchWarranty = await API.getWarranty();
-
-//     // Sets state for accordion
-//     const [accordionHelper, setAccordionHelper] = useState(false);
-//     // set initial state to empty
-   
-//     // Sets state for warranty
-//     const [warranty, setWarranty] = useState([]);
-
-    // get Warranties
-    // const { id } = useParams();
-
-    // REACT'S SUGGESTED ASYNC USE-EFFECT SYNTAX
-    // useEffect(() => {
-    //     async function displayWarranty() {
-    //         try {
-    //             //   const fetchUser = await API.getUser(id);
-    //             const fetchWarranty = await API.getWarranty();
-
-    //             //   console.log(fetchWarranty.data);
-
-    //             //   setUserData({ ...userData, ...fetchUser.data });
-    //             setWarranty(...fetchWarranty.data[0]);
-    //             //   console.log(warranty.title);
-
-    //         } catch (error) {
-    //             console.log(error);
-    //         }
-    //     }
-    //     displayWarranty()
-    // }, []);
-
-     // Context import
-  // const { logout } = useDriverKickContext();
-
-     // Sets up page redirect
-  // const history = useHistory();
-
-  //   useEffect(() => {
-  //       API.getWarranty()
-  //       .then((res) => {
-  //         if (res.data.isAuthenticated === false) {
-  //           return logout(history);
-  //         }
-          
-  //         setWarranty(res.data);
-  //         // console.log(res.data);
-  //       })
-  //       .catch((err) => console.log(err));
-  //   }, []);
   
 const renderWarranties = [];
 let warrantyEventKey = 0;
@@ -117,12 +50,13 @@ warranty.forEach(element => {
     renderWarranties.push(
 
     <Card className="g__border-reset" key={warrantyEventKey}>
-    <ContextAwareToggle eventKey={warrantyEventKey.toString()} accordionHelper={accordionHelper} setAccordionHelper={setAccordionHelper}>
-        <div className="warranty-card__header">
+    <ContextAwareToggle 
+    eventKey={warrantyEventKey.toString()} accordionHelper={accordionHelper} setAccordionHelper={setAccordionHelper}>
+        <div className="warranty-card__header warranty-card__toggle">
            
             <h4>{element.title}</h4>
 
-            <FaPlus />
+            <FaPlus className="warranty-card__plus" />
 
         </div>
     </ContextAwareToggle>
@@ -150,7 +84,7 @@ warranty.forEach(element => {
                 } 
             </Accordion>
 
-            <button className="g__vehicle-card__btn mt-3" onClick={warrantyModal}>Update Warranty</button>
+            <button className="g__vehicle-card__btn mt-3" onClick={warrantyModal}>Add Warranty</button>
         </div>
 
   );
