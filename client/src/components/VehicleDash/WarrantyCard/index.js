@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
+import { useHistory } from "react-router-dom";
 import VehicleDashCardHeader from "../VehicleDashCardHeader";
 import WarrantyInitial from "../WarrantyInitial";
 import WarrantyPopulated from "../WarrantyPopulated";
@@ -11,7 +12,7 @@ import { useDriverKickContext } from "../../../utils/DriverKickContext";
 
 // Component For Warranty Modal
 function WarrantyModal(props) {
-  const { setModalFormSubmit } = useDriverKickContext();
+  const { setModalFormSubmit, logout } = useDriverKickContext();
 
   // Modal States
   const [modalShow, setModalShow] = React.useState(false);
@@ -23,6 +24,9 @@ function WarrantyModal(props) {
   const [provider, setWarrantyProvider] = useState();
   const [details, setWarrantyDetails] = useState();
   const [warrantyError, setWarrantyError] = useState(false);
+
+    //redirect to vehicle dashboard
+    const history = useHistory();
 
   // Sets input values into State
   const addWarrantyTitle = (event) => {
@@ -56,7 +60,9 @@ function WarrantyModal(props) {
     // adding warranty info from above structure
     API.newWarranty(warrantyInfo)
       .then((response) => {
-
+        if (response.data.isAuthenticated === false) {
+          return logout(history);
+        }
         if (!response.data.errmsg) {
           //console.log("successfully added warranty");
           //console.log(warrantyInfo);
@@ -146,8 +152,8 @@ function WarrantyCard() {
       {newUser ? (
         <WarrantyInitial warrantyModal={warrantyModal} />
       ) : (
-        <WarrantyPopulated warrantyModal={warrantyModal} />
-      )}
+          <WarrantyPopulated warrantyModal={warrantyModal} />
+        )}
       <WarrantyModal show={modalShow} onHide={() => setModalShow(false)} />
     </div>
   );

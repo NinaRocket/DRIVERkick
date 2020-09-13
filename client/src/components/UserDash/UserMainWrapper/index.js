@@ -48,8 +48,6 @@ function UserMainWrapper() {
       .catch((err) => console.log(err));
   }, []);
 
-  console.log(userData)
-
   const getLatestVehicles = () => {
     API.getVehicles()
       .then((res) => {

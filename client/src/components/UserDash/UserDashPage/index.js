@@ -12,8 +12,6 @@ function UserDashPage() {
   // Controls which buttons in the nav bar to use
   useEffect(() => setNavType("userDash"), []);
 
-  //redirect to vehicle dashboard
-  const redirect = useHistory();
 
   return (
     <section>
