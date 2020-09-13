@@ -56,10 +56,10 @@ function WarrantyModal(props) {
     }
 
     // Lets other components know to close the modal
-    setModalFormSubmit(true);
+    setModalFormSubmit(true)
 
     // adding warranty info from above structure
-    API.newWarranty(warrantyInfo)
+    API.createWarranty(warrantyInfo)
       .then((response) => {
         if (response.data.isAuthenticated === false) {
           return logout(history);
@@ -77,7 +77,7 @@ function WarrantyModal(props) {
       });
 
     // Re-runs GET to populate any new content
-    props.runWarranty()
+    props.runWarranty();
 
   };
 
@@ -115,7 +115,7 @@ function WarrantyModal(props) {
 
 // Card Component =============================|
 function WarrantyCard() {
-  const { modalFormSubmit, setModalFormSubmit, logout } = useDriverKickContext();
+  const { modalFormSubmit, setModalFormSubmit, logout, vehID, setVehID } = useDriverKickContext();
 
   const [modalShow, setModalShow] = React.useState(false);
 
@@ -124,6 +124,8 @@ function WarrantyCard() {
 
   // Sets up page redirect
   const history = useHistory();
+
+  setVehID(vehID);
 
   // Updates global context of if the modal form was submitted
   useEffect(() => {
@@ -140,11 +142,11 @@ function WarrantyCard() {
 
   // Determines if the initial content or populated content component show up.
   const [newUser, setNewUser] = useState(false);
-
+    
 
 // Function with GET call in it
   const runWarranty = () => {
-    API.getWarranty()
+    API.getAllWarranties(vehID)
       .then((res) => {
         if (res.data.isAuthenticated === false) {
           return logout(history);
@@ -158,7 +160,7 @@ function WarrantyCard() {
 
   useEffect(() => {
     // Calls GET Function 
-    runWarranty()
+    runWarranty();
 
   }, []);
 
