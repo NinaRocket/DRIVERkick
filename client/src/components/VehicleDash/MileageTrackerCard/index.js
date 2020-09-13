@@ -16,6 +16,7 @@ function CurrentMilageModal(props) {
     vehID,
     logout,
     setVehID,
+    setNewUserMileage
   } = useDriverKickContext();
 
   // Modal Show/Hide State
@@ -61,6 +62,7 @@ function CurrentMilageModal(props) {
       });
     // Lets other components know to close the modal
     setModalFormSubmit(true);
+    setNewUserMileage(false);
     // Needs to post this to the database
     console.log(currentMileage);
   };
@@ -91,12 +93,12 @@ function CurrentMilageModal(props) {
 }
 
 function MileageTrackerCard({ vehicleInfo }) {
-  const { modalFormSubmit, setModalFormSubmit } = useDriverKickContext();
+  const { modalFormSubmit, setModalFormSubmit, newUserMileage } = useDriverKickContext();
 
   const [modalShow, setModalShow] = React.useState(false);
 
   // Determines if the initial content or populated content component show up.
-  const [newUser, setNewUser] = useState(false);
+  // const [newUser, setNewUser] = useState(false);
 
   useEffect(() => {
     if (modalFormSubmit) {
@@ -120,14 +122,14 @@ function MileageTrackerCard({ vehicleInfo }) {
           "Frequently updating your mileage generates the most accurate recommendations."
         }
       />
-      {newUser ? (
+      {newUserMileage ? (
         <MileageTrackerInitial mileageTrackingModal={mileageModal} />
       ) : (
-        <MileageTrackerPopulated
-          mileageTrackingModal={mileageModal}
-          vehicleInfo={vehicleInfo}
-        />
-      )}
+          <MileageTrackerPopulated
+            mileageTrackingModal={mileageModal}
+            vehicleInfo={vehicleInfo}
+          />
+        )}
       <CurrentMilageModal show={modalShow} onHide={() => setModalShow(false)} />
     </div>
   );

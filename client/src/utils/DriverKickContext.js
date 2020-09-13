@@ -51,6 +51,10 @@ export function DriverKickProvider({ children }) {
   // Lets other components know to close the modal
   const [modalFormSubmit, setModalFormSubmit] = useState(false);
 
+
+  // Determines if the initial content or populated content component show up.
+  const [newUserMileage, setNewUserMileage] = useState(true);
+
   return (
     <DriverKickRouter>
       <DriverKickContext.Provider
@@ -67,7 +71,10 @@ export function DriverKickProvider({ children }) {
           setSelectValue,
           vehID,
           setVehID,
-          modalFormSubmit, setModalFormSubmit
+          modalFormSubmit, 
+          setModalFormSubmit,
+          newUserMileage,
+          setNewUserMileage
         }}
       >
         {children}

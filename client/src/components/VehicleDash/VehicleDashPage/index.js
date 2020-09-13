@@ -19,6 +19,7 @@ function VehicleDashPage() {
     logout,
     vehID,
     setVehID,
+    setNewUser
   } = useDriverKickContext();
   const { id } = useParams();
 
@@ -66,6 +67,7 @@ function VehicleDashPage() {
         ...fetchVehicles.data[0],
       });
       setVehicleInfo(fetchVehicles.data[0]);
+
       console.log(vehicleInfo);
     } catch (error) {
       console.log(error);
