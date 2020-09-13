@@ -93,7 +93,7 @@ function VehicleDashPage() {
         getInfo={getInfo}>
         <MileageTrackerCard vehicleInfo={vehicleInfo} getInfo={getInfo} />
         <OilChangeCard />
-        <WarrantyCard />
+        <WarrantyCard vehicleInfo={vehicleInfo} getInfo={getInfo}/>
         <RecallsCard />
       </VehicleMainWrapper>
     </div>

@@ -64,9 +64,9 @@ export default {
     return axios.get(`/api/warranty/${vehicleId}`);
   },
   //create a single warranty
-  createWarranty: (title, provider, details) => {
-    return axios.post(`/api/warranty`,
-    { title, provider, details });
+  createWarranty: (vehicleId, title, provider, details) => {
+    return axios.post(`/api/warranty/`,
+    { vehicleId, title, provider, details });
   },
   
   //update a warranty
