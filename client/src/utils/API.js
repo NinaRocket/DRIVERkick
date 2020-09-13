@@ -44,13 +44,6 @@ export default {
   updateOilChange: function (vehicleId, nextOilChange) {
     return axios.put(`/api/vehicle/${vehicleId}`, { nextOilChange });
   },
-  // updates the vehicles current mileage
-  // updateMileage: function (vehicleId, currentMileage) {
-  //   return axios.put(`/api/mileage/:id`, {vehicleId, currentMileage });
-  // },
-  // postMileage: function (id) {
-  //   return axios.post(`/api/vehicle/` + id);
-  // },
   putMileage: function (id, currentMileage) {
     return axios.put(`/api/vehicle/mileage/` + id, { currentMileage });
   },
@@ -71,10 +64,11 @@ export default {
     return axios.get(`/api/warranty/${vehicleId}`);
   },
   //create a single warranty
-  createWarranty: (vehicle, title, provider, details) => {
-    return axios.post("/api/warranty",
-    { vehicle, title, provider, details });
+  createWarranty: (vehicleId, title, provider, details) => {
+    return axios.post(`/api/warranty/`,
+    { vehicleId, title, provider, details });
   },
+  
   //update a warranty
   updateWarranty: (id, title, provider, details) => {
     return axios.put(`/api/warranty/${id}`,
