@@ -36,7 +36,7 @@ function ContextAwareToggle({
 }
 
 // Warranty COMPONENT ==============================
-function WarrantyPopulated({ warrantyModal }) {
+function WarrantyPopulated({ warrantyModal, warranty }) {
   // Sets state for accordion
   const [accordionHelper, setAccordionHelper] = useState(false);
 
@@ -46,7 +46,7 @@ function WarrantyPopulated({ warrantyModal }) {
 //     details: "",
 //   };
   // Sets state for warranty
-  const [warranty, setWarranty] = useState([]);
+  // const [warranty, setWarranty] = useState([]);
 
   // get Warranties
   // const { id } = useParams();
@@ -89,30 +89,29 @@ function WarrantyPopulated({ warrantyModal }) {
     // }, []);
 
      // Context import
-  const { logout } = useDriverKickContext();
+  // const { logout } = useDriverKickContext();
 
      // Sets up page redirect
-  const history = useHistory();
+  // const history = useHistory();
 
-    useEffect(() => {
-        API.getWarranty()
-        .then((res) => {
-          if (res.data.isAuthenticated === false) {
-            return logout(history);
-          }
+  //   useEffect(() => {
+  //       API.getWarranty()
+  //       .then((res) => {
+  //         if (res.data.isAuthenticated === false) {
+  //           return logout(history);
+  //         }
           
-          setWarranty(res.data);
-          console.log(res.data);
-        })
-        .catch((err) => console.log(err));
-    }, []);
+  //         setWarranty(res.data);
+  //         // console.log(res.data);
+  //       })
+  //       .catch((err) => console.log(err));
+  //   }, []);
   
 const renderWarranties = [];
 let warrantyEventKey = 0;
 
 
 warranty.forEach(element => {
-    console.log(warrantyEventKey++)
     warrantyEventKey++;
     
     renderWarranties.push(
