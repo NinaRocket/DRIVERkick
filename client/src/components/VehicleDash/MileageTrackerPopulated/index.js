@@ -30,14 +30,19 @@ function MileageTrackerPopulated({ mileageTrackingModal, vehicleInfo }) {
         <h4 className="g__card__subhead">History</h4>
         <Table hover>
           <tbody>
-            {vehicleInfo.mileageHistory.map((element) => {
-              return (
-                <MileageHistoryTable
-                  date={element.date}
-                  mileage={element.mileage}
-                />
-              );
-            })}
+            {vehicleInfo.mileageHistory
+              .slice(0)
+              .reverse()
+              .slice(0, 5)
+              .map((element) => {
+                return (
+                  <MileageHistoryTable
+                    key={element._id}
+                    date={element.date}
+                    mileage={element.mileage}
+                  />
+                );
+              })}
           </tbody>
         </Table>
       </div>
