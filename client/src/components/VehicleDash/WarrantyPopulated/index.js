@@ -48,7 +48,7 @@ function WarrantyPopulated({ warrantyModal }) {
 //     details: "",
 //   };
   // Sets state for warranty
-  const [warranty, setWarranty] = useState(warrantyTemplate);
+  const [warranty, setWarranty] = useState([]);
 
   // get Warranties
   // const { id } = useParams();
@@ -145,7 +145,7 @@ warranty.forEach(element => {
 })
 
     return (
-        <>
+        
         <div className="warranty-card__container">
             <Accordion defaultActiveKey="1" >
                 {
@@ -156,10 +156,6 @@ warranty.forEach(element => {
             <button className="g__vehicle-card__btn mt-3" onClick={warrantyModal}>Update Warranty</button>
         </div>
 
-      <button className="g__vehicle-card__btn mt-3" onClick={warrantyModal}>
-        Update Warranty
-      </button>
-    </>
   );
 }
 
