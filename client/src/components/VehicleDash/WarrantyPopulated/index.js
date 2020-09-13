@@ -117,7 +117,7 @@ warranty.forEach(element => {
     
     renderWarranties.push(
 
-    <Card className="g__border-reset">
+    <Card className="g__border-reset" key={warrantyEventKey}>
     <ContextAwareToggle eventKey={warrantyEventKey.toString()} accordionHelper={accordionHelper} setAccordionHelper={setAccordionHelper}>
         <div className="warranty-card__header">
            
