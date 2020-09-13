@@ -138,7 +138,6 @@ function SignUpForm() {
             id="firstName"
             name="firstName"
             placeholder="Jane"
-            value={firstName}
             onChange={signupFirstNameValue}
             required
           />
@@ -155,7 +154,6 @@ function SignUpForm() {
             id="lastName"
             name="lastName"
             placeholder="Smith"
-            value={lastName}
             onChange={signupLastNameValue}
             required
           />
@@ -173,7 +171,7 @@ function SignUpForm() {
             id="email"
             name="email"
             placeholder="you@email.com"
-            value={email}
+            // value={email}
             onChange={signupEmailValue}
             required
           />
@@ -189,7 +187,6 @@ function SignUpForm() {
             type="password"
             name="password"
             id="password"
-            value={password}
             onChange={signupPasswordValue}
             required
           />
@@ -206,7 +203,6 @@ function SignUpForm() {
             placeholder="retype password"
             name="confirmPassword"
             id="confirmPassword"
-            value={confirmPassword}
             onChange={signupConfirmPasswordValue}
             required
           />
