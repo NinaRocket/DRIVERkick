@@ -87,9 +87,12 @@ function VehicleDashPage() {
   return (
     <div>
       <GlobalNavBar />
-      <VehicleMainWrapper vehicleInfo={vehicleInfo} userData={userData}>
+      <VehicleMainWrapper
+        vehicleInfo={vehicleInfo}
+        userData={userData}
+        getInfo={getInfo}>
         <MileageTrackerCard vehicleInfo={vehicleInfo} getInfo={getInfo} />
-        {/* <OilChangeCard /> */}
+        <OilChangeCard />
         <WarrantyCard />
         <RecallsCard />
       </VehicleMainWrapper>

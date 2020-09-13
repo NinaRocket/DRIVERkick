@@ -10,6 +10,7 @@ import Modal from "react-bootstrap/Modal";
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
 import API from "../../../utils/API";
 
+// Current Milage Modal ===========================|
 function CurrentMilageModal(props) {
   const {
     setModalFormSubmit,
@@ -18,9 +19,6 @@ function CurrentMilageModal(props) {
     setVehID
 
   } = useDriverKickContext();
-
-  // Modal Show/Hide State
-  const [modalShow, setModalShow] = React.useState(false);
 
   // Milage Form Value State
   const [currentMileage, setCurrentMileage] = useState();
@@ -88,6 +86,7 @@ function CurrentMilageModal(props) {
   );
 }
 
+// Current Tracker Card ===========================|
 function MileageTrackerCard({ vehicleInfo, getInfo }) {
   const { modalFormSubmit, setModalFormSubmit, newUserMileage } = useDriverKickContext();
 
@@ -137,6 +136,8 @@ function MileageTrackerCard({ vehicleInfo, getInfo }) {
         onHide={() => setModalShow(false)}
         getInfo={getInfo}
       />
+
+    
     </div>
   );
 }

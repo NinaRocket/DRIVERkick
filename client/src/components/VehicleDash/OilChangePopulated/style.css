@@ -1,0 +1,15 @@
+.oil-change-card__container {
+    border-top: 6px solid #143642;
+    word-wrap: break-word;
+    padding: 60px 60px 0;
+}
+
+
+
+
+@media only screen and (max-width: 575px) {
+    .oil-change-card__container {
+        padding: 20px 20px 0;
+    }
+    
+}
