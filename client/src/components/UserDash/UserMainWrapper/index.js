@@ -22,11 +22,7 @@ function UserMainWrapper() {
 
   // API Call for User and Vehicle Info
   useEffect(() => {
-    // This is clean up for "Can't perform a React state update on an unmounted component." error
-    const abortController = new AbortController();
-    const signal = abortController.signal;
-
-    API.getUser({ signal: signal })
+    API.getUser()
       .then((res) => {
         if (res.data.isAuthenticated === false) {
           return logout(history);
@@ -50,11 +46,6 @@ function UserMainWrapper() {
         //console.log(vehicleInfo);
       })
       .catch((err) => console.log(err));
-      
-    // This is clean up for "Can't perform a React state update on an unmounted component." error
-    return function cleanup() {
-      abortController.abort()
-    }
   }, []);
 
   console.log(userData)
