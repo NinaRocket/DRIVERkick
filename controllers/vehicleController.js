@@ -38,6 +38,24 @@ module.exports = {
       .then((dbVehicle) => res.json(dbVehicle))
       .catch((err) => res.status(422).json(err));
   },
+  updateMileage: (req, res) => {
+    db.Vehicle.findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        currentMileage: req.body.currentMileage,
+        lastMileageUpdate: Date.now(),
+        $push: {
+          mileageHistory: {
+            date: Date.now(),
+            mileage: req.body.currentMileage,
+          },
+        },
+      },
+      { new: true }
+    )
+      .then((dbVehicle) => res.json(dbVehicle))
+      .catch((err) => res.status(422).json(err));
+  },
   remove: function (req, res) {
     db.Vehicle.findOneAndDelete({ _id: req.params.id })
       .then((dbVehicle) => res.json(dbVehicle))

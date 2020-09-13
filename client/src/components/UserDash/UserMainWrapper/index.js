@@ -31,19 +31,19 @@ function UserMainWrapper() {
         setUserData({ ...userData, ...res.data });
       })
       .catch((err) => console.log(err));
-    console.log(userData);
+    //console.log(userData);
 
     API.getVehicles()
       .then((res) => {
         if (res.data.isAuthenticated === false) {
           return logout(history);
         }
-        console.log(res.data);
+        //console.log(res.data);
         if (res.data.length === 0) {
           history.push("/add-vehicle");
         }
         setVehicleInfo(res.data);
-        console.log(vehicleInfo);
+        //console.log(vehicleInfo);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -51,7 +51,7 @@ function UserMainWrapper() {
   // NEED TO WORK ON THIS
   // Checks to see if the user has vehicles, if not they get kicked back to the Add Vehicle screen
   // useEffect(() => {
-  //   console.log(vehicleInfo)
+  //   //console.log(vehicleInfo)
   //   if (vehicleInfo.length === 0) {
   //     history.push("/add-vehicle")
   //   } else {
@@ -69,7 +69,7 @@ function UserMainWrapper() {
       })
       .catch((err) => console.log(err));
   };
-  //console.log(vehicleInfo[0].make);
+  ////console.log(vehicleInfo[0].make);
   return (
     <section className="g__dashboard-wrapper">
       <div className="container">
@@ -83,7 +83,10 @@ function UserMainWrapper() {
           </Col>
           <Col lg={1}></Col>
           <Col lg={8}>
-            {vehicleInfo.map((v) => (
+            {vehicleInfo.map((v, index) => {
+              console.log(bgImages.length);
+              const imgIndex = index%bgImages.length
+              return(
               <UserVehicleCard
                 key={v._id}
                 vehicleID={v._id}
@@ -94,9 +97,9 @@ function UserMainWrapper() {
                 carNickname={v.nickname}
                 ownerName={v.driverName}
                 getLatestVehicles={getLatestVehicles}
-                bgCardImage={bgImages[2].image}
+                bgCardImage={bgImages[imgIndex].image}
               />
-            ))}
+            )})}
           </Col>
         </Row>
       </div>

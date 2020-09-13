@@ -20,7 +20,7 @@ function AddVehicleMainWrapper({ children }) {
         setUserData({ ...userData, ...res.data });
       })
       .catch((err) => console.log(err));
-    console.log(userData);
+    //console.log(userData);
   }, []);
 
   return (
@@ -29,9 +29,7 @@ function AddVehicleMainWrapper({ children }) {
         <Row>
           <Col lg={3} className="g__dashboard-user-info">
             <h1 className="g__dash-h1">Welcome {userData.firstName}</h1>
-            <p>
-              Let's add a new vehicle to begin tracking it's maintenance! 
-            </p>
+            <p>Let's add a new vehicle to begin tracking it's maintenance!</p>
           </Col>
           <Col lg={1}></Col>
           <Col lg={8}>{children}</Col>
