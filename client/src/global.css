@@ -248,6 +248,18 @@ input:focus,
   border: none;
 }
 
+
+.progress {
+  border-radius: 50px;
+  background-color: #102a34;
+}
+
+.progress-bar {
+  background-color: #50B2C0;
+  height: 20px;
+}
+
+
 /* —————————————————————————————————————
 Forms
 ———————————————————————————————————————*/

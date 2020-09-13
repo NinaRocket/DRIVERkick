@@ -5,8 +5,10 @@ import { useHistory } from "react-router-dom";
 import Accordion from "react-bootstrap/Accordion";
 import API from "../../../utils/API";
 import { useAccordionToggle } from 'react-bootstrap/AccordionToggle';
-import { FaPlus, FaMinus } from 'react-icons/fa';
+import oilCan from '../../../images/vehiclepage/oil-can.svg'
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
+import ProgressBar from 'react-bootstrap/ProgressBar'
+
 
 
 // Warranty COMPONENT ==============================
@@ -17,14 +19,20 @@ function OilChangePopulated({ oilChangeTrackingModal, warranty }) {
   return (
 
     <div className="oil-change-card__container">
-      <div className="oil-change-card_body">
-        <div className="oil-change-card_number">
+      <div className="oil-change-card__body">
+        <div className="oil-change-card__number">
           <h4 className="g__sky-blue--txt">Miles to next Oil Change</h4>
           <h3 className="oil-change-card__mileage-txt">3,023</h3>
 
         </div>
-        <div className="oil-change-card_progress-contain">
-          
+        <div className="oil-change-card__progress-container">
+
+          <ProgressBar
+            now={60}
+            className="oil-change-card__progress-bar"
+          />
+
+          <img src={oilCan} alt="Oil Can" className="oil-change-card__progress-icon"/>
         </div>
       </div>
 
