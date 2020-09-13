@@ -4,7 +4,7 @@ const isAuthenticated = require("../../config/middleware/isAuthenticated");
 
 router.use(isAuthenticated);
 
-router.route("/:id")
+router.route("/")
     .get(warrantyController.findAll)
     .post(warrantyController.create);
 

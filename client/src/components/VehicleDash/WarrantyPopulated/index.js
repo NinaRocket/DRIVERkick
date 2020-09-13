@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import "./style.css";
 import Card from "react-bootstrap/Card";
+import { useHistory } from "react-router-dom";
 import Accordion from "react-bootstrap/Accordion";
 import API from "../../../utils/API";
 import openBtnIcon from "../../../images/vehiclepage/open-btn-icon.svg";
 import closeBtnIcon from "../../../images/vehiclepage/close-btn-icon.svg";
 import { useAccordionToggle } from 'react-bootstrap/AccordionToggle';
 import { FaPlus, FaMinus } from 'react-icons/fa';
+import { useDriverKickContext } from "../../../utils/DriverKickContext";
 
 
 
@@ -44,42 +46,74 @@ function WarrantyPopulated({ warrantyModal }) {
     const warrantyTemplate = {
         title: "",
         provider: "",
-        details: ""
+        details: "",
+        date: ""
     }
     // Sets state for warranty
-    const [warranty, setWarranty] = useState(warrantyTemplate);
+    const [warranty, setWarranty] = useState([]);
 
     // get Warranties
     // const { id } = useParams();
 
     // REACT'S SUGGESTED ASYNC USE-EFFECT SYNTAX
-    useEffect(() => {
-      async function displayWarranty() {
-        try {
-        //   const fetchUser = await API.getUser(id);
-          const fetchWarranty = await API.getWarranty();
-  
-          console.log(fetchWarranty.data[0]);
-  
-        //   setUserData({ ...userData, ...fetchUser.data });
-          setWarranty(fetchWarranty.data[0]);
-          console.log(warranty);
+    // useEffect(() => {
+    //     async function displayWarranty() {
+    //         try {
+    //             //   const fetchUser = await API.getUser(id);
+    //             const fetchWarranty = await API.getWarranty();
 
-        } catch (error) {
-          console.log(error);
-        }
-      }
-      displayWarranty()
+    //             //   console.log(fetchWarranty.data);
+
+    //             //   setUserData({ ...userData, ...fetchUser.data });
+    //             setWarranty(...fetchWarranty.data[0]);
+    //             //   console.log(warranty.title);
+
+    //         } catch (error) {
+    //             console.log(error);
+    //         }
+    //     }
+    //     displayWarranty()
+    // }, []);
+
+     // Context import
+  const { userData, setUserData, logout } = useDriverKickContext();
+
+     // Sets up page redirect
+  const history = useHistory();
+
+    useEffect(() => {
+        API.getWarranty()
+        .then((res) => {
+          if (res.data.isAuthenticated === false) {
+            return logout(history);
+          }
+          
+          setWarranty(res.data);
+          console.log(res.data);
+        })
+        .catch((err) => console.log(err));
     }, []);
+  
+
+console.log(warranty[0]);
+// console.log(warranty[0].title);
 
     return (
 
         <div className="warranty-card__container">
             <Accordion defaultActiveKey="1" >
+                {
+                    warranty.forEach(element => {
+                        console.log(element.title)
+                        console.log(element.provider)
+                        console.log(element.details)
+                        console.log(element.date)
+                    })
+                } 
                 <Card className="g__border-reset">
                     <ContextAwareToggle eventKey="0" accordionHelper={accordionHelper} setAccordionHelper={setAccordionHelper}>
                         <div className="warranty-card__header">
-
+                            {console.log(warranty[0])}
                             <h4>Warranty #1</h4>
 
                             <FaPlus />
@@ -90,15 +124,15 @@ function WarrantyPopulated({ warrantyModal }) {
                         <div className="warranty-card__body" >
                             <div className="warranty-card__meta-container">
                                 <h5>{warranty.title}</h5>
-                                <h5>{warranty.provider}</h5>
+                                <h5>provider</h5>
                             </div>
                             <p>
-                            {warranty.details}
+                                details
                             </p>
                         </div>
                     </Accordion.Collapse>
                 </Card>
-                {/* <Card className="g__border-reset">
+                <Card className="g__border-reset">
                     <ContextAwareToggle eventKey="1" accordionHelper={accordionHelper} setAccordionHelper={setAccordionHelper}>
                         <div className="warranty-card__header">
 
@@ -141,7 +175,7 @@ function WarrantyPopulated({ warrantyModal }) {
                             </p>
                         </div>
                     </Accordion.Collapse>
-                </Card> */}
+                </Card>
             </Accordion>
 
             <button className="g__vehicle-card__btn mt-3" onClick={warrantyModal}>Update Warranty</button>
