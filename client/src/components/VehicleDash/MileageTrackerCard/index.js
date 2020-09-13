@@ -10,16 +10,15 @@ import Modal from "react-bootstrap/Modal";
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
 import API from "../../../utils/API";
 
+// Current Milage Modal ===========================|
 function CurrentMilageModal(props) {
   const {
     setModalFormSubmit,
     vehID,
     logout,
-    setVehID,
-  } = useDriverKickContext();
+    setVehID
 
-  // Modal Show/Hide State
-  const [modalShow, setModalShow] = React.useState(false);
+  } = useDriverKickContext();
 
   // Milage Form Value State
   const [currentMileage, setCurrentMileage] = useState();
@@ -28,7 +27,6 @@ function CurrentMilageModal(props) {
   const [mileageError, setMileageError] = useState(false);
 
   setVehID(vehID);
-  //console.log(vehID);
 
   // Sets up page redirect
   const history = useHistory();
@@ -37,7 +35,7 @@ function CurrentMilageModal(props) {
   const handleMilage = (event) => {
     setCurrentMileage(event.target.value);
   };
-  //console.log(props);
+
   // Submits the form value state and validates errors
   const submitCurrentMilage = (event) => {
     event.preventDefault();
@@ -46,22 +44,19 @@ function CurrentMilageModal(props) {
     }
     API.putMileage(vehID, currentMileage)
       .then((response) => {
-        //console.log("update mileage response: ");
-        //console.log(response);
+
         if (response.data.isAuthenticated === false) {
           return logout(history);
         }
         props.getInfo();
-        //setCurrentMileage(currentMileage);
-        //console.log(currentMileage);
-        //console.log("this ran");
       })
       .catch((error) => {
-        //console.log("adding mileage error: ");
-        //console.log(error);
+
+        console.log(error);
       });
     // Lets other components know to close the modal
     setModalFormSubmit(true);
+    // setNewUserMileage(false);
     // Needs to post this to the database
     //console.log(currentMileage);
   };
@@ -91,13 +86,14 @@ function CurrentMilageModal(props) {
   );
 }
 
+// Current Tracker Card ===========================|
 function MileageTrackerCard({ vehicleInfo, getInfo }) {
-  const { modalFormSubmit, setModalFormSubmit } = useDriverKickContext();
+  const { modalFormSubmit, setModalFormSubmit, newUserMileage } = useDriverKickContext();
 
   const [modalShow, setModalShow] = React.useState(false);
 
   // Determines if the initial content or populated content component show up.
-  const [newUser, setNewUser] = useState(false);
+  // const [newUser, setNewUser] = useState(false);
 
   useEffect(() => {
     if (modalFormSubmit) {
@@ -121,19 +117,27 @@ function MileageTrackerCard({ vehicleInfo, getInfo }) {
           "Frequently updating your mileage generates the most accurate recommendations."
         }
       />
-      {newUser ? (
+      {/* {newUserMileage ? (
         <MileageTrackerInitial mileageTrackingModal={mileageModal} />
       ) : (
-        <MileageTrackerPopulated
-          mileageTrackingModal={mileageModal}
-          vehicleInfo={vehicleInfo}
-        />
-      )}
+          <MileageTrackerPopulated
+            mileageTrackingModal={mileageModal}
+            vehicleInfo={vehicleInfo}
+          />
+        )} */}
+
+      <MileageTrackerPopulated
+        mileageTrackingModal={mileageModal}
+        vehicleInfo={vehicleInfo}
+      />
+
       <CurrentMilageModal
         show={modalShow}
         onHide={() => setModalShow(false)}
         getInfo={getInfo}
       />
+
+    
     </div>
   );
 }

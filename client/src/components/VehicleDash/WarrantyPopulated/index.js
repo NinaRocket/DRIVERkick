@@ -4,8 +4,6 @@ import Card from "react-bootstrap/Card";
 import { useHistory } from "react-router-dom";
 import Accordion from "react-bootstrap/Accordion";
 import API from "../../../utils/API";
-import openBtnIcon from "../../../images/vehiclepage/open-btn-icon.svg";
-import closeBtnIcon from "../../../images/vehiclepage/close-btn-icon.svg";
 import { useAccordionToggle } from 'react-bootstrap/AccordionToggle';
 import { FaPlus, FaMinus } from 'react-icons/fa';
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
@@ -38,101 +36,34 @@ function ContextAwareToggle({
 }
 
 // Warranty COMPONENT ==============================
-function WarrantyPopulated({ warrantyModal }) {
+function WarrantyPopulated({ warrantyModal, warranty }) {
   // Sets state for accordion
   const [accordionHelper, setAccordionHelper] = useState(false);
-
-//   const warrantyTemplate = {
-//     title: "",
-//     provider: "",
-//     details: "",
-//   };
-  // Sets state for warranty
-  const [warranty, setWarranty] = useState([]);
-
-  // get Warranties
-  // const { id } = useParams();
-
-  // REACT'S SUGGESTED ASYNC USE-EFFECT SYNTAX
-//   useEffect(() => {
-//     async function displayWarranty() {
-//       try {
-//         //   const fetchUser = await API.getUser(id);
-//         const fetchWarranty = await API.getWarranty();
-
-//     // Sets state for accordion
-//     const [accordionHelper, setAccordionHelper] = useState(false);
-//     // set initial state to empty
-   
-//     // Sets state for warranty
-//     const [warranty, setWarranty] = useState([]);
-
-    // get Warranties
-    // const { id } = useParams();
-
-    // REACT'S SUGGESTED ASYNC USE-EFFECT SYNTAX
-    // useEffect(() => {
-    //     async function displayWarranty() {
-    //         try {
-    //             //   const fetchUser = await API.getUser(id);
-    //             const fetchWarranty = await API.getWarranty();
-
-    //             //   console.log(fetchWarranty.data);
-
-    //             //   setUserData({ ...userData, ...fetchUser.data });
-    //             setWarranty(...fetchWarranty.data[0]);
-    //             //   console.log(warranty.title);
-
-    //         } catch (error) {
-    //             console.log(error);
-    //         }
-    //     }
-    //     displayWarranty()
-    // }, []);
-
-     // Context import
-  const { logout } = useDriverKickContext();
-
-     // Sets up page redirect
-  const history = useHistory();
-
-    useEffect(() => {
-        API.getWarranty()
-        .then((res) => {
-          if (res.data.isAuthenticated === false) {
-            return logout(history);
-          }
-          
-          setWarranty(res.data);
-          console.log(res.data);
-        })
-        .catch((err) => console.log(err));
-    }, []);
   
 const renderWarranties = [];
 let warrantyEventKey = 0;
 
 
 warranty.forEach(element => {
-    console.log(warrantyEventKey++)
     warrantyEventKey++;
     
     renderWarranties.push(
 
-    <Card className="g__border-reset">
-    <ContextAwareToggle eventKey={warrantyEventKey.toString()} accordionHelper={accordionHelper} setAccordionHelper={setAccordionHelper}>
-        <div className="warranty-card__header">
+    <Card className="g__border-reset" key={warrantyEventKey}>
+    <ContextAwareToggle 
+    eventKey={warrantyEventKey.toString()} accordionHelper={accordionHelper} setAccordionHelper={setAccordionHelper}>
+        <div className="warranty-card__header warranty-card__toggle">
            
             <h4>{element.title}</h4>
 
-            <FaPlus />
+            <FaPlus className="warranty-card__plus" />
 
         </div>
     </ContextAwareToggle>
     <Accordion.Collapse eventKey={warrantyEventKey.toString()} >
         <div className="warranty-card__body" >
             <div className="warranty-card__meta-container">
-                <h5>{element.provider}</h5>
+                <h5 className="warranty-card__provider">{element.provider}</h5>
                 <h5>{element.date}</h5>
             </div>
             <p>
@@ -153,7 +84,7 @@ warranty.forEach(element => {
                 } 
             </Accordion>
 
-            <button className="g__vehicle-card__btn mt-3" onClick={warrantyModal}>Update Warranty</button>
+            <button className="g__vehicle-card__btn mt-3" onClick={warrantyModal}>Add Warranty</button>
         </div>
 
   );

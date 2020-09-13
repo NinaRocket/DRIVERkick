@@ -43,9 +43,9 @@ function VehicleMainWrapper({ children, vehicleInfo, userData }) {
     <section className="g__dashboard-wrapper">
       <div className="container">
         <Row>
-          <Col lg={3}>
-            <Accordion defaultActiveKey="1" className="vehicle-dash__accordion">
-              <Card>
+          <Col lg={3} className="vehicle-dash__parent-fixed">
+            <Accordion defaultActiveKey="1" className="vehicle-dash__accordion vehicle-dash__fixed">
+              <Card className="vehicle-dash__parent-fixed ">
                 <ContextAwareToggle
                   eventKey="0"
                   accordionHelper={accordionHelper}

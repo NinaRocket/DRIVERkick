@@ -1,6 +1,5 @@
 import React from "react";
 import "./style.css";
-
 import Table from "react-bootstrap/Table";
 
 function MileageTrackerPopulated({ mileageTrackingModal, vehicleInfo }) {
@@ -19,6 +18,8 @@ function MileageTrackerPopulated({ mileageTrackingModal, vehicleInfo }) {
             {vehicleInfo.currentMileage.date}
           </h3>
         </div>
+
+
         <button className="g__vehicle-card__btn" onClick={mileageTrackingModal}>
           Update Mileage
         </button>

@@ -29,9 +29,9 @@ function UserMainWrapper() {
         }
 
         setUserData({ ...userData, ...res.data });
+        console.log(res.data)
       })
       .catch((err) => console.log(err));
-    //console.log(userData);
 
     API.getVehicles()
       .then((res) => {
@@ -48,17 +48,6 @@ function UserMainWrapper() {
       .catch((err) => console.log(err));
   }, []);
 
-  // NEED TO WORK ON THIS
-  // Checks to see if the user has vehicles, if not they get kicked back to the Add Vehicle screen
-  // useEffect(() => {
-  //   //console.log(vehicleInfo)
-  //   if (vehicleInfo.length === 0) {
-  //     history.push("/add-vehicle")
-  //   } else {
-  //     return;
-  //   }
-  // }, [vehicleInfo])
-
   const getLatestVehicles = () => {
     API.getVehicles()
       .then((res) => {
@@ -69,7 +58,7 @@ function UserMainWrapper() {
       })
       .catch((err) => console.log(err));
   };
-  ////console.log(vehicleInfo[0].make);
+
   return (
     <section className="g__dashboard-wrapper">
       <div className="container">
@@ -85,21 +74,22 @@ function UserMainWrapper() {
           <Col lg={8}>
             {vehicleInfo.map((v, index) => {
               console.log(bgImages.length);
-              const imgIndex = index%bgImages.length
-              return(
-              <UserVehicleCard
-                key={v._id}
-                vehicleID={v._id}
-                vehicleIcon={v.icon}
-                vehicleMake={v.make}
-                vehicleYear={v.year}
-                vehicleModel={v.model}
-                carNickname={v.nickname}
-                ownerName={v.driverName}
-                getLatestVehicles={getLatestVehicles}
-                bgCardImage={bgImages[imgIndex].image}
-              />
-            )})}
+              const imgIndex = index % bgImages.length
+              return (
+                <UserVehicleCard
+                  key={v._id}
+                  vehicleID={v._id}
+                  vehicleIcon={v.icon}
+                  vehicleMake={v.make}
+                  vehicleYear={v.year}
+                  vehicleModel={v.model}
+                  carNickname={v.nickname}
+                  ownerName={v.driverName}
+                  getLatestVehicles={getLatestVehicles}
+                  bgCardImage={bgImages[imgIndex].image}
+                />
+              )
+            })}
           </Col>
         </Row>
       </div>
