@@ -1,9 +1,10 @@
 .vehicle-dash__user-img {
-    -moz-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.4), 0px 0px 15px rgba(16, 40, 49, 0.5);
-    -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.4), 0px 0px 15px rgba(16, 40, 49, 0.5);
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.4), 0px 0px 15px rgba(16, 40, 49, 0.5);
+    -moz-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.4), 0px 10px 20px rgba(16, 40, 49, 0.9);
+    -webkit-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.4), 0px 10px 20px rgba(16, 40, 49, 0.9);
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.4), 0px 10px 20px rgba(16, 40, 49, 0.9);
     border-radius: 50%;
     margin: 20px 0;
+    transition: ease-in .4s;
 }
 
 .vehicle-dash__rule {
@@ -19,6 +20,13 @@
 
 .vehicle-dash__rule:hover .vehicle-dash__accordion-toggle {
     transform: rotate(45deg);
+    transition: ease-in .2s;
+}
+
+.vehicle-dash__rule:hover .vehicle-dash__user-img {
+    -moz-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.4), 0px 0px 15px rgba(16, 40, 49, 0.5);
+    -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.4), 0px 0px 15px rgba(16, 40, 49, 0.5);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.4), 0px 0px 15px rgba(16, 40, 49, 0.5);
     transition: ease-in .2s;
 }
 
