@@ -24,7 +24,7 @@ function OilChangePopulated({ oilChangeTrackingModal, warranty }) {
     }
   }
 
-  const oilStatusIconHelper = (bgEvent, redEvent) => {
+  const oilStatusIconHelper = () => {
     if (status <= 20 && status > 5) {
       return oilCanFire;
     } else if (status <= 5) {

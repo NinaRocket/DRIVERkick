@@ -46,12 +46,6 @@ function WarrantyModal(props) {
     setWarrantyDetails(event.target.value);
   };
 
-  const warrantyInfo = {
-    vehID: vehID,
-    title: title,
-    provider: provider,
-    details: details,
-  };
 
   setVehID(vehID);
 
@@ -67,17 +61,10 @@ function WarrantyModal(props) {
     console.log(props.vehicleInfo);
 
     // adding warranty info from above structure
-    API.createWarranty(props.vehicleInfo.warranties)
-
+    API.createWarranty(props.vehicleInfo._id, title, provider, details)
       .then((response) => {
         if (response.data.isAuthenticated === false) {
           return logout(history);
-        }
-        if (!response.data.errmsg) {
-          //console.log("successfully added warranty");
-          //console.log(warrantyInfo);
-        } else {
-          //console.log("Nina doesn't know how to code");
         }
       })
       .catch((error) => {
@@ -159,7 +146,7 @@ function WarrantyCard({ vehicleInfo, getInfo }) {
 
   // Function with GET call in it
   const runWarranty = () => {
-    API.getAllWarranties(vehID)
+    API.getAllWarranties(vehicleInfo._id)
       .then((res) => {
         if (res.data.isAuthenticated === false) {
           return logout(history);
