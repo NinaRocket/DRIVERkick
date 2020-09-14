@@ -10,7 +10,7 @@ import API from "../../../utils/API";
 import Modal from "react-bootstrap/Modal";
 
 
-// Current Milage Modal ===========================|
+// Delete Vehicle Modal ===========================|
 function DeleteVehicleModal(props) {
 
   const {
@@ -65,17 +65,17 @@ function DeleteVehicleModal(props) {
       <Modal.Header closeButton></Modal.Header>
       <div className="g__form-container g__remove-margin-bottom text-center">
         <h2>Delete {props.carNickname}</h2>
-        <p className="text-danger">Are you sure you want to permanently delete this vehicle? This action can not be undone!</p>
-        <div>
+        <p >Are you sure you want to permanently delete this vehicle? This action can't be undone!</p>
+        <div className="vehicle-card__modal-btn-container">
           <button
             onClick={submitDeleteVehicle}
-            className="btn"
+            className="btn g__btn-outline vehicle-card__modal-btn"
           >Yes, Delete Vehicle</button>
 
           <button
             onClick={submitCancelDelete}
             className="btn"
-          >Don't Delete Vehicle</button>
+          >Cancel</button>
 
         </div>
 
