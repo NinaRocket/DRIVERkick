@@ -37,6 +37,11 @@ export default {
     return axios.get(`/api/vehicle/${vehicleId}`);
   },
 
+  // delete a vehicle
+  deleteVehicle: (id) => {
+    return axios.delete(`/api/warranty/${id}`);
+  },
+
   getDecodeVIN: function (VIN) {
     return axios.get(`/api/vehicle/decode-vin/${VIN}`);
   },
