@@ -66,9 +66,11 @@ module.exports = {
       .then((dbVehicle) => {
         const response = {
           percentageToChange:
-            (parseInt(dbVehicle.currentMileage) -
+            100 -
+            ((parseInt(dbVehicle.currentMileage) -
               parseInt(dbVehicle.lastOilChange)) /
-            parseInt(dbVehicle.oilInterval),
+              parseInt(dbVehicle.oilInterval)) *
+              100,
           milesToChange:
             parseInt(dbVehicle.lastOilChange) +
             parseInt(dbVehicle.oilInterval) -
