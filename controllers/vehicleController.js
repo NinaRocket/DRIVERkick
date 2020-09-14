@@ -65,9 +65,10 @@ module.exports = {
     db.Vehicle.findById(req.params.id)
       .then((dbVehicle) => {
         const response = {
-          currentMileage: dbVehicle.currentMileage,
-          nextOilChange:
-            parseInt(dbVehicle.lastOilChange) + parseInt(dbVehicle.oilInterval),
+          percentageToChange:
+            (parseInt(dbVehicle.currentMileage) -
+              parseInt(dbVehicle.lastOilChange)) /
+            parseInt(dbVehicle.oilInterval),
           milesToChange:
             parseInt(dbVehicle.lastOilChange) +
             parseInt(dbVehicle.oilInterval) -
