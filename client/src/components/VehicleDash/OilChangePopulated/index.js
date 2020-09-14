@@ -8,7 +8,7 @@ import oilCanRed from "../../../images/vehiclepage/oil-can-red.svg";
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
 import ProgressBar from "react-bootstrap/ProgressBar";
 
-// Warranty COMPONENT ==============================
+// Oil Change COMPONENT ==============================
 function OilChangePopulated({ oilChangeTrackingModal, warranty }) {
   // Controls progress bar amount
   const [status, setStatus] = useState(3);
@@ -17,24 +17,21 @@ function OilChangePopulated({ oilChangeTrackingModal, warranty }) {
     if (status <= 20 && status > 5) {
       return bgEvent ? bgEvent : "g__fiery-orange--txt";
     } else if (status <= 5) {
-      return redEvent ? redEvent : "g__red--txt"
+      return redEvent ? redEvent : "g__red--txt";
+    } else {
+      return null;
     }
-    else {
-      return null
-    }
-  }
+  };
 
   const oilStatusIconHelper = (bgEvent, redEvent) => {
     if (status <= 20 && status > 5) {
       return oilCanFire;
     } else if (status <= 5) {
       return oilCanRed;
-    }
-    else {
+    } else {
       return oilCan;
     }
-  }
-
+  };
 
   return (
     <div className="oil-change-card__container">
@@ -55,16 +52,17 @@ function OilChangePopulated({ oilChangeTrackingModal, warranty }) {
           />
           <ProgressBar
             now={status}
-            className={`oil-change-card__progress-bar ${oilStatusColorHelper("g__progress-override", "g__progress-override--red")}`}
+            className={`oil-change-card__progress-bar ${oilStatusColorHelper(
+              "g__progress-override",
+              "g__progress-override--red"
+            )}`}
           />
-
-
         </div>
-
       </div>
       <div className="oil-change-card__error-container">
-
-        {status <= 5 ? <h5>Time to get an oil change as soon as possible!</h5> : null}
+        {status <= 5 ? (
+          <h5>Time to get an oil change as soon as possible!</h5>
+        ) : null}
       </div>
       <button
         className="g__vehicle-card__btn mt-3"

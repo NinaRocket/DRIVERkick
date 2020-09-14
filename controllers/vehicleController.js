@@ -67,7 +67,8 @@ module.exports = {
         const response = {
           currentMileage: dbVehicle.currentMile,
           milesToChange:
-            parseInt(dbVehicle.currentMile) - parseInt(dbVehicleest.MileOil),
+            parseInt(dbVehicle.nextOilChange) -
+            parseInt(dbVehicle.currentMileage),
           oilInterval: dbVehicle.oilInterval,
         };
         res.json(response);
