@@ -112,6 +112,14 @@ Colors
   color: #FEEFDD;
 }
 
+.g__red--bg {
+  background-color: red;
+}
+
+.g__red--txt {
+  color: red;
+}
+
 
 /* —————————————————————————————————————
 Bootstrap Overrides
@@ -262,6 +270,10 @@ input:focus,
 
 .g__progress-override .progress-bar  {
   background-color: #FF4000;
+}
+
+.g__progress-override--red .progress-bar  {
+  background-color: red;
 }
 
 

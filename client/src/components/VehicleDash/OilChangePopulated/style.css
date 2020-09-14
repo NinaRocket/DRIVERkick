@@ -6,7 +6,6 @@
 
 .oil-change-card__body {
     display: flex;
-    margin-bottom: 50px;
 }
 
 .oil-change-card__number {
@@ -29,13 +28,18 @@
 
 .oil-change-card__progress-bar {
     width: 100%;
-    margin-right: 15px;
+    margin-left: 15px;
 }
 
 .oil-change-card__progress-icon {
     width: 35px;
 }
 
+.oil-change-card__error-container {
+    text-align: center;
+    margin: 20px 0 20px; 
+    color: red;
+}
 
 
 @media only screen and (max-width: 575px) {
