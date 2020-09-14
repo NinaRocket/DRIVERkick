@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import "./style.css";
 import editBtn from "../../../images/user-page/edit-btn.svg";
@@ -7,7 +7,80 @@ import deleteBtn from "../../../images/user-page/delete-btn.svg";
 import ContentEditable from "react-contenteditable";
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
 import API from "../../../utils/API";
+import Modal from "react-bootstrap/Modal";
 
+
+// Current Milage Modal ===========================|
+function DeleteVehicleModal(props) {
+
+  const {
+    setModalFormSubmit,
+    vehID,
+    logout,
+    setVehID
+
+  } = useDriverKickContext();
+
+  // Milage Form Value State
+  const [currentMileage, setCurrentMileage] = useState();
+
+  // Error State
+  const [mileageError, setMileageError] = useState(false);
+
+  setVehID(vehID);
+
+  // Sets up page redirect
+  const history = useHistory();
+
+
+
+  // Submits the form value state and validates errors
+  const submitCurrentMilage = (event) => {
+    event.preventDefault();
+    API.putMileage(vehID, currentMileage)
+      .then((response) => {
+
+        if (response.data.isAuthenticated === false) {
+          return logout(history);
+        }
+        props.getInfo();
+      })
+      .catch((error) => {
+
+        console.log(error);
+      });
+    // Lets other components know to close the modal
+    setModalFormSubmit(true);
+    // setNewUserMileage(false);
+    // Needs to post this to the database
+    //console.log(currentMileage);
+  };
+
+  return (
+    <Modal
+      {...props}
+      size="md"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton></Modal.Header>
+      <div className="g__form-container g__remove-margin-bottom">
+        <h2 className="text-center">Update Current Mileage</h2>
+        {mileageError ? (
+          <p className="text-center text-danger">
+            Please input your current milage.
+          </p>
+        ) : null}
+
+
+      </div>
+    </Modal>
+  );
+}
+
+
+
+// User Vehicle Card Component ==========================|
 function UserVehicleCard({
   vehicleIcon,
   vehicleMake,
@@ -19,7 +92,26 @@ function UserVehicleCard({
   getLatestVehicles,
   bgCardImage,
 }) {
-  const { logout, setVehID } = useDriverKickContext();
+
+  const { modalFormSubmit, setModalFormSubmit, logout } = useDriverKickContext();
+
+  // START Modal Code  ————————————————————————|
+
+  const [modalShow, setModalShow] = React.useState(false);
+
+  useEffect(() => {
+    if (modalFormSubmit) {
+      setModalShow(false);
+    }
+  }, [modalFormSubmit]);
+
+  // Opens and closes modal
+  const OpenDeleteVehicleModal = () => {
+    setModalShow(true);
+    setModalFormSubmit(false);
+  };
+
+  // END Modal Code  ————————————————————————|
 
   //redirect to vehicle dashboard
   const history = useHistory();
@@ -56,11 +148,6 @@ function UserVehicleCard({
         //console.log(error);
       }
     }
-  };
-
-  // Most likely will need to combine into above function
-  const deleteFields = () => {
-    //console.log("delete function");
   };
 
   const handleNicknameChange = (evt) => {
@@ -113,14 +200,14 @@ function UserVehicleCard({
                   disabled={!editing ? true : false}
                   className={`vehicle-card__overflow-txt ${
                     editing ? "vehicle-card__custom-input" : ""
-                  }`}
+                    }`}
                 />
               </h3>
             </div>
             <div className="vehicle-card__btn-group">
               {editing ? (
                 <button
-                  onClick={deleteFields}
+                  onClick={OpenDeleteVehicleModal}
                   className="vehicle-card__edit-btn g__btn-reset"
                 >
                   <img src={deleteBtn} alt="delete button" />
@@ -134,15 +221,15 @@ function UserVehicleCard({
                 {!editing ? (
                   <img src={editBtn} alt="Edit button" />
                 ) : (
-                  <img src={saveBtn} alt="save button" />
-                )}
+                    <img src={saveBtn} alt="save button" />
+                  )}
               </button>
               <button
                 disabled={editing === true}
                 onClick={trackMaintenanceBtn}
                 className={`vehicle-card__track-btn ${
                   editing === true ? "g__disabled-btn" : null
-                }`}
+                  }`}
               >
                 Track Maintenance
               </button>
@@ -177,7 +264,7 @@ function UserVehicleCard({
                     disabled={!editing ? true : false}
                     className={`vehicle-card__overflow-txt ${
                       editing ? "vehicle-card__custom-input" : ""
-                    }`}
+                      }`}
                   />
                 </h3>
               </div>
@@ -185,6 +272,10 @@ function UserVehicleCard({
           </div>
         </div>
       </div>
+      <DeleteVehicleModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
     </div>
   );
 }
