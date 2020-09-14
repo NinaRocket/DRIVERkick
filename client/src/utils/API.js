@@ -18,6 +18,11 @@ export default {
     return axios.post("/api/user/signup", userInfo);
   },
 
+  // Returns "true" if the user is logged in
+  homeLoginCheck: () => {
+    return axios.get("api/user/isAuthenticated");
+  },
+
   // VEHICLE ROUTES
   //post VIN
   addvehicle: function (VIN, year, make, model, icon) {

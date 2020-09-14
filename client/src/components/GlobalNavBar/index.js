@@ -6,6 +6,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import LogoTan from "../../images/global/drive-kick-logo-tan.svg";
 import LogoDark from "../../images/global/drive-kick-logo-dark.svg";
+import API from "../../utils/API";
 
 function GlobalNavBar() {
   // Context state that changes the nav based on the page being used
@@ -13,6 +14,16 @@ function GlobalNavBar() {
 
   // Sets redirects to other pages
   const redirect = useHistory();
+
+  //  Routes the user back to the user dashboard if logged in
+  API.homeLoginCheck().then((res) => {
+    if (res.data.isAuthenticated === true) {
+      userDash();
+    } else {
+      return;
+    }
+  })
+
 
   // Buttons
   const signUp = () => {
@@ -101,6 +112,14 @@ function GlobalNavBar() {
                     Add New Vehicle
                   </button>
                 ) : null}
+
+                {navType === "newVehicle" ? (
+                  <button type="button" className="btn" onClick={userDash}>
+                    User Dashboard
+                  </button>
+                ) : null}
+
+
 
                 <button type="button" className="btn" onClick={triggerLogout}>
                   Logout
