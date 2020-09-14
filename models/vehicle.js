@@ -23,7 +23,8 @@ const vehicleSchema = new Schema({
       mileage: { type: Number },
     },
   ],
-  nextOilChange: { type: Number, default: 0 },
+  lastOilChange: { type: Number, default: 0 },
+  oilInterval: { type: Number, default: 0 },
   oilType: { type: String, default: "Update" },
   oilInterval: { type: Number, default: 3000 },
   warranties: [
