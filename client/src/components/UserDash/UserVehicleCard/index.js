@@ -15,9 +15,7 @@ function DeleteVehicleModal(props) {
 
   const {
     setModalFormSubmit,
-    vehID,
-    logout,
-    setVehID
+    logout
 
   } = useDriverKickContext();
 
@@ -65,19 +63,19 @@ function DeleteVehicleModal(props) {
       centered
     >
       <Modal.Header closeButton></Modal.Header>
-      <div className="g__form-container g__remove-margin-bottom text-center text-danger">
-        <h2>Delete Vehicle</h2>
-        <p>Are you sure you want to permanently delete this vehicle? This action can not be undone!</p>
+      <div className="g__form-container g__remove-margin-bottom text-center">
+        <h2>Delete {props.carNickname}</h2>
+        <p className="text-danger">Are you sure you want to permanently delete this vehicle? This action can not be undone!</p>
         <div>
-        <button
-          onClick={submitDeleteVehicle}
-          className="btn"
-        >Yes, Delete Vehicle</button>
+          <button
+            onClick={submitDeleteVehicle}
+            className="btn"
+          >Yes, Delete Vehicle</button>
 
-        <button
-          onClick={submitCancelDelete}
-          className="btn"
-        >Don't Delete Vehicle</button>
+          <button
+            onClick={submitCancelDelete}
+            className="btn"
+          >Don't Delete Vehicle</button>
 
         </div>
 
@@ -286,6 +284,7 @@ function UserVehicleCard({
         onHide={() => setModalShow(false)}
         getLatestVehicles={getLatestVehicles}
         vehicleID={vehicleID}
+        carNickname={carNickname}
       />
     </div>
   );

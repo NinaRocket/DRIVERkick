@@ -16,13 +16,13 @@ function GlobalNavBar() {
   const redirect = useHistory();
 
   //  Routes the user back to the user dashboard if logged in
-  API.homeLoginCheck().then((res) => {
-    if (res.data.isAuthenticated === true) {
-      userDash();
-    } else {
-      return;
-    }
-  })
+  // API.homeLoginCheck().then((res) => {
+  //   if (res.data.isAuthenticated === true) {
+  //     userDash();
+  //   } else {
+  //     return;
+  //   }
+  // })
 
 
   // Buttons
