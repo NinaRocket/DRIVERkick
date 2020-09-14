@@ -26,7 +26,6 @@ const vehicleSchema = new Schema({
   lastOilChange: { type: Number, default: 0 },
   oilInterval: { type: Number, default: 0 },
   oilType: { type: String, default: "Update" },
-  oilInterval: { type: Number, default: 3000 },
   warranties: [
     {
       type: Schema.Types.ObjectId,
