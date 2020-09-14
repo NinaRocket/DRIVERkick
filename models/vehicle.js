@@ -17,17 +17,21 @@ const vehicleSchema = new Schema({
   nickname: { type: String, default: "Update" },
   currentMileage: { type: Number, default: 0 },
   lastMileageUpdate: { type: Date, default: Date.now() },
-  mileageHistory: [{
-    date: { type: Date },
-    mileage: { type: Number }
-  }],
+  mileageHistory: [
+    {
+      date: { type: Date },
+      mileage: { type: Number },
+    },
+  ],
   lastOilChange: { type: Number, default: 0 },
   oilInterval: { type: Number, default: 0 },
   oilType: { type: String, default: "Update" },
-  warranties: [{
-    type: Schema.Types.ObjectId,
-    ref: "Warranty"
-  }]
+  warranties: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Warranty",
+    },
+  ],
 });
 
 const Vehicle = mongoose.model("Vehicle", vehicleSchema);

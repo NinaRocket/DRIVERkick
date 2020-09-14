@@ -49,17 +49,23 @@ function VehicleDashPage() {
 
   const [vehicleInfo, setVehicleInfo] = useState(vehicleTemplate);
   const [mileageHistory, setMileageHistory] = useState([]);
+  const [oilData, setOilData] = useState([]);
+  const [warrantyData, setWarrantyData] = useState([]);
 
   async function getInfo() {
     try {
       const fetchUser = await API.getUser();
       const fetchVehicles = await API.getVehicleById(vehID);
+      const fetchOilData = await API.getOilChangeInfo(vehID);
+      const fetchWarranty = await API.getAllWarranties(vehID);
 
-      //console.log(fetchVehicles.data[0]);
+      console.log(fetchOilData);
 
       if (
         fetchUser.data.isAuthenticated === false ||
-        fetchVehicles.data.isAuthenticated === false
+        fetchVehicles.data.isAuthenticated === false ||
+        fetchOilData.data.isAuthenticated === false ||
+        fetchWarranty.data.isAuthenticated === false
       ) {
         return logout(history);
       }
@@ -68,9 +74,13 @@ function VehicleDashPage() {
         ...userData,
         ...fetchUser.data,
         ...fetchVehicles.data[0],
+        ...fetchOilData.data,
+        ...fetchWarranty.data,
       });
       setVehicleInfo(fetchVehicles.data[0]);
       setMileageHistory(fetchVehicles.mileageHistory);
+      setOilData(fetchOilData.data);
+      setWarrantyData(fetchWarranty.data);
     } catch (error) {
       //console.log(error);
     }
@@ -93,8 +103,16 @@ function VehicleDashPage() {
         getInfo={getInfo}
       >
         <MileageTrackerCard vehicleInfo={vehicleInfo} getInfo={getInfo} />
-        <OilChangeCard />
-        <WarrantyCard vehicleInfo={vehicleInfo} getInfo={getInfo}/>
+        <OilChangeCard
+          oilData={oilData}
+          vehicleInfo={vehicleInfo}
+          getInfo={getInfo}
+        />
+        <WarrantyCard
+          vehicleInfo={vehicleInfo}
+          getInfo={getInfo}
+          warranty={warrantyData}
+        />
         <RecallsCard />
       </VehicleMainWrapper>
     </div>

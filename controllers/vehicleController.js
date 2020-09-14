@@ -65,8 +65,16 @@ module.exports = {
     db.Vehicle.findById(req.params.id)
       .then((dbVehicle) => {
         const response = {
-          percentageToChange: (parseInt(dbVehicle.currentMileage) - parseInt(dbVehicle.lastOilChange)) / parseInt(dbVehicle.oilInterval),
-          milesToChange: parseInt(dbVehicle.lastOilChange) + parseInt(dbVehicle.oilInterval) - parseInt(dbVehicle.currentMileage)
+          percentageToChange:
+            100 -
+            ((parseInt(dbVehicle.currentMileage) -
+              parseInt(dbVehicle.lastOilChange)) /
+              parseInt(dbVehicle.oilInterval)) *
+              100,
+          milesToChange:
+            parseInt(dbVehicle.lastOilChange) +
+            parseInt(dbVehicle.oilInterval) -
+            parseInt(dbVehicle.currentMileage),
         };
         res.json(response);
       })
@@ -75,11 +83,11 @@ module.exports = {
   updateOil: function (req, res) {
     db.Vehicle.findOneAndUpdate(
       { _id: req.params.id },
-      { 
+      {
         currentMileage: req.body.currentMileage,
         lastOilChange: req.body.currentMileage,
         oilInterval: req.body.oilInterval,
-        oilType: req.body.oilType
+        oilType: req.body.oilType,
       },
       { new: true }
     )
