@@ -8,6 +8,8 @@ export default {
     });
   },
 
+  logout: () => axios.get("/api/user/logout"),
+
   getUser: function () {
     return axios.get("/api/user/info");
   },
