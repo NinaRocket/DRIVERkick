@@ -31,7 +31,7 @@ router
   // gets vehicle oil change mileage
   .get(vehicleController.getOilChangeMiles)
   //updates the vehicles oil change
-  .get(vehicleController.updateOil);
+  .put(vehicleController.updateOil);
 
 // router
 //   .route("/:id")

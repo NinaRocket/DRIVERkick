@@ -77,5 +77,14 @@ export default {
   // delete a warranty
   deleteWarranty: (id) => {
     return axios.delete(`/api/warranty/${id}`);
+  },
+
+  // oil functions -------------------------------- ||
+  getOilChangeInfo: (vehicleId) => {
+    return axios.get(`/api/vehicle/oil/${vehicleId}`);
+  },
+  addOilChange: (vehicleID, currentMileage, oilInterval, oilType) => {
+    return axios.put(`api/vehicle/oil/${vehicleID}`,
+    { currentMileage, oilInterval, oilType });
   }
 };
