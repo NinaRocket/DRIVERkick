@@ -9,9 +9,18 @@ import { useDriverKickContext } from "../../../utils/DriverKickContext";
 import ProgressBar from "react-bootstrap/ProgressBar";
 
 // Oil Change COMPONENT ==============================
-function OilChangePopulated({ oilChangeTrackingModal, warranty }) {
+function OilChangePopulated({ oilChangeTrackingModal, oilData }) {
   // Controls progress bar amount
-  const [status, setStatus] = useState(3);
+  const [status, setStatus] = useState(100);
+  console.log(oilData);
+  //setStatus(oilData.percentageToChange);
+  useEffect(() => {
+    setStatus(oilData.percentageToChange);
+    // if (status < 0) {
+    //   setStatus(0);
+    //   console.log(status);
+    // }
+  }, [oilData]);
 
   const oilStatusColorHelper = (bgEvent, redEvent) => {
     if (status <= 20 && status > 5) {
@@ -41,7 +50,7 @@ function OilChangePopulated({ oilChangeTrackingModal, warranty }) {
           <h3
             className={`oil-change-card__mileage-txt ${oilStatusColorHelper()}`}
           >
-            {status}
+            {oilData.milesToChange}
           </h3>
         </div>
         <div className="oil-change-card__progress-container">

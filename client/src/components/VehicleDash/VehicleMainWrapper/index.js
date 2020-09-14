@@ -35,7 +35,7 @@ function ContextAwareToggle({
 }
 
 // MAIN WRAPPER COMPONENT ==============================
-function VehicleMainWrapper({ children, vehicleInfo, userData }) {
+function VehicleMainWrapper({ children, vehicleInfo, userData, getInfo }) {
   // Sets state for accordion
   const [accordionHelper, setAccordionHelper] = useState(false);
 
@@ -44,7 +44,10 @@ function VehicleMainWrapper({ children, vehicleInfo, userData }) {
       <div className="container">
         <Row>
           <Col lg={3} className="vehicle-dash__parent-fixed">
-            <Accordion defaultActiveKey="1" className="vehicle-dash__accordion vehicle-dash__fixed">
+            <Accordion
+              defaultActiveKey="1"
+              className="vehicle-dash__accordion vehicle-dash__fixed"
+            >
               <Card className="vehicle-dash__parent-fixed ">
                 <ContextAwareToggle
                   eventKey="0"

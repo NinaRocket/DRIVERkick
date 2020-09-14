@@ -65,14 +65,17 @@ export default {
   },
   //create a single warranty
   createWarranty: (vehicleId, title, provider, details) => {
-    return axios.post(`/api/warranty/`,
-    { vehicleId, title, provider, details });
+    return axios.post(`/api/warranty/`, {
+      vehicleId,
+      title,
+      provider,
+      details,
+    });
   },
-  
+
   //update a warranty
   updateWarranty: (id, title, provider, details) => {
-    return axios.put(`/api/warranty/${id}`,
-    { title, provider, details });
+    return axios.put(`/api/warranty/${id}`, { title, provider, details });
   },
   // delete a warranty
   deleteWarranty: (id) => {
@@ -84,7 +87,10 @@ export default {
     return axios.get(`/api/vehicle/oil/${vehicleId}`);
   },
   addOilChange: (vehicleID, currentMileage, oilInterval, oilType) => {
-    return axios.put(`api/vehicle/oil/${vehicleID}`,
-    { currentMileage, oilInterval, oilType });
-  }
+    return axios.put(`api/vehicle/oil/${vehicleID}`, {
+      currentMileage,
+      oilInterval,
+      oilType,
+    });
+  },
 };

@@ -47,6 +47,7 @@ function CurrentOilChangeModal(props) {
   // Submits the form value state and validates errors
   const submitOilChangeForm = (event) => {
     event.preventDefault();
+
     if (!currentMileageOil || !selectOilChangeValue || !oilType) {
       return setOilChangeError(true);
     }
@@ -55,6 +56,7 @@ function CurrentOilChangeModal(props) {
         if (response.data.isAuthenticated === false) {
           return logout(history);
         }
+
         props.getInfo();
       })
       .catch((error) => {
@@ -94,7 +96,7 @@ function CurrentOilChangeModal(props) {
 }
 
 // Oil Change Card ===========================|
-function OilChangeCard() {
+function OilChangeCard({ oilData, getInfo, vehicleInfo }) {
   const {
     modalFormSubmit,
     setModalFormSubmit,
@@ -123,8 +125,12 @@ function OilChangeCard() {
         title={"Oil Change"}
         description={"After your last oil change setup for the next one."}
       />
-      <OilChangePopulated oilChangeTrackingModal={mileageModal} />
+      <OilChangePopulated
+        oilChangeTrackingModal={mileageModal}
+        oilData={oilData}
+      />
       <CurrentOilChangeModal
+        getInfo={getInfo}
         show={modalShow}
         onHide={() => setModalShow(false)}
       />
