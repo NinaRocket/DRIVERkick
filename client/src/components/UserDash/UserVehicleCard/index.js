@@ -65,7 +65,8 @@ function DeleteVehicleModal(props) {
     >
       <Modal.Header closeButton></Modal.Header>
       <div className="g__form-container g__remove-margin-bottom">
-        <h2 className="text-center">Update Current Mileage</h2>
+        <h2 className="text-center">Delete Vehicle</h2>
+        <p>Are you sure you want to permanently delete this vehicle? This action can not be undone!</p>
         {mileageError ? (
           <p className="text-center text-danger">
             Please input your current milage.

@@ -13,8 +13,8 @@ const vehicleSchema = new Schema({
   make: { type: String, required: true },
   model: { type: String, required: true },
   icon: { type: String, required: true },
-  driverName: { type: String, default: "Update" },
-  nickname: { type: String, default: "Update" },
+  driverName: { type: String, default: "Untitled" },
+  nickname: { type: String, default: "Untitled" },
   currentMileage: { type: Number, default: 0 },
   lastMileageUpdate: { type: Date, default: Date.now() },
   mileageHistory: [
