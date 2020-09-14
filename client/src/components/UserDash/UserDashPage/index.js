@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import "./style.css";
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
 import GlobalNavBar from "../../GlobalNavBar";

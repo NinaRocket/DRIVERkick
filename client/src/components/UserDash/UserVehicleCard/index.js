@@ -21,39 +21,40 @@ function DeleteVehicleModal(props) {
 
   } = useDriverKickContext();
 
-  // Milage Form Value State
-  const [currentMileage, setCurrentMileage] = useState();
-
-  // Error State
-  const [mileageError, setMileageError] = useState(false);
-
-  setVehID(vehID);
 
   // Sets up page redirect
   const history = useHistory();
 
 
 
-  // Submits the form value state and validates errors
-  const submitCurrentMilage = (event) => {
-    event.preventDefault();
-    API.putMileage(vehID, currentMileage)
+  // Submits the delete api call
+  const submitDeleteVehicle = () => {
+    API.deleteVehicle(props.vehicleID)
       .then((response) => {
 
         if (response.data.isAuthenticated === false) {
           return logout(history);
         }
-        props.getInfo();
+
+        // reloads the page with the latest vehicles
+        props.getLatestVehicles()
       })
       .catch((error) => {
-
         console.log(error);
       });
+
+
     // Lets other components know to close the modal
     setModalFormSubmit(true);
-    // setNewUserMileage(false);
-    // Needs to post this to the database
-    //console.log(currentMileage);
+
+  };
+
+  // Submits the delete api call
+  const submitCancelDelete = () => {
+
+    // Lets other components know to close the modal
+    setModalFormSubmit(true);
+
   };
 
   return (
@@ -64,14 +65,21 @@ function DeleteVehicleModal(props) {
       centered
     >
       <Modal.Header closeButton></Modal.Header>
-      <div className="g__form-container g__remove-margin-bottom">
-        <h2 className="text-center">Delete Vehicle</h2>
+      <div className="g__form-container g__remove-margin-bottom text-center text-danger">
+        <h2>Delete Vehicle</h2>
         <p>Are you sure you want to permanently delete this vehicle? This action can not be undone!</p>
-        {mileageError ? (
-          <p className="text-center text-danger">
-            Please input your current milage.
-          </p>
-        ) : null}
+        <div>
+        <button
+          onClick={submitDeleteVehicle}
+          className="btn"
+        >Yes, Delete Vehicle</button>
+
+        <button
+          onClick={submitCancelDelete}
+          className="btn"
+        >Don't Delete Vehicle</button>
+
+        </div>
 
 
       </div>
@@ -276,6 +284,8 @@ function UserVehicleCard({
       <DeleteVehicleModal
         show={modalShow}
         onHide={() => setModalShow(false)}
+        getLatestVehicles={getLatestVehicles}
+        vehicleID={vehicleID}
       />
     </div>
   );
