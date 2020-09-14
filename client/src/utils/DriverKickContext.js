@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
+import API from "./API";
 
 const DriverKickContext = React.createContext();
 
@@ -21,6 +22,7 @@ export function DriverKickProvider({ children }) {
   function logout(history) {
     setAuthenticated(false);
     // post route to logout session on backend
+    API.logout();
 
     // Route them back to the homepage
     return history.push("/login");
@@ -71,7 +73,7 @@ export function DriverKickProvider({ children }) {
           setSelectValue,
           vehID,
           setVehID,
-          modalFormSubmit, 
+          modalFormSubmit,
           setModalFormSubmit,
           newUserMileage,
           setNewUserMileage

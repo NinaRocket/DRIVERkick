@@ -8,12 +8,19 @@ export default {
     });
   },
 
+  logout: () => axios.get("/api/user/logout"),
+
   getUser: function () {
     return axios.get("/api/user/info");
   },
 
   signup: (userInfo) => {
     return axios.post("/api/user/signup", userInfo);
+  },
+
+  // Returns "true" if the user is logged in
+  homeLoginCheck: () => {
+    return axios.get("api/user/isAuthenticated");
   },
 
   // VEHICLE ROUTES
