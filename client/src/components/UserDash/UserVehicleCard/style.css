@@ -80,6 +80,11 @@
     background-color: rgba(80, 177, 192, 0.5);
   }
 
+  .vehicle-card__modal-btn-container {
+    display: flex;
+    justify-content: space-around;
+  }
+
 
   @media only screen and (max-width: 1199px) {
 
@@ -164,6 +169,14 @@
       height: 35px;
       width: 100%;
       
+    }
+
+    .vehicle-card__modal-btn-container {
+      flex-direction: column-reverse;
+    }
+
+    .vehicle-card__modal-btn {
+      margin-top: 20px;
     }
   
   }

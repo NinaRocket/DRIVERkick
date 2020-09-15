@@ -117,14 +117,7 @@ function MileageTrackerCard({ vehicleInfo, getInfo }) {
           "Frequently updating your mileage generates the most accurate recommendations."
         }
       />
-      {/* {newUserMileage ? (
-        <MileageTrackerInitial mileageTrackingModal={mileageModal} />
-      ) : (
-          <MileageTrackerPopulated
-            mileageTrackingModal={mileageModal}
-            vehicleInfo={vehicleInfo}
-          />
-        )} */}
+
 
       <MileageTrackerPopulated
         mileageTrackingModal={mileageModal}

@@ -7,6 +7,7 @@ import Nav from "react-bootstrap/Nav";
 import LogoTan from "../../images/global/drive-kick-logo-tan.svg";
 import LogoDark from "../../images/global/drive-kick-logo-dark.svg";
 
+
 function GlobalNavBar() {
   // Context state that changes the nav based on the page being used
   const { navType, logout } = useDriverKickContext();
@@ -101,6 +102,14 @@ function GlobalNavBar() {
                     Add New Vehicle
                   </button>
                 ) : null}
+
+                {navType === "newVehicle" ? (
+                  <button type="button" className="btn" onClick={userDash}>
+                    User Dashboard
+                  </button>
+                ) : null}
+
+
 
                 <button type="button" className="btn" onClick={triggerLogout}>
                   Logout
