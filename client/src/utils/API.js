@@ -64,8 +64,10 @@ export default {
     return axios.put(`/api/vehicle/${vehicleId}`, { driverName });
   },
   // gets the recalls for the vehicle by id
-  getRecalls: function (VIN) {
-    return axios.get(`/api/vehicle/recalls/${VIN}`);
+  getRecalls: function (year, make, model) {
+    return axios.get(
+      `https://one.nhtsa.gov/webapi/api/Recalls/vehicle/modelyear/${year}/make/${make}/model/${model}?format=json`
+    );
   },
   updateOwner: () => {
     return axios.put();

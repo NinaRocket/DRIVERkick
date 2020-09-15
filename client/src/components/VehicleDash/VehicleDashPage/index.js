@@ -9,6 +9,7 @@ import MileageTrackerCard from "../MileageTrackerCard";
 import WarrantyCard from "../WarrantyCard";
 import RecallsCard from "../RecallsCard";
 import OilChangeCard from "../OilChangeCard";
+import Axios from "axios";
 
 function VehicleDashPage() {
   // Sets which buttons show in the nav
@@ -58,8 +59,6 @@ function VehicleDashPage() {
       const fetchVehicles = await API.getVehicleById(vehID);
       const fetchOilData = await API.getOilChangeInfo(vehID);
       const fetchWarranty = await API.getAllWarranties(vehID);
-
-      console.log(fetchOilData);
 
       if (
         fetchUser.data.isAuthenticated === false ||
