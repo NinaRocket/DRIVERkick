@@ -33,31 +33,49 @@ function ContextAwareToggle({
   );
 }
 
-$(function () {
 
-  var $sidebar = $("#sidebar"),
-    $window = $(window),
-    offset = $sidebar.offset(),
-    topPadding = 30;
 
-  $window.scroll(function () {
-    if ($window.scrollTop() > offset.top) {
-      $sidebar.stop().animate({
-        marginTop: $window.scrollTop() - offset.top + topPadding
-      });
-    } else {
-      $sidebar.stop().animate({
-        marginTop: 0
-      });
-    }
-  });
 
-});
+
 
 // MAIN WRAPPER COMPONENT ==============================|
 function VehicleMainWrapper({ children, vehicleInfo, userData }) {
   // Sets state for accordion
   const [accordionHelper, setAccordionHelper] = useState(false);
+
+  const [width, setWidth] = React.useState(window.innerWidth);
+  const breakpoint = 991;
+
+  React.useEffect(() => {
+    const handleWindowResize = () => setWidth(window.innerWidth)
+    window.addEventListener("resize", handleWindowResize);
+
+    // Return a function from the effect that removes the event listener
+    return () => window.removeEventListener("resize", handleWindowResize);
+  }, []);
+
+  if (width > breakpoint) {
+    $(function () {
+
+      const $sidebar = $("#sidebar"),
+        $window = $(window),
+        offset = $sidebar.offset(),
+        topPadding = 30;
+
+      $window.scroll(function () {
+        if ($window.scrollTop() > offset.top) {
+          $sidebar.stop().animate({
+            marginTop: $window.scrollTop() - offset.top + topPadding
+          });
+        } else {
+          $sidebar.stop().animate({
+            marginTop: 0
+          });
+        }
+      });
+
+    });
+  } 
 
   return (
     <section className="g__dashboard-wrapper">
