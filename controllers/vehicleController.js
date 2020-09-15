@@ -93,5 +93,5 @@ module.exports = {
     )
       .then((dbVehicle) => res.json(dbVehicle))
       .catch((err) => res.status(422).json(err));
-  },
+  }
 };

@@ -44,7 +44,6 @@ function WarrantyModal(props) {
     setWarrantyDetails(event.target.value);
   };
 
-
   setVehID(vehID);
 
 

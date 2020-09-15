@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import "./style.css";
-
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Accordion from "react-bootstrap/Accordion";
 import openBtnIcon from "../../../images/vehiclepage/open-btn-icon.svg";
 import closeBtnIcon from "../../../images/vehiclepage/close-btn-icon.svg";
-
 import { useAccordionToggle } from "react-bootstrap/AccordionToggle";
 
 // ACCORDION HELPER COMPONENT ==========================| 

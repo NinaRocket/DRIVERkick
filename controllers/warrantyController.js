@@ -23,10 +23,5 @@ module.exports = {
       req.body, { new: true })
       .then((dbWarranty) => res.json(dbWarranty))
       .catch((err) => res.status(422).json(err));
-  },
-  remove: function (req, res) {
-    db.Warranty.findOneAndDelete({ _id: req.params.id })
-      .then((dbWarranty) => res.json(dbWarranty))
-      .catch((err) => res.status(422).json(err));
-  },
+  }
 };
