@@ -55,8 +55,11 @@ function VehicleDashPage() {
   async function getInfo() {
     try {
       const fetchUser = await API.getUser();
+      console.log(vehID);
       const fetchVehicles = await API.getVehicleById(vehID);
+      console.log(vehID);
       const fetchOilData = await API.getOilChangeInfo(vehID);
+      console.log(vehID);
       const fetchWarranty = await API.getAllWarranties(vehID);
 
       if (
@@ -82,7 +85,6 @@ function VehicleDashPage() {
     } catch (error) {
       //console.log(error);
     }
-    console.log(mileageHistory);
   }
   // REACT'S SUGGESTED ASYNC USE-EFFECT SYNTAX
   useEffect(() => {
@@ -90,6 +92,8 @@ function VehicleDashPage() {
       getInfo();
     }
   }, [vehID]);
+
+  console.log(vehicleInfo)
 
   return (
     <div>

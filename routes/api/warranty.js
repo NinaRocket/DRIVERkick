@@ -7,10 +7,8 @@ router.use(isAuthenticated);
 router.route("/")
     .post(warrantyController.create);
 
-router.route("/:vehicleId")
-    .get(warrantyController.findAllByVehicle);
-
 router.route("/:id")
+    .get(warrantyController.findAllByVehicle)
     .put(warrantyController.update)
     .delete(warrantyController.remove);
 
