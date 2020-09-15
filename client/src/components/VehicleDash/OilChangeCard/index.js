@@ -34,6 +34,7 @@ function CurrentOilChangeModal(props) {
   const [oilChangeError, setOilChangeError] = useState(false);
 
   setVehID(vehID);
+  console.log(vehID);
 
   // Sets the form value state
   const addOilType = (event) => {
@@ -51,11 +52,14 @@ function CurrentOilChangeModal(props) {
     if (!currentMileageOil || !selectOilChangeValue || !oilType) {
       return setOilChangeError(true);
     }
-    API.addOilChange(vehID, currentMileageOil, oilType, selectOilChangeValue)
+
+    API.addOilChange(vehID, currentMileageOil, selectOilChangeValue, oilType)
       .then((response) => {
         if (response.data.isAuthenticated === false) {
           return logout(history);
         }
+
+        console.log(response);
 
         props.getInfo();
       })
