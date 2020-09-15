@@ -44,6 +44,7 @@ function SignUpForm() {
   };
   // END Error States ——————————————————————————|
 
+  // START Input setStates ——————————————————————————|
   const signupEmailValue = (event) => {
     setEmail(event.target.value);
   };
@@ -63,6 +64,7 @@ function SignUpForm() {
   const signupConfirmPasswordValue = (event) => {
     setConfirmPassword(event.target.value);
   };
+  // END Input setStates ——————————————————————————|
 
   const submitUserSignup = (event) => {
     event.preventDefault();
@@ -88,7 +90,7 @@ function SignUpForm() {
         if (!response.data.errmsg) {
           //home for now
           redirect.push("/add-vehicle");
-        } 
+        }
       })
       .catch((error) => {
         setSignupFail(true)
@@ -136,7 +138,7 @@ function SignUpForm() {
           <input
             className={`form-input ${
               requiredError ? "g__form-input-err" : null
-            }`}
+              }`}
             type="text"
             id="firstName"
             name="firstName"
@@ -152,7 +154,7 @@ function SignUpForm() {
           <input
             className={`form-input ${
               requiredError ? "g__form-input-err" : null
-            }`}
+              }`}
             type="text"
             id="lastName"
             name="lastName"
@@ -169,7 +171,7 @@ function SignUpForm() {
           <input
             className={`form-input ${emailError ? "g__form-input-err" : null} ${
               requiredError ? "g__form-input-err" : null
-            }`}
+              }`}
             type="text"
             id="email"
             name="email"
@@ -186,7 +188,7 @@ function SignUpForm() {
           <input
             className={`form-input ${
               passwordError ? "g__form-input-err" : null
-            } ${requiredError ? "g__form-input-err" : null}`}
+              } ${requiredError ? "g__form-input-err" : null}`}
             type="password"
             name="password"
             id="password"
@@ -201,7 +203,7 @@ function SignUpForm() {
           <input
             className={`form-input ${
               passwordError ? "g__form-input-err" : null
-            } ${requiredError ? "g__form-input-err" : null}`}
+              } ${requiredError ? "g__form-input-err" : null}`}
             type="password"
             placeholder="retype password"
             name="confirmPassword"

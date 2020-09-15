@@ -55,11 +55,8 @@ function VehicleDashPage() {
   async function getInfo() {
     try {
       const fetchUser = await API.getUser();
-      console.log(vehID);
       const fetchVehicles = await API.getVehicleById(vehID);
-      console.log(vehID);
       const fetchOilData = await API.getOilChangeInfo(vehID);
-      console.log(vehID);
       const fetchWarranty = await API.getAllWarranties(vehID);
 
       if (
@@ -83,7 +80,7 @@ function VehicleDashPage() {
       setOilData(fetchOilData.data);
       setWarrantyData(fetchWarranty.data);
     } catch (error) {
-      //console.log(error);
+      console.log(error);
     }
   }
   // REACT'S SUGGESTED ASYNC USE-EFFECT SYNTAX
@@ -92,8 +89,6 @@ function VehicleDashPage() {
       getInfo();
     }
   }, [vehID]);
-
-  console.log(vehicleInfo)
 
   return (
     <div>
@@ -114,6 +109,11 @@ function VehicleDashPage() {
           getInfo={getInfo}
           warranty={warrantyData}
         />
+        <div>
+          <h3 className="vehicle-dash__coming-soon">
+            Coming soon!
+          </h3>
+        </div>
         <RecallsCard />
       </VehicleMainWrapper>
     </div>

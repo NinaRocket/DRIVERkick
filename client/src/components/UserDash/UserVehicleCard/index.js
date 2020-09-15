@@ -94,7 +94,6 @@ function UserVehicleCard({
 
   const { modalFormSubmit, setModalFormSubmit, logout } = useDriverKickContext();
 
-
   // START Modal Code  ————————————————————————|
   const [modalShow, setModalShow] = React.useState(false);
 
@@ -109,13 +108,12 @@ function UserVehicleCard({
     setModalShow(true);
     setModalFormSubmit(false);
   };
-
   // END Modal Code  ————————————————————————|
 
   //redirect to vehicle dashboard
   const history = useHistory();
 
-  // START Custom Editing Code  ———————————————|
+  // START Custom Editing Code  ———————————————————————————————|
   const [editing, setEditing] = useState(false);
   const inputedCarNickname = useRef(carNickname);
   const inputedOwnerName = useRef(ownerName);
@@ -156,7 +154,7 @@ function UserVehicleCard({
   const handleOwnerChange = (evt) => {
     inputedOwnerName.current = evt.target.value;
   };
-  // END Custom Editing Code  ———————————————|
+  // END Custom Editing Code  ——————————————————————————————————|
 
   const trackMaintenanceBtn = () => {
     history.push(`/vehicle-dashboard/${vehicleID}`);
