@@ -59,7 +59,6 @@ function CurrentOilChangeModal(props) {
         if (response.data.isAuthenticated === false) {
           return logout(history);
         }
-
         props.getInfo();
       })
       .catch((error) => {

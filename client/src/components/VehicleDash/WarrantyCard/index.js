@@ -48,10 +48,7 @@ function WarrantyModal(props) {
 
 
   setVehID(vehID);
-  console.log("props.vehicleInfo._id");
-  console.log(props.vehicleInfo._id);
-  console.log("vehID");
-  console.log(vehID);
+
 
   // Submit Warranty Form Function
   const submitWarrantyForm = (event) => {
@@ -63,7 +60,7 @@ function WarrantyModal(props) {
     // Lets other components know to close the modal
     setModalFormSubmit(true);
 
-    console.log(vehID)
+
     // adding warranty info from above structure
     API.createWarranty(vehID, title, provider, details)
       .then((response) => {
@@ -72,7 +69,6 @@ function WarrantyModal(props) {
         }
       })
       .catch((error) => {
-        //console.log("adding warranty error: ");
         console.log(error);
       });
 
@@ -144,24 +140,6 @@ function WarrantyCard({ vehicleInfo, getInfo, warranty }) {
 
   // Determines if the initial content or populated content component show up.
   const [newUser, setNewUser] = useState(false);
-  // Function with GET call in it
-  // const runWarranty = () => {
-  //   API.getAllWarranties(vehID)
-  //     .then((res) => {
-  //       if (res.data.isAuthenticated === false) {
-  //         return logout(history);
-  //       }
-
-  //       setWarranty(res.data);
-  //       // console.log(res.data);
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
-
-  // useEffect(() => {
-  //   // Calls GET Function
-  //   runWarranty();
-  // }, []);
 
   return (
     <div className="g__vehicle-card">

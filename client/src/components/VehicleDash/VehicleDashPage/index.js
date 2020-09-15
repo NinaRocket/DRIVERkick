@@ -88,7 +88,6 @@ function VehicleDashPage() {
   }
   // REACT'S SUGGESTED ASYNC USE-EFFECT SYNTAX
   useEffect(() => {
-
     if (vehID) {
       getInfo();
     }

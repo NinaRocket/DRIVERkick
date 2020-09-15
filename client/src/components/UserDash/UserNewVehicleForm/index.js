@@ -26,7 +26,6 @@ function UserNewVehicleForm() {
 
     API.getDecodeVIN(VIN)
       .then((response) => {
-        console.log("Search API Ran");
         if (response.data.isAuthenticated === false) {
           return logout(redirect);
         }
