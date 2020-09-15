@@ -36,6 +36,8 @@ function CurrentOilChangeModal(props) {
   setVehID(vehID);
   console.log(vehID);
 
+  
+
   // Sets the form value state
   const addOilType = (event) => {
     setOilType(event.target.value);

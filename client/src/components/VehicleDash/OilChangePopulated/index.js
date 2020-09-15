@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
-import { useHistory } from "react-router-dom";
-import API from "../../../utils/API";
 import oilCan from "../../../images/vehiclepage/oil-can.svg";
 import oilCanFire from "../../../images/vehiclepage/oil-can-fire.svg";
 import oilCanRed from "../../../images/vehiclepage/oil-can-red.svg";
-import { useDriverKickContext } from "../../../utils/DriverKickContext";
 import ProgressBar from "react-bootstrap/ProgressBar";
 
 // Oil Change COMPONENT ==============================
@@ -16,10 +13,6 @@ function OilChangePopulated({ oilChangeTrackingModal, oilData }) {
   //setStatus(oilData.percentageToChange);
   useEffect(() => {
     setStatus(oilData.percentageToChange);
-    // if (status < 0) {
-    //   setStatus(0);
-    //   console.log(status);
-    // }
   }, [oilData]);
 
   const oilStatusColorHelper = (bgEvent, redEvent) => {
@@ -68,16 +61,19 @@ function OilChangePopulated({ oilChangeTrackingModal, oilData }) {
           />
         </div>
       </div>
-      <div className="oil-change-card__warning-container">
-        {status <= 5 ? (
-          <h5>Time to get an oil change as soon as possible!</h5>
-        ) : null}
-        {status <= 20 && status > 5 ? (
-          <h5>Almost time to get an oil change!</h5>
-        ) : null}
-      </div>
+      {status > 20 ? (
+        <div className="oil-change-card__warning-container">
+          {status <= 5 ? (
+            <h5>Time to get an oil change as soon as possible!</h5>
+          ) : null}
+          {status <= 20 && status > 5 ? (
+            <h5>Almost time to get an oil change!</h5>
+          ) : null}
+        </div>
+      ) : null}
+
       <button
-        className="g__vehicle-card__btn mt-3"
+        className="g__vehicle-card__btn"
         onClick={oilChangeTrackingModal}
       >
         Update Oil Change

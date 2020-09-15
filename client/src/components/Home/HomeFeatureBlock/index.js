@@ -35,7 +35,7 @@ function HomeFeatureBlock() {
                         icon={warrantyIcon}
                         alt={"Checkmark icon"}
                         subhead={"Warranty"}
-                        text={"Store important warranty information for all of your car parts. If something breaks you will be able to save with no hassle."}
+                        text={"Store important warranty information for all of your car parts. If something breaks, your information is easily accessible."}
                     />
                     <HomeFeatDescriptions
                         icon={recallIcon}
