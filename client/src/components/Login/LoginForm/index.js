@@ -61,8 +61,7 @@ function LoginForm() {
       .then((response) => {
         // if successful
         if (response.status === 200) {
-          // update App.js state to login
-          // setLoggedIn(true);
+
           setEmail(response.data.email);
 
           history.push("/user-dashboard");
@@ -105,7 +104,6 @@ function LoginForm() {
             id="email"
             name="email"
             placeholder="you@email.com"
-            // value={email}
             onChange={userEmailValue}
           />
         </div>
@@ -119,7 +117,6 @@ function LoginForm() {
             name="password"
             id="password"
             placeholder="Password"
-            // value={password}
             onChange={userPasswordValue}
           />
         </div>
