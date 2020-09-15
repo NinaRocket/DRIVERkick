@@ -51,14 +51,12 @@ function CurrentMilageModal(props) {
         props.getInfo();
       })
       .catch((error) => {
-
         console.log(error);
       });
     // Lets other components know to close the modal
     setModalFormSubmit(true);
     // setNewUserMileage(false);
     // Needs to post this to the database
-    //console.log(currentMileage);
   };
 
   return (

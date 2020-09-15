@@ -58,7 +58,6 @@ function WarrantyModal(props) {
 
     // Lets other components know to close the modal
     setModalFormSubmit(true);
-    console.log(props.vehicleInfo);
 
     // adding warranty info from above structure
     API.createWarranty(props.vehicleInfo._id, title, provider, details)
@@ -68,7 +67,6 @@ function WarrantyModal(props) {
         }
       })
       .catch((error) => {
-        //console.log("adding warranty error: ");
         console.log(error);
       });
 
@@ -153,7 +151,6 @@ function WarrantyCard({ vehicleInfo, getInfo }) {
         }
 
         setWarranty(res.data);
-        // console.log(res.data);
       })
       .catch((err) => console.log(err));
   };

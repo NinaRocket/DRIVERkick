@@ -59,8 +59,6 @@ function VehicleDashPage() {
       const fetchOilData = await API.getOilChangeInfo(vehID);
       const fetchWarranty = await API.getAllWarranties(vehID);
 
-      console.log(fetchOilData);
-
       if (
         fetchUser.data.isAuthenticated === false ||
         fetchVehicles.data.isAuthenticated === false ||
@@ -88,7 +86,6 @@ function VehicleDashPage() {
   }
   // REACT'S SUGGESTED ASYNC USE-EFFECT SYNTAX
   useEffect(() => {
-    //console.log(vehID);
     if (vehID) {
       getInfo();
     }

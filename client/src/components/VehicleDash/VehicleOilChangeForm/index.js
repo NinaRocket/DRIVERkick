@@ -36,9 +36,7 @@ function VehicleOilChangeForm() {
     // Need to add a way to not submit if the person selects "choose" as the <select> value
     API.addvehicle(userVehicleInfo)
       .then((response) => {
-        //console.log(response);
         if (!response.data.errmsg) {
-          //console.log("successfully added new vehicle");
           //home for now
           setRedirect("/stage-user-dashboard");
         } else {

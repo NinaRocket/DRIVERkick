@@ -29,7 +29,6 @@ function UserMainWrapper() {
         }
 
         setUserData({ ...userData, ...res.data });
-        console.log(res.data);
       })
       .catch((err) => console.log(err));
 
@@ -38,12 +37,10 @@ function UserMainWrapper() {
         if (res.data.isAuthenticated === false) {
           return logout(history);
         }
-        //console.log(res.data);
         if (res.data.length === 0) {
           history.push("/add-vehicle");
         }
         setVehicleInfo(res.data);
-        //console.log(vehicleInfo);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -73,7 +70,6 @@ function UserMainWrapper() {
           <Col lg={1}></Col>
           <Col lg={8}>
             {vehicleInfo.map((v, index) => {
-              //console.log(bgImages.length);
               const imgIndex = index % bgImages.length;
               return (
                 <UserVehicleCard

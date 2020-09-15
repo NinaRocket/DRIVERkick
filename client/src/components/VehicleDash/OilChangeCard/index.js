@@ -34,7 +34,6 @@ function CurrentOilChangeModal(props) {
   const [oilChangeError, setOilChangeError] = useState(false);
 
   setVehID(vehID);
-  console.log(vehID);
 
   
 
@@ -60,9 +59,6 @@ function CurrentOilChangeModal(props) {
         if (response.data.isAuthenticated === false) {
           return logout(history);
         }
-
-        console.log(response);
-
         props.getInfo();
       })
       .catch((error) => {
