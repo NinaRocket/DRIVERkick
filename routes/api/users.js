@@ -34,7 +34,7 @@ router.post("/signup", (req, res) => {
 router.get("/logout", (req, res) => {
   req.logout();
   res.status(200).sendFile(path.join(__dirname, "../client/build/index.html"));
-})
+});
 
 // checks and returns wether or not the ser is authenticated
 router.get("/isAuthenticated", function (req, res) {
@@ -44,8 +44,6 @@ router.get("/isAuthenticated", function (req, res) {
   else {
     res.json({ isAuthenticated: false })
   }
-
-
 });
 
 // Endpoint to get current user

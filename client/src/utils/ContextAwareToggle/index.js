@@ -25,5 +25,4 @@ function ContextAwareToggle({ children, eventKey, callback }) {
   );
 }
 
-
 export default ContextAwareToggle;

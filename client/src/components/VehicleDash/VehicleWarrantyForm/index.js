@@ -27,8 +27,6 @@ function VehicleWarrantyForm({
         </Form.Group>
       </div>
 
-
-
       <div className="g__label-group mt-4">
         <Form.Group>
           <Form.Label htmlFor="warrantyProvider">Warranty Provider</Form.Label>
@@ -55,7 +53,6 @@ function VehicleWarrantyForm({
             onChange={addWarrantyDetails} />
         </Form.Group>
       </div>
-
 
       <button
         className="btn g__form-submit-btn"

@@ -19,11 +19,8 @@ function DeleteVehicleModal(props) {
 
   } = useDriverKickContext();
 
-
   // Sets up page redirect
   const history = useHistory();
-
-
 
   // Submits the delete api call
   const submitDeleteVehicle = () => {
@@ -40,7 +37,6 @@ function DeleteVehicleModal(props) {
       .catch((error) => {
         console.log(error);
       });
-
 
     // Lets other components know to close the modal
     setModalFormSubmit(true);
@@ -76,15 +72,11 @@ function DeleteVehicleModal(props) {
             onClick={submitCancelDelete}
             className="btn"
           >Cancel</button>
-
         </div>
-
-
       </div>
     </Modal>
   );
 }
-
 
 
 // User Vehicle Card Component ==========================|
@@ -102,8 +94,8 @@ function UserVehicleCard({
 
   const { modalFormSubmit, setModalFormSubmit, logout } = useDriverKickContext();
 
-  // START Modal Code  ————————————————————————|
 
+  // START Modal Code  ————————————————————————|
   const [modalShow, setModalShow] = React.useState(false);
 
   useEffect(() => {
