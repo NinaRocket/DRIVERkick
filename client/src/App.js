@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import Footer from "./components/Footer";
 import "./App.css";
@@ -10,6 +10,13 @@ import VehicleFormPage from "./components/UserDash/VehicleFormPage";
 import UserDashPage from "./components/UserDash/UserDashPage";
 import VehicleDashPage from "./components/VehicleDash/VehicleDashPage";
 import NotFoundPage from "./components/NotFoundPage";
+import ReactGA from 'react-ga';
+
+// Google Analytics Page Tracking
+useEffect(() => {
+  ReactGA.initialize('UA-122656834-2');
+  ReactGA.pageview(window.location.pathname + window.location.search)
+}, [])
 
 function App() {
   return (
