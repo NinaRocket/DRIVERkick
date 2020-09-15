@@ -99,7 +99,7 @@ export default {
     return axios.get(`/api/vehicle/oil/${vehicleId}`);
   },
   addOilChange: (vehicleID, currentMileage, oilInterval, oilType) => {
-    return axios.put(`api/vehicle/oil/${vehicleID}`, {
+    return axios.put(`/api/vehicle/oil/${vehicleID}`, {
       currentMileage,
       oilInterval,
       oilType,
