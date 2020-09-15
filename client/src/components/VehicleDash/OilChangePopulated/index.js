@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
-import { useHistory } from "react-router-dom";
-import API from "../../../utils/API";
 import oilCan from "../../../images/vehiclepage/oil-can.svg";
 import oilCanFire from "../../../images/vehiclepage/oil-can-fire.svg";
 import oilCanRed from "../../../images/vehiclepage/oil-can-red.svg";
-import { useDriverKickContext } from "../../../utils/DriverKickContext";
 import ProgressBar from "react-bootstrap/ProgressBar";
 
 // Oil Change COMPONENT ==============================
@@ -16,10 +13,6 @@ function OilChangePopulated({ oilChangeTrackingModal, oilData }) {
   //setStatus(oilData.percentageToChange);
   useEffect(() => {
     setStatus(oilData.percentageToChange);
-    // if (status < 0) {
-    //   setStatus(0);
-    //   console.log(status);
-    // }
   }, [oilData]);
 
   const oilStatusColorHelper = (bgEvent, redEvent) => {
