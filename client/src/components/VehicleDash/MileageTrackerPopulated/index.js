@@ -5,7 +5,6 @@ import MileageHistoryTable from "../MileageHistoryTable";
 import Moment from "react-moment";
 
 function MileageTrackerPopulated({ mileageTrackingModal, vehicleInfo }) {
-  console.log(vehicleInfo);
   let mileage = vehicleInfo.currentMileage;
   mileage = mileage.toLocaleString();
   return (

@@ -20,7 +20,6 @@ function AddVehicleMainWrapper({ children }) {
         setUserData({ ...userData, ...res.data });
       })
       .catch((err) => console.log(err));
-    //console.log(userData);
   }, []);
 
   return (
