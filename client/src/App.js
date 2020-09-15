@@ -12,13 +12,14 @@ import VehicleDashPage from "./components/VehicleDash/VehicleDashPage";
 import NotFoundPage from "./components/NotFoundPage";
 import ReactGA from 'react-ga';
 
-// Google Analytics Page Tracking
-useEffect(() => {
-  ReactGA.initialize('UA-122656834-2');
-  ReactGA.pageview(window.location.pathname + window.location.search)
-}, [])
 
 function App() {
+  // Google Analytics Page Tracking
+  useEffect(() => {
+    ReactGA.initialize('UA-122656834-2');
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, [])
+  
   return (
     <>
       <DriverKickProvider>
