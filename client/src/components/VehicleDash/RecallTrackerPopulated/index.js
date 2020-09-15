@@ -9,7 +9,7 @@ function RecallTrackerPopulated({ mileageTrackingModal }) {
 
     return (
         // START Hard Code Placeholders ————————|
-        <div className="recall-card__body">
+        <div className="recall-card__body g__coming-soon">
             <div className="recall-card__content">
 
                 <h5>Date</h5>

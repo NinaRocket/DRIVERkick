@@ -16,6 +16,7 @@ function RecallsCard() {
                 alt={"Warning exclamation mark"}
                 title={"Recalls"}
                 description={"Check here frequently to see if your vehicle has been affected."}
+
             />
             {noRecall ? <RecallTrackerInitial /> : <RecallTrackerPopulated />}
         </div>

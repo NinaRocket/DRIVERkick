@@ -1,0 +1,8 @@
+.vehicle-dash__coming-soon {
+    text-align: center;
+    background-color: #0F4457;
+    color: #50B2C0;
+    padding: 10px 0 25px;
+    margin-bottom: -15px;
+    border-radius: 5px 5px 0 0;
+}
