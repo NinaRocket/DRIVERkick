@@ -84,9 +84,9 @@ module.exports = {
     db.Vehicle.findOneAndUpdate(
       { _id: req.params.id },
       {
-        currentMileage: req.body.currentMileage,
-        lastOilChange: req.body.currentMileage,
-        oilInterval: req.body.oilInterval,
+        currentMileage: parseInt(req.body.currentMileage),
+        lastOilChange: parseInt(req.body.currentMileage),
+        oilInterval: parseInt(req.body.oilInterval),
         oilType: req.body.oilType,
       },
       { new: true }
