@@ -88,9 +88,7 @@ function SignUpForm() {
         if (!response.data.errmsg) {
           //home for now
           redirect.push("/add-vehicle");
-        } else {
-          //console.log("email already taken");
-        }
+        } 
       })
       .catch((error) => {
         setSignupFail(true)

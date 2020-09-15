@@ -32,11 +32,6 @@ function UserNewVehicleForm() {
         setVinData(response.data);
         // Authentication user submitted a vin (changing the state from "False" to a truthy value)
         vinNum ? setVinResults(true) : setVinResults(false);
-        if (!response.data.errmsg) {
-          //console.log("successfully added new vehicle");
-        } else {
-          //console.log("Vehicle did not submit successfully");
-        }
       })
       .catch((error) => {
         console.log(`login error: ${error}`);

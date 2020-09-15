@@ -152,7 +152,7 @@ function UserVehicleCard({
 
         getLatestVehicles();
       } catch (error) {
-        //console.log(error);
+        console.log(error);
       }
     }
   };

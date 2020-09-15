@@ -33,19 +33,14 @@ function VehicleOilChangeForm() {
     };
 
     //request to server to add a new email/password
-    // Need to add a way to not submit if the person selects "choose" as the <select> value
     API.addvehicle(userVehicleInfo)
       .then((response) => {
         if (!response.data.errmsg) {
-          //home for now
           setRedirect("/stage-user-dashboard");
-        } else {
-          //console.log("Vehicle did not submit successfully");
-        }
+        } 
       })
       .catch((error) => {
-        //console.log("Vehicle adding error: ");
-        //console.log(error);
+        console.log(error);
       });
   };
 
