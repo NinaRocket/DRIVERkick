@@ -38,9 +38,9 @@
 
 .oil-change-card__warning-container {
     text-align: center;
-    margin-top: 20px; 
+    margin: -30px 0 50px; 
     font-style: italic;
-    background-color: #143642;
+    border:1px solid #143642;
     padding: 18px 10px 10px;
     color: #50B2C0;
 }

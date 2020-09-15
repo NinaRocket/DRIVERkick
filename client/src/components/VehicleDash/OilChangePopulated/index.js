@@ -59,12 +59,12 @@ function OilChangePopulated({ oilChangeTrackingModal, oilData }) {
           />
         </div>
       </div>
-      {status > 20 ? (
+      {status <= 20 ? (
         <div className="oil-change-card__warning-container">
           {status <= 5 ? (
-            <h5>Time to get an oil change as soon as possible!</h5>
+            <h5 className="text-danger">Time to get an oil change as soon as possible!</h5>
           ) : null}
-          {status <= 20 && status > 5 ? (
+          {status <= 20 && status >= 5 ? (
             <h5>Almost time to get an oil change!</h5>
           ) : null}
         </div>
