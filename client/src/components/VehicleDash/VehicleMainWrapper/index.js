@@ -10,7 +10,7 @@ import closeBtnIcon from "../../../images/vehiclepage/close-btn-icon.svg";
 
 import { useAccordionToggle } from "react-bootstrap/AccordionToggle";
 
-// ACCORDION HELPER COMPONENT ==========================
+// ACCORDION HELPER COMPONENT ==========================| 
 function ContextAwareToggle({
   children,
   eventKey,
@@ -34,8 +34,8 @@ function ContextAwareToggle({
   );
 }
 
-// MAIN WRAPPER COMPONENT ==============================
-function VehicleMainWrapper({ children, vehicleInfo, userData, getInfo }) {
+// MAIN WRAPPER COMPONENT ==============================|
+function VehicleMainWrapper({ children, vehicleInfo, userData }) {
   // Sets state for accordion
   const [accordionHelper, setAccordionHelper] = useState(false);
 

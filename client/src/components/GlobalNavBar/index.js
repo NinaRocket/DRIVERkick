@@ -15,7 +15,7 @@ function GlobalNavBar() {
   // Sets redirects to other pages
   const redirect = useHistory();
 
-  // Buttons
+  // START Buttons --------------------------|
   const signUp = () => {
     redirect.push("/signup");
   };
@@ -34,6 +34,7 @@ function GlobalNavBar() {
   const triggerLogout = () => {
     return logout(redirect);
   };
+  // END Buttons --------------------------|
 
   return (
     <>
@@ -59,6 +60,7 @@ function GlobalNavBar() {
             />
           </Navbar.Brand>
           <Nav>
+
             {/* Home */}
             {navType === "home" || navType === "notFound" ? (
               <div className="global-nav__btn-group">

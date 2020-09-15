@@ -83,7 +83,7 @@ function VehicleDashPage() {
       setOilData(fetchOilData.data);
       setWarrantyData(fetchWarranty.data);
     } catch (error) {
-      //console.log(error);
+      console.log(error);
     }
   }
   // REACT'S SUGGESTED ASYNC USE-EFFECT SYNTAX

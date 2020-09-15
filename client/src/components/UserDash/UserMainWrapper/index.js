@@ -18,6 +18,7 @@ function UserMainWrapper() {
   // Sets up page redirect
   const history = useHistory();
 
+  // Uses ID param from url
   const { id } = useParams();
 
   // API Call for User and Vehicle Info

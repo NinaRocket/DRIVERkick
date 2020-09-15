@@ -9,7 +9,6 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 function OilChangePopulated({ oilChangeTrackingModal, oilData }) {
   // Controls progress bar amount
   const [status, setStatus] = useState(100);
-  //setStatus(oilData.percentageToChange);
   useEffect(() => {
     setStatus(oilData.percentageToChange);
   }, [oilData]);

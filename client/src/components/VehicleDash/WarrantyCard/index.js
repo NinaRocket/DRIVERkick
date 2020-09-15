@@ -19,8 +19,6 @@ function WarrantyModal(props) {
     setVehID,
   } = useDriverKickContext();
 
-  // Modal States
-  const [modalShow, setModalShow] = React.useState(false);
 
   // START Form Field ————————————————————|
 
@@ -117,9 +115,6 @@ function WarrantyCard({ vehicleInfo, getInfo, warranty }) {
   } = useDriverKickContext();
 
   const [modalShow, setModalShow] = React.useState(false);
-
-  // Warranties from the Database get stored here
-  // const [warranty, setWarranty] = useState([]);
 
   // Sets up page redirect
   const history = useHistory();
