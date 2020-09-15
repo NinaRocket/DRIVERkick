@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -7,7 +7,6 @@ import Accordion from "react-bootstrap/Accordion";
 import openBtnIcon from "../../../images/vehiclepage/open-btn-icon.svg";
 import closeBtnIcon from "../../../images/vehiclepage/close-btn-icon.svg";
 import { useAccordionToggle } from "react-bootstrap/AccordionToggle";
-import $ from "jquery"
 
 // ACCORDION HELPER COMPONENT ==========================| 
 function ContextAwareToggle({
@@ -21,6 +20,7 @@ function ContextAwareToggle({
     callback && callback(eventKey);
     accordionHelper ? setAccordionHelper(false) : setAccordionHelper(true);
   });
+
 
   return (
     <button
@@ -43,39 +43,6 @@ function VehicleMainWrapper({ children, vehicleInfo, userData }) {
   // Sets state for accordion
   const [accordionHelper, setAccordionHelper] = useState(false);
 
-  const [width, setWidth] = React.useState(window.innerWidth);
-  const breakpoint = 991;
-
-  React.useEffect(() => {
-    const handleWindowResize = () => setWidth(window.innerWidth)
-    window.addEventListener("resize", handleWindowResize);
-
-    // Return a function from the effect that removes the event listener
-    return () => window.removeEventListener("resize", handleWindowResize);
-  }, []);
-
-  if (width > breakpoint) {
-    $(function () {
-
-      const $sidebar = $("#sidebar"),
-        $window = $(window),
-        offset = $sidebar.offset(),
-        topPadding = 30;
-
-      $window.scroll(function () {
-        if ($window.scrollTop() > offset.top) {
-          $sidebar.stop().animate({
-            marginTop: $window.scrollTop() - offset.top + topPadding
-          });
-        } else {
-          $sidebar.stop().animate({
-            marginTop: 0
-          });
-        }
-      });
-
-    });
-  } 
 
   return (
     <section className="g__dashboard-wrapper">
