@@ -84,14 +84,14 @@ module.exports = {
     db.Vehicle.findByIdAndUpdate(
       req.params.id,
       {
-        currentMileage: req.body.currentMileage,
-        lastOilChange: req.body.currentMileage,
-        oilInterval: req.body.oilInterval,
-        oilType: req.body.oilType
+        currentMileage: parseInt(req.body.currentMileage),
+        lastOilChange: parseInt(req.body.currentMileage),
+        oilInterval: parseInt(req.body.oilInterval),
+        oilType: req.body.oilType,
       },
       { new: true }
     )
       .then((dbVehicle) => res.json(dbVehicle))
       .catch((err) => res.status(422).json(err));
-  },
+  }
 };

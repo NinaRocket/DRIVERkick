@@ -46,8 +46,8 @@ function WarrantyModal(props) {
     setWarrantyDetails(event.target.value);
   };
 
-
   setVehID(vehID);
+
 
   // Submit Warranty Form Function
   const submitWarrantyForm = (event) => {
@@ -58,17 +58,16 @@ function WarrantyModal(props) {
 
     // Lets other components know to close the modal
     setModalFormSubmit(true);
-    console.log(props.vehicleInfo);
+
 
     // adding warranty info from above structure
-    API.createWarranty(props.vehicleInfo._id, title, provider, details)
+    API.createWarranty(vehID, title, provider, details)
       .then((response) => {
         if (response.data.isAuthenticated === false) {
           return logout(history);
         }
       })
       .catch((error) => {
-        //console.log("adding warranty error: ");
         console.log(error);
       });
 
@@ -109,24 +108,21 @@ function WarrantyModal(props) {
 }
 
 // Card Component =============================|
-function WarrantyCard({ vehicleInfo, getInfo }) {
+function WarrantyCard({ vehicleInfo, getInfo, warranty }) {
   const {
     modalFormSubmit,
     setModalFormSubmit,
-    logout,
-    vehID,
-    setVehID,
+    logout
   } = useDriverKickContext();
 
   const [modalShow, setModalShow] = React.useState(false);
 
   // Warranties from the Database get stored here
-  const [warranty, setWarranty] = useState([]);
+  // const [warranty, setWarranty] = useState([]);
 
   // Sets up page redirect
   const history = useHistory();
 
-  setVehID(vehID);
 
   // Updates global context of if the modal form was submitted
   useEffect(() => {
@@ -144,25 +140,6 @@ function WarrantyCard({ vehicleInfo, getInfo }) {
   // Determines if the initial content or populated content component show up.
   const [newUser, setNewUser] = useState(false);
 
-  // Function with GET call in it
-  const runWarranty = () => {
-    API.getAllWarranties(vehicleInfo._id)
-      .then((res) => {
-        if (res.data.isAuthenticated === false) {
-          return logout(history);
-        }
-
-        setWarranty(res.data);
-        // console.log(res.data);
-      })
-      .catch((err) => console.log(err));
-  };
-
-  useEffect(() => {
-    // Calls GET Function
-    runWarranty();
-  }, []);
-
   return (
     <div className="g__vehicle-card">
       <VehicleDashCardHeader
@@ -176,12 +153,12 @@ function WarrantyCard({ vehicleInfo, getInfo }) {
       {newUser ? (
         <WarrantyInitial warrantyModal={warrantyModal} />
       ) : (
-        <WarrantyPopulated warrantyModal={warrantyModal} warranty={warranty} />
-      )}
+          <WarrantyPopulated warrantyModal={warrantyModal} warranty={warranty} />
+        )}
       <WarrantyModal
         show={modalShow}
         onHide={() => setModalShow(false)}
-        runWarranty={runWarranty}
+        runWarranty={getInfo}
         vehicleInfo={vehicleInfo}
       />
     </div>

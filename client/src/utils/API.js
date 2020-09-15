@@ -37,6 +37,11 @@ export default {
     return axios.get(`/api/vehicle/${vehicleId}`);
   },
 
+  // delete a vehicle
+  deleteVehicle: (id) => {
+    return axios.delete(`/api/vehicle/${id}`);
+  },
+
   getDecodeVIN: function (VIN) {
     return axios.get(`/api/vehicle/decode-vin/${VIN}`);
   },
@@ -71,22 +76,13 @@ export default {
     return axios.get(`/api/warranty/${vehicleId}`);
   },
   //create a single warranty
-  createWarranty: (vehicleId, title, provider, details) => {
+  createWarranty: (vehicle, title, provider, details) => {
     return axios.post(`/api/warranty/`, {
-      vehicleId,
+      vehicle,
       title,
       provider,
       details,
     });
-  },
-
-  //update a warranty
-  updateWarranty: (id, title, provider, details) => {
-    return axios.put(`/api/warranty/${id}`, { title, provider, details });
-  },
-  // delete a warranty
-  deleteWarranty: (id) => {
-    return axios.delete(`/api/warranty/${id}`);
   },
 
   // oil functions -------------------------------- ||
@@ -94,7 +90,10 @@ export default {
     return axios.get(`/api/vehicle/oil/${vehicleId}`);
   },
   addOilChange: (vehicleID, currentMileage, oilInterval, oilType) => {
-    return axios.put(`api/vehicle/oil/${vehicleID}`, 
-    { currentMileage, oilInterval, oilType });
-  },
+    return axios.put(`/api/vehicle/oil/${vehicleID}`, {
+      currentMileage,
+      oilInterval,
+      oilType,
+    });
+  }
 };

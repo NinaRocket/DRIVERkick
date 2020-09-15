@@ -39,7 +39,6 @@ function SignUpForm() {
 
   const requiredValidator = () => {
     if (!firstName || !lastName || !email || !password || !confirmPassword) {
-      //console.log("Required function")
       setRequiredError(true);
     }
   };
@@ -86,14 +85,10 @@ function SignUpForm() {
     //request to server to add a new email/password
     API.signup(userInfo)
       .then((response) => {
-        //console.log(response);
         if (!response.data.errmsg) {
-          //console.log("successful signup");
           //home for now
           redirect.push("/add-vehicle");
-        } else {
-          //console.log("email already taken");
-        }
+        } 
       })
       .catch((error) => {
         setSignupFail(true)

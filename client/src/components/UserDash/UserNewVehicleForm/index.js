@@ -26,18 +26,12 @@ function UserNewVehicleForm() {
 
     API.getDecodeVIN(VIN)
       .then((response) => {
-        console.log("Search API Ran");
         if (response.data.isAuthenticated === false) {
           return logout(redirect);
         }
         setVinData(response.data);
         // Authentication user submitted a vin (changing the state from "False" to a truthy value)
         vinNum ? setVinResults(true) : setVinResults(false);
-        if (!response.data.errmsg) {
-          //console.log("successfully added new vehicle");
-        } else {
-          //console.log("Vehicle did not submit successfully");
-        }
       })
       .catch((error) => {
         console.log(`login error: ${error}`);

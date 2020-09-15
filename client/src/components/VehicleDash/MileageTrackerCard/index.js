@@ -20,7 +20,7 @@ function CurrentMilageModal(props) {
 
   } = useDriverKickContext();
 
-  // Milage Form Value State
+  // Mileage Form Value State
   const [currentMileage, setCurrentMileage] = useState();
 
   // Error State
@@ -51,14 +51,12 @@ function CurrentMilageModal(props) {
         props.getInfo();
       })
       .catch((error) => {
-
         console.log(error);
       });
     // Lets other components know to close the modal
     setModalFormSubmit(true);
     // setNewUserMileage(false);
     // Needs to post this to the database
-    //console.log(currentMileage);
   };
 
   return (
@@ -117,14 +115,7 @@ function MileageTrackerCard({ vehicleInfo, getInfo }) {
           "Frequently updating your mileage generates the most accurate recommendations."
         }
       />
-      {/* {newUserMileage ? (
-        <MileageTrackerInitial mileageTrackingModal={mileageModal} />
-      ) : (
-          <MileageTrackerPopulated
-            mileageTrackingModal={mileageModal}
-            vehicleInfo={vehicleInfo}
-          />
-        )} */}
+
 
       <MileageTrackerPopulated
         mileageTrackingModal={mileageModal}

@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import "./style.css";
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
 import GlobalNavBar from "../../GlobalNavBar";
@@ -11,7 +10,6 @@ function UserDashPage() {
 
   // Controls which buttons in the nav bar to use
   useEffect(() => setNavType("userDash"), []);
-
 
   return (
     <section>
