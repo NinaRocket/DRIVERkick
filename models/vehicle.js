@@ -31,7 +31,7 @@ const vehicleSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: "Warranty",
     },
-  ],
+  ]
 });
 
 const Vehicle = mongoose.model("Vehicle", vehicleSchema);

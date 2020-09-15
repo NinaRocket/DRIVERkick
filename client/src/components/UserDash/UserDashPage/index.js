@@ -11,7 +11,6 @@ function UserDashPage() {
   // Controls which buttons in the nav bar to use
   useEffect(() => setNavType("userDash"), []);
 
-
   return (
     <section>
       <GlobalNavBar />

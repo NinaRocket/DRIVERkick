@@ -85,15 +85,6 @@ export default {
     });
   },
 
-  //update a warranty
-  updateWarranty: (id, title, provider, details) => {
-    return axios.put(`/api/warranty/${id}`, { title, provider, details });
-  },
-  // delete a warranty
-  deleteWarranty: (id) => {
-    return axios.delete(`/api/warranty/${id}`);
-  },
-
   // oil functions -------------------------------- ||
   getOilChangeInfo: (vehicleId) => {
     return axios.get(`/api/vehicle/oil/${vehicleId}`);
@@ -104,5 +95,5 @@ export default {
       oilInterval,
       oilType,
     });
-  },
+  }
 };

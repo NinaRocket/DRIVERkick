@@ -20,7 +20,7 @@ function CurrentMilageModal(props) {
 
   } = useDriverKickContext();
 
-  // Milage Form Value State
+  // Mileage Form Value State
   const [currentMileage, setCurrentMileage] = useState();
 
   // Error State

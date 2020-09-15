@@ -5,7 +5,6 @@ import Table from 'react-bootstrap/Table';
 import API from "../../../utils/API";
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
 
-
 function RecallTrackerPopulated({ mileageTrackingModal }) {
 
     return (
