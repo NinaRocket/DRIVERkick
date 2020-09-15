@@ -7,6 +7,7 @@ import Accordion from "react-bootstrap/Accordion";
 import openBtnIcon from "../../../images/vehiclepage/open-btn-icon.svg";
 import closeBtnIcon from "../../../images/vehiclepage/close-btn-icon.svg";
 import { useAccordionToggle } from "react-bootstrap/AccordionToggle";
+import $ from "jquery"
 
 // ACCORDION HELPER COMPONENT ==========================| 
 function ContextAwareToggle({
@@ -37,7 +38,7 @@ $(function () {
   var $sidebar = $("#sidebar"),
     $window = $(window),
     offset = $sidebar.offset(),
-    topPadding = 15;
+    topPadding = 30;
 
   $window.scroll(function () {
     if ($window.scrollTop() > offset.top) {
@@ -66,6 +67,7 @@ function VehicleMainWrapper({ children, vehicleInfo, userData }) {
             <Accordion
               defaultActiveKey="1"
               className="vehicle-dash__accordion vehicle-dash__fixed"
+              id="sidebar"
             >
               <Card className="vehicle-dash__parent-fixed ">
                 <ContextAwareToggle
