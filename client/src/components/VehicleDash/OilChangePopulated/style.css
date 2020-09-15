@@ -6,6 +6,7 @@
 
 .oil-change-card__body {
     display: flex;
+    margin-bottom: 50px;
 }
 
 .oil-change-card__number {
@@ -37,7 +38,7 @@
 
 .oil-change-card__warning-container {
     text-align: center;
-    margin: 20px 0 20px; 
+    margin-top: 20px; 
     font-style: italic;
     background-color: #143642;
     padding: 18px 10px 10px;

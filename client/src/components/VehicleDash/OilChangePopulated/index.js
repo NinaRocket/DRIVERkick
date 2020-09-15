@@ -73,7 +73,7 @@ function OilChangePopulated({ oilChangeTrackingModal, oilData }) {
       ) : null}
 
       <button
-        className="g__vehicle-card__btn mt-3"
+        className="g__vehicle-card__btn"
         onClick={oilChangeTrackingModal}
       >
         Update Oil Change
