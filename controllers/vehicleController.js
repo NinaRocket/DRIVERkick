@@ -38,6 +38,24 @@ module.exports = {
       .then((dbVehicle) => res.json(dbVehicle))
       .catch((err) => res.status(422).json(err));
   },
+  updateMileage: (req, res) => {
+    db.Vehicle.findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        currentMileage: req.body.currentMileage,
+        lastMileageUpdate: Date.now(),
+        $push: {
+          mileageHistory: {
+            date: Date.now(),
+            mileage: req.body.currentMileage,
+          },
+        },
+      },
+      { new: true }
+    )
+      .then((dbVehicle) => res.json(dbVehicle))
+      .catch((err) => res.status(422).json(err));
+  },
   remove: function (req, res) {
     db.Vehicle.findOneAndDelete({ _id: req.params.id })
       .then((dbVehicle) => res.json(dbVehicle))
@@ -47,10 +65,16 @@ module.exports = {
     db.Vehicle.findById(req.params.id)
       .then((dbVehicle) => {
         const response = {
-          currentMileage: dbVehicle.currentMile,
+          percentageToChange:
+            100 -
+            ((parseInt(dbVehicle.currentMileage) -
+              parseInt(dbVehicle.lastOilChange)) /
+              parseInt(dbVehicle.oilInterval)) *
+              100,
           milesToChange:
-            parseInt(dbVehicle.currentMile) - parseInt(dbVehicleest.MileOil),
-          oilInterval: dbVehicle.oilInterval,
+            parseInt(dbVehicle.lastOilChange) +
+            parseInt(dbVehicle.oilInterval) -
+            parseInt(dbVehicle.currentMileage),
         };
         res.json(response);
       })
@@ -59,10 +83,15 @@ module.exports = {
   updateOil: function (req, res) {
     db.Vehicle.findOneAndUpdate(
       { _id: req.params.id },
-      { estMileOil: req.body.nextChange },
+      {
+        currentMileage: parseInt(req.body.currentMileage),
+        lastOilChange: parseInt(req.body.currentMileage),
+        oilInterval: parseInt(req.body.oilInterval),
+        oilType: req.body.oilType,
+      },
       { new: true }
     )
       .then((dbVehicle) => res.json(dbVehicle))
       .catch((err) => res.status(422).json(err));
-  },
+  }
 };

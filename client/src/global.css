@@ -112,6 +112,14 @@ Colors
   color: #FEEFDD;
 }
 
+.g__red--bg {
+  background-color: red;
+}
+
+.g__red--txt {
+  color: red;
+}
+
 
 /* —————————————————————————————————————
 Bootstrap Overrides
@@ -248,6 +256,27 @@ input:focus,
   border: none;
 }
 
+
+.progress {
+  border-radius: 50px;
+  background-color: #102a34;
+}
+
+.progress-bar {
+  background-color: #50B2C0;
+  height: 20px;
+  transition: ease-in .3s;
+}
+
+.g__progress-override .progress-bar  {
+  background-color: #FF4000;
+}
+
+.g__progress-override--red .progress-bar  {
+  background-color: red;
+}
+
+
 /* —————————————————————————————————————
 Forms
 ———————————————————————————————————————*/
@@ -326,13 +355,13 @@ Vehicle Dashboard
 .g__vehicle-card {
   padding: 40px 0;
   background: rgb(15, 68, 87);
-  background:linear-gradient(0deg, rgb(6 22 28 / 60%), rgb(9 41 53 / 80%)), url("./images/global/diagonal-lines.svg");
+  background:linear-gradient(0deg, rgb(6 22 28 / 60%), rgb(9 41 53 / 80%));
   border-radius: 0px 20px;  
   -webkit-box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.1);
      -moz-box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.1);
           box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.1);
   border-top: 6px solid #50B2C0;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
 }
 
 .g__vehicle-card__header-container {
@@ -373,6 +402,9 @@ Vehicle Dashboard
   border: none;
 }
 
+.g__coming-soon {
+  opacity: .2;
+}
 
 
 

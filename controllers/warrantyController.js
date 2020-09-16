@@ -3,16 +3,9 @@ const db = require("../models");
 // Defining methods
 // need a create, update, and find route, for warranty and recalls
 module.exports = {
-  findAll: function (req, res) {
+  findAllByVehicle: function (req, res) {
     db.Warranty.find({ vehicle: req.params.id })
-      .populate("vehicle")
       .then((dbWarranties) => res.json(dbWarranties))
-      .catch((err) => res.status(422).json(err));
-  },
-  findById: function (req, res) {
-    db.Warranty.findById(req.body.id)
-      .populate("vehicle")
-      .then((dbWarranty) => res.json(dbWarranty))
       .catch((err) => res.status(422).json(err));
   },
   create: function (req, res) {
@@ -21,14 +14,13 @@ module.exports = {
         db.Vehicle.findOneAndUpdate(
           { _id: req.body.vehicle },
           { $push: { warranties: dbWarranty._id } }
-        ).then((dbVehicle) => res.json(dbWarranty));
+        ).then((dbWarranty) => res.json(dbWarranty));
       })
       .catch((err) => res.status(422).json(err));
   },
   update: function (req, res) {
-    db.Warranty.findOneAndUpdate({ _id: req.params.id }, req.body, {
-      new: true,
-    })
+    db.Warranty.findOneAndUpdate({ _id: req.params.id }, 
+      req.body, { new: true })
       .then((dbWarranty) => res.json(dbWarranty))
       .catch((err) => res.status(422).json(err));
   },
@@ -36,5 +28,5 @@ module.exports = {
     db.Warranty.findOneAndDelete({ _id: req.params.id })
       .then((dbWarranty) => res.json(dbWarranty))
       .catch((err) => res.status(422).json(err));
-  },
+  }
 };

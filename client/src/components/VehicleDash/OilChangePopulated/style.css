@@ -1,0 +1,67 @@
+.oil-change-card__container {
+    border-top: 6px solid #143642;
+    word-wrap: break-word;
+    padding: 60px 60px 0;
+}
+
+.oil-change-card__body {
+    display: flex;
+    margin-bottom: 50px;
+}
+
+.oil-change-card__number {
+    max-width: 160px;
+}
+
+.oil-change-card__mileage-txt {
+    font-size: 40px;
+;
+}
+
+.oil-change-card__progress-container {
+    width: 100%;
+    display: flex;
+    margin: auto 0;
+    padding: 30px;
+    background-color: #143642;
+    border-radius: 50px;
+}
+
+.oil-change-card__progress-bar {
+    width: 100%;
+    margin-left: 15px;
+}
+
+.oil-change-card__progress-icon {
+    width: 35px;
+}
+
+.oil-change-card__warning-container {
+    text-align: center;
+    margin: -30px 0 50px; 
+    font-style: italic;
+    border:1px solid #143642;
+    padding: 18px 10px 10px;
+    color: #50B2C0;
+}
+
+
+@media only screen and (max-width: 575px) {
+    .oil-change-card__container {
+        padding: 20px 20px 0;
+        
+    }
+    
+    .oil-change-card__body {
+        flex-direction: column;
+        
+    }
+    
+    .oil-change-card__number {
+        text-align: center;
+        margin: 30px auto;
+        /* max-width: 170px; */
+        
+    }
+    
+}

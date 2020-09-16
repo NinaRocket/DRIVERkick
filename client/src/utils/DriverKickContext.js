@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
+import API from "./API";
 
 const DriverKickContext = React.createContext();
 
@@ -21,6 +22,7 @@ export function DriverKickProvider({ children }) {
   function logout(history) {
     setAuthenticated(false);
     // post route to logout session on backend
+    API.logout();
 
     // Route them back to the homepage
     return history.push("/login");
@@ -51,6 +53,10 @@ export function DriverKickProvider({ children }) {
   // Lets other components know to close the modal
   const [modalFormSubmit, setModalFormSubmit] = useState(false);
 
+
+  // Determines if the initial content or populated content component show up.
+  const [newUserMileage, setNewUserMileage] = useState(true);
+
   return (
     <DriverKickRouter>
       <DriverKickContext.Provider
@@ -67,7 +73,10 @@ export function DriverKickProvider({ children }) {
           setSelectValue,
           vehID,
           setVehID,
-          modalFormSubmit, setModalFormSubmit
+          modalFormSubmit,
+          setModalFormSubmit,
+          newUserMileage,
+          setNewUserMileage
         }}
       >
         {children}

@@ -8,6 +8,7 @@ import VehicleMainWrapper from "../VehicleMainWrapper";
 import MileageTrackerCard from "../MileageTrackerCard";
 import WarrantyCard from "../WarrantyCard";
 import RecallsCard from "../RecallsCard";
+import OilChangeCard from "../OilChangeCard";
 
 function VehicleDashPage() {
   // Sets which buttons show in the nav
@@ -18,10 +19,12 @@ function VehicleDashPage() {
     logout,
     vehID,
     setVehID,
+    setNewUser,
   } = useDriverKickContext();
   const { id } = useParams();
 
-  setNavType("vehicleDash");
+  useEffect(() => setNavType("vehicleDash"), []);
+
   useEffect(() => {
     setVehID(id);
   }, [id]);
@@ -37,6 +40,7 @@ function VehicleDashPage() {
     driverName: "",
     nickname: "",
     currentMileage: "",
+    mileageHistory: [],
     nextOilChange: "",
     oilType: "",
     warranties: [],
@@ -44,17 +48,22 @@ function VehicleDashPage() {
   };
 
   const [vehicleInfo, setVehicleInfo] = useState(vehicleTemplate);
+  const [mileageHistory, setMileageHistory] = useState([]);
+  const [oilData, setOilData] = useState([]);
+  const [warrantyData, setWarrantyData] = useState([]);
 
   async function getInfo() {
     try {
       const fetchUser = await API.getUser();
       const fetchVehicles = await API.getVehicleById(vehID);
-
-      console.log(fetchVehicles.data[0]);
+      const fetchOilData = await API.getOilChangeInfo(vehID);
+      const fetchWarranty = await API.getAllWarranties(vehID);
 
       if (
         fetchUser.data.isAuthenticated === false ||
-        fetchVehicles.data.isAuthenticated === false
+        fetchVehicles.data.isAuthenticated === false ||
+        fetchOilData.data.isAuthenticated === false ||
+        fetchWarranty.data.isAuthenticated === false
       ) {
         return logout(history);
       }
@@ -63,30 +72,48 @@ function VehicleDashPage() {
         ...userData,
         ...fetchUser.data,
         ...fetchVehicles.data[0],
+        ...fetchOilData.data,
+        ...fetchWarranty.data,
       });
       setVehicleInfo(fetchVehicles.data[0]);
-      console.log(vehicleInfo);
+      setMileageHistory(fetchVehicles.mileageHistory);
+      setOilData(fetchOilData.data);
+      setWarrantyData(fetchWarranty.data);
     } catch (error) {
       console.log(error);
     }
   }
   // REACT'S SUGGESTED ASYNC USE-EFFECT SYNTAX
   useEffect(() => {
-    console.log(vehID);
     if (vehID) {
       getInfo();
     }
   }, [vehID]);
 
-  console.log(vehicleInfo);
-
   return (
     <div>
       <GlobalNavBar />
-      <VehicleMainWrapper vehicleInfo={vehicleInfo} userData={userData}>
-        <MileageTrackerCard vehicleInfo={vehicleInfo} />
-        {/* <OilChangeCard /> */}
-        <WarrantyCard />
+      <VehicleMainWrapper
+        vehicleInfo={vehicleInfo}
+        userData={userData}
+        getInfo={getInfo}
+      >
+        <MileageTrackerCard vehicleInfo={vehicleInfo} getInfo={getInfo} />
+        <OilChangeCard
+          oilData={oilData}
+          vehicleInfo={vehicleInfo}
+          getInfo={getInfo}
+        />
+        <WarrantyCard
+          vehicleInfo={vehicleInfo}
+          getInfo={getInfo}
+          warranty={warrantyData}
+        />
+        <div>
+          <h3 className="vehicle-dash__coming-soon">
+            Coming soon!
+          </h3>
+        </div>
         <RecallsCard />
       </VehicleMainWrapper>
     </div>

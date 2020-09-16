@@ -23,18 +23,15 @@ router
   .delete(vehicleController.remove);
 
 router
+  .route("/mileage/:id")
+  .put(vehicleController.updateMileage);
+
+router
   .route("/oil/:id")
   // gets vehicle oil change mileage
   .get(vehicleController.getOilChangeMiles)
   //updates the vehicles oil change
-  .get(vehicleController.updateOil);
-
-// router
-//   .route("/:id")
-// // gets vehicle mileage
-// .get(vehicleController.getMiles)
-// //updates the vehicles mileage
-// .post(vehicleController.postMiles);
+  .put(vehicleController.updateOil);
 
 router
   .route("/decode-vin/:vin")

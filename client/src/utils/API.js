@@ -8,12 +8,19 @@ export default {
     });
   },
 
+  logout: () => axios.get("/api/user/logout"),
+
   getUser: function () {
     return axios.get("/api/user/info");
   },
 
   signup: (userInfo) => {
     return axios.post("/api/user/signup", userInfo);
+  },
+
+  // Returns "true" if the user is logged in
+  homeLoginCheck: () => {
+    return axios.get("api/user/isAuthenticated");
   },
 
   // VEHICLE ROUTES
@@ -30,6 +37,11 @@ export default {
     return axios.get(`/api/vehicle/${vehicleId}`);
   },
 
+  // delete a vehicle
+  deleteVehicle: (id) => {
+    return axios.delete(`/api/vehicle/${id}`);
+  },
+
   getDecodeVIN: function (VIN) {
     return axios.get(`/api/vehicle/decode-vin/${VIN}`);
   },
@@ -44,18 +56,8 @@ export default {
   updateOilChange: function (vehicleId, nextOilChange) {
     return axios.put(`/api/vehicle/${vehicleId}`, { nextOilChange });
   },
-  // updates the vehicles current mileage
-  // updateMileage: function (vehicleId, currentMileage) {
-  //   return axios.put(`/api/vehicle/${vehicleId}`, { currentMileage });
-  // },
-  // postMileage: function (id) {
-  //   return axios.post(`/api/vehicle/` + id);
-  // },
-  putMileage: function (vehID, currentMileage) {
-    return axios.put(`/api/vehicle/${vehID}`, { currentMileage });
-  },
-  getMileage: function (vehID, currentMileage) {
-    return axios.get(`/api/vehicle/${vehID}`, { currentMileage });
+  putMileage: function (id, currentMileage) {
+    return axios.put(`/api/vehicle/mileage/` + id, { currentMileage });
   },
   // updates the vehicle driver
   updateDriver: function (vehicleId, driverName) {
@@ -65,16 +67,33 @@ export default {
   getRecalls: function (VIN) {
     return axios.get(`/api/vehicle/recalls/${VIN}`);
   },
-  getWarranty: () => {
-    return axios.get("/api/warranty");
-  },
-  newWarranty: (warranty) => {
-    return axios.post("/api/warranty", warranty);
-  },
-  updateWarranty: () => {
-    return axios.put("/api/warranty" )
-  },
   updateOwner: () => {
     return axios.put();
   },
+  // Warranty Functions ---------------||
+  // returns all warranties for specific vehicle
+  getAllWarranties: (vehicleId) => {
+    return axios.get(`/api/warranty/${vehicleId}`);
+  },
+  //create a single warranty
+  createWarranty: (vehicle, title, provider, details) => {
+    return axios.post(`/api/warranty/`, {
+      vehicle,
+      title,
+      provider,
+      details,
+    });
+  },
+
+  // oil functions -------------------------------- ||
+  getOilChangeInfo: (vehicleId) => {
+    return axios.get(`/api/vehicle/oil/${vehicleId}`);
+  },
+  addOilChange: (vehicleID, currentMileage, oilInterval, oilType) => {
+    return axios.put(`/api/vehicle/oil/${vehicleID}`, {
+      currentMileage,
+      oilInterval,
+      oilType,
+    });
+  }
 };

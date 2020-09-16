@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import "./style.css";
 import editBtn from "../../../images/user-page/edit-btn.svg";
@@ -7,7 +7,79 @@ import deleteBtn from "../../../images/user-page/delete-btn.svg";
 import ContentEditable from "react-contenteditable";
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
 import API from "../../../utils/API";
+import Modal from "react-bootstrap/Modal";
 
+
+// Delete Vehicle Modal ===========================|
+function DeleteVehicleModal(props) {
+
+  const {
+    setModalFormSubmit,
+    logout
+
+  } = useDriverKickContext();
+
+  // Sets up page redirect
+  const history = useHistory();
+
+  // Submits the delete api call
+  const submitDeleteVehicle = () => {
+    API.deleteVehicle(props.vehicleID)
+      .then((response) => {
+
+        if (response.data.isAuthenticated === false) {
+          return logout(history);
+        }
+
+        // reloads the page with the latest vehicles
+        props.getLatestVehicles()
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    // Lets other components know to close the modal
+    setModalFormSubmit(true);
+
+  };
+
+  // Submits the delete api call
+  const submitCancelDelete = () => {
+
+    // Lets other components know to close the modal
+    setModalFormSubmit(true);
+
+  };
+
+  return (
+    <Modal
+      {...props}
+      size="md"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton></Modal.Header>
+      <div className="g__form-container g__remove-margin-bottom text-center">
+        <h2>Delete {props.carNickname}</h2>
+        <p >Are you sure you want to permanently delete this vehicle? This action can not be undone!</p>
+        <div className="vehicle-card__modal-btn-container">
+          <button
+            onClick={submitDeleteVehicle}
+            className="btn g__btn-outline vehicle-card__modal-btn"
+          >Yes, Delete Vehicle</button>
+
+          <button
+            onClick={submitCancelDelete}
+            className="btn"
+          >Cancel</button>
+        </div>
+      </div>
+    </Modal>
+  );
+}
+
+
+// User Vehicle Card Component ==========================|
 function UserVehicleCard({
   vehicleIcon,
   vehicleMake,
@@ -19,12 +91,29 @@ function UserVehicleCard({
   getLatestVehicles,
   bgCardImage,
 }) {
-  const { logout, setVehID } = useDriverKickContext();
+
+  const { modalFormSubmit, setModalFormSubmit, logout } = useDriverKickContext();
+
+  // START Modal Code  ————————————————————————|
+  const [modalShow, setModalShow] = React.useState(false);
+
+  useEffect(() => {
+    if (modalFormSubmit) {
+      setModalShow(false);
+    }
+  }, [modalFormSubmit]);
+
+  // Opens and closes modal
+  const OpenDeleteVehicleModal = () => {
+    setModalShow(true);
+    setModalFormSubmit(false);
+  };
+  // END Modal Code  ————————————————————————|
 
   //redirect to vehicle dashboard
   const history = useHistory();
 
-  // START Custom Editing Code  ———————————————|
+  // START Custom Editing Code  ———————————————————————————————|
   const [editing, setEditing] = useState(false);
   const inputedCarNickname = useRef(carNickname);
   const inputedOwnerName = useRef(ownerName);
@@ -58,11 +147,6 @@ function UserVehicleCard({
     }
   };
 
-  // Most likely will need to combine into above function
-  const deleteFields = () => {
-    console.log("delete function");
-  };
-
   const handleNicknameChange = (evt) => {
     inputedCarNickname.current = evt.target.value;
   };
@@ -70,7 +154,7 @@ function UserVehicleCard({
   const handleOwnerChange = (evt) => {
     inputedOwnerName.current = evt.target.value;
   };
-  // END Custom Editing Code  ———————————————|
+  // END Custom Editing Code  ——————————————————————————————————|
 
   const trackMaintenanceBtn = () => {
     history.push(`/vehicle-dashboard/${vehicleID}`);
@@ -113,14 +197,14 @@ function UserVehicleCard({
                   disabled={!editing ? true : false}
                   className={`vehicle-card__overflow-txt ${
                     editing ? "vehicle-card__custom-input" : ""
-                  }`}
+                    }`}
                 />
               </h3>
             </div>
             <div className="vehicle-card__btn-group">
               {editing ? (
                 <button
-                  onClick={deleteFields}
+                  onClick={OpenDeleteVehicleModal}
                   className="vehicle-card__edit-btn g__btn-reset"
                 >
                   <img src={deleteBtn} alt="delete button" />
@@ -134,15 +218,15 @@ function UserVehicleCard({
                 {!editing ? (
                   <img src={editBtn} alt="Edit button" />
                 ) : (
-                  <img src={saveBtn} alt="save button" />
-                )}
+                    <img src={saveBtn} alt="save button" />
+                  )}
               </button>
               <button
                 disabled={editing === true}
                 onClick={trackMaintenanceBtn}
                 className={`vehicle-card__track-btn ${
                   editing === true ? "g__disabled-btn" : null
-                }`}
+                  }`}
               >
                 Track Maintenance
               </button>
@@ -177,7 +261,7 @@ function UserVehicleCard({
                     disabled={!editing ? true : false}
                     className={`vehicle-card__overflow-txt ${
                       editing ? "vehicle-card__custom-input" : ""
-                    }`}
+                      }`}
                   />
                 </h3>
               </div>
@@ -185,6 +269,13 @@ function UserVehicleCard({
           </div>
         </div>
       </div>
+      <DeleteVehicleModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        getLatestVehicles={getLatestVehicles}
+        vehicleID={vehicleID}
+        carNickname={carNickname}
+      />
     </div>
   );
 }
