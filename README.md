@@ -9,7 +9,7 @@
 
 <center>
 
-# [DriverKick Deployed Link]()
+# [DriverKick Deployed Link](https://driverkick.herokuapp.com/)
 </center>
 
 ![Main Pages](./rm-img/DriverKickPages.JPG)
@@ -31,11 +31,13 @@
 
 ## Technology Used:
 - HTML
+- CSS/BEM
 - JSX
 - React
 - MongoDB
 - Express
 - Passport
+- Github
 - [NHTSA Vehical API](https://vpic.nhtsa.dot.gov/api/)
 - Project Management Tools:
     - Trello (Team Collaboration / Task Management)
@@ -50,6 +52,7 @@
 ## Installations:
 ```
 $ npm axios
+$ npm nodemon
 $ npm bcryptjs
 $ npm react-bootstrap
 $ npm express
@@ -57,6 +60,8 @@ $ npm express-session
 $ npm mongoose
 $ npm passport
 $ npm react-contenteditable
+$ npm react-moment
+$ npm react-ga
 ```
 <br>
  
@@ -73,12 +78,17 @@ $ npm react-contenteditable
 
  ## Awesome Feature Code-
 
-> Feature gif goes here
+> 1st feature: Vin Number and how it works
 - Explanation~
  
  <br>
  
-> Feature gif goes here
+> 2nd feature: How info is put into User Dashboard card
+- Explanation~
+
+<br>
+
+> 3nd feature: Oil change card, math behind it. How the icon progresses.
 - Explanation~
 
  <br>
