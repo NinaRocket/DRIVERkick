@@ -44,14 +44,6 @@
     transition: ease-in .2s;
 }
 
-.vehicle-dash__parent-fixed {
-    width: 253px;
-}
-.vehicle-dash__parent-fixed .vehicle-dash__fixed {
-    position: fixed;
-    width: 253px;
-}
-
 
 @media only screen and (max-width: 991px) {
     .vehicle-dash__parent-fixed .vehicle-dash__fixed {
