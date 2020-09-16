@@ -44,6 +44,7 @@ function VehicleMainWrapper({ children, vehicleInfo, userData }) {
   const [accordionHelper, setAccordionHelper] = useState(false);
 
 
+
   return (
     <section className="g__dashboard-wrapper">
       <div className="container">
@@ -67,6 +68,7 @@ function VehicleMainWrapper({ children, vehicleInfo, userData }) {
                       className="vehicle-dash__user-img"
                     />
                     <h1 className="g__dash-h1">{vehicleInfo.nickname}</h1>
+                  
                     {accordionHelper ? (
                       <img
                         src={closeBtnIcon}

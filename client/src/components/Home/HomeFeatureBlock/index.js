@@ -15,6 +15,8 @@ function HomeFeatureBlock() {
     const signUp = () => {
         redirect.push("/signup");
     }
+
+
     return (
         <section className="g__deep-blue--bg">
             <div className="container home-feat__block" id="featBlock">
