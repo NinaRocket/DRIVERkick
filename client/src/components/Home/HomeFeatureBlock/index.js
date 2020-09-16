@@ -15,6 +15,8 @@ function HomeFeatureBlock() {
     const signUp = () => {
         redirect.push("/signup");
     }
+
+
     return (
         <section className="g__deep-blue--bg">
             <div className="container home-feat__block" id="featBlock">
@@ -41,7 +43,7 @@ function HomeFeatureBlock() {
                         icon={recallIcon}
                         alt={"Warning sign icon"}
                         subhead={"Recall"}
-                        text={"Stay informed of life saving information about your car. Recall information get’s automaticly updated in your dashboard. "}
+                        text={"Stay informed of life saving information about your car. Recall information gets automatically updated in your dashboard."}
                     />
                 </div>
                 <button onClick={signUp}
