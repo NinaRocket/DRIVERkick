@@ -91,7 +91,14 @@ $ npm react-ga
 <br>
 
 > 3nd feature: Oil change card, math behind it. How the icon progresses.
-- Explanation~
+- The oil change card recieves all the information it needs from the backend in one simple call. First, the backend
+calculates the oils to next change by adding the oil interval to the miles at last oil change, then subtracting the 
+vehicles current mileage. Then, it calculates the percentage to the next oil change and subtracts 100. This number is
+used in the progress bar. We subtract the percentage from 100 to have the bar empty rather than fill, to simulate a gas tank
+or oil tank slowly running out.
+- The oil change card also allows the user to add an oil change. This is a double feature, as not only does it allow the
+user to input their new interval, it also automatically updates their current mileage, and even creates a history entry
+for the mileage tracker card!
 
  <br>
 
