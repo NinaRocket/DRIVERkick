@@ -81,8 +81,8 @@ module.exports = {
       .catch((err) => res.status(422).json(err));
   },
   updateOil: function (req, res) {
-    db.Vehicle.findOneAndUpdate(
-      { _id: req.params.id },
+    db.Vehicle.findByIdAndUpdate(
+      req.params.id,
       {
         currentMileage: parseInt(req.body.currentMileage),
         lastOilChange: parseInt(req.body.currentMileage),
