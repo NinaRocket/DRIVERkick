@@ -43,5 +43,10 @@
         "id": 9,
         "name": "van",
         "image": "https://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/van-type-icon.svg"
+    },
+    {
+        "id": 10,
+        "name": "smart-car",
+        "image": "https://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/smart-type-icon.svg" 
     }
 ]
