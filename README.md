@@ -83,17 +83,17 @@ $ npm react-ga
 - The user inputs their vehicles VIN number, which is then sent to the NHSTA government API for decoding. The information 
 comes back and the user verifies the information matches their vehicle, and the vehicle is created. This allows for easy 
 one input entry to create vehicles and get accurate information. This prevents the user from being confronted with a large 
-form that could be filled with accidentally erronious information.
+form that could be filled with accidentally erroneous information.
  
  <br>
  
 > 2nd feature: How info is put into User Dashboard card
-- Explanation~
+- The user's information and vehicle data is pulled from the MongoDB database using RESTful api commands. Each vehicle is then mapped through, creating a uniformed card for each one, with a unique image background. The user can update their car's nickname and the owner name directly on the card. They can also delete any card they want. Lastly, each card takes the user to that vehicle's tracking dashboard, where they can track its mileage, oil changes and warranties.  
 
 <br>
 
 > 3nd feature: Oil change card, math behind it. How the icon progresses.
-- The oil change card recieves all the information it needs from the backend in one simple call. First, the backend
+- The oil change card receives all the information it needs from the backend in one simple call. First, the backend
 calculates the oils to next change by adding the oil interval to the miles at last oil change, then subtracting the 
 vehicles current mileage. Then, it calculates the percentage to the next oil change and subtracts 100. This number is
 used in the progress bar. We subtract the percentage from 100 to have the bar empty rather than fill, to simulate a gas tank
