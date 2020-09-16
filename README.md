@@ -79,9 +79,10 @@ $ npm react-ga
  ## Awesome Feature Code-
 
 > 1st feature: Vin Number and how it works
-- The user inputs their vehicles VIN number, which is then sent to the NHSTA government API for decoding.
-- The information comes back and the user verifies the information matches their vehicle, and the vehicle is created.
-- This allows for easy one input entry to create vehicles and get accurate information.
+- The user inputs their vehicles VIN number, which is then sent to the NHSTA government API for decoding. The information 
+comes back and the user verifies the information matches their vehicle, and the vehicle is created. This allows for easy 
+one input entry to create vehicles and get accurate information. This prevents the user from being confronted with a large 
+form that could be filled with accidentally erronious information.
  
  <br>
  
