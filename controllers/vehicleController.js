@@ -88,6 +88,12 @@ module.exports = {
         lastOilChange: parseInt(req.body.currentMileage),
         oilInterval: parseInt(req.body.oilInterval),
         oilType: req.body.oilType,
+        $push: {
+          mileageHistory: {
+            date: Date.now(),
+            mileage: req.body.currentMileage,
+          }
+        }
       },
       { new: true }
     )
