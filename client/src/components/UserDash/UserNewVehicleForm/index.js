@@ -85,7 +85,7 @@ function UserNewVehicleForm() {
             onChange={(e) => setSelectValue(e.currentTarget.value)}
             className={`form-control ${
               selectError ? "g__form-input-err" : null
-            }`}
+              }`}
           >
             <option value="">Choose…</option>
             <option value="https://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/sedan-type-icon.svg">
@@ -114,6 +114,9 @@ function UserNewVehicleForm() {
             </option>
             <option value="https://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/motercycler-type-icon.svg">
               Motorcycle
+            </option>
+            <option value="https://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/smart-type-icon.svg">
+              Smart/Electric Car
             </option>
           </select>
         </div>
