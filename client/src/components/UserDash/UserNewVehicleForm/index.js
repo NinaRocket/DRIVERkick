@@ -115,7 +115,7 @@ function UserNewVehicleForm() {
             <option value="https://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/motercycler-type-icon.svg">
               Motorcycle
             </option>
-            <option value="https://raw.githubusercontent.com/NinaRocket/DRIVERkick/95ccd4c717124d2621e7be43ae0d791ef54c7739/client/src/images/global/car-icons/smart-type-icon.svg">
+            <option value="https://raw.githubusercontent.com/NinaRocket/DRIVERkick/3340f741a52cc693e12bc6c7ba6b06d8c14cd508/client/src/images/global/car-icons/smart-type-icon.svg">
               Smart/Electric Car
             </option>
           </select>
