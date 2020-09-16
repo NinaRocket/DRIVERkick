@@ -1,19 +1,20 @@
-# ![Driver Kick](./rm-img/DriverKickLogo.JPG)
+<!-- # ![Driver Kick](./rm-img/DriverKickLogo.JPG) -->
+
 ![license](https://img.shields.io/badge/license-ISC-GREEN)
 ![count](https://img.shields.io/github/languages/count/NinaRocket/Project3)
 ![github top language](https://img.shields.io/github/languages/top/NinaRocket/Project3)
 ![total contributors](https://img.shields.io/github/contributors/NinaRocket/Project3)
 ![last commit](https://img.shields.io/github/last-commit/NinaRocket/Project3/master)
-
 <br>
+
+
+![Main Pages](./rm-img/website-preview.jpg)
+<br><br>
 
 <center>
 
-# [DriverKick Deployed Link](https://driverkick.herokuapp.com/)
+# [DriverKick Deployed Link ↗️](https://driverkick.herokuapp.com/)
 </center>
-
-![Main Pages](./rm-img/DriverKickPages.JPG)
-<br><br>
 
 ## <center> User Story
 <center><h3> As a <span style="color:#50B2C0">vehicle owner,</span> I want a multi-purpose vehicle <span style="color:#50B2C0">maintenance tracker</span> so that I can ensure I am up to date on my vehicle’s upkeep.</h3> </center>
@@ -132,7 +133,7 @@ LinkedIn: | <https://www.linkedin.com/in/ninarocket/> |
 <br>
 
 ### <span style="color:#26FFAD">Jacob Cravey</span> | Back-end / Routes Specialist
-Email: | <> |
+Email: | <j.t.cravey1991@gmail.com> |
 --- | --- 
 LinkedIn: | <https://www.linkedin.com/in/jacob-cravey-2367561a8/> |
 
