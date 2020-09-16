@@ -402,6 +402,9 @@ Vehicle Dashboard
   border: none;
 }
 
+.g__coming-soon {
+  opacity: .2;
+}
 
 
 

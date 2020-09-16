@@ -3,9 +3,6 @@ import "./style.css";
 import Form from 'react-bootstrap/Form';
 
 function VehicleWarrantyForm({
-  title,
-  provider,
-  details,
   addWarrantyTitle,
   addWarrantyProvider,
   addWarrantyDetails,
@@ -22,7 +19,6 @@ function VehicleWarrantyForm({
             id="warrantyTitle"
             name="warrantyTitle"
             placeholder="Name of warranty…"
-            // value={title}
             onChange={addWarrantyTitle} />
         </Form.Group>
       </div>
@@ -35,7 +31,6 @@ function VehicleWarrantyForm({
             id="warrantyProvider"
             name="warrantyProvider"
             placeholder="Store or company..."
-            // value={provider}
             onChange={addWarrantyProvider} />
         </Form.Group>
       </div>
@@ -49,7 +44,6 @@ function VehicleWarrantyForm({
             id="warrantyDetails"
             name="warrantyDetails"
             placeholder="Provide any relevant notes that will need to be referred to in the future…"
-            // value={details}
             onChange={addWarrantyDetails} />
         </Form.Group>
       </div>

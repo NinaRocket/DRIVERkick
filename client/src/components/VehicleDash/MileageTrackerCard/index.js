@@ -55,8 +55,6 @@ function CurrentMilageModal(props) {
       });
     // Lets other components know to close the modal
     setModalFormSubmit(true);
-    // setNewUserMileage(false);
-    // Needs to post this to the database
   };
 
   return (
@@ -87,11 +85,8 @@ function CurrentMilageModal(props) {
 // Current Tracker Card ===========================|
 function MileageTrackerCard({ vehicleInfo, getInfo }) {
   const { modalFormSubmit, setModalFormSubmit, newUserMileage } = useDriverKickContext();
-
   const [modalShow, setModalShow] = React.useState(false);
 
-  // Determines if the initial content or populated content component show up.
-  // const [newUser, setNewUser] = useState(false);
 
   useEffect(() => {
     if (modalFormSubmit) {

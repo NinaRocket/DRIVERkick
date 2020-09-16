@@ -59,10 +59,9 @@ function LoginForm() {
 
     API.login(email, password)
       .then((response) => {
-        // if successeful
+        // if successful
         if (response.status === 200) {
-          // update App.js state to login
-          // setLoggedIn(true);
+
           setEmail(response.data.email);
 
           history.push("/user-dashboard");
@@ -78,8 +77,8 @@ function LoginForm() {
     <div className="g__form-container">
       <form>
         <h2 className="g__form-title">Login</h2>
-        
-        {/* Validation Error Messages */}
+
+        {/* START Validation Error Messages */}
         {emailError ? (
           <p className="text-center text-danger">
             Please make sure your email is formatted correctly.
@@ -98,14 +97,13 @@ function LoginForm() {
           <label className="form-label" htmlFor="email">
             Email
           </label>
-
+          {/* END Validation Error Messages */}
           <input
             className={`form-input ${emailError ? "g__form-input-err" : null}`}
             type="text"
             id="email"
             name="email"
             placeholder="you@email.com"
-            // value={email}
             onChange={userEmailValue}
           />
         </div>
@@ -119,7 +117,6 @@ function LoginForm() {
             name="password"
             id="password"
             placeholder="Password"
-            // value={password}
             onChange={userPasswordValue}
           />
         </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -8,7 +8,7 @@ import openBtnIcon from "../../../images/vehiclepage/open-btn-icon.svg";
 import closeBtnIcon from "../../../images/vehiclepage/close-btn-icon.svg";
 import { useAccordionToggle } from "react-bootstrap/AccordionToggle";
 
-// ACCORDION HELPER COMPONENT ==========================
+// ACCORDION HELPER COMPONENT ==========================| 
 function ContextAwareToggle({
   children,
   eventKey,
@@ -21,6 +21,7 @@ function ContextAwareToggle({
     accordionHelper ? setAccordionHelper(false) : setAccordionHelper(true);
   });
 
+
   return (
     <button
       type="button"
@@ -32,10 +33,16 @@ function ContextAwareToggle({
   );
 }
 
-// MAIN WRAPPER COMPONENT ==============================
-function VehicleMainWrapper({ children, vehicleInfo, userData, getInfo }) {
+
+
+
+
+
+// MAIN WRAPPER COMPONENT ==============================|
+function VehicleMainWrapper({ children, vehicleInfo, userData }) {
   // Sets state for accordion
   const [accordionHelper, setAccordionHelper] = useState(false);
+
 
   return (
     <section className="g__dashboard-wrapper">
@@ -45,6 +52,7 @@ function VehicleMainWrapper({ children, vehicleInfo, userData, getInfo }) {
             <Accordion
               defaultActiveKey="1"
               className="vehicle-dash__accordion vehicle-dash__fixed"
+              id="sidebar"
             >
               <Card className="vehicle-dash__parent-fixed ">
                 <ContextAwareToggle
@@ -66,12 +74,12 @@ function VehicleMainWrapper({ children, vehicleInfo, userData, getInfo }) {
                         className="vehicle-dash__accordion-toggle"
                       />
                     ) : (
-                      <img
-                        src={openBtnIcon}
-                        alt="Open icon"
-                        className="vehicle-dash__accordion-toggle"
-                      />
-                    )}
+                        <img
+                          src={openBtnIcon}
+                          alt="Open icon"
+                          className="vehicle-dash__accordion-toggle"
+                        />
+                      )}
                   </Card.Header>
                 </ContextAwareToggle>
                 <Accordion.Collapse eventKey="0">

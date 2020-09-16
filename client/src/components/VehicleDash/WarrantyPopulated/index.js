@@ -9,7 +9,7 @@ import { FaPlus, FaMinus } from "react-icons/fa";
 import { useDriverKickContext } from "../../../utils/DriverKickContext";
 import Moment from "react-moment";
 
-// ACCORDION HELPER COMPONENT ==========================
+// ACCORDION HELPER COMPONENT ==========================|
 // controls which warranty opens
 function ContextAwareToggle({
   children,
@@ -34,7 +34,7 @@ function ContextAwareToggle({
   );
 }
 
-// Warranty COMPONENT ==============================
+// Warranty COMPONENT ==============================|
 function WarrantyPopulated({ warrantyModal, warranty }) {
   // Sets state for accordion
   const [accordionHelper, setAccordionHelper] = useState(false);
