@@ -77,7 +77,7 @@ $ npm react-ga
 
  <br>
 
- ## Awesome Feature Code-
+ ## Awesome Feature Code:
 
 > 1st feature: Vin Number and how it works
 - The user inputs their vehicles VIN number, which is then sent to the NHSTA government API for decoding. The information 
@@ -104,7 +104,7 @@ for the mileage tracker card!
 
  <br>
 
-## Team Contact Information -
+## Team Contact Information:
 <br>
 
 ### <span style="color:#F0B537">Lathisha Nair</span> | Project Manager / QA Specialist
@@ -146,5 +146,3 @@ Email: | <linneagear@gmail.com> |
 LinkedIn: | <https://www.linkedin.com/in/linnea-gear/> |
 
 ![Followers](https://img.shields.io/github/followers/linneagear?logoColor=%23F8963F&style=social)
-
-<br>
