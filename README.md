@@ -67,7 +67,6 @@ $ npm react-ga
 <br>
  
 ## Future Development:
-
 - Scheduling maintenance alerts for oil change
 - Push notification for Mileage tracking
 - Oil change meter has dynamic animation when user is close to an oil change
@@ -77,9 +76,9 @@ $ npm react-ga
 
  <br>
 
- ## Awesome Feature Code-
+ ## Awesome Feature Code:
 
-> 1st feature: Vin Number and how it works
+> ![1st Feature: Vin Number and User Dashboard Card](./rm-img/feature1.gif)
 - The user inputs their vehicles VIN number, which is then sent to the NHSTA government API for decoding. The information 
 comes back and the user verifies the information matches their vehicle, and the vehicle is created. This allows for easy 
 one input entry to create vehicles and get accurate information. This prevents the user from being confronted with a large 
@@ -87,24 +86,19 @@ form that could be filled with accidentally erroneous information.
  
  <br>
  
-> 2nd feature: How info is put into User Dashboard card
+> ![2nd Feature: Card with edit button which uses React-ContentEditable and delete button](./rm-img/feature2.gif)
+2nd feature: How info is put into User Dashboard card
 - The user's information and vehicle data is pulled from the MongoDB database using RESTful api commands. Each vehicle is then mapped through, creating a uniformed card for each one, with a unique image background. The user can update their car's nickname and the owner name directly on the card. They can also delete any card they want. Lastly, each card takes the user to that vehicle's tracking dashboard, where they can track its mileage, oil changes and warranties.  
 
 <br>
 
-> 3nd feature: Oil change card, math behind it. How the icon progresses.
-- The oil change card receives all the information it needs from the backend in one simple call. First, the backend
-calculates the oils to next change by adding the oil interval to the miles at last oil change, then subtracting the 
-vehicles current mileage. Then, it calculates the percentage to the next oil change and subtracts 100. This number is
-used in the progress bar. We subtract the percentage from 100 to have the bar empty rather than fill, to simulate a gas tank
-or oil tank slowly running out.
-- The oil change card also allows the user to add an oil change. This is a double feature, as not only does it allow the
-user to input their new interval, it also automatically updates their current mileage, and even creates a history entry
-for the mileage tracker card!
+> ![3rd Feature: Oil change card and icon animation](./rm-img/feature3.gif)
+- The oil change card receives all the information it needs from the backend in one simple call. First, the backend calculates the oils to next change by adding the oil interval to the miles at last oil change, then subtracting the vehicles current mileage. Then, it calculates the percentage to the next oil change and subtracts 100. This number is used in the progress bar. We subtract the percentage from 100 to have the bar empty rather than fill, to simulate a gas tank or oil tank slowly running out.
+- The oil change card also allows the user to add an oil change. This is a double feature, as not only does it allow the user to input their new interval, it also automatically updates their current mileage, and even creates a history entry for the mileage tracker card!
 
  <br>
 
-## Team Contact Information -
+## Team Contact Information:
 <br>
 
 ### <span style="color:#F0B537">Lathisha Nair</span> | Project Manager / QA Specialist
@@ -146,5 +140,3 @@ Email: | <linneagear@gmail.com> |
 LinkedIn: | <https://www.linkedin.com/in/linnea-gear/> |
 
 ![Followers](https://img.shields.io/github/followers/linneagear?logoColor=%23F8963F&style=social)
-
-<br>
