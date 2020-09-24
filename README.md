@@ -39,10 +39,10 @@
 - Express
 - Passport
 - Github
-- [NHTSA Vehical API](https://vpic.nhtsa.dot.gov/api/)
+- [NHTSA Vehicle API](https://vpic.nhtsa.dot.gov/api/)
 - Project Management Tools:
-    - Trello (Team Collaboration / Task Management)
-    - Figma (Design Layout)
+    - [Trello](https://trello.com/b/nZ7TqRzj/a-team) (Team Collaboration / Task Management)
+    - [Figma](https://www.figma.com/file/EHbfwBaOA1QPQggMB3rZby/A-Team-%E2%80%94-Car-Maintainence-Tracker?node-id=448%3A435) (Design Layout)
     - G Suite (Component Organization / Slides Presentation)
 - Deployed Application:
     - Heroku (App Link)
@@ -69,10 +69,10 @@ $ npm react-ga
 ## Future Development:
 - Scheduling maintenance alerts for oil change
 - Push notification for Mileage tracking
-- Oil change meter has dynamic animation when user is close to an oil change
 - PWA the site for mobile and offline use
 - Local maintenance shop tracker with ratings
 - Create a light mode for the dashboard
+- Recall card with working API
 
  <br>
 
@@ -87,7 +87,6 @@ form that could be filled with accidentally erroneous information.
  <br>
  
 > ![2nd Feature: Card with edit button which uses React-ContentEditable and delete button](./rm-img/feature2.gif)
-2nd feature: How info is put into User Dashboard card
 - The user's information and vehicle data is pulled from the MongoDB database using RESTful api commands. Each vehicle is then mapped through, creating a uniformed card for each one, with a unique image background. The user can update their car's nickname and the owner name directly on the card. They can also delete any card they want. Lastly, each card takes the user to that vehicle's tracking dashboard, where they can track its mileage, oil changes and warranties.  
 
 <br>
