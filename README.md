@@ -11,10 +11,17 @@
 ![Main Pages](./rm-img/website-preview.jpg)
 <br><br>
 
-<center>
 
-# [DriverKick Deployed Link ↗️](https://driverkick.herokuapp.com/)
-</center>
+
+# [View DriverKick's Live Site ↗️](https://driverkick.herokuapp.com/)
+
+* It's easy to create a free account or use these demo logins. 
+
+ * Email: sample@test.com
+ * Password: 123456
+
+* Please note that this is hosted on a free Heroku account, so loading the website for the first time might take a few seconds.
+
 
 ## <center> User Story
 <center><h3> As a <span style="color:#50B2C0">vehicle owner,</span> I want a multi-purpose vehicle <span style="color:#50B2C0">maintenance tracker</span> so that I can ensure I am up to date on my vehicle’s upkeep.</h3> </center>
@@ -73,6 +80,7 @@ $ npm react-ga
 - Local maintenance shop tracker with ratings
 - Create a light mode for the dashboard
 - Recall card with working API
+– Code Splitting for Performance Enhancements
 
  <br>
 
